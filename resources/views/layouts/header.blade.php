@@ -1,5 +1,11 @@
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Login</title>
     <link rel = "stylesheet" href="/css/bootstrap.min.css">
     <link rel = "stylesheet" href="/css/styles.css">
     <link rel = "stylesheet" href="/css/aos.css">
@@ -14,6 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="wojfiAaQ184v3oKbdsyv-1FV4ivHMQ3P5_kEyNTzNQk" />
     <link rel="icon" type="image/jpg" href="/images/logo-main.png">
-    <title>Medicure</title>
+    <title>CTA Investments</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
 </head>
