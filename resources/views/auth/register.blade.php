@@ -20,10 +20,10 @@
                     @csrf
                     <div class="text-black card-body p-md-4">
                         <div class="row align-items-center">
-                            <h5 class="mb-5 text-center text-uppercase text-bold text-primary">sign up to medicare</h5>
+                            <h5 class="mb-5 text-center text-capitalize font-weight-bold text-color ">sign up to medicare</h5>
                         </div>
                     <div class="mb-1 col-12 form-outline">
-                        <label class="form-label" for="form3Example97">Name</label>
+                        <label class="form-label font-weight-bold" for="form3Example97">Name</label>
                             <input
                                 type="text"
                                 id="name"
@@ -40,7 +40,7 @@
                             @enderror
                     </div>
                     <div class="mb-1 col-12 form-outline">
-                        <label class="form-label" for="form3Example97">Email</label>
+                        <label class="form-label font-weight-bold" for="form3Example97">Email</label>
                         <input
                         type="email"
                         id="email"
@@ -56,7 +56,7 @@
                     @enderror
                     </div>
                     <div class="mb-1 col-12 form-outline">
-                        <label class="form-label" for="form3Example97">Password</label>
+                        <label class="form-label font-weight-bold" for="form3Example97">Password</label>
                         <input
                         type="password"
                         id="password"
@@ -73,12 +73,12 @@
                     @enderror
                     </div>
                   <div class="gap-2 mt-4 d-grid p-sm-5 p-lg-0">
-                    <button type="submit" class="btn btn-primary" >Sign Up</button>
+                    <button type="submit" class="btn btn-primary cta-bg-primary font-weight-bold" >Sign Up</button>
                   </div>
                   <div class="row justify-content-sm-center">
                     <div class="mx-5 mt-2 mb-2 text-center">
                         <p class="mt-2 mb-0"><small class="mr-2 text-dark">Already have an account ?</small>
-                            <a href="{{ route("login") }}" class="text-primary text-decoration-none font-weight-bold">Sign in
+                            <a href="{{ route("login") }}" class="text-primary text-decoration-none font-weight-bold"><small>Sign in</small>
                             </a>
                         </p>
                     </div>
