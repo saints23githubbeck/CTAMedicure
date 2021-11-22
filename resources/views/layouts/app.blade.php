@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Medicure') }}</title>
+    <title>{{ config("app.name") != "laravel" ? config('app.name') : "" }}</title>
 
     <!-- Scripts -->
 
@@ -15,13 +15,13 @@
     <script src="/js/app.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <!-- Styles -->
-    <link rel = "stylesheet" href="/css/bootstrap.min.css">
+    <link rel = "stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
 <body style="background-color: #e3e3e3; height: 100%">
     <div id="app">
-        <main class="py-4">
-            @yield('content')x
+        <main class="py-5">
+            @yield('content')
         </main>
     </div>
 </body>
