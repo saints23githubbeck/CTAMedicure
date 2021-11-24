@@ -19,7 +19,7 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="wojfiAaQ184v3oKbdsyv-1FV4ivHMQ3P5_kEyNTzNQk" />
-    <link rel="icon" type="image/jpg" href="/images/logo-main.png">
+    <link rel="icon" type="image/jpg" href="{{ asset('images/logo-main.png') }}">
     <title>CTA Investments</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
