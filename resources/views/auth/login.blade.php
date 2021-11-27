@@ -67,9 +67,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="gap-2 mt-4 d-grid p-sm-5 p-lg-0">
-                      <button type="submit" class="btn  cta-bg-primary text-white font-weight-bold" >Sign In</button>
-                    </div>
+                   
                     <div class="mt-3 text-center row">
                         <div class="col-12">
                             @if (Route::has('password.request'))
@@ -87,6 +85,9 @@
                                 </p>
                             </div>
                         </div>
+                         <div class="text-center gap-2 mt-4 d-grid p-sm-5 p-lg-0">
+                      <button type="submit"  class="btn btn-primary">SIGN IN</button>
+                    </div>
                 </div>
                 </form>
               </div>

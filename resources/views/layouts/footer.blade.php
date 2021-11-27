@@ -5,7 +5,7 @@
     <div class="row">
       <!--Grid column-->
       <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-        <h5 class="text-uppercase">About Medicure</h5>
+        <h5 class="text-uppercase">About Medicare</h5>
         <p class="fs-6">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
           molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
