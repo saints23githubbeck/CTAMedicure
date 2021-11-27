@@ -197,34 +197,34 @@
             <div class="col-md-6 mt-5 mx-auto">
                 <div class="me-5 ms-5">
                     <h2 class=" display-4 fw-bolder text-primary text-left mb-2">GET IN TOUCH WITH US</h2>
-                <form>
-                    <!-- 2 column grid layout with text inputs for the first and last names -->
-                      <!-- Email input -->
-                    <div class="form-outline mb-4">
-                        <input type="text" id="form3Example3" class="form-control" placeholder="Your Name" />
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col">
-                        <div class="form-outline">
-                            <input type="email" id="form3Example1" class="form-control" placeholder="Your email"/>
+                    <form>
+                        <!-- 2 column grid layout with text inputs for the first and last names -->
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" id="form3Example3" class="form-control" placeholder="Your Name" />
                         </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                            <div class="form-outline">
+                                <input type="email" id="form3Example1" class="form-control" placeholder="Your email"/>
+                            </div>
+                            </div>
+                            <div class="col">
+                            <div class="form-outline">
+                                <input type="text" id="form3Example2" class="form-control" placeholder="Phone Number" />
+                            </div>
+                            </div>
                         </div>
-                        <div class="col">
-                        <div class="form-outline">
-                            <input type="text" id="form3Example2" class="form-control" placeholder="Phone Number" />
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" id="form3Example4" class="form-control" placeholder="Subject" />
                         </div>
+                        <div class="form-outline mb-4">
+                            <textarea type="text" rows="4" id="form3Example4" class="form-control" placeholder="Your message" ></textarea>
                         </div>
-                    </div>
-                    <!-- Password input -->
-                    <div class="form-outline mb-4">
-                        <input type="password" id="form3Example4" class="form-control" placeholder="Subject" />
-                    </div>
-                    <div class="form-outline mb-4">
-                        <textarea type="password" rows="4" id="form3Example4" class="form-control" placeholder="Your message" ></textarea>
-                    </div>
-                    <!-- Submit button -->
-                    <button type="button" class="btn btn-danger btn-long rounded-pill mb-4 fw-bolder">Send Message</button>
-                </form>
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-danger btn-lg rounded-pill mb-4 fw-bolder">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
