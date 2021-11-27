@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light cta-bg-primary">
-    <a class="text-white navbar-brand" href="#"> Medicure</a>
+    <a class="text-white fw-bolder navbar-brand ms-3" href="#"> Medicure</a>
     <button class="text-white navbar-toggler cta-bg-primary" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon navbar-light"></span>
     </button>

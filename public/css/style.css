@@ -1,70 +1,69 @@
-a{
+a {
     text-decoration: none;
 }
 
-.img-container img{
+.img-container img {
     width: 100%;
-     height: 70vh;
+    height: 70vh;
 }
-.ourServiceImg img{
+.ourServiceImg img {
     width: 100%;
     height: 50vh;
 }
-.ourService{
+.ourService {
     background: ghostwhite;
 }
-.roundedButton{
-   border-radius: 50px;
+.roundedButton {
+    border-radius: 50px;
 }
-.mediFooter{
-    background: #4400AD;
+.mediFooter {
+    background: #4400ad;
 }
-.bodybackground{
+.bodybackground {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.subhero{
-
+.subhero {
 }
-.signinbox{
+.signinbox {
     height: 80%;
     width: 60vw;
     border-radius: 15px;
     padding: 0 !important;
 }
-.signupbox{
+.signupbox {
     height: 80%;
     width: 60vw;
     border-radius: 15px;
     padding: 0 !important;
 }
-.signupimage{
+.signupimage {
     background-image: url("../Sources/signup.jpg");
-   height: 100%;  
-   background-size: cover;
-   background-repeat: no-repeat; 
-   background-position: center;
-   border-top-left-radius: 15px;
-   border-bottom-left-radius: 15px;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
-.logo h1{
+.logo h1 {
     margin-bottom: 0;
     font-size: 2rem;
     color: white;
     padding: 15px 4vw;
 }
-.signinimage{
-   background-image: url("../Sources/signInimage.jpg");
-   height: 100%;  
-   background-size: cover;
-   background-repeat: no-repeat; 
-   background-position: center;
-   border-top-left-radius: 15px;
-   border-bottom-left-radius: 15px;
+.signinimage {
+    background-image: url("../Sources/signInimage.jpg");
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
-#menuul{
+#menuul {
     list-style: none;
     display: flex;
     height: 70px;
@@ -72,38 +71,47 @@ a{
     justify-content: space-between;
     margin: 0 3%;
 }
-#menuul li a{
+#menuul li a {
     color: white;
 }
-.nav-item{
+.nav-item {
     position: relative;
     margin: 0 15px 0 15px;
 }
-#menuul .nav-item::after{
+.text-white .navbar-brand {
+    margin-left: 10px;
+}
+#menuul .nav-item::after {
     position: absolute;
-    content: '';
+    content: "";
     width: 0;
     left: 0;
     top: 25px;
     border-bottom: 3px solid rgb(255, 255, 255);
     transition: 0.5s ease-in-out;
 }
-#menuul .nav-item:hover::after{
+#menuul .nav-item:hover::after {
     width: 100%;
 }
-nav{
-    display: flex; 
+nav {
+    display: flex;
     justify-content: space-between;
     position: absolute;
-    width: 100%; 
+    width: 100%;
     top: 0px;
-    left: 0px;z-index: 1;
-    background-color: #4400AD;
+    left: 0px;
+    z-index: 1;
+    background-color: #4400ad;
 }
-.hero{
+.hero {
     height: 80vh;
     width: 100%;
-    background: url('../Sources/Image.png');
+    background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 0.6) 100%
+        ),
+        url("../Sources/Image.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
