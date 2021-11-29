@@ -12,11 +12,12 @@
     <!-- Scripts -->
 
     <script src="{{ asset('js/app.js') }}" defer></script>
+     <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}" />
     <script src="/js/app.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    {{-- <script src="/js/bootstrap.min.js"></script> --}}
     <!-- Styles -->
-    <link rel = "stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    {{-- <link rel = "stylesheet" href="{{ asset('css/bootstrap.min.css') }}"> --}}
+    {{-- <link href="{{ asset('css/admin.css') }}" rel="stylesheet"> --}}
 </head>
 <body style="background-color: #e3e3e3; height: 100%">
     <div id="app">
@@ -24,5 +25,6 @@
             @yield('content')
         </main>
     </div>
+     <script type="text/javascript" src="{{ asset('js/mdb.min.js')"></script>
 </body>
 </html>

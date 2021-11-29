@@ -20,7 +20,7 @@
                     @csrf
                     <div class="text-black card-body p-md-4 ">
                         <div class="row align-items-center">
-                            <h5 class="mb-5 text-center text-capitalize text-color font-weight-bold">sign in to Medicare</h5>
+                            <h5 class="mb-5 text-primary text-center text-capitalize text-color font-weight-bold">sign in to Medicare</h5>
                         </div>
                     <div class="mb-1 col-12 form-outline">
                         <label class="form-label font-weight-bold" for="form3Example97">Email</label>
@@ -67,10 +67,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="gap-2 mt-4 d-grid p-sm-5 p-lg-0">
-                      <button type="submit" class="btn  cta-bg-primary text-white font-weight-bold" >Sign In</button>
-                    </div>
-                    <div class="mt-3 text-center row">
+                   
+                    <div class="mt-1 text-center row">
                         <div class="col-12">
                             @if (Route::has('password.request'))
                             <a class="btn btn-link text-decoration-none text-danger" href="{{ route('password.request') }}">
@@ -79,13 +77,16 @@
                         @endif
                     </div>
                     </div>
-                        <div class="row justify-content-sm-center">
-                            <div class="mx-5 mt-2 mb-2 text-center">
-                                <p class="mt-2 mb-0"><small class="mr-2 text-dark">Don't have an account?</small>
-                                    <a href="{{ route("register") }}" class="text-primary text-decoration-none font-weight-bold"><small>Sign Up</small>
-                                    </a>
-                                </p>
-                            </div>
+                     <div class="mt-1 text-center row">
+                        <div class="col-12">
+                            <p class="mt-2 mb-3"><small class="mr-2 text-dark">Don't have an account?</small>
+                                <a href="{{ route("register") }}" class="text-primary text-decoration-none font-weight-bold"><small>Sign Up</small>
+                                </a>
+                            </p>
+                        </div>
+                      </div>
+                        <div class="text-center">
+                          <button type="submit"  class="btn btn-primary">SIGN IN</button>
                         </div>
                 </div>
                 </form>
