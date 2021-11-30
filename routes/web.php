@@ -29,6 +29,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/dashboard', function () {
+<<<<<<< HEAD
+    return view('admin.dashboard');
+})->name('dashboard');
+=======
     return view('admin.pages.dashboard');
 })->name('dashboard');
 
@@ -42,3 +46,7 @@ Route::prefix('admin')->group(function () {
 });
 
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> a4d47239c1995131286d5ea522e413b8dfd749bd
+>>>>>>> Stashed changes
