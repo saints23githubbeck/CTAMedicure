@@ -177,13 +177,13 @@
         </div>
         <div class="card">
             <div class="card-body-1 d-inline-flex">
-           <span style="color: red"><i class="fas fa-envelope fa-6x mx-3 red-text"></i></span>
-            <div class="mt-2">
-                <h2 class="card-title fw-bolder">Email</h2>
-            <p class="card-text">
-                service@medicure.com
-            </p>
-            </div>
+                <span style="color: red"><i class="fas fa-envelope fa-6x mx-3 red-text"></i></span>
+                <div class="mt-2">
+                    <h2 class="card-title fw-bolder">Email</h2>
+                <p class="card-text">
+                    service@medicure.com
+                </p>
+                </div>
             </div>
         </div>
     </div>
