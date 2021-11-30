@@ -57,8 +57,8 @@
     </script>
   </head>
 <body id="body-pd">
-    {{-- @include('admin.layouts.header')
-    @include('admin.layouts.sidebar') --}}
+    @include('admin.layouts.header')
+    @include('admin.layouts.sidebar')
     <!--Container Main start-->
     @yield('content')
 
