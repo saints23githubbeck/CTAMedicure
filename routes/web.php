@@ -31,3 +31,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
+
+Route::get('/location', function () {
+    return view('admin.location');
+})->name('location');
