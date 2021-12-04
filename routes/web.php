@@ -3,11 +3,17 @@
 use Illuminate\Support\Facades\Route;
 
 
+
 //use App\Http\Controllers\DashboardController;
+
+use App\Http\Controllers\AdminPortal\DashboardController;
+use App\Http\Controllers\AdminPortal\PrescriptionController;
+>>>>>>> 9f7f89be6611f1285cba17269d85c89c97a89fe0
 
 use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +34,22 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('admin')->group(function () {
+
+    Route::get('/dashboard', DashboardController::class)->name("dashboard");
+    Route::get('/prescription', PrescriptionController::class)->name("prescription");
+    
+});
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
+
 
 Route::get('/location', function () {
     return view('admin.location');
