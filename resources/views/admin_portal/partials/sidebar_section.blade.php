@@ -29,7 +29,7 @@
         </a>
       </li>
       <li>
-        <a href="index.html">
+        <a href="{{ route('prescription') }}">
           <span class="link-title">Prescriptions</span>
           <i class="mdi mdi-flask link-icon"></i>
         </a>

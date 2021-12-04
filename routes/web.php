@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPortal\DashboardController;
+use App\Http\Controllers\AdminPortal\PrescriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->group(function () {
 
     Route::get('/dashboard', DashboardController::class)->name("dashboard");
+    Route::get('/prescription', PrescriptionController::class)->name("prescription");
+    
 });
 
