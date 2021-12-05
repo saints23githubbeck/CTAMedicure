@@ -23,13 +23,13 @@
         </a>
       </li>
       <li>
-        <a href="index.html">
+        <a href="{{route('appointments')}}">
           <span class="link-title">Consultations</span>
           <i class="mdi mdi-stethoscope link-icon"></i>
         </a>
       </li>
       <li>
-        <a href="{{ route('prescription') }}">
+        <a href="{{ route('location') }}">
           <span class="link-title">Prescriptions</span>
           <i class="mdi mdi-flask link-icon"></i>
         </a>
@@ -54,5 +54,5 @@
         </a>
       </li>
     </ul>
-    
+
   </div>

@@ -3,7 +3,7 @@
 :root {
     --header-height: 3rem;
     --nav-width: 70px;
-    --first-color: #4723d9;
+    --first-color: #4400ad;
     --first-color-light: #afa5d9;
     --white-color: #f7f6fb;
     --body-font: "Rubik", sans-serif;
@@ -49,6 +49,9 @@ a {
     color: var(--first-color);
     font-size: 1.5rem;
     cursor: pointer;
+}
+.df-color{
+    background-color: #4400ad;
 }
 
 .header_img {

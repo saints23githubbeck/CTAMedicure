@@ -5,9 +5,9 @@
     <div class="page-content-wrapper">
         @yield("page-content-wrapper-inner")
       <!-- content viewport ends -->
-      
+
        <!-- footer section starts -->
-        @yield("footer") 
+        @yield("footer")
       <!-- footer section ends -->
     </div>
     <!-- page content ends -->
