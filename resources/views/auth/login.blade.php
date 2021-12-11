@@ -26,8 +26,7 @@
                         <label class="form-label font-weight-bold" for="form3Example97">Email</label>
                         <input
                         type="email"
-                        id="email"
-                        class="form-control form-control-sm @error('email') is-invalid @enderror" email="email"
+                        class="form-control form-control-sm @error('email') is-invalid @enderror" name="email"
                         value="{{ old('email') }}"
                         required
                         autocomplete="email"
@@ -44,7 +43,7 @@
                         <input
                         type="password"
                         id="password"
-                        class="form-control form-control-sm @error('password') is-invalid @enderror" password="password"
+                        class="form-control form-control-sm @error('password') is-invalid @enderror" name="password"
                         value="{{ old('password') }}"
                         required
                         autocomplete="password"
