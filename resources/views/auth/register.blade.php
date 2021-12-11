@@ -44,7 +44,7 @@
                         <input
                         type="email"
                         id="email"
-                        class="form-control form-control-sm @error('email') is-invalid @enderror border" name="email"
+                        class="form-control form-control-sm @error('email') is-invalid @enderror border" email="email"
                         value="{{ old('email') }}"
                         required
                         autocomplete="email"
@@ -60,7 +60,7 @@
                         <input
                         type="password"
                         id="password"
-                        class="form-control form-control-sm @error('password') is-invalid @enderror border" name="password"
+                        class="form-control form-control-sm @error('password') is-invalid @enderror border" password="password"
                         value="{{ old('password') }}"
                         required
                         autocomplete="password"
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                  <div class="text-center">
-                          <button type="submit"  class="btn btn-primary">SIGN UP</button>
+                          <button type="submit"  class="btn btn-primary">SIGN IN</button>
                         </div>
                 </div>
                 </form>
