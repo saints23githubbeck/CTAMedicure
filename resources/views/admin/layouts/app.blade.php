@@ -64,6 +64,7 @@
 
 
     <script src="js/dashboard.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/material-dashboard.min.js"></script>
    
 
