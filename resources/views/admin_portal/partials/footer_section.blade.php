@@ -9,7 +9,7 @@
       </div>
       <div class="mt-3 text-center col-sm-6 text-sm-left mt-sm-0">
         <small class="text-muted d-block">Copyright © {{ date("Y") }}
-            <a href="#" target="_blank">MEDICURE GHANA INVESTMENTS LTD</a>
+            <a href="#" target="_blank">MEDICURELI GHANA INVESTMENTS LTD</a>
         </small>
         <small class="mt-2 text-gray">Handcrafted With <i class="mdi mdi-heart text-danger"></i></small>
       </div>

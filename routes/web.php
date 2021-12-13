@@ -1,8 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
+
+
+
+//use App\Http\Controllers\DashboardController;
+
+use App\Http\Controllers\AdminPortal\DashboardController;
+use App\Http\Controllers\AdminPortal\PrescriptionController;
+
+
+//use App\Http\Controllers\DashboardController;
+
 use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,16 +32,38 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
 
+
 Route::get('/location', function () {
+<<<<<<< HEAD
     return view('admin.location');
 })->name('location');
 
 Route::get('/prescription', function () {
     return view('admin.prescription');
 })->name('prescription');
+=======
+    return view('admin.pages.location');
+})->name('location');
+
+Route::get('/appointments', function () {
+    return view('admin.pages.appointment');
+})->name('appointments');
+
+Route::get('/prescriptions', function () {
+    return view('admin.pages.prescription');
+})->name('prescriptions');
+
+Route::get('/users', function () {
+    return view('admin.pages.user');
+})->name('users');
+
+Route::get('/roles', function () {
+    return view('admin.pages.role');
+})->name('roles');
+>>>>>>> main

@@ -25,6 +25,9 @@
             @yield('content')
         </main>
     </div>
-     <script type="text/javascript" src="{{ asset('js/mdb.min.js')"></script>
+    <script type="text/javascript" src="{{ asset('js/mdb.min.js')}}">
+
+    </script>
+
 </body>
 </html>

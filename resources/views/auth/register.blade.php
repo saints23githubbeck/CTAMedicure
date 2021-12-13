@@ -20,7 +20,7 @@
                     @csrf
                     <div class="text-black card-body p-md-4">
                         <div class="row align-items-center">
-                            <h5 class="mb-5 text-center text-capitalize font-weight-bold text-color ">Sign up to medicare</h5>
+                            <h5 class="mb-5 text-center text-capitalize font-weight-bold text-color">Sign up to medicare</h5>
                         </div>
                     <div class="mb-1 col-12 form-outline">
                         <label class="form-label font-weight-bold" for="form3Example97">Name</label>
