@@ -30,3 +30,7 @@ Route::get('/dashboard', function () {
 Route::get('/location', function () {
     return view('admin.location');
 })->name('location');
+
+Route::get('/prescription', function () {
+    return view('admin.prescription');
+})->name('prescription');
