@@ -1,9 +1,10 @@
 <div class="l-navbar" id="nav-bar" >
         <nav class="nav">
-            <div>
+
                 <a href="{{route('dashboard')}}" class="nav_logo fw-bolder "> <span class="nav_logo-name ">MEDICARE</span> </a>
                 <div class="nav_list"> 
-                    <a href="{{route('dashboard')}}" class="nav_link active"> <i class="fas fa-tachometer-alt"></i> <span class="nav_name">Dashboard</span> </a> 
+                    <a href="{{route('dashboard')}}" class="nav_link active"> <i class="fas fa-tachometer-alt"></i> <span class="nav_name">Dashboard</span> </a>
+                    <div>
                     <a href="{{route('appointments')}}" class="nav_link"> <i class="fas fa-calendar-day"></i> <span class="nav_name">Appointments</span> </a>
                     <a href="{{route('location')}}" class="nav_link"> <i class="fas fa-tasks"></i><span class="nav_name">Consultation Settings</span> </a>
                     <a href="{{route('appointments')}}" class="nav_link"> <i class="fas fa-user-md"></i> <span class="nav_name">Consultation</span> </a>
