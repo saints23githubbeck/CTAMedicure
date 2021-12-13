@@ -40,14 +40,6 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/location', function () {
-<<<<<<< HEAD
-    return view('admin.location');
-})->name('location');
-
-Route::get('/prescription', function () {
-    return view('admin.prescription');
-})->name('prescription');
-=======
     return view('admin.pages.location');
 })->name('location');
 
@@ -66,4 +58,3 @@ Route::get('/users', function () {
 Route::get('/roles', function () {
     return view('admin.pages.role');
 })->name('roles');
->>>>>>> main
