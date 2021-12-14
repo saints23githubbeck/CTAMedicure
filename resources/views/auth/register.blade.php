@@ -23,6 +23,12 @@
                             <h5 class="mb-5 text-center text-capitalize font-weight-bold text-color">Sign up to medicare</h5>
                         </div>
                     <div class="mb-1 col-12 form-outline">
+                     <select name="roles" id="user_role">
+                            <option value="Select Role" >Select Role</option>
+                            <option value="Pharmacist">Pharmacist</option>
+                            <option value="Delivery Personnel">Delivery Personnel</option>
+                            <option value="Customer / Client">Customer / Client</option>
+                        </select><br><br>
                         <label class="form-label font-weight-bold" for="form3Example97">Name</label>
                             <input
                                 type="text"
