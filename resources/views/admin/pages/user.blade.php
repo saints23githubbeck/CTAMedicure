@@ -11,10 +11,9 @@
 
                         <div class="row justify-content-end mb-3">
                             <div class="col-md-3 ">
-                                <button type="button" class="btn df-color custom-btn text-white"  data-toggle="modal" data-target="#addUser-modal" data-whatever="@getbootstrap">New User</button>
+                                <button type="button" class="btn df-color custom-btn text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop">New User</button>
                             </div>
                         </div>
-                        @include('admin.pages.modals.addUser')
                         <div class="table-responsive">
                             <table class="table my-5">
                                 <thead>
@@ -77,7 +76,8 @@
                 </div>
             </div>
     </div>
-@endsection
 
+@endsection
+@include('admin.pages.modals.addUser')
 
   
