@@ -23,6 +23,9 @@
                             <h5 class="mb-5 text-center text-capitalize font-weight-bold text-color">Sign up to medicare</h5>
                         </div>
                     <div class="mb-1 col-12 form-outline">
+
+                        <label class="form-label font-weight-bold" for="form3Example97">User Name</label>
+
                      <select name="roles" id="user_role">
                             <option value="Select Role" >Select Role</option>
                             <option value="Pharmacist">Pharmacist</option>
@@ -30,6 +33,7 @@
                             <option value="Customer / Client">Customer / Client</option>
                         </select><br><br>
                         <label class="form-label font-weight-bold" for="form3Example97">Name</label>
+
                             <input
                                 type="text"
                                 id="name"
@@ -61,6 +65,20 @@
                         </span>
                     @enderror
                     </div>
+                        <div class="mb-1 col-12 form-outline">
+                            <label class="form-label font-weight-bold" for="form3Example97">Role</label>
+                            <select class="form-control form-control-sm @error('role_id') is-invalid @enderror border" name="role_id" required>
+                                <option value="Low">Doctor</option>
+                                <option value="Medium">Delivery</option>
+                                <option value="High">Pharmacy</option>
+                                <option value="High">patients</option>
+                            </select>
+                            @error('Role_id')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                            @enderror
+                        </div>
                     <div class="mb-1 col-12 form-outline">
                         <label class="form-label font-weight-bold" for="form3Example97">Password</label>
                         <input
@@ -88,7 +106,7 @@
                     </div>
                 </div>
                  <div class="text-center">
-                          <button type="submit"  class="btn btn-primary">SIGN UP</button>
+                          <button type="submit"  class="btn medibg btn-primary">SIGN UP</button>
                         </div>
                 </div>
                 </form>
