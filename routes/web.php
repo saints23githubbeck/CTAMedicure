@@ -32,26 +32,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
 
-
 Route::get('/location', function () {
-<<<<<<< HEAD
-
-    return view('admin.location');
+ return view('admin.location');
 })->name('location');
 
 Route::get('/prescription', function () {
     return view('admin.prescription');
 })->name('prescription');
-=======
-    return view('admin.pages.location');
-})->name('location');
->>>>>>> ab943ae72037840c4f84797f98a7ea951366598e
 
 Route::get('/appointments', function () {
     return view('admin.pages.appointment');
@@ -67,9 +58,4 @@ Route::get('/users', function () {
 
 Route::get('/roles', function () {
     return view('admin.pages.role');
-<<<<<<< HEAD
 })->name('roles');
-
-=======
-})->name('roles');
->>>>>>> ab943ae72037840c4f84797f98a7ea951366598e
