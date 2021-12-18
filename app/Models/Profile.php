@@ -13,14 +13,10 @@ class Profile extends Model
      *
      * @var string[]
      */
-    protected $fillable = [
-        'firstName',
-        'firstName',
-        'image',
-        'user_id',
-    ];
+    protected $guarded = [];
+
     public function user()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class);
     }
 }

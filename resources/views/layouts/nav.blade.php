@@ -8,7 +8,7 @@
 
         <div class="text-center navbar-nav">
             <li class="nav-item">
-                <a class="text-white nav-link hvr-underline-from-center" href="{{ route("dashboard") }}">Home</a>
+                <a class="text-white nav-link hvr-underline-from-center" href="{{ route("dashboard.show") }}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="text-white nav-link hvr-underline-from-center" href="#">Consult Doctor</a>

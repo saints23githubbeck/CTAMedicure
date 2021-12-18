@@ -4,17 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-//use App\Http\Controllers\DashboardController;
-
-use App\Http\Controllers\AdminPortal\DashboardController;
-use App\Http\Controllers\AdminPortal\PrescriptionController;
-
-
-//use App\Http\Controllers\DashboardController;
-
-use App\Http\Controllers\HomeController;
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,17 +19,17 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
-Auth::routes();
 
 
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
+
+//Route::get('/dashboard', function () {
+//    return view('admin.dashboard');
+//})->name('dashboard');
 
 
 Route::get('/location', function () {
-<<<<<<< HEAD
+
 
     return view('admin.location');
 })->name('location');
@@ -48,10 +37,8 @@ Route::get('/location', function () {
 Route::get('/prescription', function () {
     return view('admin.prescription');
 })->name('prescription');
-=======
-    return view('admin.pages.location');
-})->name('location');
->>>>>>> ab943ae72037840c4f84797f98a7ea951366598e
+
+
 
 Route::get('/appointments', function () {
     return view('admin.pages.appointment');
@@ -65,11 +52,26 @@ Route::get('/users', function () {
     return view('admin.pages.user');
 })->name('users');
 
-Route::get('/roles', function () {
-    return view('admin.pages.role');
-<<<<<<< HEAD
-})->name('roles');
 
-=======
-})->name('roles');
->>>>>>> ab943ae72037840c4f84797f98a7ea951366598e
+Route::prefix('admin')->group(function () {
+
+
+    Route::get('/dashboard/show','DashboardController@dashboard')->name('dashboard.show');
+
+    Route::prefix('role')->group(function () {
+
+        Route::post('/add', 'RoleController@store')->name('role.add');
+
+        Route::get('/show', 'RoleController@show')->name('roles.show');
+
+        Route::patch('/{role}/update', 'RoleController@update')->name('role.update');
+
+        Route::delete('/{role}/delete', 'RoleController@destroy')->name('role.destroy');
+
+        Route::post('/search', 'RoleController@search')->name('role.search');
+
+
+    });
+});
+
+Auth::routes();

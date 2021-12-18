@@ -23,7 +23,7 @@
                             <h5 class="mb-5 text-primary text-center text-capitalize text-color font-weight-bold">sign in to Medicare</h5>
                         </div>
                     <div class="mb-1 col-12 form-outline">
-                        <label class="form-label font-weight-bold" for="form3Example97">Email</label>
+                        <label class="form-label font-weight-bold" for="form3Example97">UserName Or Email</label>
                         <input
                         type="email"
                         class="form-control form-control-sm @error('email') is-invalid @enderror" name="email"

@@ -14,9 +14,7 @@ class Role extends Model
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-    ];
+    protected $guarded = [];
 
     public function user()
     {
