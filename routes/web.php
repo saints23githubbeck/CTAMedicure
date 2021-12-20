@@ -19,9 +19,9 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
-//Route::get('/dashboard', function () {
-//    return view('admin.dashboard');
-//})->name('dashboard');
+Route::get('/delivery', function () {
+   return view('admin.pages.delivery');
+})->name('delivery');
 
 Route::get('/location', function () {
    return view('admin.location');

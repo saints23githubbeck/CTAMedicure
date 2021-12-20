@@ -29878,3 +29878,115 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
 .nav-pills .nav-link {
 	border: none;
 }
+/*huzaifa CSS FILE START*/
+body{
+    font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  }
+  section.delivary {
+     
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+     height:100vh;
+      background-color: #AF94D9;
+      overflow-x: hidden;
+  }
+  
+  /* Safari syntax */
+  :-webkit-full-screen {
+    background-color: yellow;
+  }
+  
+  /* IE11 */
+  :-ms-fullscreen {
+    background-color: yellow;
+  }
+  
+  /* Standard syntax */
+  :fullscreen {
+    background-color: yellow;
+  }
+  .card_custom{
+    padding:10px 25px 35px 25px;
+    border-radius: 3px!important;
+  
+  }
+  
+  .table_content{
+      box-shadow: 0px 6px 18px 1px #dfe4eae6;
+  
+     
+  }
+   /*box-shadow: 5px 3px 16px #dfe4ea8c;*/
+   table{
+     color:#acacac!important;
+   }
+   thead{
+     border-bottom: 2px solid #dfe4eae6;
+   }
+   .far {
+    font-weight: 400;
+    color: black;
+  }
+   .btn_custom {
+    border: 1px solid #dfe4eae6;
+    padding: 2px 8px;
+    color: #00000099;
+  }
+  
+   button#show, button#hide, button#load,#minimize {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    margin: 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    /* display: block; */
+  }
+  
+  button#hide{
+    display: none;
+  
+  }
+  
+  
+  .tools{
+    width: 15%;
+    display: flex;
+    justify-content: end;
+  }
+  
+  .top h1{
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    margin-top:7px;
+    text-transform: uppercase;
+  }
+  .para{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+   
+    color: #7532dd;
+  }
+  .form_custom{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  @media (min-width:320px) and (max-width:575.98px) {
+    table{
+        font-size:14px;
+    }
+    .tools{
+        width:100%;
+    
+        justify-content: start;
+    }
+}
+
+/*huzaifa CSS FILE START*/
