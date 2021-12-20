@@ -29,7 +29,15 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('pages.index');
 });
-
+Route::get('/payment', function () {
+    return view('demo.payment');
+});
+Route::get('/order', function () {
+    return view('demo.order');
+});
+Route::get('/request', function () {
+    return view('demo.incoming_request');
+});
 Auth::routes();
 
 
@@ -40,19 +48,15 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/location', function () {
-<<<<<<< HEAD
-
     return view('admin.location');
 })->name('location');
 
 Route::get('/prescription', function () {
     return view('admin.prescription');
 })->name('prescription');
-=======
-    return view('admin.pages.location');
-})->name('location');
->>>>>>> ab943ae72037840c4f84797f98a7ea951366598e
 
+//return view('admin.pages.location');
+//})->name('location');
 Route::get('/appointments', function () {
     return view('admin.pages.appointment');
 })->name('appointments');
@@ -67,9 +71,7 @@ Route::get('/users', function () {
 
 Route::get('/roles', function () {
     return view('admin.pages.role');
-<<<<<<< HEAD
+
 })->name('roles');
 
-=======
-})->name('roles');
->>>>>>> ab943ae72037840c4f84797f98a7ea951366598e
+
