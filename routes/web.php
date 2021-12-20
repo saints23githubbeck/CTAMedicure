@@ -43,6 +43,9 @@ Route::get('/users', function () {
     return view('admin.pages.user');
 })->name('users');
 
+Route::get('/request-list', function () {
+    return view('admin.pages.request-list');
+})->name('requestList');
 
 Route::prefix('admin')->group(function () {
 

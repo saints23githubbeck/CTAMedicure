@@ -8,7 +8,6 @@
             <div class="col-12 mt-lg-5">
                 <h1 class="text-lg-center">Users</h1>
                 <div class="card ">
-
                     <div class="card-body  mt-7">
 
                         <div class="row offset-1  mt--6">
@@ -273,4 +272,4 @@
 @endsection
 
 
-  
+

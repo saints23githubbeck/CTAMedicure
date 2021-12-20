@@ -44,9 +44,12 @@
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Consultation Settings</span>
                         </a>
                     </li>
-
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('requestList')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Request List</span>
+                        </a>
+                    </li>
                 </ul>
-
             </div>
         </div>
     </div>
