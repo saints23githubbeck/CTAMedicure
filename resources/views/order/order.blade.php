@@ -422,6 +422,7 @@
                             <div class="col-md-4 ">
                                 <img src="{{asset('sujon/visa.png')}}" alt="visa" class="cart-img-show">
                             </div>
+
                             <div class="col-md-4">
                                 <img src="{{asset('sujon/master.png')}}" alt="master" class="cart-img-show">
                             </div>

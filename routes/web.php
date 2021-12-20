@@ -40,6 +40,7 @@ Route::get('/request', function () {
 });
 Auth::routes();
 
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');

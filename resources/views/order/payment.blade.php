@@ -278,6 +278,7 @@
             }
         }
 
+
         @media only screen and (max-width: 764px){
             .inverse-1{
                 float:right;
