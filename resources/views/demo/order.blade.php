@@ -336,7 +336,7 @@
 
                     </div>
                     <div class="col-md-8">
-
+//
                             <div class="float-start d-inline mt-2">
                                 <span class="" style="font-size: 40px;"><i class="fas fa-long-arrow-alt-left"></i></span>
                             </div>
