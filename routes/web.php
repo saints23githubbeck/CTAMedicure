@@ -19,26 +19,17 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
-
-
-
-
 //Route::get('/dashboard', function () {
 //    return view('admin.dashboard');
 //})->name('dashboard');
 
-
 Route::get('/location', function () {
-
-
-    return view('admin.location');
+   return view('admin.location');
 })->name('location');
 
 Route::get('/prescription', function () {
     return view('admin.prescription');
 })->name('prescription');
-
-
 
 Route::get('/appointments', function () {
     return view('admin.pages.appointment');
@@ -52,6 +43,9 @@ Route::get('/users', function () {
     return view('admin.pages.user');
 })->name('users');
 
+Route::get('/request-list', function () {
+    return view('admin.pages.request-list');
+})->name('requestList');
 
 Route::prefix('admin')->group(function () {
 
