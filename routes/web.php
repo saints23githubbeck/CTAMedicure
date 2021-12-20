@@ -30,17 +30,15 @@ Route::get('/', function () {
     return view('pages.index');
 });
 Route::get('/payment', function () {
-    return view('demo.payment');
+    return view('order.payment');
 });
 Route::get('/order', function () {
-    return view('demo.order');
+    return view('order.order');
 });
 Route::get('/request', function () {
-    return view('demo.incoming_request');
+    return view('order.incoming_request');
 });
 Auth::routes();
-
-
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');

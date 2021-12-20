@@ -350,7 +350,7 @@
                                             <div class="card" style="max-width: 540px;">
                                                 <div class="row">
                                                     <div class="col-md-4 px-3 py-3">
-                                                        <img src="/img/profile.jpg" class=" rounded-circle" alt="..." style="width: 80px;">
+                                                        <img src="/sujon/profile.jpg" class=" rounded-circle" alt="..." style="width: 80px;">
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="card-body">
