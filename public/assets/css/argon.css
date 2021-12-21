@@ -30717,3 +30717,147 @@ color:black;
 
 
 /*biiling info end*/
+
+
+
+/*////----Intishar Mashrur Doctor_list----------//////*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    font-family: 'Secular One', sans-serif; 
+}
+.fa-user-md{
+    background-color: #19B7FD;
+    color: white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding: 7px;
+    border-radius: 3px;
+}
+.text{
+    background-color: #fffffe;
+    position: relative;
+    top: -59px;
+    left: 54px;
+    padding: 0; 
+}
+.font-weight-bold{
+    font-weight: 700;
+    font-size: 30px;
+}
+.font-weight-normal{
+    font-weight: 500;
+    font-size: 18px;
+ 
+}
+.button{
+
+    text-align: center;
+    font-weight: 600 !important;
+}
+.btn-primary{
+    background-color: #4400AD !important;
+    border: none;
+    width: 130px !important;
+    height: 40px;
+    font-weight: 700 !important;
+    
+}
+.btn-success{
+    background-color: #2DCE8A !important;
+    border: none;
+    width: 80px !important;
+    height: 40px;
+    font-weight: 700 !important;
+}
+.btn-danger{
+    background-color: #FB2726 !important;
+    border: none;
+    width: 80px !important;
+    height: 40px;
+    font-weight: 700 !important;
+}
+.btn-info{
+    background-color: #0ECFEE !important;
+    border: none;
+    width: 80px !important;
+    height: 40px;
+    color: white !important;
+    font-weight: 700 !important;
+}
+.btn-secondary{
+    border: none;
+    width: 80px !important;
+    height: 40px;
+    font-weight: 700 !important;
+}
+.btn-warning{
+    background-color: #007BFD !important;
+    border: none;
+    width: 80px !important;
+    height: 40px;
+    color: white !important;
+    font-weight: 700 !important;
+}
+.bg-light{
+    background-color: #000000 !important;
+    border: none;
+    display: inline;
+}
+.col-4 input{
+    height: 40px;
+    background-color: rgb(219, 219, 219) !important;
+    border-radius: 2px;
+}
+.col-4 select{
+    background-color: rgb(219, 219, 219) !important;
+    height: 30px;
+    width: 50px;
+    padding: auto;
+}
+@media(max-width: 991.98px){
+  
+    .col-lg-10 {
+        display: inline;
+    }
+    .col-4 input{
+        width: 150px;
+    }
+    .button{
+        width: 470px;
+    }
+
+}
+@media(max-width: 575.98px){
+    .col-lg-10 {
+        display: inline;
+    }
+    .col-4 input{
+        width: 10px;
+    }
+    .button{
+        width: 70px !important;
+    }
+}
+@media (max-width: 767.98px) { 
+    .col-lg-10 {
+        display: inline;
+    }
+    .col-4 input{
+        width: 90px;
+    }
+    .button{
+        width: 290px;
+    }
+}
+
+
+
+
+/*////----Intishar Mashrur End Doctor_list----------//////*/

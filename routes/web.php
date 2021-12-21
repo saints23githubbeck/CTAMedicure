@@ -27,6 +27,10 @@ Route::get('/completed/delivery', function () {
     return view('admin.pages.completed_delivery');
  })->name('completed_delivery');
 
+Route::get('/doctor_list', function () {
+    return view('admin.pages.doctor_list');
+ })->name('doctor_list');
+
  Route::get('/detail/modal', function () {
     return view('admin.pages.detail_modal');
  })->name('detail_modal'); 
