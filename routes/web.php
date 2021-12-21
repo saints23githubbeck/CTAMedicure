@@ -4,17 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-//use App\Http\Controllers\DashboardController;
-
-use App\Http\Controllers\AdminPortal\DashboardController;
-use App\Http\Controllers\AdminPortal\PrescriptionController;
-
-
-//use App\Http\Controllers\DashboardController;
-
-use App\Http\Controllers\HomeController;
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +18,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('pages.index');
 });
+
 Route::get('/payment', function () {
     return view('order.payment');
 });
@@ -41,6 +31,16 @@ Route::get('/request', function () {
 Auth::routes();
 
 
+Route::get('/delivery', function () {
+   return view('admin.pages.delivery');
+})->name('delivery');
+
+
+Route::get('/completed/delivery', function () {
+    return view('admin.pages.completed_delivery');
+ })->name('completed_delivery');
+
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
@@ -48,6 +48,24 @@ Route::get('/dashboard', function () {
 
 Route::get('/location', function () {
     return view('admin.location');
+
+ Route::get('/detail/modal', function () {
+    return view('admin.pages.detail_modal');
+ })->name('detail_modal'); 
+
+ Route::get('/orderlist', function () {
+    return view('admin.pages.orderlist');
+ })->name('orderlist'); 
+ 
+ Route::get('/billing_info', function () {
+    return view('admin.pages.billing_info');
+ })->name('billing_info'); 
+
+
+
+Route::get('/location', function () {
+   return view('admin.location');
+
 })->name('location');
 
 Route::get('/prescription', function () {
@@ -68,9 +86,38 @@ Route::get('/users', function () {
     return view('admin.pages.user');
 })->name('users');
 
+
 Route::get('/roles', function () {
     return view('admin.pages.role');
 
 })->name('roles');
 
+
+
+Route::get('/request-list', function () {
+    return view('admin.pages.request-list');
+})->name('requestList');
+
+Route::prefix('admin')->group(function () {
+
+
+    Route::get('/dashboard/show','DashboardController@dashboard')->name('dashboard.show');
+
+    Route::prefix('role')->group(function () {
+
+        Route::post('/add', 'RoleController@store')->name('role.add');
+
+        Route::get('/show', 'RoleController@show')->name('roles.show');
+
+        Route::patch('/{role}/update', 'RoleController@update')->name('role.update');
+
+        Route::delete('/{role}/delete', 'RoleController@destroy')->name('role.destroy');
+
+        Route::post('/search', 'RoleController@search')->name('role.search');
+
+
+    });
+});
+
+Auth::routes();
 
