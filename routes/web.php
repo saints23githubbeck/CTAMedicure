@@ -23,6 +23,24 @@ Route::get('/delivery', function () {
    return view('admin.pages.delivery');
 })->name('delivery');
 
+Route::get('/completed/delivery', function () {
+    return view('admin.pages.completed_delivery');
+ })->name('completed_delivery');
+
+ Route::get('/detail/modal', function () {
+    return view('admin.pages.detail_modal');
+ })->name('detail_modal'); 
+
+ Route::get('/orderlist', function () {
+    return view('admin.pages.orderlist');
+ })->name('orderlist'); 
+ 
+ Route::get('/billing_info', function () {
+    return view('admin.pages.billing_info');
+ })->name('billing_info'); 
+
+
+
 Route::get('/location', function () {
    return view('admin.location');
 })->name('location');
