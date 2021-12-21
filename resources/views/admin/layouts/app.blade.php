@@ -10,6 +10,40 @@
 <!-- Footer -->
 @include('admin.layouts.footer')
 <script>
+    var elem = document.documentElement;
+    var show = document.getElementById('show');
+    var hide = document.getElementById('hide');
+     
+    function openFullscreen() {
+      show.style.display = 'none';
+      hide.style.display = 'block';
+
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+      }
+    }
+    
+    function closeFullscreen() {
+      show.style.display = 'block';
+      hide.style.display = 'none';
+
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
+      }
+    }
+  function loading(){
+   location.reload();
+  }
+    </script>
+<script>
     var now = new Date(),
         until = new Date(now.getFullYear() + 10, now.getMonth());
 
