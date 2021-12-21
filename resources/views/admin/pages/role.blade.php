@@ -16,7 +16,7 @@
                 <div class="card ">
 
                     <div class="card-body  mt-7">
-                        <form action="{{route('role.search')}}" method="post">
+                        <form action="{{route('role.add')}}" method="post">
                             @csrf
                         <div class="row offset-1  mt--6">
 
