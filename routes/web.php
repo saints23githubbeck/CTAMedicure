@@ -46,8 +46,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::get('/location', function () {
-    return view('admin.location');
+
 
  Route::get('/detail/modal', function () {
     return view('admin.pages.detail_modal');
@@ -64,7 +63,7 @@ Route::get('/location', function () {
 
 
 Route::get('/location', function () {
-   return view('admin.location');
+   return view('admin.pages.location');
 
 })->name('location');
 
@@ -92,7 +91,20 @@ Route::get('/roles', function () {
 
 })->name('roles');
 
+Route::get('/incoming', function () {
+    return view('admin.order.incoming_request');
 
+})->name('income');
+
+Route::get('/payment', function () {
+    return view('admin.order.payment');
+
+})->name('payment');
+
+Route::get('/order', function () {
+    return view('admin.order.order');
+
+})->name('order');
 
 Route::get('/request-list', function () {
     return view('admin.pages.request-list');
@@ -119,5 +131,5 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-Auth::routes();
+
 
