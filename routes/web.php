@@ -41,9 +41,23 @@ Route::get('/completed/delivery', function () {
  })->name('completed_delivery');
 
 
+Route::get('/doctor_list', function () {
+    return view('admin.pages.doctor_list');
+ })->name('doctor_list');
+
+ Route::get('/order_status', function () {
+    return view('admin.pages.order_status');
+ })->name('order_status');
+
+ Route::get('/pharmacy_list', function () {
+    return view('admin.pages.pharmacy_list');
+ })->name('pharmacy_list');
+
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
+
 
 
 
