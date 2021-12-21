@@ -69,6 +69,11 @@
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Orderlist</span>
                         </a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('billing_info')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Billing Info</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

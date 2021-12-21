@@ -127,7 +127,7 @@
           <div class="row">
             <div class="col-sm-9 col-7">
               <div class="main_footer_1">
-                <img src="images/1.jpg">
+                <img src="{{ asset('assets/img/theme/1.jpg') }}">
                 <div class="text_area">
                   <p>lorem ipsum</p>
                   <span>2.0 <i class="fas fa-star"></i></span>
@@ -194,7 +194,7 @@
           <div class="row">
             <div class="col-sm-9 col-7">
               <div class="main_footer_1">
-                <img src="images/1.jpg">
+                <img src="{{ asset('assets/img/theme/1.jpg') }}">
                 <div class="text_area">
                   <p>lorem ipsum</p>
                   <span>2.0 <i class="fas fa-star"></i></span>

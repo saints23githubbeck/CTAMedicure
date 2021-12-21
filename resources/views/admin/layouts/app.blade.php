@@ -37,6 +37,7 @@
         document.webkitExitFullscreen();
       } else if (document.msExitFullscreen) { /* IE11 */
         document.msExitFullscreen();
+        
       }
     }
   function loading(){
@@ -74,6 +75,9 @@
 <script src="{{asset('../assets/vendor/js-cookie/js.cookie.js')}}"></script>
 <script src="{{asset('../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
 <script src="{{asset('../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
+<script src="{{asset('../assets/vendor/tavo-calendar/moment.js')}}"></script>
+<script src="{{asset('../assets/vendor/tavo-calendar/tavo-calendar.js')}}"></script>
+
 <!-- Optional JS -->
 <script src="{{asset('../assets/vendor/chart.js/dist/Chart.min.js')}}"></script>
 <script src="{{asset('../assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>

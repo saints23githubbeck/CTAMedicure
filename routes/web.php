@@ -34,6 +34,12 @@ Route::get('/completed/delivery', function () {
  Route::get('/orderlist', function () {
     return view('admin.pages.orderlist');
  })->name('orderlist'); 
+ 
+ Route::get('/billing_info', function () {
+    return view('admin.pages.billing_info');
+ })->name('billing_info'); 
+
+
 
 Route::get('/location', function () {
    return view('admin.location');
