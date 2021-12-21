@@ -31,6 +31,14 @@ Route::get('/doctor_list', function () {
     return view('admin.pages.doctor_list');
  })->name('doctor_list');
 
+ Route::get('/order_status', function () {
+    return view('admin.pages.order_status');
+ })->name('order_status');
+
+ Route::get('/pharmacy_list', function () {
+    return view('admin.pages.pharmacy_list');
+ })->name('pharmacy_list');
+
  Route::get('/detail/modal', function () {
     return view('admin.pages.detail_modal');
  })->name('detail_modal'); 

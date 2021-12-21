@@ -30861,3 +30861,232 @@ body{
 
 
 /*////----Intishar Mashrur End Doctor_list----------//////*/
+
+/*////----Intishar Mashrur pharmacy_list----------//////*/
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+.header{
+    height: 80px;
+    background-color: rgba(204, 243, 255, 0.609) !important;
+    border-radius: 10px;
+    padding:  20px;
+}
+.button-5{
+    justify-content: space-between !important;
+    background-color:rgb(255, 255, 255);
+    padding-left: 0px !important;
+ 
+
+}
+.btn{
+    margin: 10px;
+    background-color: #5301b0 !important;
+    width: 58px;
+    height: 40px;
+}
+.btn1{
+    margin-right: 10px;
+    background-color: #5301b0 !important;
+    width: 58px;  
+    height: 40px;
+    border-radius: 5px;
+    margin-top: 20px !important;
+}
+.col-4{
+  
+    margin-top: 10px !important;
+    padding-left: 0px !important;
+}
+.bg-light{
+    border: none;
+    display: inline;
+}
+.table{
+    border: none!important;
+}
+
+.aborder-bottom{
+    border-bottom: 2px solid rgba(0, 0, 0, 0.246) !important;
+    box-sizing: border-box;
+}
+
+
+/*/////BUTTON////*/
+.align-self-center{
+    margin-left: -30px;
+}
+.button1{
+    margin-top: -5px !important;   
+}
+.button2{
+    margin-top: -16px !important;
+}
+.btn-sm {
+    width: 100px;
+    border-radius: 5px!important;
+}
+.btn2xl{
+    margin-left: -5px !important;
+    width: 63px !important;
+    height: 35px;
+    justify-content: space-between;
+    border-radius: 5px;
+    background-color: #08C222 !important;
+    border: none;
+}
+.btn3xl{
+    width: 63px !important;
+    height: 35px;
+    border-radius: 5px;
+    background-color: #FA2727 !important;
+    border: none;
+}
+ /*///Paginate///*/
+ .bg{
+     background-color: #4501B0 !important;
+ }
+ .image12 img{
+     width: 80px !important;
+     margin-right: 80px!important;
+ }
+/*////----Intishar Mashrur End pharmacy_list----------//////*/
+
+
+
+/*////----Intishar Mashrur order_status----------//////*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.body-all{
+    background-color:
+
+}
+.col1 .btn-whitexx{
+    width: 115px;
+    padding: 1px;
+    font-size: 14px;
+    border: 1px solid black !important;
+}
+.col1 .btn-dangerxx{
+    width: 125px;
+    padding: 1px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: red !important;
+    color: white;
+}
+.col-md-4 .bg-white{
+    background-color: rgba(233, 253, 255, 0.616) !important;
+    border: 1px solid black;
+}
+.col-auto{
+    width: 125px !important;
+    margin: 15px;
+    padding: 4px;
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.602);
+
+}
+.col-sm-7 .bg-white{
+    background-color: rgb(221, 251, 255) !important;
+    border: 1px solid black;
+    padding: 10px;
+}
+.col-sm-7 h4{
+    margin-right: 10px;
+
+}
+.bg-coco{
+    background-color: rgb(221, 251, 255);
+    height: 75vh;
+}
+.note{
+    background-color: white;
+    padding: 15px;
+    font-size: 11px;
+    border: 1px solid rgb(160, 160, 160);
+}
+.note h6{
+    font-weight: 790;
+}
+.note p{
+    font-size: 9px;
+    font-weight: 600;
+}
+.btn-success{
+    background-color: #07AF01 !important;
+}
+.btn-danger{
+    background-color: #FB2726 !important;
+}
+.bg-white2 {
+    width: 180px;
+    margin: 1px;
+    padding: 11px;
+    height: 120px;
+    background-color: white;
+    display: inline-block;
+    border-radius: 2px;
+}
+.bg-white2 input{
+    width: 140px;
+    height: 25px;
+    display: inline-block;
+}
+.bg-secondary2{
+    background-color: rgb(200, 200, 200);
+}
+/*//extra small start//*/
+@media (min-width:320px) and (max-width:575.98px){
+    .col-sm-7.container{
+        height: 150vh !important;
+    }
+}
+.btn-primary{
+    background-color: #4400AD !important;
+    height: 30px;
+    padding: 3px;
+    font-size: 13px;
+}
+
+/*//extra small end//*/
+/* small start*/
+@media (min-width:576px) and (max-width:767.98px){}
+
+/* small end*/
+/*//medium start//*/
+@media (min-width:768px) and (max-width:991.98px){}
+
+/*/medium end/*/
+/*/lg start/*/
+@media (min-width:992px) and (max-width:1199.98px){
+    .col-md-6 bg-secondary2{
+        
+    }
+    .bg-white2 {
+        width: 150px;
+    }
+}
+
+/*//lg end//*/
+/*//extra large start//*/
+@media (min-width:1200px) and (max-width:1399px){
+
+}
+/*//extra large end//*/
+@media (min-width:1400px) and (max-width:1600px) {
+    .col4{
+        top: 90%;
+    }
+}
+
+
+/*////----Intishar Mashrur End order_status----------//////*/
