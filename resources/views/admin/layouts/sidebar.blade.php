@@ -64,7 +64,11 @@
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Details modal</span>
                         </a>
                     </li>
-                    
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('orderlist')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Orderlist</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

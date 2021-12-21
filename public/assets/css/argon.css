@@ -30297,3 +30297,179 @@ input.btn_submit {
     }
 }
 /*detail modal end*/
+/*order list start*/
+.icon_list{
+    color:#4900b4;
+    font-size:70px;
+}
+.order_content{
+    font-size:18.5px;
+    font-weight: bold;
+    color:#4900b4;
+    font-family: 'Raleway', sans-serif;
+    text-align: start;
+
+}
+.card_custom{
+    max-width: 90%;
+    border-radius: 20px; 
+      margin: 0 auto;
+}
+.card_custom h5{
+font-size:17px;
+}
+.card_custom p{
+    font-weight: 500;
+}
+.number{
+    font-family: 'Lato', sans-serif;
+    color:#4900b4;
+    font-weight: bold;
+}
+
+
+
+.single_order h4{
+font-size:17px;
+}
+.single_order small{
+    color:skyblue;
+}
+
+.vio{
+    color:#4900b4;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+
+}
+.custom_select {
+    width: 90px;
+    height: 30px;
+    border-bottom: 2px solid gray!important;
+    outline: none;
+    border: none;
+    padding:3px;
+    color:gray;
+}
+.custom_input {
+    border: none;
+    border-bottom: 2px solid gray;
+    width: 200px;
+    padding: 2px;
+    color:gray;
+}
+.custom_input:focus{
+    outline: none;
+}
+.total{
+    padding:20px;
+    background-color: #f1f8fe;
+}
+.order_parent{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border:1px solid #cbcbcb7a;
+    padding:8px 12px;
+    margin:20px 0px;
+    box-shadow: 1px 1px 2.5px #0000008a;
+}
+
+/*order responsive*/
+@media (min-width:320px) and (max-width:575.98px) {
+    .card_custom{
+        max-width: 100%;
+      
+      
+       
+    }
+    .custom_input {
+
+        width: 60px;
+     
+        font-size: 13px;
+    }
+
+    .custom_select {
+        width: 34px;
+ 
+        
+    }
+    .vio {
+   
+        font-size: 14px;
+    }
+    .single_order h4 {
+        font-size: 12px;
+    }
+    .single_order small {
+        font-size: 11px;
+    }
+    .order_content{
+        font-size:16.5px;
+    }
+    .custom_input {
+        
+        margin-top: 4px;
+    }
+    .custom_input::placeholder{
+        font-size:9px;
+    }
+}
+@media (min-width:576px) and (max-width:767.98px) {
+    .card_custom{
+        max-width: 100%;
+      
+      
+       
+    }
+    .custom_input {
+      
+        width: 50px;
+        
+    }
+    .custom_select {
+        width: 38px;
+
+    }
+}
+@media (min-width:768px) and (max-width:991.98px) {
+    .card_custom{
+        max-width: 100%;
+      
+      
+        text-align: start;
+    }
+    .custom_input {
+ 
+        width: 120px;
+ 
+    }
+}
+
+@media (min-width:992px) and (max-width:1200px) {
+    .custom_input {
+ 
+        width: 130px;
+ 
+    }
+}
+
+
+@media (min-width:320px) and (max-width:360px) {
+    .custom_input {
+        width: 40px;
+       
+    }
+    .custom_select {
+        width: 22px;
+    }
+    .vio {
+        font-size: 14px;
+        margin-bottom: 0px;
+    }
+}
+
+
+
+/*order list end*/
