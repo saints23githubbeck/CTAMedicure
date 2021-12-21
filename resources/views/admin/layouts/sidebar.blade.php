@@ -59,7 +59,12 @@
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Completed Delivery</span>
                         </a>
                     </li>
-                   
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('detail_modal')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Details modal</span>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
         </div>

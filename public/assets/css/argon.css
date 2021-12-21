@@ -30241,3 +30241,59 @@ color:#787878;
 /*card responsive end*/
 
 /*cards end*/
+/*detail modal start*/
+
+.custom_modal{
+    background-color: #d4c6e9!important;
+  
+
+}
+.margin{
+    margin:20px 0px;
+}
+
+.custom_header{
+    border-bottom: none;
+}
+.form-check-input:checked {
+    background-color: #000;
+    border-color: #000;
+}
+.right{
+    text-align: end;
+    color:black;
+    font-family: 'Roboto', sans-serif;
+}
+.three {
+    width: 60%;
+    height: 40px;
+    margin: 0px 0px;
+    color:gray;
+}
+.four {
+    width: 80%;
+    height: 40px;
+    color:gray;
+}
+.custom_height{
+    height:100px!important;
+}
+input.btn_submit {
+    background-color: #4301ab;
+    color:white;
+    text-transform: uppercase;
+    width: 150px;
+    height: 35px;
+    border: none;
+    border-radius: 4px;
+}
+/*details modal responsive*/
+@media (min-width:320px) and (max-width:575.98px) {
+    .three{
+        width:80%;
+    }
+    .four{
+        width: 100%;
+    }
+}
+/*detail modal end*/
