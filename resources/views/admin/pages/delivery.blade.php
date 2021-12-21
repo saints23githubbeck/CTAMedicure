@@ -2,6 +2,7 @@
 
 @section('content')
     <!--Container Main start-->
+   <div class="container-fluid">
     <section class="delivary">
 
         <div class="container">
@@ -124,7 +125,7 @@
         </div>
         
         </section>
-        
+      </div>
     @include('admin.pages.modals.addUser')
 @endsection
 

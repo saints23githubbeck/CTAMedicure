@@ -54,6 +54,12 @@
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Delivary List</span>
                         </a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('completed_delivery')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Completed Delivery</span>
+                        </a>
+                    </li>
+                   
                 </ul>
             </div>
         </div>

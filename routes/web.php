@@ -23,6 +23,10 @@ Route::get('/delivery', function () {
    return view('admin.pages.delivery');
 })->name('delivery');
 
+Route::get('/completed/delivery', function () {
+    return view('admin.pages.completed_delivery');
+ })->name('completed_delivery');
+
 Route::get('/location', function () {
    return view('admin.location');
 })->name('location');
