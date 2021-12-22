@@ -31,26 +31,62 @@ Route::get('/request', function () {
 Auth::routes();
 
 
+Route::get('/delivery', function () {
+   return view('admin.pages.delivery');
+})->name('delivery');
+
+
+Route::get('/completed/delivery', function () {
+    return view('admin.pages.completed_delivery');
+ })->name('completed_delivery');
+
+
 Route::get('/dashboard', function () {
    return view('admin.dashboard');
 })->name('dashboard');
 
 Route::get('/location', function () {
     return view('admin.location');
+
 });
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
 
-//Route::get('/location', function () {
-//   return view('admin.location');
-//>>>>>>> 68482617c673480a7d55c804e0a4cb822eeeb3d8
-//})->name('location');
-//
-//Route::get('/prescription', function () {
-//    return view('admin.prescription');
-//})->name('prescription');
-//
+
+ Route::get('/detail/modal', function () {
+    return view('admin.pages.detail_modal');
+ })->name('detail_modal'); 
+
+ Route::get('/orderlist', function () {
+    return view('admin.pages.orderlist');
+ })->name('orderlist'); 
+ 
+ Route::get('/billing_info', function () {
+    return view('admin.pages.billing_info');
+ })->name('billing_info'); 
+
+
+
+Route::get('/location', function () {
+   return view('admin.location');
+
+})->name('location');
+
+Route::get('/prescription', function () {
+    return view('admin.prescription');
+})->name('prescription');
+
+
+Route::get('/location', function () {
+   return view('admin.location');
+
+})->name('location');
+
+Route::get('/prescription', function () {
+    return view('admin.prescription');
+})->name('prescription');
+
 //return view('admin.pages.location');
 //})->name('location');
 Route::get('/appointments', function () {
@@ -65,14 +101,12 @@ Route::get('/users', function () {
     return view('admin.pages.user');
 })->name('users');
 
-//<<<<<<< HEAD
+
 Route::get('/roles', function () {
     return view('admin.pages.role');
 
 })->name('roles');
-//
-//
-//=======
+
 Route::get('/request-list', function () {
     return view('admin.pages.request-list');
 })->name('requestList');
@@ -97,6 +131,4 @@ Route::prefix('admin')->group(function () {
 
     });
 });
-//
-//Auth::routes();
-//>>>>>>> 68482617c673480a7d55c804e0a4cb822eeeb3d8
+

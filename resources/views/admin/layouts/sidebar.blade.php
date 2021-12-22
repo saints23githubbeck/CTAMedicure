@@ -49,6 +49,31 @@
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Request List</span>
                         </a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('delivery')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Delivary List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('completed_delivery')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Completed Delivery</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('detail_modal')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Details modal</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('orderlist')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Orderlist</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('billing_info')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Billing Info</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
