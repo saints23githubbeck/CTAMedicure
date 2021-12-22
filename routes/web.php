@@ -55,11 +55,17 @@ Route::get('/doctor_list', function () {
 
 
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+   return view('admin.dashboard');
 })->name('dashboard');
 
 
+Route::get('/location', function () {
+    return view('admin.location');
 
+});
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->name('dashboard');
 
 
  Route::get('/detail/modal', function () {
@@ -85,16 +91,26 @@ Route::get('/prescription', function () {
     return view('admin.prescription');
 })->name('prescription');
 
+
+Route::get('/location', function () {
+   return view('admin.location');
+
+})->name('location');
+
+Route::get('/prescription', function () {
+    return view('admin.prescription');
+})->name('prescription');
+
 //return view('admin.pages.location');
 //})->name('location');
 Route::get('/appointments', function () {
     return view('admin.pages.appointment');
 })->name('appointments');
-
+//
 Route::get('/prescriptions', function () {
     return view('admin.pages.prescription');
 })->name('prescriptions');
-
+//
 Route::get('/users', function () {
     return view('admin.pages.user');
 })->name('users');
@@ -120,10 +136,11 @@ Route::get('/order', function () {
 
 })->name('order');
 
+
 Route::get('/request-list', function () {
     return view('admin.pages.request-list');
 })->name('requestList');
-
+//
 Route::prefix('admin')->group(function () {
 
 
@@ -144,6 +161,4 @@ Route::prefix('admin')->group(function () {
 
     });
 });
-
-
 

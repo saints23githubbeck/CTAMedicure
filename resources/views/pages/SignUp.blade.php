@@ -13,7 +13,7 @@
     <div class="container-fluid bodybackground" style="background-color: rgb(205, 218, 218);">
         <div class="signupbox bg-light alert-dismissible d-flex alert " role="alert">
             <div class="signupimage col">
-                                
+
             </div>
             <!-- <div class="signinimage">
                 <img src="Sources/signInimage.jpg" height="100%" width="auto" alt="Sign in">
@@ -24,7 +24,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <div class="text-center"><h2>Sign in to Medicare</h2></div>
-                    
+
                 </div>
                 <div>
                     <form class="px-4 py-3">
@@ -52,11 +52,11 @@
                           <button type="submit" style="width: 150px;" class="btn btn-primary btn-lg">SIGN UP</button>
                         </div>
                       </form>
-                      
+
                 </div>
             </div>
-            
-            
+
+
         </div>
 
 
@@ -64,6 +64,6 @@
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
-    
+
 </body>
 </html>

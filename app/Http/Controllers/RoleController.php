@@ -27,10 +27,11 @@ class RoleController extends Controller
          return redirect()->back()->withErrors($e->errors())->withInput(request()->all())->with('error', $e->getMessage());
      }
 //  dd(request('description'));
-   Role::firstOrNew([
+   Role::firstOrCreate([
        'name' => $request->name,
        'description' => $request->description
    ]);
+
 
 
    return back()->with('status','Role Added Successfully');

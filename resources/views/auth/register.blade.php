@@ -14,6 +14,9 @@
                   loading="lazy"
                   class="img-fluid h-100 w-100"
                 />
+
+
+
               </div>
               <div class="col-lg-6 col-sm-12 col-md-12 mw-100">
                 <form method="POST" action="{{route('register')}}">
@@ -24,18 +27,26 @@
                         </div>
                     <div class="mb-1 col-12 form-outline">
 
-                        <label class="form-label font-weight-bold" for="form3Example97">User Name</label>
+
+
+                        <label class="form-label font-weight-bold" for="form3Example97">Name</label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                class="form-control form-control-sm @error('userName') is-invalid @enderror border" name="userName"
 
                             <input
                                 type="text"
                                 id="name"
                                 class="form-control form-control-sm @error('name') is-invalid @enderror border" name="userName"
                                 value="{{ old('name') }}"
+
                                 required
-                                autocomplete="name"
+                                autocomplete="userName"
                                 autofocus
                             />
-                            @error('name')
+                            @error('userName')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -47,11 +58,25 @@
                         type="email"
                         id="email"
                         class="form-control form-control-sm @error('email') is-invalid @enderror border" name="email"
-                        value="{{ old('email') }}"
                         required
                         autocomplete="email"
                     />
                     @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
+                    <div class="mb-1 col-12 form-outline">
+                        <label class="form-label font-weight-bold" for="form3Example97">Contact Number</label>
+                        <input
+                        type="number"
+                        id="contactNumber"
+                        class="form-control form-control-sm @error('contactNumber') is-invalid @enderror border" name="contactNumber"
+                        required
+                        autocomplete="contactNumber"
+                    />
+                    @error('contactNumber')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -76,10 +101,9 @@
                         <div class="mb-1 col-12 form-outline">
                             <label class="form-label font-weight-bold" for="form3Example97">Role</label>
                             <select class="form-control form-control-sm @error('role_id') is-invalid @enderror border" name="role_id" required>
-                                <option value="Low">Doctor</option>
-                                <option value="Medium">Delivery</option>
-                                <option value="High">Pharmacy</option>
-                                <option value="High">patients</option>
+                                @foreach(App\Models\Role::all() as $role)
+                                <option value="{{$role->id}}">{{$role->name}}</option>
+                                @endforeach
                             </select>
                             @error('Role_id')
                             <span class="invalid-feedback" role="alert">
@@ -87,15 +111,14 @@
                         </span>
                             @enderror
                         </div>
-                    <div class="mb-1 col-12 form-outline">
+                     <div class="mb-1 col-12 form-outline">
                         <label class="form-label font-weight-bold" for="form3Example97">Password</label>
                         <input
                         type="password"
                         id="password"
                         class="form-control form-control-sm @error('password') is-invalid @enderror border" name="password"
-                        value="{{ old('password') }}"
                         required
-                        autocomplete="password"
+                        autocomplete="new_password"
                         autofocus
                     />
                     @error('password')
@@ -104,7 +127,23 @@
                         </span>
                     @enderror
                     </div>
-                  
+                     <div class="mb-1 col-12 form-outline">
+                        <label class="form-label font-weight-bold" for="form3Example97">Password Confirmation</label>
+                        <input
+                        type="password"
+                        id="password"
+                        class="form-control form-control-sm @error('password_confirmation') is-invalid @enderror border" name="password_confirmation"
+                        required
+                        autocomplete="new_password"
+                        autofocus
+                    />
+                    @error('password_confirmation ')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
+
                   <div class="row justify-content-sm-center">
                     <div class="mx-5 mt-2 mb-2 text-center">
                         <p class="mt-2 mb-0"><small class="mr-2 text-dark">Already have an account ?</small>
