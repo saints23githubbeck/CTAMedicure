@@ -30,12 +30,6 @@
 
 
                         <label class="form-label font-weight-bold" for="form3Example97">Name</label>
-
-                            <input
-                                type="text"
-                                id="name"
-                                class="form-control form-control-sm @error('userName') is-invalid @enderror border" name="userName"
-
                             <input
                                 type="text"
                                 id="name"
@@ -82,22 +76,6 @@
                         </span>
                     @enderror
                     </div>
-                        <div class="mb-1 col-12 form-outline">
-                            <label class="form-label font-weight-bold" for="form3Example97">Contact</label>
-                            <input
-                                    type="text"
-                                    id="contactNumber"
-                                    class="form-control form-control-sm @error('email') is-invalid @enderror border" name="contactNumber"
-                                    value="{{ old('contactNumber') }}"
-                                    required
-                                    autocomplete="contactNumber"
-                            />
-                            @error('contactNumber')
-                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                            @enderror
-                        </div>
                         <div class="mb-1 col-12 form-outline">
                             <label class="form-label font-weight-bold" for="form3Example97">Role</label>
                             <select class="form-control form-control-sm @error('role_id') is-invalid @enderror border" name="role_id" required>

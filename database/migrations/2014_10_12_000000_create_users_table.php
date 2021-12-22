@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('userName')->notNull();
             $table->string('email')->unique();
             $table->string('contactNumber')->notNull();
-            $table->foreignId('role')->notNull();
+            $table->foreignId('role_id')->notNull();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
