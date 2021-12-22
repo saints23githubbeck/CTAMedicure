@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -111,9 +112,9 @@ Route::get('/prescriptions', function () {
     return view('admin.pages.prescription');
 })->name('prescriptions');
 //
-Route::get('/users', function () {
-    return view('admin.pages.user');
-})->name('users');
+//Route::get('/users', function () {
+//    return view('admin.pages.user');
+//})->name('users');
 
 
 Route::get('/roles', function () {
@@ -157,6 +158,13 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{role}/delete', 'RoleController@destroy')->name('role.destroy');
 
         Route::post('/search', 'RoleController@search')->name('role.search');
+
+
+    });
+
+    Route::prefix('user')->group(function () {
+
+        Route::get('/index', 'UserController@index')->name('users');
 
 
     });
