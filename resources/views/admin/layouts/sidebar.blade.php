@@ -1,20 +1,57 @@
-<div class="l-navbar " id="nav-bar" >
-        <nav class="nav">
-            <div>
-                <a href="{{route('dashboard')}}" class="nav_logo fw-bolder "> <span class="nav_logo-name ">MEDICARE</span> </a>
-                <div class="nav_list"> 
-                    <a href="{{route('dashboard')}}" class="nav_link active"> <i class="fas fa-tachometer-alt"></i> <span class="nav_name">Dashboard</span> </a>
-                    <a href="{{route('appointments')}}" class="nav_link"> <i class="fas fa-calendar-day"></i> <span class="nav_name">Appointments</span> </a>
-                    <a href="{{route('location')}}" class="nav_link"> <i class="fas fa-tasks"></i><span class="nav_name">Consultation Settings</span> </a>
-                    <a href="{{route('appointments')}}" class="nav_link"> <i class="fas fa-user-md"></i> <span class="nav_name">Consultation</span> </a>
-                    <a href="{{route('prescriptions')}}" class="nav_link"> <i class="fas fa-prescription-bottle"></i> <span class="nav_name">Prescription</span> </a>
-                    <a href="{{route('users')}}" class="nav_link"> <i class="fas fa-user-friends"></i> <span class="nav_name">Users</span> </a>
-                    <a href="{{route('roles')}}" class="nav_link"> <i class="fas fa-user-friends"></i> <span class="nav_name">Roles</span> </a>
-                    <a href="#" class="nav_link"> <i class="fas fa-user-alt"></i><span class="nav_name">Profile</span> </a>
-                    <a href="#" class="nav_link"> <i class="fas fa-key"></i> <span class="nav_name">Change Password</span> </a>
 
-                    <a href="#" class="nav_link"> <i class="fas fa-sign-out-alt"></i> <span class="nav_name">Logout</span> </a>
-                </div>
+<!-- Sidenav -->
+<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs  medibg" id="sidenav-main">
+    <div class="scrollbar-inner">
+        <!-- Brand -->
+        <div class="sidenav-header  align-items-center">
+            <a class="navbar-brand" href="javascript:void(0)">
+                <a href="{{route('dashboard.show')}}" class="nav_logo fw-bolder text-white "> <span class="nav_logo-name ">MEDICARE</span> </a>
+            </a>
+        </div>
+        <div class="navbar-inner">
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                <!-- Nav items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{route('dashboard.show')}}">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span class="nav-link-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('appointments')}}">
+                            <i class="fas fa-calendar-day"></i> <span class="nav_name text-white ">Appointments</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('roles.show')}}">
+                            <i class="fas fa-user-friends"></i> <span class="nav_name text-white ">Roles</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('prescriptions')}}">
+                            <i class="fas fa-prescription-bottle"></i> <span class="nav_name text-white ">Prescription</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('users')}}">
+                            <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">Users</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('users')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Consultation Settings</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('requestList')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Request List</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
     </div>
+</nav>
+<!-- Main content -->
