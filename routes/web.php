@@ -1,5 +1,7 @@
 <?php
 
+
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,9 +52,11 @@ Route::get('/doctor_list', function () {
     return view('admin.pages.order_status');
  })->name('order_status');
 
+
  Route::get('/order_coupon', function () {
     return view('admin.pages.order_coupon');
  })->name('order_coupon');
+
 
  Route::get('/pharmacy_list', function () {
     return view('admin.pages.pharmacy_list');
@@ -75,7 +79,16 @@ Route::get('/dashboard', function () {
 
  Route::get('/detail/modal', function () {
     return view('admin.pages.detail_modal');
- })->name('detail_modal'); 
+ })->name('detail_modal');
+
+ Route::get('/orderlist', function () {
+    return view('admin.pages.orderlist');
+ })->name('orderlist');
+
+ Route::get('/billing_info', function () {
+    return view('admin.pages.billing_info');
+ })->name('billing_info');
+
 
  Route::get('/orderlist', function () {
     return view('admin.pages.orderlist');
@@ -84,8 +97,6 @@ Route::get('/dashboard', function () {
  Route::get('/billing_info', function () {
     return view('admin.pages.billing_info');
  })->name('billing_info'); 
-
-
 
 Route::get('/location', function () {
    return view('admin.pages.location');
@@ -116,9 +127,37 @@ Route::get('/prescriptions', function () {
     return view('admin.pages.prescription');
 })->name('prescriptions');
 //
+
+Route::get('/users', function () {
+    return view('admin.pages.user');
+})->name('users');
+
 //Route::get('/users', function () {
 //    return view('admin.pages.user');
 //})->name('users');
+
+
+Route::get('/roles', function () {
+    return view('admin.pages.role');
+
+})->name('roles');
+
+Route::get('/incoming', function () {
+    return view('admin.order.incoming_request');
+
+})->name('income');
+
+Route::get('/payment', function () {
+    return view('admin.order.payment');
+
+})->name('payment');
+
+Route::get('/order', function () {
+    return view('admin.order.order');
+
+})->name('order');
+
+
 
 
 Route::get('/roles', function () {
