@@ -1,6 +1,8 @@
 <?php
 
+
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -50,6 +52,12 @@ Route::get('/doctor_list', function () {
     return view('admin.pages.order_status');
  })->name('order_status');
 
+
+ Route::get('/order_coupon', function () {
+    return view('admin.pages.order_coupon');
+ })->name('order_coupon');
+
+
  Route::get('/pharmacy_list', function () {
     return view('admin.pages.pharmacy_list');
  })->name('pharmacy_list');
@@ -82,6 +90,13 @@ Route::get('/dashboard', function () {
  })->name('billing_info');
 
 
+ Route::get('/orderlist', function () {
+    return view('admin.pages.orderlist');
+ })->name('orderlist'); 
+ 
+ Route::get('/billing_info', function () {
+    return view('admin.pages.billing_info');
+ })->name('billing_info'); 
 
 Route::get('/location', function () {
    return view('admin.pages.location');
@@ -112,9 +127,37 @@ Route::get('/prescriptions', function () {
     return view('admin.pages.prescription');
 })->name('prescriptions');
 //
+
 Route::get('/users', function () {
     return view('admin.pages.user');
 })->name('users');
+
+//Route::get('/users', function () {
+//    return view('admin.pages.user');
+//})->name('users');
+
+
+Route::get('/roles', function () {
+    return view('admin.pages.role');
+
+})->name('roles');
+
+Route::get('/incoming', function () {
+    return view('admin.order.incoming_request');
+
+})->name('income');
+
+Route::get('/payment', function () {
+    return view('admin.order.payment');
+
+})->name('payment');
+
+Route::get('/order', function () {
+    return view('admin.order.order');
+
+})->name('order');
+
+
 
 
 Route::get('/roles', function () {
@@ -158,6 +201,13 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{role}/delete', 'RoleController@destroy')->name('role.destroy');
 
         Route::post('/search', 'RoleController@search')->name('role.search');
+
+
+    });
+
+    Route::prefix('user')->group(function () {
+
+        Route::get('/index', 'UserController@index')->name('users');
 
 
     });

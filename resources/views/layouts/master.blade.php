@@ -1,5 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
     @include('layouts.header')
     <body>
         <div id="app">
