@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->string('image')->nullable();
             $table->integer('quantity');
             $table->string('note')->nullable();
-            $table->boolean('status');
+            $table->boolean('status')->default('Unconfirmed');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('delivery_option_id')->constrained();
             $table->timestamps();

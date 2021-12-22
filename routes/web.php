@@ -42,9 +42,23 @@ Route::get('/completed/delivery', function () {
  })->name('completed_delivery');
 
 
+Route::get('/doctor_list', function () {
+    return view('admin.pages.doctor_list');
+ })->name('doctor_list');
+
+ Route::get('/order_status', function () {
+    return view('admin.pages.order_status');
+ })->name('order_status');
+
+ Route::get('/pharmacy_list', function () {
+    return view('admin.pages.pharmacy_list');
+ })->name('pharmacy_list');
+
+
 Route::get('/dashboard', function () {
    return view('admin.dashboard');
 })->name('dashboard');
+
 
 Route::get('/location', function () {
     return view('admin.location');
@@ -70,7 +84,7 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/location', function () {
-   return view('admin.location');
+   return view('admin.pages.location');
 
 })->name('location');
 
@@ -107,6 +121,22 @@ Route::get('/roles', function () {
     return view('admin.pages.role');
 
 })->name('roles');
+
+Route::get('/incoming', function () {
+    return view('admin.order.incoming_request');
+
+})->name('income');
+
+Route::get('/payment', function () {
+    return view('admin.order.payment');
+
+})->name('payment');
+
+Route::get('/order', function () {
+    return view('admin.order.order');
+
+})->name('order');
+
 
 Route::get('/request-list', function () {
     return view('admin.pages.request-list');
