@@ -26,7 +26,7 @@
                     </div>
                     <div class="row justify-content-end mb-3">
                         <div class="col-md-3 ">
-                            <button type="button" class="btn medibg custom-btn text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop">New Appointments</button>
+                            <button type="button" class="btn medibg custom-btn text-white" data-bs-toggle="modal" data-bs-target="#appointment">New Appointments</button>
                         </div>
                     </div>
 
@@ -91,8 +91,9 @@
                 </div>
             </div>
         </div>
-
+        @include('admin.pages.modals.appointments.appointment')
     </div>
+
 </div>
 
 @endsection

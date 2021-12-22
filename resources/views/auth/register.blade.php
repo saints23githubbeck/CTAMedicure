@@ -16,7 +16,7 @@
                 />
               </div>
               <div class="col-lg-6 col-sm-12 col-md-12 mw-100">
-                <form method="POST" action="#">
+                <form method="POST" action="{{route('register')}}">
                     @csrf
                     <div class="text-black card-body p-md-4">
                         <div class="row align-items-center">
@@ -26,18 +26,10 @@
 
                         <label class="form-label font-weight-bold" for="form3Example97">User Name</label>
 
-                     <select name="roles" id="user_role">
-                            <option value="Select Role" >Select Role</option>
-                            <option value="Pharmacist">Pharmacist</option>
-                            <option value="Delivery Personnel">Delivery Personnel</option>
-                            <option value="Customer / Client">Customer / Client</option>
-                        </select><br><br>
-                        <label class="form-label font-weight-bold" for="form3Example97">Name</label>
-
                             <input
                                 type="text"
                                 id="name"
-                                class="form-control form-control-sm @error('name') is-invalid @enderror border" name="name"
+                                class="form-control form-control-sm @error('name') is-invalid @enderror border" name="userName"
                                 value="{{ old('name') }}"
                                 required
                                 autocomplete="name"
@@ -65,6 +57,22 @@
                         </span>
                     @enderror
                     </div>
+                        <div class="mb-1 col-12 form-outline">
+                            <label class="form-label font-weight-bold" for="form3Example97">Contact</label>
+                            <input
+                                    type="text"
+                                    id="contactNumber"
+                                    class="form-control form-control-sm @error('email') is-invalid @enderror border" name="contactNumber"
+                                    value="{{ old('contactNumber') }}"
+                                    required
+                                    autocomplete="contactNumber"
+                            />
+                            @error('contactNumber')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                            @enderror
+                        </div>
                         <div class="mb-1 col-12 form-outline">
                             <label class="form-label font-weight-bold" for="form3Example97">Role</label>
                             <select class="form-control form-control-sm @error('role_id') is-invalid @enderror border" name="role_id" required>

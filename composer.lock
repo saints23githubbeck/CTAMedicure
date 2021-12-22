@@ -1912,6 +1912,7 @@
                 }
             ],
             "time": "2021-12-03T14:59:52+00:00"
+
         },
         {
             "name": "nette/schema",
@@ -2058,7 +2059,6 @@
                 "issues": "https://github.com/nette/utils/issues",
                 "source": "https://github.com/nette/utils/tree/v3.2.6"
             },
-            "time": "2021-11-24T15:47:23+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -2296,9 +2296,14 @@
             ],
             "support": {
                 "issues": "https://github.com/php-fig/container/issues",
+
+                "source": "https://github.com/php-fig/container/tree/1.1.1"
+            },
+            "time": "2021-03-05T17:36:06+00:00"
+
                 "source": "https://github.com/php-fig/container/tree/1.1.2"
             },
-            "time": "2021-11-05T16:50:12+00:00"
+
         },
         {
             "name": "psr/event-dispatcher",
