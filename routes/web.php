@@ -50,6 +50,10 @@ Route::get('/doctor_list', function () {
     return view('admin.pages.order_status');
  })->name('order_status');
 
+ Route::get('/order_coupon', function () {
+    return view('admin.pages.order_coupon');
+ })->name('order_coupon');
+
  Route::get('/pharmacy_list', function () {
     return view('admin.pages.pharmacy_list');
  })->name('pharmacy_list');
