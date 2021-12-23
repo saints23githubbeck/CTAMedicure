@@ -1,4 +1,7 @@
 <!-- Topnav -->
+@guest
+
+@else
 <nav class="navbar navbar-top navbar-expand navbar-dark medibg border-bottom">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -238,10 +241,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{route('user.store')}}" method="post">
+                        <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="{{auth()->user()->profile->img}}">
+                    <img alt="Image placeholder" src="{{'/'.auth()->user()->profile->img}}">
                   </span>
                             <div class="form-group">
                                 <input type="file" name="image">
@@ -336,3 +339,4 @@
     </div>
 </nav>
 <!-- Header -->
+@endguest
