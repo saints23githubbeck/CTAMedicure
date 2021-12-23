@@ -12,7 +12,7 @@
 
             <div class="col-12 mt-lg-5">
                 <h1 class="text-lg-center">Users</h1>
-                <form action="" method="GET" role="search">
+                <form action="{{route('users')}}" method="GET" role="search" name="term">
                 <div class="card ">
                     <div class="card-body  mt-7">
 
@@ -60,6 +60,8 @@
                                                 </thead>
                                                 <tbody class="list">
                                                 @foreach($users as $user)
+                                                    @include('admin.pages.modals.users.update')
+                                                    @include('admin.pages.modals.users.details')
                                                 <tr>
 
                                                     <td class="budget">
@@ -91,10 +93,10 @@
                                                                 <i class="fas fa-ellipsis-v"></i>
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <a class="dropdown-item" href="#">Update</a>
+                                                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#update-Role-{{$user->id}}">Update</a>
                                                                 <a class="dropdown-item" href="{{route('users.destroy',$user->id)}}">Delete</a>
 
-                                                                <a class="dropdown-item" href="#">View</a>
+                                                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#details-Role-{{$user->id}}">View</a>
                                                             </div>
                                                         </div>
                                                     </td>
