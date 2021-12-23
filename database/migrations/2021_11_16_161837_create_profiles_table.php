@@ -17,7 +17,7 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->string('firstName')->nullable();
             $table->string('lastName')->nullable();
-            $table->string('img')->nullable();
+            $table->string('img')->default('assets/img/theme/team-4.jpg');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

@@ -52,6 +52,7 @@
                                                 <thead class="thead-light text-dark ">
                                                 <tr>
                                                     <th scope="col" class="sort" data-sort="budget">Name</th>
+                                                    <th scope="col" class="sort" data-sort="budget">Photo</th>
                                                     <th scope="col" class="sort" data-sort="budget">Email</th>
                                                     <th scope="col" class="sort" data-sort="budget">Contact</th>
                                                     <th scope="col" class="sort" data-sort="status">Role</th>
@@ -68,6 +69,9 @@
 
                                                     <td class="budget">
                                                         {{$user->userName}}
+                                                    </td>
+                                                    <td class="budget">
+                                                        <img src="{{'/'.$user->profile->img}}" alt="{{$user->name}}" width="80px" height="120px" class="img-fluid img-thumbnail">
                                                     </td>
                                                     <td>
                                                           <span class="badge badge-dot mr-4">
