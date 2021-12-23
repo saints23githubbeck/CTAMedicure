@@ -188,7 +188,7 @@ Route::get('/request-list', function () {
 Route::prefix('admin')->group(function () {
 
 
-    Route::get('/dashboard/show','DashboardController@dashboard')->name('dashboard.show');
+    Route::get('/dashboard','DashboardController@dashboard')->name('dashboard.show');
 
     Route::prefix('role')->group(function () {
 
