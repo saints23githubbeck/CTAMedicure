@@ -32,12 +32,10 @@
                         <label class="form-label font-weight-bold" for="form3Example97">Name</label>
                             <input
                                 type="text"
-                                id="name"
-                                class="form-control form-control-sm @error('name') is-invalid @enderror border" name="userName"
-                                value="{{ old('name') }}"
+                                id="userName"
+                                class="form-control form-control-sm @error('userName') is-invalid @enderror border" name="userName"
 
                                 required
-                                autocomplete="userName"
                                 autofocus
                             />
                             @error('userName')

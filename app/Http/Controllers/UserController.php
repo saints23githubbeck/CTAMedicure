@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -12,12 +14,12 @@ class UserController extends Controller
     {
         $users = User::query();
         if (request('term')) {
-            $users->where('userName', 'Like', '%' . request('term') . '%');
+            $users->with('role')->where('userName', 'Like', '%' . request('term') . '%');
         }
 
-        $users  = $users->orderBy('id', 'DESC')->paginate(10);
-
-        return view('admin.pages.user', compact('users'));
+        $users  = $users->with('role')->orderBy('id', 'DESC')->paginate(1);
+        $roles = Role::all();
+        return view('admin.pages.user', compact('users','roles'));
     }
 
 
@@ -29,7 +31,13 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $user = User::where('id',auth()->user()->id)->first();
+        $user->userName = $request->userName;
+        $user->email = $request->email;
+        $user->contactNumber = $request->contactNumber;
+        $user->role_id = $request->role_id;
+        $user->update();
+        return back()->with('status','Profile Updated Successfully');
     }
 
 
@@ -47,12 +55,22 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+
+        $user = User::where('id',$id)->first();
+        $user->userName = $request->userName;
+        $user->email = $request->email;
+        $user->contactNumber = $request->contactNumber;
+        $user->role_id = $request->role_id;
+        $user->userName = $request->userName;
+        $user->update();
+        return back()->with('status','User Updated Successfully');
     }
 
 
     public function destroy($id)
     {
-        //
+        $user = User::where('id',$id)->first();
+        $user->delete();
+        return back()->with('status','User Deleted Successfully');
     }
 }
