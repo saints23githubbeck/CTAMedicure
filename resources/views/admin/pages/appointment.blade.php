@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body justify-content-lg-between">
+                <div class="card-body ">
                     <h2 class="fw-bolder text-center">Appointments</h2>
                     <div class="row my-3 ">
                         <h2 class=" text-center"> Filter</h2>

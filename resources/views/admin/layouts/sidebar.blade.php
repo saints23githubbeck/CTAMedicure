@@ -70,6 +70,11 @@
                         </a>
                     </li>
                     <li class="nav-item ">
+                        <a class="nav-link" href="{{route('order_coupon')}}">
+                            <i class="fas fa-gift"></i><span class="nav_name text-white ">Order Coupon Details</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
                         <a class="nav-link" href="{{route('orderlist')}}">
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Orderlist</span>
                         </a>
