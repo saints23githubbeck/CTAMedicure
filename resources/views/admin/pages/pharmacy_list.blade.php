@@ -10,11 +10,11 @@
                     <h2>Pharmacy</h2>
                 </div>
                 <div class="col-lg-10 button-5 pt-2">
-                    <button type="button" class="btn1 btn-primary">Copy</button>
-                    <button type="button" class="btn btn-primary">CSV</button>
-                    <button type="button" class="btn btn-primary">Excel</button>
-                    <button type="button" class="btn btn-primary">Print</button>
-                    <button type="button" class="btn btn-primary">PDF</button>
+                    <button style="width:70px !important;height:40px!important;" type="button" class="btn1 btn-primary">Copy</button>
+                    <button style="width:70px !important;height:40px!important;" type="button" class="btn btn-primary">CSV</button>
+                    <button style="width:70px !important;height:40px!important;" type="button" class="btn btn-primary">Excel</button>
+                    <button style="width:70px !important;height:40px!important;" type="button" class="btn btn-primary">Print</button>
+                    <button style="width:70px !important;height:40px!important;" type="button" class="btn btn-primary">PDF</button>
                 </div>
                 <div class="col-4">
                     <p class=" ml-auto">Search: <input class="bg-light border-white" type="text"></p>
@@ -43,7 +43,7 @@
                                 <td class="aborder-bottom pt-4">0</td>
                                 <td class="aborder-bottom pt-">
                                     <div class="col align-self-center button1">
-                                        <button type="button" class="btn btn-primary btn-sm btn-block">Category List</button>
+                                        <button style="height:40px!important;" type="button" class="btn btn-primary btn-sm btn-block">Category List</button>
                                       </div>
                                     <div class="col align-self-center button2">
                                         <button style="width: 130px !important;" type="button" class="btn btn-secondary btn-sm btn-block">Medicine List</button>
@@ -62,7 +62,7 @@
                                 <td class="aborder-bottom pt-4">0</td>
                                 <td class="aborder-bottom pt-">
                                     <div class="col align-self-center button1">
-                                        <button type="button" class="btn btn-primary btn-sm btn-block">Category List</button>
+                                        <button style="height:40px!important;" type="button" class="btn btn-primary btn-sm btn-block">Category List</button>
                                       </div>
                                     <div class="col align-self-center button2">
                                         <button style="width: 130px !important;" type="button" class="btn btn-secondary btn-sm btn-block">Medicine List</button>
@@ -81,7 +81,7 @@
                                 <td class="aborder-bottom pt-4">0</td>
                                 <td class="aborder-bottom pt-">
                                     <div class="col align-self-center button1">
-                                        <button type="button" class="btn btn-primary btn-sm btn-block">Category List</button>
+                                        <button style="height:40px!important;" type="button" class="btn btn-primary btn-sm btn-block">Category List</button>
                                       </div>
                                     <div class="col align-self-center button2">
                                         <button style="width: 130px !important;" type="button" class="btn btn-secondary btn-sm btn-block">Medicine List</button>
@@ -90,6 +90,7 @@
                                       <button type="button" class="btn3xl btn-secondary"><i class="far fa-trash-alt fa-lg"></i></button>
                                    </td>
                             </tr>
+                            
                         </table>
                     </div>
                     </div>
