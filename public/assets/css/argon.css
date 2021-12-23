@@ -29884,26 +29884,26 @@ body{
   font-family: 'Open Sans', sans-serif;
   }
   section.delivary {
-     
+
       display: flex;
       justify-content: center;
       align-items: center;
-  
+
      height:100vh;
       background-color: #AF94D9;
       overflow-x: hidden;
   }
-  
+
   /* Safari syntax */
   :-webkit-full-screen {
     background-color: yellow;
   }
-  
+
   /* IE11 */
   :-ms-fullscreen {
     background-color: yellow;
   }
-  
+
   /* Standard syntax */
   :fullscreen {
     background-color: yellow;
@@ -29911,13 +29911,13 @@ body{
   .card_custom{
     padding:10px 25px 35px 25px;
     border-radius: 3px!important;
-  
+
   }
-  
+
   .table_content{
       box-shadow: 0px 6px 18px 1px #dfe4eae6;
-  
-     
+
+
   }
    /*box-shadow: 5px 3px 16px #dfe4ea8c;*/
    table{
@@ -29935,7 +29935,7 @@ body{
     padding: 2px 8px;
     color: #00000099;
   }
-  
+
    button#show, button#hide, button#load,#minimize {
     width: 40px;
     height: 40px;
@@ -29948,19 +29948,19 @@ body{
     font-size: 28px;
     /* display: block; */
   }
-  
+
   button#hide{
     display: none;
-  
+
   }
-  
-  
+
+
   .tools{
     width: 15%;
     display: flex;
     justify-content: end;
   }
-  
+
   .top h1{
     font-family: 'Lato', sans-serif;
     font-weight: bold;
@@ -29970,7 +29970,7 @@ body{
   .para{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
-   
+
     color: #7532dd;
   }
   .form_custom{
@@ -29984,7 +29984,7 @@ body{
     }
     .tools{
         width:100%;
-    
+
         justify-content: start;
     }
 }
@@ -30000,10 +30000,10 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .card_title{
-    
+
     background-color:#F1F8FE;
     padding:10px 5px;
-   
+
 }
 .card_title h1{
     font-size:30px!important;
@@ -30022,7 +30022,7 @@ h5{
 .main_header{
     position: relative;
     padding-bottom:20px;
-    
+
 }
 .main_header::after{
     content:"";
@@ -30149,13 +30149,13 @@ display: inline-block;
 }
 .main_footer_1 .text_area p{
     font-size:17px;
-font-weight: bold;   
+font-weight: bold;
 font-family: 'Montserrat', sans-serif;
-text-transform: capitalize; 
+text-transform: capitalize;
 }
 .main_footer_1 .text_area span{
     font-size:17px;
-    font-weight: bold;   
+    font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     text-transform: capitalize;
 }
@@ -30177,15 +30177,15 @@ color:#787878;
 /*card responsive start*/
 @media (min-width:320px) and (max-width:575.98px) {
     .main_body {
-       
-       
+
+
         padding-left: 10px;
         padding-right: 10px;
     }
     .main_header_2 h5 {
 
 
-     
+
         width: 100%;
         text-align: center;
       border-radius: 0px;
@@ -30193,11 +30193,11 @@ color:#787878;
     .padding_2 {
         padding-bottom: 125px;
     }
-   
+
 }
 @media (min-width:576px) and (max-width:767.98px) {
     .border_1 {
-    
+
         margin-bottom: 135px;
     }
     .border_1::after {
@@ -30218,7 +30218,7 @@ color:#787878;
         left: -99%;
         top: -20px;
     }
-    
+
 }
 @media (min-width:768px) and (max-width:991.98px) {
     .padding_1 {
@@ -30226,14 +30226,14 @@ color:#787878;
         font-size:15px;
     }
     .main_body {
-   
+
         padding-bottom: 12px;
         padding-top: 15px;
     }
 }
 @media (min-width:992px) and (max-width:1199.98px) {
     .main_text {
-    
+
         padding-left: 12px;
     }
 }
@@ -30245,7 +30245,7 @@ color:#787878;
 
 .custom_modal{
     background-color: #d4c6e9!important;
-  
+
 
 }
 .margin{
@@ -30312,7 +30312,7 @@ input.btn_submit {
 }
 .card_custom{
     max-width: 90%;
-    border-radius: 20px; 
+    border-radius: 20px;
       margin: 0 auto;
 }
 .card_custom h5{
@@ -30379,24 +30379,24 @@ font-size:17px;
 @media (min-width:320px) and (max-width:575.98px) {
     .card_custom{
         max-width: 100%;
-      
-      
-       
+
+
+
     }
     .custom_input {
 
         width: 60px;
-     
+
         font-size: 13px;
     }
 
     .custom_select {
         width: 34px;
- 
-        
+
+
     }
     .vio {
-   
+
         font-size: 14px;
     }
     .single_order h4 {
@@ -30409,7 +30409,7 @@ font-size:17px;
         font-size:16.5px;
     }
     .custom_input {
-        
+
         margin-top: 4px;
     }
     .custom_input::placeholder{
@@ -30419,14 +30419,14 @@ font-size:17px;
 @media (min-width:576px) and (max-width:767.98px) {
     .card_custom{
         max-width: 100%;
-      
-      
-       
+
+
+
     }
     .custom_input {
-      
+
         width: 50px;
-        
+
     }
     .custom_select {
         width: 38px;
@@ -30436,22 +30436,22 @@ font-size:17px;
 @media (min-width:768px) and (max-width:991.98px) {
     .card_custom{
         max-width: 100%;
-      
-      
+
+
         text-align: start;
     }
     .custom_input {
- 
+
         width: 120px;
- 
+
     }
 }
 
 @media (min-width:992px) and (max-width:1200px) {
     .custom_input {
- 
+
         width: 130px;
- 
+
     }
 }
 
@@ -30459,7 +30459,7 @@ font-size:17px;
 @media (min-width:320px) and (max-width:360px) {
     .custom_input {
         width: 40px;
-       
+
     }
     .custom_select {
         width: 22px;
@@ -30509,7 +30509,7 @@ input#flexCheckChecked {
 .icon_text small {
     text-transform: uppercase;
     font-weight: 500;
-   
+
 }
 
 .box {
@@ -30520,10 +30520,10 @@ input#flexCheckChecked {
     height: 30px;
     border-radius: 10px;
 
-   
+
 }
 .box_left{
-  
+
  display: flex;
  justify-content: center;
  align-items: center;
@@ -30566,7 +30566,7 @@ input#flexCheckChecked {
      text-transform: uppercase;
  }
  .custom_input_right{
- 
+
     width: 100%;
      height: 30px;
      border-radius: 3px;
@@ -30622,12 +30622,12 @@ color:black;
     color: black!important;
 }
 .tavo-calendar__day_off, .tavo-calendar__day_exp, .tavo-calendar__day_different-month, .tavo-calendar__day_lock {
-  
+
     color: black;
-   
+
 }
 .tavo-calendar__nav {
- 
+
     fill: black;
 }
 
@@ -30647,12 +30647,12 @@ color:black;
         }
         .left_bottom_2 {
             margin: 25px 0px;
-    
+
             width: 99%;
 
         }
         .custom_calendar {
-           
+
             justify-content: center;
         }
         #my-calendar {
@@ -30667,10 +30667,10 @@ color:black;
     width:98%;
     }
     .left_bottom_2 {
-        
+
         border: 1px solid black;
         width: 505px;
-     
+
         margin: 25px 0px;
     }
     #my-calendar{
@@ -30683,29 +30683,29 @@ color:black;
         justify-content: center;
     }
     .buttons {
-        
+
         justify-content: start;
     }
 }
 @media (min-width:768px) and (max-width:991.98px) {
     input.custom_input {
         width: 95%;
-      
+
     }
     .left_bottom_1 {
-        
+
         width: 95%;
     }
     .left_bottom_2 {
-     
+
         width: 95%;
-       
-        
+
+
     }
     .mobile_hide{
         display: none;
     }
- 
+
 }
 @media (min-width:992px) and (max-width:1200px) {
     .mobile_hide{
@@ -30716,4 +30716,574 @@ color:black;
 
 
 
+<<<<<<< HEAD
 /*biiling info end*/
+=======
+/*biiling info end*/
+
+
+
+/*////----Intishar Mashrur Doctor_list----------//////*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    font-family: 'Secular One', sans-serif; 
+}
+.fa-user-md{
+    background-color: #19B7FD;
+    color: white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding: 7px;
+    border-radius: 3px;
+}
+.text{
+    background-color: #fffffe;
+    position: relative;
+    top: -59px;
+    left: 54px;
+    padding: 0; 
+}
+.font-weight-bold{
+    font-weight: 700;
+    font-size: 30px;
+}
+.font-weight-normal{
+    font-weight: 500;
+    font-size: 18px;
+ 
+}
+.button{
+
+    text-align: center;
+    font-weight: 600 !important;
+}
+.btn-primary{
+    background-color: #4400AD !important;
+    border: none;
+    width: 130px !important;
+    height: 40px;
+    font-weight: 700 !important;
+    
+}
+.btn-success{
+    background-color: #2DCE8A !important;
+    border: none;
+    width: 80px !important;
+    height: 40px;
+    font-weight: 700 !important;
+}
+.btn-danger{
+    background-color: #FB2726 !important;
+    border: none;
+    width: 80px !important;
+    height: 40px;
+    font-weight: 700 !important;
+}
+.btn-info{
+    background-color: #0ECFEE !important;
+    border: none;
+    width: 80px !important;
+    height: 40px;
+    color: white !important;
+    font-weight: 700 !important;
+}
+.btn-secondary{
+    border: none;
+    width: 80px !important;
+    height: 40px;
+    font-weight: 700 !important;
+}
+.btn-warning{
+    background-color: #007BFD !important;
+    border: none;
+    width: 80px !important;
+    height: 40px;
+    color: white !important;
+    font-weight: 700 !important;
+}
+.bg-light{
+    background-color: #000000 !important;
+    border: none;
+    display: inline;
+}
+.col-4 input{
+    height: 40px;
+    background-color: rgb(219, 219, 219) !important;
+    border-radius: 2px;
+}
+.col-4 select{
+    background-color: rgb(219, 219, 219) !important;
+    height: 30px;
+    width: 50px;
+    padding: auto;
+}
+@media(max-width: 991.98px){
+  
+    .col-lg-10 {
+        display: inline;
+    }
+    .col-4 input{
+        width: 150px;
+    }
+    .button{
+        width: 470px;
+    }
+
+}
+@media(max-width: 575.98px){
+    .col-lg-10 {
+        display: inline;
+    }
+    .col-4 input{
+        width: 10px;
+    }
+    .button{
+        width: 70px !important;
+    }
+}
+@media (max-width: 767.98px) { 
+    .col-lg-10 {
+        display: inline;
+    }
+    .col-4 input{
+        width: 90px;
+    }
+    .button{
+        width: 290px;
+    }
+}
+
+
+
+
+/*////----Intishar Mashrur End Doctor_list----------//////*/
+
+/*////----Intishar Mashrur pharmacy_list----------//////*/
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+.header{
+    height: 80px;
+    background-color: rgba(204, 243, 255, 0.609) !important;
+    border-radius: 10px;
+    padding:  20px;
+}
+.button-5{
+    justify-content: space-between !important;
+    background-color:rgb(255, 255, 255);
+    padding-left: 0px !important;
+ 
+
+}
+.btn{
+    margin: 10px;
+    background-color: #5301b0 !important;
+    width: 58px;
+    height: 40px;
+}
+.btn1{
+    margin-right: 10px;
+    background-color: #5301b0 !important;
+    width: 58px;  
+    height: 40px;
+    border-radius: 5px;
+    margin-top: 20px !important;
+}
+.col-4{
+  
+    margin-top: 10px !important;
+    padding-left: 0px !important;
+}
+.bg-light{
+    border: none;
+    display: inline;
+}
+.table{
+    border: none!important;
+}
+
+.aborder-bottom{
+    border-bottom: 2px solid rgba(0, 0, 0, 0.246) !important;
+    box-sizing: border-box;
+}
+
+
+/*/////BUTTON////*/
+.align-self-center{
+    margin-left: -30px;
+}
+.button1{
+    margin-top: -5px !important;   
+}
+.button2{
+    margin-top: -16px !important;
+}
+.btn-sm {
+    width: 100px;
+    border-radius: 5px!important;
+}
+.btn2xl{
+    margin-left: -5px !important;
+    width: 63px !important;
+    height: 35px;
+    justify-content: space-between;
+    border-radius: 5px;
+    background-color: #08C222 !important;
+    border: none;
+}
+.btn3xl{
+    width: 63px !important;
+    height: 35px;
+    border-radius: 5px;
+    background-color: #FA2727 !important;
+    border: none;
+}
+ /*///Paginate///*/
+ .bg{
+     background-color: #4501B0 !important;
+ }
+ .image12 img{
+     width: 80px !important;
+     margin-right: 80px!important;
+ }
+/*////----Intishar Mashrur End pharmacy_list----------//////*/
+
+
+
+/*////----Intishar Mashrur order_status----------//////*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.body-all{
+    background-color:
+
+}
+.col1 .btn-whitexx{
+    width: 115px;
+    padding: 1px;
+    font-size: 14px;
+    border: 1px solid black !important;
+}
+.col1 .btn-dangerxx{
+    width: 125px;
+    padding: 1px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: red !important;
+    color: white;
+}
+.col-md-4 .bg-white{
+    background-color: rgba(233, 253, 255, 0.616) !important;
+    border: 1px solid black;
+}
+.col-auto{
+    width: 125px !important;
+    margin: 15px;
+    padding: 4px;
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.602);
+
+}
+.col-sm-7 .bg-white{
+    background-color: rgb(221, 251, 255) !important;
+    border: 1px solid black;
+    padding: 10px;
+}
+.col-sm-7 h4{
+    margin-right: 10px;
+
+}
+.bg-coco{
+    background-color: rgb(221, 251, 255);
+    height: 75vh;
+}
+.note{
+    background-color: white;
+    padding: 15px;
+    font-size: 11px;
+    border: 1px solid rgb(160, 160, 160);
+}
+.note h6{
+    font-weight: 790;
+}
+.note p{
+    font-size: 9px;
+    font-weight: 600;
+}
+.btn-success{
+    background-color: #07AF01 !important;
+}
+.btn-danger{
+    background-color: #FB2726 !important;
+}
+.bg-white2 {
+    width: 180px;
+    margin: 1px;
+    padding: 11px;
+    height: 120px;
+    background-color: white;
+    display: inline-block;
+    border-radius: 2px;
+}
+.bg-white2 input{
+    width: 140px;
+    height: 25px;
+    display: inline-block;
+}
+.bg-secondary2{
+    background-color: rgb(200, 200, 200);
+}
+/*//extra small start//*/
+@media (min-width:320px) and (max-width:575.98px){
+    .col-sm-7.container{
+        height: 150vh !important;
+    }
+}
+.btn-primary{
+    background-color: #4400AD !important;
+    height: 30px;
+    padding: 3px;
+    font-size: 13px;
+}
+
+/*//extra small end//*/
+/* small start*/
+@media (min-width:576px) and (max-width:767.98px){}
+
+/* small end*/
+/*//medium start//*/
+@media (min-width:768px) and (max-width:991.98px){}
+
+/*/medium end/*/
+/*/lg start/*/
+@media (min-width:992px) and (max-width:1199.98px){
+    .col-md-6 bg-secondary2{
+        
+    }
+    .bg-white2 {
+        width: 150px;
+    }
+}
+
+/*//lg end//*/
+/*//extra large start//*/
+@media (min-width:1200px) and (max-width:1399px){
+
+}
+/*//extra large end//*/
+@media (min-width:1400px) and (max-width:1600px) {
+    .col4{
+        top: 90%;
+    }
+}
+
+
+/*////----Intishar Mashrur End order_status----------//////*/
+
+
+
+/*////////----Intishar Mashrur Order Coupon------//////////*/
+
+*{
+    padding: 0;
+    margin: 0;
+}
+.bg-in{
+    background-color: rgb(228, 237, 253) !important;
+}
+h4{
+    color: #4400AD;
+}
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.tree{
+	border-bottom: 2px solid gray;
+
+}
+table tr td{
+	padding: 12px 8px;
+	/*background: #ff0f;*/
+}
+.product-thumbnail img{
+	height: 120px;
+	width: 120px;
+	border-radius: 10px;
+	object-fit: cover;
+}
+.product-title{
+	color: blue;
+	font-size: 18px;
+	font-weight: 700;
+	text-transform: capitalize;
+}
+.product-desp{
+	text-transform: 16px;
+	color: gray;
+	/*width: 500px;*/
+}
+.product-price{
+	font-size: 26px;
+	color: gray;
+}
+.product-price span{
+	color: blue;
+}
+.product-quantity{
+	padding: 8px;
+	width: 40px;
+	height: 80px;
+	background: gray;
+	border: 0;
+	border-radius: 5px;
+	font-size: 18px;
+	font-weight: 400;
+}
+.product-cancle{
+	color: #fff;
+	background: gray;
+	border: 0;
+	border-radius: 5px;
+	font-size: 18px;
+	font-weight: 400;
+	cursor: pointer;
+}
+.product-cancle i{
+	padding: 8px 12px;
+}
+.total-price{
+	display: flex;
+	justify-content: space-between;
+}
+.subtotal{
+	border-top: 3px solid #000;
+	display: flex;
+	justify-content: space-between;
+	padding: 6px 10px;
+}
+.sub-title{
+	font-size: 24px;
+	font-weight: 600;
+	text-transform: capitalize;
+}
+.total-price{
+	font-size: 24px;
+	font-weight: 600;
+	color: gray;
+}
+.total-price span{
+	font-size: 24px;
+	color: #000;
+}
+
+.order-main{
+	background: #4400AD;
+	padding: 10px 24px;
+}
+.order-main .order-title{
+	font-size: 26px;
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+    font-weight: 700;
+}
+.coupon{
+	background: #fff;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+.coupon p{
+	font-size: 18px;
+	font-weight: 500;
+	text-transform: capitalize;
+	margin: 6px 0;
+}
+.coupon:hover{
+	background: #f0f;
+	color: #fff;
+}
+.amount{
+	margin-top: 30px;
+}
+.amount .value{
+	display: flex;
+	justify-content: space-between;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 500;
+	text-transform: capitalize;
+}
+.order-main .line{
+	width: 100%;
+	height: 2px;
+	background: #fff;
+}
+.address{
+	display: flex;
+	align-items: center;
+	color: #fff;
+}
+.address .address-icon{
+	font-size: 60px;
+}
+.address .address-text{
+	margin-left: 10px;
+}
+.address .address-text p{
+	margin: 0;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+/* .btnxv .btn-1xv{
+	text-transform: uppercase;
+    background-color: red !important;
+	color: #fff;
+	background: red;
+	font-weight: 600;
+	border: 2px solid transparent;
+	transition: 0.5s;
+    border-radius: 10px !important;
+}
+.btnxv .btn-1xv:hover{
+	border: 2px solid red;
+	background: transparent;
+}
+.btnxk .btn-2xk{
+	text-transform: uppercase;
+	color: #000;
+	background: #fff;
+	font-weight: 600;
+	border: 2px solid transparent;
+	transition: 0.5s;
+    border-radius: 10px !important;
+}
+.btnxk .btn-2xk:hover{
+	border: 2px solid #fff;
+	background: transparent;
+} */
+
+/*///////////-----EEEEENNNNNNDDDDD---------//////////*/
+

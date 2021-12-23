@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body justify-content-lg-between">
+                <div class="card-body ">
                     <h2 class="fw-bolder text-center">Appointments</h2>
                     <div class="row my-3 ">
                         <h2 class=" text-center"> Filter</h2>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="row justify-content-end mb-3">
                         <div class="col-md-3 ">
-                            <button type="button" class="btn medibg custom-btn text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop">New Appointments</button>
+                            <button type="button" class="btn medibg custom-btn text-white" data-bs-toggle="modal" data-bs-target="#appointment">New Appointments</button>
                         </div>
                     </div>
 
@@ -91,8 +91,9 @@
                 </div>
             </div>
         </div>
-
+        @include('admin.pages.modals.appointments.appointment')
     </div>
+
 </div>
 
 @endsection

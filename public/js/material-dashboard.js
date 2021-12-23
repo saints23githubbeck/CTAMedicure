@@ -265,7 +265,7 @@ md = {
 
 
   initSliders: function() {
-    // Sliders for demo purpose
+    // Sliders for order purpose
     var slider = document.getElementById('sliderRegular');
 
     noUiSlider.create(slider, {
