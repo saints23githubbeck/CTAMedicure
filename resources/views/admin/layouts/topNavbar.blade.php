@@ -195,7 +195,7 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="{{asset('assets/img/theme/team-4.jpg')}}">
+                    <img alt="Image placeholder" src="{{'/'.auth()->user()->profile->img}}">
                   </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->userName}}</span>
@@ -240,7 +240,13 @@
                     <div class="modal-body">
                         <form action="{{route('user.store')}}" method="post">
                             @csrf
+                            <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="{{auth()->user()->profile->img}}">
+                  </span>
+                            <div class="form-group">
+                                <input type="file" name="image">
 
+                            </div>
                             <div class="form-group">
                                 <label for="role" class="col-form-label">First Name</label>
 
@@ -249,9 +255,25 @@
                                         type="text"
                                         id="userName"
                                         class="form-control form-control-sm @error('firstName') is-invalid @enderror border" name="firstName"
-                                        value="{{auth()->user()->profile()->firstName}}"
+                                        value="{{auth()->user()->profile->firstName}}"
                                 />
                                 @error('firstName')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="role" class="col-form-label">last Name</label>
+
+
+                                <input
+                                        type="text"
+                                        id="lastName"
+                                        class="form-control form-control-sm @error('lastName') is-invalid @enderror border" name="lastName"
+                                        value="{{auth()->user()->profile->lastName}}"
+                                />
+                                @error('lastName')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -285,20 +307,20 @@
                         </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="role" class="col-form-label">Role</label>
-                                <select class="form-control form-control-sm @error('role_id') is-invalid @enderror border" name="role_id" required>
-                                    @foreach(App\Models\Role::all() as $role)
-                                        <option value="{{$role->id}}">{{$role->name}}</option>
-                                    @endforeach
-                                </select>
+{{--                            <div class="form-group">--}}
+{{--                                <label for="role" class="col-form-label">Role</label>--}}
+{{--                                <select class="form-control form-control-sm @error('role_id') is-invalid @enderror border" name="role_id" required>--}}
+{{--                                    @foreach(App\Models\Role::all() as $role)--}}
+{{--                                        <option value="{{$role->id}}">{{$role->name}}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
 
-                                @if ($errors->has('role_id'))
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                <strong>{{ $errors->first('role_id') }}</strong>
-                            </span>
-                                @endif
-                            </div>
+{{--                                @if ($errors->has('role_id'))--}}
+{{--                                    <span class="invalid-feedback text-danger" role="alert">--}}
+{{--                                <strong>{{ $errors->first('role_id') }}</strong>--}}
+{{--                            </span>--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
