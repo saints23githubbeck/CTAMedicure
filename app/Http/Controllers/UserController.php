@@ -12,10 +12,10 @@ class UserController extends Controller
     {
         $users = User::query();
         if (request('term')) {
-            $users->where('userName', 'Like', '%' . request('term') . '%');
+            $users->with('role')->where('userName', 'Like', '%' . request('term') . '%');
         }
 
-        $users  = $users->orderBy('id', 'DESC')->paginate(10);
+        $users  = $users->with('role')->orderBy('id', 'DESC')->paginate(10);
 
         return view('admin.pages.user', compact('users'));
     }

@@ -25,15 +25,15 @@
 
                         </div>
                         <div class="container-fluid mt--7">
-                            <div class="card-header border-0">
-                                <div class="row justify-content-end mt-2">
-                                    <div class="col-md-3 ">
-                                        <button type="button" class="btn medibg custom-btn text-white"
-                                                data-bs-toggle="modal" data-bs-target="#addUser">New User
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="card-header border-0">--}}
+{{--                                <div class="row justify-content-end mt-2">--}}
+{{--                                    <div class="col-md-3 ">--}}
+{{--                                        <button type="button" class="btn medibg custom-btn text-white"--}}
+{{--                                                data-bs-toggle="modal" data-bs-target="#addUser">New User--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                             <div class="row">
                                 <div class="col">
@@ -48,7 +48,7 @@
                                                     <th scope="col" class="sort" data-sort="budget">Name</th>
                                                     <th scope="col" class="sort" data-sort="budget">Email</th>
                                                     <th scope="col" class="sort" data-sort="budget">Contact</th>
-                                                    <th scope="col" class="sort" data-sort="status">Status</th>
+                                                    <th scope="col" class="sort" data-sort="status">Role</th>
                                                     <th scope="col" class="sort" data-sort="completion">Action</th>
                                                     <th scope="col"></th>
                                                 </tr>
@@ -73,8 +73,7 @@
                                                     </td>
                                                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i>
-                        <span class="status">{{$user->role_id}}</span>
+                        <span class="status">{{$user->role->name}}</span>
                       </span>
                                                     </td>
 
