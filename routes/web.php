@@ -1,10 +1,14 @@
 <?php
 
 
+use App\Http\Controllers\PrescriptionController;
+
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -112,10 +116,13 @@ Route::get('/location', function () {
    return view('admin.location');
 
 })->name('location');
+//prescription start
 
-Route::get('/prescription', function () {
-    return view('admin.prescription');
-})->name('prescription');
+
+Route::get('/prescription',[PrescriptionController::class,'index'])->name('prescription');
+Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
+
+//prescription end
 
 //return view('admin.pages.location');
 //})->name('location');
