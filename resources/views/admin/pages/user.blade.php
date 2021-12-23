@@ -105,10 +105,8 @@
                     </div>
                     <div class="container">
                         <div class="col-md-12">
-                            <ul class="pagination offset-lg-5 mt-2">
-                                <li class=" m-3 "><a class=" btn medibg text-white" href="#">Previous</a></li>
-                                <li class="m-3"><a class=" btn medibg text-white" href="#">Next</a></li>
-                            </ul>
+                            {{ $users->links('pagination.custom') }}
+
                         </div>
                     </div>
                 </div>

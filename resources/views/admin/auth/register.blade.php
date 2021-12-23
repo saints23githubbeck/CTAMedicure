@@ -22,6 +22,7 @@
               </a>
             </div>
           </div>
+
           <div class="card-body ">
             <p class="card-description text-center">{{ __('Or Be Classical') }}</p>
             <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
