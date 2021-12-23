@@ -83,7 +83,8 @@
 <script src="{{asset('../assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>
 <!-- Argon JS -->
 <script src="{{asset('../assets/js/argon.js?v=1.2.0')}}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@yield('footer_script')
 <script>
     $(".alert").fadeTo(2000, 500).slideUp(500, function(){
         $(".alert").slideUp(500);

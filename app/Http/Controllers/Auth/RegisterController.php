@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Traits\ProfileTriat;
@@ -68,14 +69,16 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        return User::create([
+      $user = User::create([
             'userName' => $data['userName'],
             'email' => $data['email'],
             'contactNumber' => $data['contactNumber'],
             'role_id' => $data['role_id'],
             'password' => Hash::make($data['password']),
         ]);
-
+        $profile = new Profile();
+        $profile->user_id = $user->id;
+        $profile->save();
 //        $profile = new Profile();
 //        $profile->image = 'default.png';
 //        $profile->user_id = $data->id;
