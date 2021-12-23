@@ -191,6 +191,7 @@
                 </li>
             </ul>
             <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+                @if(auth()->user())
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
@@ -228,8 +229,11 @@
                         </form>
                     </div>
                 </li>
+
+                    @endif
             </ul>
         </div>
+        @if(auth()->user())
         <div class="modal fade" id="profile-update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -310,7 +314,7 @@
                 </div>
             </div>
         </div>
-
+        @endif
     </div>
 </nav>
 <!-- Header -->
