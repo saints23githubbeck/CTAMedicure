@@ -31,7 +31,13 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $user = User::where('id',auth()->user()->id)->first();
+        $user->userName = $request->userName;
+        $user->email = $request->email;
+        $user->contactNumber = $request->contactNumber;
+        $user->role_id = $request->role_id;
+        $user->update();
+        return back()->with('status','Profile Updated Successfully');
     }
 
 
