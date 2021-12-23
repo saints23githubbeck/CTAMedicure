@@ -3,6 +3,11 @@
 @section('content')
     <!--Container Main start-->
     <div class="container">
+        <div class="col-md-9 offset-2">
+            <div class="breadcrumbs-area">
+                @include('admin.layouts.status')
+            </div>
+        </div>
         <div class="row">
 
             <div class="col-12 mt-lg-5">
@@ -87,7 +92,8 @@
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                                 <a class="dropdown-item" href="#">Update</a>
-                                                                <a class="dropdown-item" href="#">Delete</a>
+                                                                <a class="dropdown-item" href="{{route('users.destroy',$user->id)}}">Delete</a>
+
                                                                 <a class="dropdown-item" href="#">View</a>
                                                             </div>
                                                         </div>
