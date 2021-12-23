@@ -242,16 +242,16 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="role" class="col-form-label">Name</label>
+                                <label for="role" class="col-form-label">First Name</label>
 
 
                                 <input
                                         type="text"
                                         id="userName"
-                                        class="form-control form-control-sm @error('userName') is-invalid @enderror border" name="userName"
-                                        value="{{auth()->user()->userName}}"
+                                        class="form-control form-control-sm @error('firstName') is-invalid @enderror border" name="firstName"
+                                        value="{{auth()->user()->profile()->firstName}}"
                                 />
-                                @error('userName')
+                                @error('firstName')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
