@@ -12,10 +12,10 @@
 
             <div class="col-12 mt-lg-5">
                 <h1 class="text-lg-center">Users</h1>
-                <form action="{{route('users')}}" method="GET" role="search" name="term">
+
                 <div class="card ">
                     <div class="card-body  mt-7">
-
+                        <form action="{{route('users')}}" method="GET" role="search" name="term">
                         <div class="row offset-1  mt--6">
 
                             <div class="form-group col">
@@ -29,6 +29,7 @@
                             </div>
 
                         </div>
+                        </form>
                         <div class="container-fluid mt--7">
 {{--                            <div class="card-header border-0">--}}
 {{--                                <div class="row justify-content-end mt-2">--}}
@@ -118,7 +119,7 @@
                         </div>
                     </div>
                 </div>
-                </form>
+
             </div>
 
         </div>

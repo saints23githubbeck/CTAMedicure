@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -16,8 +18,8 @@ class UserController extends Controller
         }
 
         $users  = $users->with('role')->orderBy('id', 'DESC')->paginate(1);
-
-        return view('admin.pages.user', compact('users'));
+        $roles = Role::all();
+        return view('admin.pages.user', compact('users','roles'));
     }
 
 
@@ -47,7 +49,15 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+
+        $user = User::where('id',$id)->first();
+        $user->userName = $request->userName;
+        $user->email = $request->email;
+        $user->contactNumber = $request->contactNumber;
+        $user->role_id = $request->role_id;
+        $user->userName = $request->userName;
+        $user->update();
+        return back()->with('status','User Updated Successfully');
     }
 
 
