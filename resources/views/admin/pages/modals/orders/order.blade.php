@@ -28,21 +28,21 @@
                             </span>
                         @endif
                     </div>
-                    <div class="form-group">
-                        <label for="delivery_option_id" class="col-form-label">Delivary option</label>
-                        <select class="form-control {{$errors->has('delivery_option_id') ? ' is-invalid' : ''}}" name="delivery_option_id" value="{{old('delivery_option_id')}}" required>
-                           <option value="">--select delivary --</option>
-                            @foreach (App\Models\DeliveryOption::all() as $delivery_option)
-                            <option value="{{ $delivery_option->id }}">{{ $delivery_option->option }}</option>
-                            @endforeach
-                          
-                        </select>
-                            @if ($errors->has('delivery_option_id'))
-                            <span class="invalid-feedback text-danger" role="alert">
-                                <strong>{{ $errors->first('delivery_option_id') }}</strong>
-                            </span>
-                        @endif
-                    </div>
+                    {{--<div class="form-group">--}}
+                        {{--<label for="delivery_option_id" class="col-form-label">Delivary option</label>--}}
+                        {{--<select class="form-control {{$errors->has('delivery_option_id') ? ' is-invalid' : ''}}" name="delivery_option_id" value="{{old('delivery_option_id')}}" required>--}}
+                           {{--<option value="">--select delivary --</option>--}}
+                            {{--@foreach (App\Models\DeliveryOption::all() as $delivery_option)--}}
+                            {{--<option value="delivery">del</option>--}}
+                            {{--@endforeach--}}
+
+                        {{--</select>--}}
+                            {{--@if ($errors->has('delivery_option_id'))--}}
+                            {{--<span class="invalid-feedback text-danger" role="alert">--}}
+                                {{--<strong>{{ $errors->first('delivery_option_id') }}</strong>--}}
+                            {{--</span>--}}
+                        {{--@endif--}}
+                    {{--</div>--}}
                     <div class="form-group">
                         <label for="description" class="col-form-label">Description</label>
                         <textarea class="form-control" id="description" name="description" maxlength="250" cols="30" rows="5" style="resize: none" placeholder="Your Message Should Not Be More Than 250"></textarea>

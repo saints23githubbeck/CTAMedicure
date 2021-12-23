@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+
 
 
 /*
@@ -121,6 +121,7 @@ Route::get('/location', function () {
 
 Route::get('/prescription',[PrescriptionController::class,'index'])->name('prescription');
 Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
+Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
 
 //prescription end
 

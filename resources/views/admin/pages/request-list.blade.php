@@ -26,19 +26,36 @@
                                                 <thead class="border_botttom">
                                                 <tr>
                                                     <th scope="col">Order Id</th>
+                                                    <th scope="col">Image</th>
                                                     <th scope="col">Order Date</th>
                                                     <th scope="col">Current Status</th>
-                                                    <th scope="col">Order Flow</th>
                                                     <th scope="col">Preview Data</th>
                                                     <th scope="col" class="text-center">Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+
+                                                @foreach($orders as $order)
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>01-01-21</td>
-                                                    <td>Pending</td>
-                                                    <td class="text-warning">Accepted Waiting For Assign</td>
+
+                                                    <td>{{$order->id}}</td>
+                                                    <td class="budget">
+                                                        <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$order->image) }}">
+                                                    </td>
+                                                    <td>{{$order->created_at}}</td>
+                                                    @if($order->status == 0)
+                                                        <td class="badge badge-dot mr-4">
+
+                                                            <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
+                                                        </td>
+
+                                                    @else
+                                                        <td class="badge badge-dot mr-4">
+
+                                                            <span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Waiting For Assign</span>
+                                                        </td>
+
+                                                    @endif
                                                     <td>
                                                         <a href="#">View</a>
                                                     </td>
@@ -47,32 +64,8 @@
                                                         <a href="#" class="btn btn-danger">Rejected</a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>01-01-21</td>
-                                                    <td>Pending</td>
-                                                    <td class="text-warning">Accepted Waiting For Assign</td>
-                                                    <td>
-                                                        <a href="#">View</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-success">Approved</a>
-                                                        <a href="#" class="btn btn-danger">Rejected</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>01-01-21</td>
-                                                    <td>Pending</td>
-                                                    <td class="text-warning">Accepted Waiting For Assign</td>
-                                                    <td>
-                                                        <a href="#">View</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-success">Approved</a>
-                                                        <a href="#" class="btn btn-danger">Rejected</a>
-                                                    </td>
-                                                </tr>
+
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

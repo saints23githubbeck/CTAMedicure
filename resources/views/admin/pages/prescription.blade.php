@@ -44,7 +44,7 @@
                                                     <th scope="col" class="sort" data-sort="budget">Order image</th>
                                                     <th scope="col" class="sort" data-sort="budget">quantity</th>
                                                     <th scope="col" class="sort" data-sort="budget">Note</th>
-                                                    <th scope="col" class="sort" data-sort="budget">option</th>
+                                                    {{--<th scope="col" class="sort" data-sort="budget">option</th>--}}
                                                     <th scope="col" class="sort" data-sort="status">Status</th>
                                                     <th scope="col" class="sort" data-sort="completion">Action</th>
                                                     <th scope="col"></th>
@@ -56,33 +56,27 @@
                                                 <tr>
 
                                                     <td class="budget">
-                                                     <img style="width:100px;height:100px"src="{{ asset('uploads/orders/'.$order->image) }}">
+                                                     <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$order->image) }}">
                                                     </td>
                                                     <td>
                                              {{ $order->quantity }}
                                                     </td>
                                                     <td>
                                                         {{ $order->note }}
-                                                    </td>
-                                                    <td>{{ App\Models\DeliveryOption::find($order->delivery_option_id)->option }}</td>
-                                                 
-                                                    <td>
+
                                             @if($order->status == 0)
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-secondary"></i>
-                                                <span class="status text-dark">In complete</span>
-                                              </span>
+                                            <td class="badge badge-dot mr-4">
+
+                                                <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
+                                              </td>
                         
                                             @else
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-success"></i>
-                                                <span class="status text-dark">completed</span>
-                                              </span>
+                                            <td class="badge badge-dot mr-4">
+
+                                                   <span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Waiting For Assign</span>
+                                              </td>
                         
                                             @endif
-                   
-
-                                             </td>
 
                                                     <td class="text-right">
                                                         <div class="dropdown">

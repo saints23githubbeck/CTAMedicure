@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{route('requestList')}}">
+                        <a class="nav-link" href="{{route('prescription.show')}}">
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Request List</span>
                         </a>
                     </li>

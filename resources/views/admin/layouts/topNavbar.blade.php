@@ -245,22 +245,22 @@
                         <form action="{{route('user.store')}}" method="post">
                             @csrf
 
-                            <div class="form-group">
-                                <label for="role" class="col-form-label">First Name</label>
+                            {{--<div class="form-group">--}}
+                                {{--<label for="role" class="col-form-label">First Name</label>--}}
 
 
-                                <input
-                                        type="text"
-                                        id="userName"
-                                        class="form-control form-control-sm @error('firstName') is-invalid @enderror border" name="firstName"
-                                        value="{{auth()->user()->profile()->firstName}}"
-                                />
-                                @error('firstName')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
+                                {{--<input--}}
+                                        {{--type="text"--}}
+                                        {{--id="userName"--}}
+                                        {{--class="form-control form-control-sm @error('firstName') is-invalid @enderror border" name="firstName"--}}
+                                        {{--value="{{auth()->user()->profile()->firstName}}"--}}
+                                {{--/>--}}
+                                {{--@error('firstName')--}}
+                                {{--<span class="invalid-feedback" role="alert">--}}
+                                    {{--<strong>{{ $message }}</strong>--}}
+                                {{--</span>--}}
+                                {{--@enderror--}}
+                            {{--</div>--}}
                             <div class="form-group">
                                 <label for="role" class="col-form-label">Email</label>
                                 <input

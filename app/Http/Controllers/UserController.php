@@ -17,7 +17,7 @@ class UserController extends Controller
             $users->with('role')->where('userName', 'Like', '%' . request('term') . '%');
         }
 
-        $users  = $users->with('role')->orderBy('id', 'DESC')->paginate(1);
+        $users  = $users->with('role')->orderBy('id', 'DESC')->paginate(10);
         $roles = Role::all();
         return view('admin.pages.user', compact('users','roles'));
     }
