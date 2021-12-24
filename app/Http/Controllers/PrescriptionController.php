@@ -5,8 +5,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Laravel\Ui\Presets\React;
+
 
 class PrescriptionController extends Controller
 {
@@ -58,6 +57,48 @@ $data = Order::find($order_id);
         return view('admin.pages.modals.orders.order_single',[
             'data'=>$data
         ]);
+    }
+    function edit($order_id){
+        $data = Order::find($order_id);
+        return view('admin.pages.modals.orders.order_edit',[
+            'data'=>$data
+        ]);
+    }
+    function edit_post(Request $request){
+        if($request->image){
+            $photo_name = Order::find($request->order_id)->image;
+            $path = str_replace('\\','/',public_path()).'/uploads/orders/'.$photo_name;
+            unlink($path);
+            
+            $image_name = $request->image;
+            $extension = $image_name->getClientOriginalExtension();
+            $order_new_image = $request->order_id.'.'.$extension;
+            
+            Order::find($request->order_id)->update([
+                'image'=> $order_new_image,
+                'quantity'=> $request->quantity,
+                'note'=> $request->description,
+                'delivery_option_id'=>$request->delivery_option_id
+                
+            ]);
+
+            Image::make($image_name)->resize(500, 400)->save(base_path('public/uploads/orders/'.$order_new_image));
+            
+            }else{
+
+                Order::find($request->order_id)->update([
+                    
+                    'quantity'=> $request->quantity,
+                    'note'=> $request->description,
+                    'delivery_option_id'=>$request->delivery_option_id 
+                    
+                ]);  
+
+
+
+                
+            }
+            return back()->with('add','prescription updated succesfully.');
     }
     // function filter(Request $request){
     

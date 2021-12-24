@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+
 
 
 /*
@@ -123,6 +123,8 @@ Route::get('/prescription',[PrescriptionController::class,'index'])->name('presc
 Route::post('filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
 Route::get('/delete/prescription/{order_id}',[PrescriptionController::class,'delete'])->name('delete.prescription');
 Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'])->name('view.prescription');
+Route::get('/edit/prescription/{order_id}',[PrescriptionController::class,'edit'])->name('edit.prescription');
+Route::post('/update/prescription',[PrescriptionController::class,'edit_post'])->name('update.prescription');
 Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
 
 //prescription end

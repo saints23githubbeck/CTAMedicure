@@ -4,7 +4,7 @@
 <body >
 @include('admin.layouts.sidebar')
 <div class="main-content" id="panel">
-@include('admin.layouts.topNavbar')
+{{-- @include('admin.layouts.topNavbar') --}}
 @yield('content')
 </div>
 <!-- Footer -->
