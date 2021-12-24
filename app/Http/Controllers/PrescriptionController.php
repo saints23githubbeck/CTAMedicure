@@ -77,7 +77,7 @@ class PrescriptionController extends Controller
 
         $photo_name = $request->image;
         $extension = $photo_name->getClientOriginalExtension();
-        $image_name = $image_id.'.'.$extension;
+         $image_name = $image_id.'.'.$extension;
         
         $target = public_path('uploads/orders/'.$image_name);
         
