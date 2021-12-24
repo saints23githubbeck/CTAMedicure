@@ -5,29 +5,37 @@
     <div class="container">
 
 @include('admin.pages.modals.orders.order')
+
+
+
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body mx-2 my-5">
                             <h2 class="fw-bolder text-center">Prescriptions</h2>
+                            <form action="{{ route('filter.prescription') }}" method="POST">
+                                @csrf
                             <div class="row my-3 ">
                                 <div class="form-group col">
-
-                                    <input type="text" class="form-control" id="inputEmail4" placeholder=" Filter From">
+                                     From
+                                    <input type="date" name="form" class="form-control" id="inputEmail4" placeholder=" Filter From">
                                 </div>
                                 <div class="form-group col">
-
-                                    <input type="text" class="form-control" id="inputPassword4" placeholder="Filter To">
+                                     To
+                                    <input type="date" name="to" class="form-control" id="inputPassword4" placeholder="Filter To">
                                 </div>
                                 <div class="form-group col">
-                                    <span class="btn medibg text-black">Filter</span>
+                                    <button type="submit" class="btn medibg text-black">Filter</button>
                                     <span class="btn btn-danger ">Cancel</span>
                                 </div>
 
                             </div>
+                        </form>
                             <div class="row justify-content-end mb-3">
                                 <div class="col-md-3 ">
                                     <button type="button" class="btn medibg custom-btn text-black" data-bs-toggle="modal" data-bs-target="#order">Buy Prescription</button>
+                               
                                 </div>
                             </div>
 
@@ -51,8 +59,14 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody class="list">
+                                                @php 
+                                                   
+                                                $orders = App\Models\Order::Paginate(2);
+                                                   
+                                                @endphp
 
-                                                @foreach (App\Models\Order::all() as $order)
+                                               
+                                                @foreach ($orders as $order)
                                                 <tr>
 
                                                     <td class="budget">
@@ -93,9 +107,14 @@
                                                                 <i class="fas fa-ellipsis-v"></i>
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <a class="dropdown-item" href="#">Update</a>
-                                                                <a class="dropdown-item" href="#">Delete</a>
-                                                                <a class="dropdown-item" href="#">View</a>
+                                                                <a class="dropdown-item" href="">Update</a>
+                                                                <a class="dropdown-item" href="{{ route('delete.prescription',$order->id) }}">Delete</a>
+                                                                   <a class="dropdown-item" href="{{ route('view.prescription',$order->id) }}"> view </a>
+   
+
+    
+    
+
                                                             </div>
                                                         </div>
                                                     </td>
@@ -138,7 +157,7 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr>
+                                                {{-- <tr>
 
                                                     <td class="budget">
                                                         ghfdh v gff vf gjfhk
@@ -176,7 +195,7 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                </tr>
+                                                </tr> --}}
                                                
                                              
                                                 
@@ -191,11 +210,10 @@
                         </div>
                         <div class="container">
                             <div class="col-md-12">
-                                <ul class="pagination offset-lg-5 mt-2">
-                                    <li class=" m-3 "><a class=" btn medibg text-dark" href="#">Previous</a></li>
-                                    <li class="m-3"><a class=" btn medibg text-dark" href="#">Next</a></li>
-                                </ul>
-                            </div>
+                             
+                     {{ $orders->links('admin.pages.custom_paginate') }}
+                            
+                    </div>
                         </div>
                     </div>
                 </div>
@@ -206,6 +224,8 @@
 
 
 @section('footer_script') 
+
+<!--custom modal end-------->
 @if(session('add'))
 <script>
     const Toast = Swal.mixin({

@@ -49,6 +49,9 @@ Route::get('/location', function () {
 
 
 Route::get('/prescription',[PrescriptionController::class,'index'])->name('prescription');
+Route::post('filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
+Route::get('/delete/prescription/{order_id}',[PrescriptionController::class,'delete'])->name('delete.prescription');
+Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'])->name('view.prescription');
 Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
 
 //prescription end
