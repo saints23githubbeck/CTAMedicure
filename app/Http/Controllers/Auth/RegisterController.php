@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -83,7 +83,7 @@ class RegisterController extends Controller
 //        $profile->image = 'default.png';
 //        $profile->user_id = $data->id;
 //        $profile->save();
-
+ return $user;
     }
 
 

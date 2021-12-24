@@ -2,15 +2,26 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 
 use Intervention\Image\Facades\Image;
+=======
+use App\Models\ConfirmedOrder;
+>>>>>>> cedd6d8fca133f414378940b3eab8bbbf1dcb36f
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Carbon\Carbon;
 use App\Models\DeliveryOption;
 
+<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+=======
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+
+
+>>>>>>> cedd6d8fca133f414378940b3eab8bbbf1dcb36f
 
 class PrescriptionController extends Controller
 {
@@ -23,12 +34,14 @@ class PrescriptionController extends Controller
     ]);
     }
     public function insert(Request $request){
+
         $request->validate([
         'image'=>'required',
         'quantity'=>'required',
         'delivery_option_id'=>'required',
      
         ]);
+<<<<<<< HEAD
         if(Auth::id()){
             $image_id = Order::insertGetId([
          
@@ -49,6 +62,18 @@ class PrescriptionController extends Controller
         }
 
       
+=======
+
+//        dd($request->all());
+
+        $image_id = Order::insertGetId([
+         
+         'quantity'=>$request->quantity,
+         'note'=>$request->description,
+         'user_id'=>\auth()->id(),
+         'delivery_option_id'=>$request->delivery_option_id,
+        ]);
+>>>>>>> cedd6d8fca133f414378940b3eab8bbbf1dcb36f
 
         $photo_name = $request->image;
         $extension = $photo_name->getClientOriginalExtension();
@@ -62,6 +87,7 @@ class PrescriptionController extends Controller
         ]);
         return back()->with('add','order added successfully.');
     }
+
     function delete($order_id){
     
      $image_name =   Order::find($order_id)->image;
@@ -212,4 +238,37 @@ echo $send_html;
 
 }
  
+
+
+    public function showRequest(){
+
+     $orders = Order::where('status',0)->orderBy('created_at','desc')->get();
+
+        $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->get();
+
+        return view('admin.pages.request-list',compact('orders','confirmOrders'));
+    }
+
+    public function acceptOrder(){
+
+        $confirmOrders = ConfirmedOrder::where('user_id',auth()->id)->orderBy('created_at','desc')->get();
+
+        return view('admin.pages.request-list',compact('confirmOrders'));
+    }
+
+
+    public function approve( Request $request, Order $order){
+
+        $order->confirmedOrder()->create([
+            'amount'=>$request->amount,
+            'note'=>$request->description,
+            'status'=>0,
+            'user_id'=>auth()->id(),
+        ]);
+        $order->update([
+            'status'=>1,
+        ]);
+
+        return back()->with('add','order Approved successfully.');
+    }
 }

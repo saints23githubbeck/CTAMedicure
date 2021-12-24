@@ -31,15 +31,15 @@
                         </div>
                         </form>
                         <div class="container-fluid mt--7">
-{{--                            <div class="card-header border-0">--}}
-{{--                                <div class="row justify-content-end mt-2">--}}
-{{--                                    <div class="col-md-3 ">--}}
-{{--                                        <button type="button" class="btn medibg custom-btn text-white"--}}
-{{--                                                data-bs-toggle="modal" data-bs-target="#addUser">New User--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                            <div class="card-header border-0">
+                                <div class="row justify-content-end mt-2">
+                                    <div class="col-md-3 ">
+                                        <button type="button" class="btn medibg custom-btn text-white"
+                                                data-bs-toggle="modal" data-bs-target="#addUser">New User
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="row">
                                 <div class="col">
@@ -52,6 +52,7 @@
                                                 <thead class="thead-light text-dark ">
                                                 <tr>
                                                     <th scope="col" class="sort" data-sort="budget">Name</th>
+                                                    <th scope="col" class="sort" data-sort="budget">Photo</th>
                                                     <th scope="col" class="sort" data-sort="budget">Email</th>
                                                     <th scope="col" class="sort" data-sort="budget">Contact</th>
                                                     <th scope="col" class="sort" data-sort="status">Role</th>
@@ -63,10 +64,14 @@
                                                 @foreach($users as $user)
                                                     @include('admin.pages.modals.users.update')
                                                     @include('admin.pages.modals.users.details')
+                                                    @include('admin.pages.modals.users.delete')
                                                 <tr>
 
                                                     <td class="budget">
                                                         {{$user->userName}}
+                                                    </td>
+                                                    <td class="budget">
+                                                        <img src="{{'/'.$user->profile->img}}" alt="{{$user->name}}" width="80px" height="120px" class="img-fluid img-thumbnail">
                                                     </td>
                                                     <td>
                                                           <span class="badge badge-dot mr-4">
@@ -95,7 +100,7 @@
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                                 <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#update-Role-{{$user->id}}">Update</a>
-                                                                <a class="dropdown-item" href="{{route('users.destroy',$user->id)}}">Delete</a>
+                                                                <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#user-delete-{{$user->id}}" >Delete</a>
 
                                                                 <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#details-Role-{{$user->id}}">View</a>
                                                             </div>

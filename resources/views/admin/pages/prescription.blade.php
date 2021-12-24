@@ -26,17 +26,29 @@
                                     <input type="text" name="to" class="form-control" id="to" placeholder="Filter To">
                                 </div>
                                 <div class="form-group col">
+<<<<<<< HEAD
                                     <button class="btn medibg text-black" id="filter">Filter</button>
                                     <span class="btn btn-danger ">Cancel</span>
                                
+=======
+
+                                    <button type="submit" class="btn medibg text-black">Filter</button>
+                                    <span class="btn btn-danger ">Cancel</span>
+
+                                    <span class="btn medibg text-white">Filter</span>
+                                    <span class="btn btn-danger text-white">Cancel</span>
+
+>>>>>>> cedd6d8fca133f414378940b3eab8bbbf1dcb36f
                                 </div>
 
                             </div>
                         </form>
                             <div class="row justify-content-end mb-3">
                                 <div class="col-md-3 ">
-                                    <button type="button" class="btn medibg custom-btn text-black" data-bs-toggle="modal" data-bs-target="#order">Buy Prescription</button>
-                               
+
+
+                                    <button type="button" class="btn medibg custom-btn text-white" data-bs-toggle="modal" data-bs-target="#order">Buy Prescription</button>
+
                                 </div>
                             </div>
 
@@ -53,7 +65,7 @@
                                                     <th scope="col" class="sort" data-sort="budget">Order image</th>
                                                     <th scope="col" class="sort" data-sort="budget">quantity</th>
                                                     <th scope="col" class="sort" data-sort="budget">Note</th>
-                                                    <th scope="col" class="sort" data-sort="budget">option</th>
+                                                    {{--<th scope="col" class="sort" data-sort="budget">option</th>--}}
                                                     <th scope="col" class="sort" data-sort="status">Status</th>
                                                     <th scope="col" class="sort" data-sort="completion">Action</th>
                                                   
@@ -71,37 +83,31 @@
                                                 <tr>
 
                                                     <td class="budget">
-                                                     <img style="width:100px;height:100px"src="{{ asset('uploads/orders/'.$order->image) }}">
+                                                     <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$order->image) }}">
                                                     </td>
                                                     <td>
                                              {{ $order->quantity }}
                                                     </td>
                                                     <td>
                                                         {{ $order->note }}
-                                                    </td>
-                                                    <td>{{ App\Models\DeliveryOption::find($order->delivery_option_id)->option }}</td>
-                                                 
-                                                    <td>
+
                                             @if($order->status == 0)
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-secondary"></i>
-                                                <span class="status text-dark">In complete</span>
-                                              </span>
+                                            <td class="badge badge-dot mr-4">
+
+                                                <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
+                                              </td>
                         
                                             @else
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-success"></i>
-                                                <span class="status text-dark">completed</span>
-                                              </span>
+                                            <td class="badge badge-dot mr-4">
+
+                                                   <span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Waiting For Assign</span>
+                                              </td>
                         
                                             @endif
-                   
 
-                                             </td>
-
-                                                    <td class="text-right">
+                                                    <td class="text-right ">
                                                         <div class="dropdown">
-                                                            <a class="btn btn-lg medibg shadow btn-icon-only text-dark"
+                                                            <a class="btn btn-lg medibg shadow btn-icon-only text-white"
                                                                href="#"
                                                                role="button" data-toggle="dropdown" aria-haspopup="true"
                                                                aria-expanded="false">
@@ -120,6 +126,7 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+<<<<<<< HEAD
 
                                                 @empty
                                                 <tr>
@@ -129,6 +136,10 @@
  
 
                                                 @endforelse
+=======
+                                                @endforeach
+
+>>>>>>> cedd6d8fca133f414378940b3eab8bbbf1dcb36f
                                                 
                                                     <tr>
 
@@ -207,8 +218,7 @@
                                                 </tr> --}}
                                                
                                              
-                                                
-
+                                              
 
                                                 </tbody>
                                             </table>
@@ -219,10 +229,18 @@
                         </div>
                         <div class="container">
                             <div class="col-md-12">
+
                              
                      {{ $orders->links('admin.pages.custom_paginate') }}
                             
                     </div>
+
+                                <ul class="pagination offset-lg-5 mt-2">
+                                    <li class=" m-3 "><a class=" btn medibg text-white" href="#">Previous</a></li>
+                                    <li class="m-3"><a class=" btn medibg text-white" href="#">Next</a></li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
                 </div>
