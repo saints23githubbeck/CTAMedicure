@@ -126,6 +126,8 @@ Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'
 Route::get('/edit/prescription/{order_id}',[PrescriptionController::class,'edit'])->name('edit.prescription');
 Route::post('/update/prescription',[PrescriptionController::class,'edit_post'])->name('update.prescription');
 Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
+Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
+Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'approve'])->name('prescription.confirm');
 
 //prescription end
 
@@ -200,7 +202,7 @@ Route::get('/request-list', function () {
 Route::prefix('admin')->group(function () {
 
 
-    Route::get('/dashboard/show','DashboardController@dashboard')->name('dashboard.show');
+    Route::get('/dashboard','DashboardController@dashboard')->name('dashboard.show');
 
     Route::prefix('role')->group(function () {
 

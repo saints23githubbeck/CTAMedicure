@@ -58,7 +58,7 @@
                                                 Date
                                             </div>
                                             <div class="col-8">
-                                                <input type="date" class="three">
+                                                <input type="date" class="three form-control">
                                             </div>
                                         </div>
                                         <div class="row margin">
@@ -66,7 +66,7 @@
                                                 First Name
                                             </div>
                                             <div class="col-8">
-                                                <input type="text" class="three" placeholder="United States">
+                                                <input type="text" class="three form-control" placeholder="United States">
                                             </div>
                                         </div>
                                         <!--three end-->
@@ -76,7 +76,7 @@
                                                 Last Name
                                             </div>
                                             <div class="col-8">
-                                                <input type="text" class="four" placeholder="United States">
+                                                <input type="text" class="four form-control" placeholder="United States">
                                             </div>
                                         </div>
                                         <div class="row margin">
@@ -84,7 +84,7 @@
                                                 Phone
                                             </div>
                                             <div class="col-8">
-                                                <input type="text" class="four" placeholder="000-0000-000">
+                                                <input type="text" class="four form-control" placeholder="000-0000-000">
                                             </div>
                                         </div>
                                         <div class="row margin">
@@ -92,7 +92,7 @@
                                                 Email
                                             </div>
                                             <div class="col-8">
-                                                <input type="email" class="four" placeholder="lorem@gmail.com">
+                                                <input type="email" class="four form-control" placeholder="lorem@gmail.com">
                                             </div>
                                         </div>
                                         <div class="row margin">
@@ -100,14 +100,16 @@
                                                 Purpose of visit/<br>comments
                                             </div>
                                             <div class="col-8">
-                                                <textarea class="four custom_height" placeholder="Lorem ipsum dolor sit amet consectetur?"></textarea>
+                                                <textarea   class="four custom_height form-control" maxlength="250" cols="50" rows="5" style="resize: none" placeholder="Lorem ipsum dolor sit amet consectetur?"></textarea>
                                             </div>
                                         </div>
-                                        <div class="row margin">
-                                            <div class="offset-4 col-4">
-                                                <input type="submit" value="continue" class="btn_submit" data-bs-dismiss="modal">
+                                        <div class="container">
+                                            <div class="col-md-12">
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn medibg text-white ">Submit</button>
+                                                </div>
                                             </div>
-
                                         </div>
                                         <!--four end-->
 
