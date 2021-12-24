@@ -14,20 +14,21 @@
                     <div class="card">
                         <div class="card-body mx-2 my-5">
                             <h2 class="fw-bolder text-center">Prescriptions</h2>
-                            <form action="{{ route('filter.prescription') }}" method="POST">
-                                @csrf
+                            <form action="#">
+                              
                             <div class="row my-3 ">
                                 <div class="form-group col">
                                      From
-                                    <input type="date" name="form" class="form-control" id="inputEmail4" placeholder=" Filter From">
+                                    <input type="text" name="from"  class="form-control" id="from" placeholder=" Filter From" >
                                 </div>
                                 <div class="form-group col">
                                      To
-                                    <input type="date" name="to" class="form-control" id="inputPassword4" placeholder="Filter To">
+                                    <input type="text" name="to" class="form-control" id="to" placeholder="Filter To">
                                 </div>
                                 <div class="form-group col">
-                                    <button type="submit" class="btn medibg text-black">Filter</button>
+                                    <button class="btn medibg text-black" id="filter">Filter</button>
                                     <span class="btn btn-danger ">Cancel</span>
+                               
                                 </div>
 
                             </div>
@@ -55,18 +56,18 @@
                                                     <th scope="col" class="sort" data-sort="budget">option</th>
                                                     <th scope="col" class="sort" data-sort="status">Status</th>
                                                     <th scope="col" class="sort" data-sort="completion">Action</th>
-                                                    <th scope="col"></th>
+                                                  
                                                 </tr>
                                                 </thead>
                                                 <tbody class="list">
-                                                @php 
+                                                {{-- @php 
                                                    
                                                 $orders = App\Models\Order::Paginate(2);
                                                    
-                                                @endphp
+                                                @endphp --}}
 
                                                
-                                                @foreach ($orders as $order)
+                                                @forelse ($orders as $order)
                                                 <tr>
 
                                                     <td class="budget">
@@ -119,7 +120,15 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                @endforeach
+
+                                                @empty
+                                                <tr>
+<td colspan="6">No prescriptions found.</td>
+
+                                                </tr>
+ 
+
+                                                @endforelse
                                                 
                                                     <tr>
 
@@ -224,7 +233,65 @@
 
 
 @section('footer_script') 
+<script>
+    $(document).ready(function(){
+$.datepicker.setDefaults({
+ dateFormat: 'yy-mm-dd'
+});
 
+$(function(){
+$('#from').datepicker();
+$('#to').datepicker();
+
+});
+
+$('#filter').click(function(){
+var from_date = $('#from').val();
+var to_date = $('#to').val();
+if(from_date != '' && to_date != ''){
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$.ajax({
+type:'POST',
+url:'/filter/prescription',
+data:{from:from_date,to:to_date},
+success:function(data){
+    $('.list').html(data);
+},
+error:function(xhr){
+    console.log(xhr.responseText);
+}
+});
+
+
+}else{
+    const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'warning',
+  title: 'You must select from and to both'
+})
+}
+});
+
+
+    });
+</script>
 <!--custom modal end-------->
 @if(session('add'))
 <script>

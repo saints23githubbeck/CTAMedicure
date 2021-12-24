@@ -1,19 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
+
+
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Carbon\Carbon;
+use App\Models\DeliveryOption;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PrescriptionController extends Controller
 {
     public function index()
     {
-       $orders = Order::all();
-
-    return view('admin.pages.prescription',compact('orders'));
+  
+    $orders = Order::Paginate(2);
+    return view('admin.pages.prescription',[
+        'orders'=>$orders
+    ]);
     }
     public function insert(Request $request){
         $request->validate([
@@ -22,14 +29,26 @@ class PrescriptionController extends Controller
         'delivery_option_id'=>'required',
      
         ]);
-        $image_id = Order::insertGetId([
+        if(Auth::id()){
+            $image_id = Order::insertGetId([
          
-         'quantity'=>$request->quantity,
-         'note'=>$request->description,
-         'user_id'=>1,
-         'delivery_option_id'=>$request->delivery_option_id,
-         'created_at'=>Carbon::now()
-        ]);
+                'quantity'=>$request->quantity,
+                'note'=>$request->description,
+                'user_id'=>Auth::id(),
+                'delivery_option_id'=>$request->delivery_option_id,
+                'created_at'=>Carbon::now()
+               ]);
+        }else{
+            $image_id = Order::insertGetId([
+         
+                'quantity'=>$request->quantity,
+                'note'=>$request->description,
+                'delivery_option_id'=>$request->delivery_option_id,
+                'created_at'=>Carbon::now()
+               ]);
+        }
+
+      
 
         $photo_name = $request->image;
         $extension = $photo_name->getClientOriginalExtension();
@@ -100,11 +119,97 @@ $data = Order::find($order_id);
             }
             return back()->with('add','prescription updated succesfully.');
     }
-    // function filter(Request $request){
-    
+function filter(Request $request){
+$fromdate = $request->from;
+$todate = $request->to;
+// echo $fromdate;
+// echo '<br>';
+// echo $todate;
+//$data =  DB::select("SELECT * FROM orders WHERE created_at BETWEEN '$fromdate 00:00:00' AND  '$todate 23:59:59'");
+
+ // return view('admin.pages.prescription',[
+//     'orders'=>$data
+// ]);
+
     // $data = Order::where('created_at','=',$request->from)->where('created_at','=',$request->to)->get();
     // print_r($data);
 
-    // }
+//all code start
+$data =  DB::select("SELECT * FROM orders WHERE created_at BETWEEN '$fromdate 00:00:00' AND '$todate 23:59:59'");
+
+$send_html = '';
+
+foreach($data as $order){
+    $delivery = DeliveryOption::find($order->delivery_option_id)->option;
+    $image_location = 'uploads/orders/'.$order->image;
+    $send_html .= "
+ <tr>
+
+                                                    <td class='budget'> ";
+
+
+$send_html .= '         
+ <img style="width:100px;height:100px" src="{{asset('.$image_location.')}}">';
+
+
+                                          $send_html .= "</td>
+                                                    <td>
+                                              $order->quantity 
+                                                    </td>
+                                                    <td>
+                                                    $order->note 
+                                                    </td>
+                                                    <td>$delivery</td>";
+
+                                                 if($order->status === 0){
+$send_html .=  "
+<td>
+<span class='badge badge-dot mr-4'>
+<i class='bg-secondary'></i>
+<span class='status text-dark'>In complete</span>
+</span>
+</td>
+";
+}else{
+$send_html = "
+<td>
+<span class='badge badge-dot mr-4'>
+<i class='bg-success'></i>
+<span class='status text-dark'>completed</span>
+</span>
+</td>
+";                                        
+
+ }
+                             
+
+
+
+                                                 $send_html .= "   <td class='text-right'>
+                                                        <div class='dropdown'>
+                                                            <a class='btn btn-lg medibg shadow btn-icon-only text-dark'
+                                                               href='#'
+                                                               role='button' data-toggle='dropdown' aria-haspopup='true'
+                                                               aria-expanded='false'>
+                                                                <i class='fas fa-ellipsis-v'></i>
+                                                            </a>
+                                                            <div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
+                                                                <a class='dropdown-item' href='{{ route('edit.prescription',$order->id) }}'>Update</a>
+                                                                <a class='dropdown-item' href='{{ route('delete.prescription',$order->id) }}'>Delete</a>
+                                                                <a class='dropdown-item' href='{{ route('view.prescription',$order->id) }}'> view </a>
+   
+
+    
+    
+
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+";
+}
+echo $send_html;
+
+}
  
 }
