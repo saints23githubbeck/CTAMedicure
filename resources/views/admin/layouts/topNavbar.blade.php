@@ -202,7 +202,7 @@
                     <img alt="Image placeholder" src="{{'/'.auth()->user()->profile->img}}">
                   </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->userName}}</span>
+                                {{-- <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->userName}}</span> --}}
                             </div>
                         </div>
                     </a>

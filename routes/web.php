@@ -120,6 +120,11 @@ Route::get('/location', function () {
 
 
 Route::get('/prescription',[PrescriptionController::class,'index'])->name('prescription');
+Route::post('filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
+Route::get('/delete/prescription/{order_id}',[PrescriptionController::class,'delete'])->name('delete.prescription');
+Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'])->name('view.prescription');
+Route::get('/edit/prescription/{order_id}',[PrescriptionController::class,'edit'])->name('edit.prescription');
+Route::post('/update/prescription',[PrescriptionController::class,'edit_post'])->name('update.prescription');
 Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
 Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
 Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'approve'])->name('prescription.confirm');
