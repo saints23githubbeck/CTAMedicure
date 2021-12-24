@@ -65,6 +65,16 @@
                         </a>
                     </li>
                     <li class="nav-item ">
+                        <a class="nav-link" href="{{route('order_status')}}">
+                            <i class="fas fa-truck"></i><span class="nav_name text-white ">Order Status</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('order_coupon')}}">
+                            <i class="fas fa-gift"></i><span class="nav_name text-white ">Order Coupon Details</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
                         <a class="nav-link" href="{{route('orderlist')}}">
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Orderlist</span>
                         </a>
@@ -72,6 +82,16 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('billing_info')}}">
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Billing Info</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('doctor_list')}}">
+                            <i class="fad fa-user-md-chat"></i><span class="nav_name text-white ">Doctor List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('pharmacy_list')}}">
+                            <i class="fas fa-capsules"></i><span class="nav_name text-white ">Pharmacy</span>
                         </a>
                     </li>
                 </ul>

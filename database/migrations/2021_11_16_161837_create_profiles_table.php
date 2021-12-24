@@ -15,8 +15,8 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('firstName')->notNull();
-            $table->string('lastName')->notNull();
+            $table->string('firstName')->nullable();
+            $table->string('lastName')->nullable();
             $table->string('img')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();

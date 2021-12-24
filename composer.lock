@@ -1545,7 +1545,14 @@
             ],
             "support": {
                 "docs": "https://commonmark.thephpleague.com/",
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
                 "forum": "https://github.com/thephpleague/commonmark/discussions",
+>>>>>>> 68482617c673480a7d55c804e0a4cb822eeeb3d8
+=======
+                "forum": "https://github.com/thephpleague/commonmark/discussions",
+>>>>>>> 954da970c06c905a6609dda391f6cbc428883da4
                 "issues": "https://github.com/thephpleague/commonmark/issues",
                 "rss": "https://github.com/thephpleague/commonmark/releases.atom",
                 "source": "https://github.com/thephpleague/commonmark"
@@ -1996,6 +2003,12 @@
                 }
             ],
             "time": "2021-12-03T14:59:52+00:00"
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> 954da970c06c905a6609dda391f6cbc428883da4
         },
         {
             "name": "nette/schema",
@@ -2142,7 +2155,11 @@
                 "issues": "https://github.com/nette/utils/issues",
                 "source": "https://github.com/nette/utils/tree/v3.2.6"
             },
+<<<<<<< HEAD
             "time": "2021-11-24T15:47:23+00:00"
+>>>>>>> 68482617c673480a7d55c804e0a4cb822eeeb3d8
+=======
+>>>>>>> 954da970c06c905a6609dda391f6cbc428883da4
         },
         {
             "name": "nikic/php-parser",
@@ -2380,9 +2397,26 @@
             ],
             "support": {
                 "issues": "https://github.com/php-fig/container/issues",
+<<<<<<< HEAD
+<<<<<<< HEAD
+                "source": "https://github.com/php-fig/container/tree/1.1.1"
+            },
+            "time": "2021-03-05T17:36:06+00:00"
+=======
                 "source": "https://github.com/php-fig/container/tree/1.1.2"
             },
             "time": "2021-11-05T16:50:12+00:00"
+>>>>>>> 68482617c673480a7d55c804e0a4cb822eeeb3d8
+=======
+
+                "source": "https://github.com/php-fig/container/tree/1.1.1"
+            },
+            "time": "2021-03-05T17:36:06+00:00"
+
+                "source": "https://github.com/php-fig/container/tree/1.1.2"
+            },
+
+>>>>>>> 954da970c06c905a6609dda391f6cbc428883da4
         },
         {
             "name": "psr/event-dispatcher",

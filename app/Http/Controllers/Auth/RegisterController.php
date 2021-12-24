@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Traits\ProfileTriat;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -29,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -53,7 +55,8 @@ class RegisterController extends Controller
             'userName' => ['required', 'string', 'max:20','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'role_id' => ['required', 'string'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'contactNumber' => ['required', 'string'],
+            'password' => ['required', 'string', 'min:8'],
         ]);
     }
 
@@ -65,10 +68,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+
+      $user = User::create([
+            'userName' => $data['userName'],
             'email' => $data['email'],
+            'contactNumber' => $data['contactNumber'],
+            'role_id' => $data['role_id'],
             'password' => Hash::make($data['password']),
         ]);
+        $profile = new Profile();
+        $profile->user_id = $user->id;
+        $profile->save();
+//        $profile = new Profile();
+//        $profile->image = 'default.png';
+//        $profile->user_id = $data->id;
+//        $profile->save();
+
     }
+
+
 }
