@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ConfirmedOrder;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Carbon\Carbon;
@@ -44,6 +45,31 @@ class PrescriptionController extends Controller
 
      $orders = Order::where('status',0)->orderBy('created_at','desc')->get();
 
-        return view('admin.pages.request-list',compact('orders'));
+        $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->get();
+
+        return view('admin.pages.request-list',compact('orders','confirmOrders'));
+    }
+
+    public function acceptOrder(){
+
+        $confirmOrders = ConfirmedOrder::where('user_id',auth()->id)->orderBy('created_at','desc')->get();
+
+        return view('admin.pages.request-list',compact('confirmOrders'));
+    }
+
+
+    public function approve( Request $request, Order $order){
+
+        $order->confirmedOrder()->create([
+            'amount'=>$request->amount,
+            'note'=>$request->description,
+            'status'=>0,
+            'user_id'=>auth()->id(),
+        ]);
+        $order->update([
+            'status'=>1,
+        ]);
+
+        return back()->with('add','order Approved successfully.');
     }
 }

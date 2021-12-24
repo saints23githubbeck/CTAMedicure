@@ -122,6 +122,7 @@ Route::get('/location', function () {
 Route::get('/prescription',[PrescriptionController::class,'index'])->name('prescription');
 Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
 Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
+Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'approve'])->name('prescription.confirm');
 
 //prescription end
 

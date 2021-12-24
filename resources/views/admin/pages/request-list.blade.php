@@ -3,6 +3,11 @@
 @section('content')
     <!--Container Main start-->
     <div class="container">
+        <div class="col-md-9 offset-2">
+            <div class="breadcrumbs-area">
+                @include('admin.layouts.status')
+            </div>
+        </div>
         <div class="row">
             <div class="col-12 mt-lg-5">
                 <h1 class="text-lg-center">Request List</h1>
@@ -57,14 +62,15 @@
 
                                                     @endif
                                                     <td>
-                                                        <a href="#">View</a>
+                                                        <a  data-bs-toggle="modal" data-bs-target="#details-order-{{$order->id}}">View</a>
                                                     </td>
                                                     <td>
-                                                        <a href="#" class="btn btn-success">Approved</a>
+                                                        <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$order->id}}" class="btn btn-success">Approved</a>
                                                         <a href="#" class="btn btn-danger">Rejected</a>
                                                     </td>
                                                 </tr>
-
+                                                      @include('admin.pages.modals.orders.details')
+                                                      @include('admin.pages.modals.orders.approve')
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -77,6 +83,7 @@
                                         <div class="table-responsive">
                                             <table class="table my-5">
                                                 <thead class="border_botttom">
+
                                                 <tr>
                                                     <th scope="col">Order Id</th>
                                                     <th scope="col">Order Date</th>
@@ -88,12 +95,17 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                @foreach($confirmOrders as $approved)
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>01-01-21</td>
+                                                    <td>{{$approved->id}}</td>
+                                                    <td>{{$approved->created_at}}</td>
                                                     <td>Pending</td>
-                                                    <td class="text-warning">Accepted Waiting For Assign</td>
-                                                    <td><a href="#">View</a></td>
+                                                    @if($approved->status == 0)
+                                                    <td class="text-warning">Pending Payments</td>
+                                                    @else
+                                                        <td class="text-warning">Accepted Waiting For Assign</td>
+                                                        @endif
+                                                    <td><a href="#" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
                                                     <td><span class="badge bg-primary text-white">Assign</span></td>
                                                     <td>
                                                         <a href=""><i class="fab fa-telegram-plane"></i></a>
@@ -101,32 +113,8 @@
                                                         <a href=""><i class="fas fa-user"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>01-01-21</td>
-                                                    <td>Pending</td>
-                                                    <td class="text-warning">Accepted Waiting For Assign</td>
-                                                    <td><a href="#">View</a></td>
-                                                    <td><span class="badge bg-primary text-white">Assign</span></td>
-                                                    <td>
-                                                        <a href=""><i class="fab fa-telegram-plane"></i></a>
-                                                        <a href=""><i class="fas fa-pills"></i></a>
-                                                        <a href=""><i class="fas fa-user"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>01-01-21</td>
-                                                    <td>Pending</td>
-                                                    <td class="text-warning">Accepted Waiting For Assign</td>
-                                                    <td><a href="#">View</a></td>
-                                                    <td><span class="badge bg-primary text-white">Assign</span></td>
-                                                    <td>
-                                                        <a href=""><i class="fab fa-telegram-plane"></i></a>
-                                                        <a href=""><i class="fas fa-pills"></i></a>
-                                                        <a href=""><i class="fas fa-user"></i></a>
-                                                    </td>
-                                                </tr>
+                                                    @include('admin.pages.modals.orders.orderApprovedetails')
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
