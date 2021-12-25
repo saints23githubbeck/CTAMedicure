@@ -14,35 +14,29 @@
                     <div class="card">
                         <div class="card-body mx-2 my-5">
                             <h2 class="fw-bolder text-center">Prescriptions</h2>
-                            <form action="#">
+                           
                               
                             <div class="row my-3 ">
                                 <div class="form-group col">
+                                    
                                      From
-                                    <input type="text" name="from"  class="form-control" id="from" placeholder=" Filter From" >
+                                    <input type="text" name="form_date" class="form-control" readonly id="from_date" placeholder=" Filter From">
                                 </div>
                                 <div class="form-group col">
                                      To
-                                    <input type="text" name="to" class="form-control" id="to" placeholder="Filter To">
+                                    <input type="text" name="to_date" class="form-control" readonly id="to_date" placeholder="Filter To">
                                 </div>
                                 <div class="form-group col">
-<<<<<<< HEAD
-                                    <button class="btn medibg text-black" id="filter">Filter</button>
-                                    <span class="btn btn-danger ">Cancel</span>
+
+                                    <button type="button" class="btn medibg text-black" name="filter" id="filter">Filter</button>
+                                    <button type="button" class="btn btn-danger" name="refresh" id="refresh">Refresh</button>
+
                                
-=======
 
-                                    <button type="submit" class="btn medibg text-black">Filter</button>
-                                    <span class="btn btn-danger ">Cancel</span>
-
-                                    <span class="btn medibg text-white">Filter</span>
-                                    <span class="btn btn-danger text-white">Cancel</span>
-
->>>>>>> cedd6d8fca133f414378940b3eab8bbbf1dcb36f
                                 </div>
 
                             </div>
-                        </form>
+                        
                             <div class="row justify-content-end mb-3">
                                 <div class="col-md-3 ">
 
@@ -67,8 +61,8 @@
                                                     <th scope="col" class="sort" data-sort="budget">Note</th>
                                                     {{--<th scope="col" class="sort" data-sort="budget">option</th>--}}
                                                     <th scope="col" class="sort" data-sort="status">Status</th>
-                                                    <th scope="col" class="sort" data-sort="completion">Action</th>
-                                                  
+                                                    <th scope="col" class="sort" data-sort="completion" class="text-r">Action</th>
+                                                    
                                                 </tr>
                                                 </thead>
                                                 <tbody class="list">
@@ -79,7 +73,7 @@
                                                 @endphp --}}
 
                                                
-                                                @forelse ($orders as $order)
+                                                @foreach ($orders as $order)
                                                 <tr>
 
                                                     <td class="budget">
@@ -106,7 +100,11 @@
                                             @endif
 
                                                     <td class="text-right ">
-                                                        <div class="dropdown">
+                                                        <a class="btn btn-warning" href={{ route("edit.prescription",$order->id) }}>Update</a>
+                                                        <a class="btn btn-danger" href={{ route("delete.prescription",$order->id) }}>Delete</a>
+                                                        <a class="btn btn-success" href={{ route("view.prescription",$order->id) }}>View</a>
+                                                      
+                                                        {{-- <div class="dropdown">
                                                             <a class="btn btn-lg medibg shadow btn-icon-only text-white"
                                                                href="#"
                                                                role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -123,99 +121,13 @@
     
 
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                     </td>
                                                 </tr>
-<<<<<<< HEAD
-
-                                                @empty
-                                                <tr>
-<td colspan="6">No prescriptions found.</td>
-
-                                                </tr>
- 
-
-                                                @endforelse
-=======
                                                 @endforeach
 
->>>>>>> cedd6d8fca133f414378940b3eab8bbbf1dcb36f
                                                 
-                                                    <tr>
-
-                                                    <td class="budget">
-                                                        ghfdh v gff vf gjfhk
-                                                    </td>
-                                                    <td>
-                                             
-                                                    </td>
-                                                    <td>
-                                                        <div class="avatar-group">
-                                                            02:pm
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i>
-                        <span class="status">completed</span>
-                      </span>
-                                                    </td>
-
-                                                    <td class="text-right">
-                                                        <div class="dropdown">
-                                                            <a class="btn btn-lg medibg shadow btn-icon-only text-dark"
-                                                               href="#"
-                                                               role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                               aria-expanded="false">
-                                                                <i class="fas fa-ellipsis-v"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <a class="dropdown-item" href="#">Update</a>
-                                                                <a class="dropdown-item" href="#">Delete</a>
-                                                                <a class="dropdown-item" href="#">View</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                {{-- <tr>
-
-                                                    <td class="budget">
-                                                        ghfdh v gff vf gjfhk
-                                                    </td>
-                                                    <td>
-                                                          <span class="badge badge-dot mr-4">
-
-                                                            <span class="status">54, dec 2022</span>
-                                                          </span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="avatar-group">
-                                                            02:pm
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i>
-                        <span class="status">completed</span>
-                      </span>
-                                                    </td>
-
-                                                    <td class="text-right">
-                                                        <div class="dropdown">
-                                                            <a class="btn btn-lg medibg shadow btn-icon-only text-light"
-                                                               href="#"
-                                                               role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                               aria-expanded="false">
-                                                                <i class="fas fa-ellipsis-v"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <a class="dropdown-item" href="#">Update</a>
-                                                                <a class="dropdown-item" href="#">Delete</a>
-                                                                <a class="dropdown-item" href="#">View</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr> --}}
+                                                    
                                                
                                              
                                               
@@ -235,10 +147,7 @@
                             
                     </div>
 
-                                <ul class="pagination offset-lg-5 mt-2">
-                                    <li class=" m-3 "><a class=" btn medibg text-white" href="#">Previous</a></li>
-                                    <li class="m-3"><a class=" btn medibg text-white" href="#">Next</a></li>
-                                </ul>
+                            
                             </div>
 
                         </div>
@@ -258,35 +167,66 @@ $.datepicker.setDefaults({
 });
 
 $(function(){
-$('#from').datepicker();
-$('#to').datepicker();
+$('#from_date').datepicker();
+$('#to_date').datepicker();
 
 });
-
-$('#filter').click(function(){
-var from_date = $('#from').val();
-var to_date = $('#to').val();
-if(from_date != '' && to_date != ''){
-
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
 
-$.ajax({
+fetch_data();
+function fetch_data(from_date = '',to_date = ''){
+    $.ajax({
 type:'POST',
 url:'/filter/prescription',
-data:{from:from_date,to:to_date},
+data:{from_date:from_date,to_date:to_date},
+dataType:"json",
 success:function(data){
-    $('.list').html(data);
+ 
+    var output = '';
+    for(var count = 0;count < data.length;count++){
+        output += '<tr>';
+           
+        output += "<td><img src={{ URL::to('/') }}/uploads/orders/"+data[count].image+" width='70px'/></td>";
+        // output += '<td><img src="'+"asset('uploads/orders/"+data[count].image+')"></td>';
+
+        output += '<td>'+data[count].quantity+'</td>';
+        output += '<td>'+data[count].note+'</td>';
+        if(data[count].status === 0){
+        output += '<td><span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span></td>';
+        }else{
+            output += '<td><span class="status text-white bg-success p-1 rounded shadow-lg">completed</span></td>';
+        }
+        output +=  '<td class="text-right">';
+        output += '<a class="btn btn-primary" href={{ route("edit.prescription",$order->id) }}>Update</a>';
+        output += '<a class="btn btn-danger" href={{ route("delete.prescription",$order->id) }}>Delete</a>';
+        output += '<a class="btn btn-success" href={{ route("view.prescription",$order->id) }}>View</a>';
+      
+        output += '</td>';
+                        
+       
+
+
+
+        output += '<tr>';
+    }
+$('.list').html(output);
+
 },
 error:function(xhr){
     console.log(xhr.responseText);
 }
 });
+}
 
-
+$('#filter').click(function(){
+var from_date = $('#from_date').val();
+var to_date = $('#to_date').val();
+if(from_date != '' && to_date != ''){
+ fetch_data(from_date,to_date);
 }else{
     const Toast = Swal.mixin({
   toast: true,
@@ -302,12 +242,18 @@ error:function(xhr){
 
 Toast.fire({
   icon: 'warning',
-  title: 'You must select from and to both'
+  title: 'choose from and to date'
 })
+
 }
+
 });
 
-
+$('#refresh').click(function(){
+$('#from_date').val('');
+$('#to_date').val('');
+location.reload();
+});
     });
 </script>
 <!--custom modal end-------->
