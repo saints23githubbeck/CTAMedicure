@@ -16,7 +16,7 @@ class PrescriptionController extends Controller
 {
     public function index()
     {
-       $orders = Order::all();
+       $orders = Order::with('user');
 
     return view('admin.pages.prescription',compact('orders'));
     }

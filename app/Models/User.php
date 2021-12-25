@@ -53,9 +53,9 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function confirmationOrder()
+    public function confirmedOrder()
     {
-        return $this->hasMany(ConfirmationOrder::class);
+        return $this->hasMany(ConfirmedOrder::class);
     }
 
     public function consultancy()

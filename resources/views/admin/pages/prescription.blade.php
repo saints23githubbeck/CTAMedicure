@@ -6,9 +6,6 @@
 
 @include('admin.pages.modals.orders.order')
 
-
-
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -27,11 +24,8 @@
                                 </div>
                                 <div class="form-group col">
 
-                                    <button type="submit" class="btn medibg text-black">Filter</button>
-                                    <span class="btn btn-danger ">Cancel</span>
-
-                                    <span class="btn medibg text-white">Filter</span>
-                                    <span class="btn btn-danger text-white">Cancel</span>
+                                    <span class="btn medibg text-white mt-4">Filter</span>
+                                    <span class="btn btn-danger text-white mt-4">Cancel</span>
 
                                 </div>
 
@@ -59,20 +53,19 @@
                                                     <th scope="col" class="sort" data-sort="budget">Order image</th>
                                                     <th scope="col" class="sort" data-sort="budget">quantity</th>
                                                     <th scope="col" class="sort" data-sort="budget">Note</th>
-                                                    {{--<th scope="col" class="sort" data-sort="budget">option</th>--}}
                                                     <th scope="col" class="sort" data-sort="status">Status</th>
                                                     <th scope="col" class="sort" data-sort="completion">Action</th>
                                                     <th scope="col"></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody class="list">
-                                                @php 
-                                                   
+                                                @php
+
                                                 $orders = App\Models\Order::Paginate(2);
-                                                   
+
                                                 @endphp
 
-                                               
+
                                                 @foreach ($orders as $order)
                                                 <tr>
 
@@ -90,13 +83,13 @@
 
                                                 <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
                                               </td>
-                        
+
                                             @else
                                             <td class="badge badge-dot mr-4">
 
-                                                   <span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Waiting For Assign</span>
+                                                <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-{{$order->confirmedOrder}}"><span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Review Now</span></a>
                                               </td>
-                        
+
                                             @endif
 
                                                     <td class="text-right ">
@@ -111,96 +104,18 @@
                                                                 <a class="dropdown-item" href="{{ route('edit.prescription',$order->id) }}">Update</a>
                                                                 <a class="dropdown-item" href="{{ route('delete.prescription',$order->id) }}">Delete</a>
                                                                 <a class="dropdown-item" href="{{ route('view.prescription',$order->id) }}"> view </a>
-   
 
-    
-    
+
+
+
 
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                    @include('admin.pages.modals.orders.previewOrder')
                                                 @endforeach
 
-                                                
-                                                    <tr>
-
-                                                    <td class="budget">
-                                                        ghfdh v gff vf gjfhk
-                                                    </td>
-                                                    <td>
-                                             
-                                                    </td>
-                                                    <td>
-                                                        <div class="avatar-group">
-                                                            02:pm
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i>
-                        <span class="status">completed</span>
-                      </span>
-                                                    </td>
-
-                                                    <td class="text-right">
-                                                        <div class="dropdown">
-                                                            <a class="btn btn-lg medibg shadow btn-icon-only text-dark"
-                                                               href="#"
-                                                               role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                               aria-expanded="false">
-                                                                <i class="fas fa-ellipsis-v"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <a class="dropdown-item" href="#">Update</a>
-                                                                <a class="dropdown-item" href="#">Delete</a>
-                                                                <a class="dropdown-item" href="#">View</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                {{-- <tr>
-
-                                                    <td class="budget">
-                                                        ghfdh v gff vf gjfhk
-                                                    </td>
-                                                    <td>
-                                                          <span class="badge badge-dot mr-4">
-
-                                                            <span class="status">54, dec 2022</span>
-                                                          </span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="avatar-group">
-                                                            02:pm
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i>
-                        <span class="status">completed</span>
-                      </span>
-                                                    </td>
-
-                                                    <td class="text-right">
-                                                        <div class="dropdown">
-                                                            <a class="btn btn-lg medibg shadow btn-icon-only text-light"
-                                                               href="#"
-                                                               role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                               aria-expanded="false">
-                                                                <i class="fas fa-ellipsis-v"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <a class="dropdown-item" href="#">Update</a>
-                                                                <a class="dropdown-item" href="#">Delete</a>
-                                                                <a class="dropdown-item" href="#">View</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr> --}}
-                                               
-                                             
-                                              
 
                                                 </tbody>
                                             </table>
@@ -212,15 +127,10 @@
                         <div class="container">
                             <div class="col-md-12">
 
-                             
-                     {{ $orders->links('admin.pages.custom_paginate') }}
-                            
-                    </div>
 
-                                <ul class="pagination offset-lg-5 mt-2">
-                                    <li class=" m-3 "><a class=" btn medibg text-white" href="#">Previous</a></li>
-                                    <li class="m-3"><a class=" btn medibg text-white" href="#">Next</a></li>
-                                </ul>
+                     {{ $orders->links('admin.pages.custom_paginate') }}
+
+                    </div>
                             </div>
 
                         </div>
@@ -232,7 +142,7 @@
 @endsection
 
 
-@section('footer_script') 
+@section('footer_script')
 
 <!--custom modal end-------->
 @if(session('add'))
