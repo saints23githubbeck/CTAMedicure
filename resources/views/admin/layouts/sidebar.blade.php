@@ -30,7 +30,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('prescriptions')}}">
+                        <a class="nav-link" href="{{route('prescription')}}">
                             <i class="fas fa-prescription-bottle"></i> <span class="nav_name text-white ">Prescription</span>
                         </a>
                     </li>

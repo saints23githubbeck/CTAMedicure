@@ -107,9 +107,9 @@ Route::get('/location', function () {
 
 })->name('location');
 
-Route::get('/prescription', function () {
-    return view('admin.prescription');
-})->name('prescription');
+// Route::get('/prescription', function () {
+//     return view('admin.prescription');
+// })->name('prescription');
 
 
 Route::get('/location', function () {
@@ -119,7 +119,7 @@ Route::get('/location', function () {
 //prescription start
 
 
-Route::get('/prescription',[PrescriptionController::class,'index'])->name('prescription');
+Route::get('/prescription/aa',[PrescriptionController::class,'index'])->name('prescription');
 Route::post('filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
 Route::get('/delete/prescription/{order_id}',[PrescriptionController::class,'delete'])->name('delete.prescription');
 Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'])->name('view.prescription');
@@ -137,9 +137,9 @@ Route::get('/appointments', function () {
     return view('admin.pages.appointment');
 })->name('appointments');
 //
-Route::get('/prescriptions', function () {
-    return view('admin.pages.prescription');
-})->name('prescriptions');
+// Route::get('/prescriptions', function () {
+//     return view('admin.pages.prescription');
+// })->name('prescriptions');
 //
 
 Route::get('/users', function () {
