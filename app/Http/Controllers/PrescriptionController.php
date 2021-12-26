@@ -106,7 +106,7 @@ $data = Order::find($order_id);
             Image::make($image_name)->resize(500, 400)->save(base_path('public/uploads/orders/'.$order_new_image));
             
             }else{
-
+ 
                 Order::find($request->order_id)->update([
                     
                     'quantity'=> $request->quantity,
@@ -136,7 +136,19 @@ $data = Order::find($order_id);
         }
     }
 function status($order_id){
-    echo $order_id;
+    $status =  Order::find($order_id)->status;
+    if($status == 0){
+
+ Order::find($order_id)->update([
+ 'status'=>1
+ ]);
+    }else{
+     Order::find($order_id)->update([
+         'status'=>0
+         ]);
+    }
+    return back();
+ 
 }
 
 
