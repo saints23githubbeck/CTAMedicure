@@ -8,25 +8,23 @@
             <div class="card">
                 <div class="card-body justify-content-lg-between">
                     <h2 class="fw-bolder text-center">Appointments</h2>
-                    <div class="row my-3 ">
-                        <h2 class=" text-center"> Filter</h2>
-                        <div class="form-group col">
-
-                            <input type="text" class="form-control" id="inputEmail4" placeholder="From">
+                    <form action="">
+                        <div class="row my-3 ">
+                            <div class="form-group col">
+                                <input type="text" class="form-control" id="inputEmail4" placeholder="From">
+                            </div>
+                            <div class="form-group col">
+                                <input type="text" class="form-control" id="inputPassword4" placeholder="To">
+                            </div>
+                            <div class="form-group col">
+                                <span class="btn medibg text-white">Filter</span>
+                                <span class="btn btn-danger ">Cancel</span>
+                            </div>
                         </div>
-                        <div class="form-group col">
-
-                            <input type="text" class="form-control" id="inputPassword4" placeholder="To">
-                        </div>
-                        <div class="form-group col">
-                            <span class="btn medibg text-white">Filter</span>
-                            <span class="btn btn-danger ">Cancel</span>
-                        </div>
-
-                    </div>
+                    </form>
                     <div class="row justify-content-end mb-3">
                         <div class="col-md-3 ">
-                            <button type="button" class="btn medibg custom-btn text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop">New Appointments</button>
+                            <button type="button" class="btn medibg custom-btn text-white" data-bs-toggle="modal" data-bs-target="#appointment">New Appointments</button>
                         </div>
                     </div>
 
@@ -91,8 +89,9 @@
                 </div>
             </div>
         </div>
-
+        @include('admin.pages.modals.appointments.appointment')
     </div>
+
 </div>
 
 @endsection

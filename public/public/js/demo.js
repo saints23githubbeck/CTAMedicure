@@ -2,7 +2,7 @@
  * AdminLTE Demo Menu
  * ------------------
  * You should not use this file in production.
- * This file is for demo purposes only.
+ * This file is for order purposes only.
  */
 $(function () {
     'use strict'
@@ -168,13 +168,13 @@ $(function () {
 
     // Create the new tab
     var $tabPane = $('<div />', {
-        'id': 'control-sidebar-theme-demo-options-tab',
+        'id': 'control-sidebar-theme-order-options-tab',
         'class': 'tab-pane active'
     })
 
     // Create the tab button
     var $tabButton = $('<li />', {'class': 'active'})
-        .html('<a href=\'#control-sidebar-theme-demo-options-tab\' data-toggle=\'tab\'>'
+        .html('<a href=\'#control-sidebar-theme-order-options-tab\' data-toggle=\'tab\'>'
             + '<i class="fa fa-wrench"></i>'
             + '</a>')
 

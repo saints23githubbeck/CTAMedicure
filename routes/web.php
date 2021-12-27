@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppoinmentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -107,11 +108,11 @@ Route::get('/prescription', function () {
 Route::get('/appointments', function () {
     return view('admin.pages.appointment');
 })->name('appointments');
-//
+
 Route::get('/prescriptions', function () {
     return view('admin.pages.prescription');
 })->name('prescriptions');
-//
+
 Route::get('/users', function () {
     return view('admin.pages.user');
 })->name('users');
@@ -141,7 +142,7 @@ Route::get('/order', function () {
 Route::get('/request-list', function () {
     return view('admin.pages.request-list');
 })->name('requestList');
-//
+
 Route::prefix('admin')->group(function () {
 
 
@@ -158,8 +159,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{role}/delete', 'RoleController@destroy')->name('role.destroy');
 
         Route::post('/search', 'RoleController@search')->name('role.search');
-
-
     });
 });
-
+// Appoinment controller
+Route::post('/appoinment-post',[AppoinmentController::class,'appoinmentPost'])->name('appoinmentPost');
