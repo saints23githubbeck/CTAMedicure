@@ -47,7 +47,7 @@
                                                 Doctor
                                             </div>
                                             <div class="col-8">
-                                                <select class="three">
+                                                <select class="three form-control">
                                                     <option value="">select a doctor</option>
                                                     <option value="">Han Richardson</option>
                                                 </select>
@@ -59,7 +59,7 @@
                                             </div>
                                             <div class="col-8">
                                                 <input type="date" class="three form-control">
-                                            </div>
+                                            </div>argon
                                         </div>
                                         <div class="row margin">
                                             <div class="col-4 right">

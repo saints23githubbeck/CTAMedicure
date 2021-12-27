@@ -16,10 +16,10 @@ class PrescriptionController extends Controller
 {
     public function index()
     {
-    
 
  
        $orders = Order::Paginate(5);
+
 
     return view('admin.pages.prescription',compact('orders'));
     }
@@ -37,7 +37,7 @@ if(Auth::id()){
          
         'quantity'=>$request->quantity,
         'note'=>$request->description,
-        'user_id'=>\auth()->id(),
+        'user_id'=>auth()->id(),
         'delivery_option_id'=>$request->delivery_option_id,
        ]);
 }else{

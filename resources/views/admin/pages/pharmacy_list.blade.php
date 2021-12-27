@@ -46,7 +46,7 @@
                                         <button style="height:40px!important;" type="button" class="btn btn-primary btn-sm btn-block">Category List</button>
                                       </div>
                                     <div class="col align-self-center button2">
-                                        <button style="width: 130px !important;" type="button" class="btn btn-secondary btn-sm btn-block">Medicine List</button>
+                                        <button style="width: 130px !important;background-color: #4400AD !important " type="button" class="btn btn-secondary btn-sm btn-block">Medicine List</button>
                                       </div>
                                       <button type="button" class="btn2xl btn-secondary">  <i class="fas fa-edit fa-lg"></i></button>
                                       <button type="button" class="btn3xl btn-secondary"><i class="far fa-trash-alt fa-lg"></i></button>
@@ -65,7 +65,8 @@
                                         <button style="height:40px!important;" type="button" class="btn btn-primary btn-sm btn-block">Category List</button>
                                       </div>
                                     <div class="col align-self-center button2">
-                                        <button style="width: 130px !important;" type="button" class="btn btn-secondary btn-sm btn-block">Medicine List</button>
+                                        <button style="width: 130px !important;
+                                        background-color: #4400AD !important " type="button" class="btn btn-secondary btn-sm btn-block">Medicine List</button>
                                       </div>
                                       <button type="button" class="btn2xl btn-secondary">  <i class="fas fa-edit fa-lg"></i></button>
                                       <button type="button" class="btn3xl btn-secondary"><i class="far fa-trash-alt fa-lg"></i></button>

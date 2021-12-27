@@ -29845,6 +29845,9 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
 
 }
 
+/* ......................................................................................................*/
+
+
 
 
 .left label{
@@ -30306,8 +30309,12 @@ body{
     width: 63px !important;
     height: 35px;
     border-radius: 5px;
-    background-color: #FA2727 !important;
+    background-color: #FA2727!important;
     border: none;
+    color: white !important;
+}
+.btn3xl i{
+    color: white !important;
 }
  /*///Paginate///*/
  .bg{
@@ -30649,4 +30656,5 @@ table tr td{
 
 
 /* ......................................................................................................*/
+
 
