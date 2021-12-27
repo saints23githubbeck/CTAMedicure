@@ -127,6 +127,8 @@ Route::get('/edit/prescription/{order_id}',[PrescriptionController::class,'edit'
 Route::get('/status/prescription/{order_id}',[PrescriptionController::class,'status'])->name('status.prescription');
 Route::post('/update/prescription',[PrescriptionController::class,'edit_post'])->name('update.prescription');
 Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
+Route::post('/prescription/accerpt/{order}',[PrescriptionController::class,'accerpt'])->name('prescription.accerpt');
+Route::post('/prescription/reject/{order}',[PrescriptionController::class,'reject'])->name('prescription.reject');
 Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
 Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'approve'])->name('prescription.confirm');
 
