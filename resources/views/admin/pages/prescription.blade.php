@@ -103,15 +103,20 @@
                                             @else
                                             <td class="badge badge-dot mr-4">
 
+
+                                                   <span class="status text-white bg-success p-1 rounded shadow-lg">completed</span>
+
                                                 <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-{{$order->confirmedOrder}}"><span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Review Now</span></a>
+
                                               </td>
 
                                             @endif
 
                                                     <td class="text-right ">
-                                                        <a class="btn btn-warning" href={{ route("edit.prescription",$order->id) }}>Update</a>
-                                                        <a class="btn btn-danger" href={{ route("delete.prescription",$order->id) }}>Delete</a>
-                                                        <a class="btn btn-success" href={{ route("view.prescription",$order->id) }}>View</a>
+                                                        <a class="btn btn-warning" href="{{ route("edit.prescription",$order->id) }}">Update</a>
+                                                        <a class="btn btn-danger" href="{{ route("delete.prescription",$order->id) }}">Delete</a>
+                                                        <a class="btn btn-success" href="{{ route("view.prescription",$order->id) }}">View</a>
+                                                        <a class="btn btn-primary" href="{{ route("status.prescription",$order->id) }}">Status</a>
                                                       
                                                         {{-- <div class="dropdown">
                                                             <a class="btn btn-lg medibg shadow btn-icon-only text-white"
@@ -126,7 +131,6 @@
                                                                 <a class="dropdown-item" href="{{ route('view.prescription',$order->id) }}"> view </a>
 
 
-<<<<<<< HEAD
 
 
 
@@ -219,9 +223,10 @@ success:function(data){
             output += '<td><span class="status text-white bg-success p-1 rounded shadow-lg">completed</span></td>';
         }
         output +=  '<td class="text-right">';
-        output += '<a class="btn btn-primary" href={{ route("edit.prescription",$order->id) }}>Update</a>';
+        output += '<a class="btn btn-warning" href={{ route("edit.prescription",$order->id) }}>Update</a>';
         output += '<a class="btn btn-danger" href={{ route("delete.prescription",$order->id) }}>Delete</a>';
         output += '<a class="btn btn-success" href={{ route("view.prescription",$order->id) }}>View</a>';
+        output += '<a class="btn btn-primary" href={{ route("status.prescription",$order->id) }}>Status</a>';
       
         output += '</td>';
                         
