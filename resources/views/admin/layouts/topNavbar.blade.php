@@ -1,7 +1,8 @@
+{{-- asdd
 <!-- Topnav -->
 @guest
 
-@else
+@else --}}
 <nav class="navbar navbar-top navbar-expand navbar-dark medibg border-bottom">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -194,6 +195,7 @@
                 </li>
             </ul>
             <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+                @if(auth()->user())
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
@@ -201,7 +203,7 @@
                     <img alt="Image placeholder" src="{{'/'.auth()->user()->profile->img}}">
                   </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->userName}}</span>
+                                {{-- <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->userName}}</span> --}}
                             </div>
                         </div>
                     </a>
@@ -231,8 +233,11 @@
                         </form>
                     </div>
                 </li>
+
+                    @endif
             </ul>
         </div>
+        @if(auth()->user())
         <div class="modal fade" id="profile-update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -248,6 +253,24 @@
                   </span>
                             <div class="form-group">
                                 <input type="file" name="image">
+
+
+                            {{--<div class="form-group">--}}
+                                {{--<label for="role" class="col-form-label">First Name</label>--}}
+
+
+                                {{--<input--}}
+                                        {{--type="text"--}}
+                                        {{--id="userName"--}}
+                                        {{--class="form-control form-control-sm @error('firstName') is-invalid @enderror border" name="firstName"--}}
+                                        {{--value="{{auth()->user()->profile()->firstName}}"--}}
+                                {{--/>--}}
+                                {{--@error('firstName')--}}
+                                {{--<span class="invalid-feedback" role="alert">--}}
+                                    {{--<strong>{{ $message }}</strong>--}}
+                                {{--</span>--}}
+                                {{--@enderror--}}
+                            {{--</div>--}}
 
                             </div>
                             <div class="form-group">
@@ -266,6 +289,7 @@
                                 </span>
                                 @enderror
                             </div>
+
                             <div class="form-group">
                                 <label for="role" class="col-form-label">last Name</label>
 
@@ -335,8 +359,8 @@
                 </div>
             </div>
         </div>
-
+        @endif
     </div>
 </nav>
 <!-- Header -->
-@endguest
+{{-- @endguest --}}

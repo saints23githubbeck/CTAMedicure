@@ -1,8 +1,12 @@
 <?php
 
 
+use App\Http\Controllers\PrescriptionController;
+
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -105,19 +109,32 @@ Route::get('/location', function () {
 
 })->name('location');
 
-Route::get('/prescription', function () {
-    return view('admin.prescription');
-})->name('prescription');
+// Route::get('/prescription', function () {
+//     return view('admin.prescription');
+// })->name('prescription');
 
 
 Route::get('/location', function () {
    return view('admin.location');
 
 })->name('location');
+//prescription start
 
-Route::get('/prescription', function () {
-    return view('admin.prescription');
-})->name('prescription');
+
+Route::get('/prescription',[PrescriptionController::class,'index'])->name('pres');
+Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
+Route::get('/delete/prescription/{order_id}',[PrescriptionController::class,'delete'])->name('delete.prescription');
+Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'])->name('view.prescription');
+Route::get('/edit/prescription/{order_id}',[PrescriptionController::class,'edit'])->name('edit.prescription');
+Route::get('/status/prescription/{order_id}',[PrescriptionController::class,'status'])->name('status.prescription');
+Route::post('/update/prescription',[PrescriptionController::class,'edit_post'])->name('update.prescription');
+Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
+Route::post('/prescription/accerpt/{order}',[PrescriptionController::class,'accerpt'])->name('prescription.accerpt');
+Route::post('/prescription/reject/{order}',[PrescriptionController::class,'reject'])->name('prescription.reject');
+Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
+Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'approve'])->name('prescription.confirm');
+
+//prescription end
 
 //return view('admin.pages.location');
 //})->name('location');
@@ -190,7 +207,7 @@ Route::get('/request-list', function () {
 Route::prefix('admin')->group(function () {
 
 
-    Route::get('/dashboard/show','DashboardController@dashboard')->name('dashboard.show');
+    Route::get('/dashboard','DashboardController@dashboard')->name('dashboard.show');
 
     Route::prefix('role')->group(function () {
 

@@ -31,15 +31,15 @@
                         </div>
                         </form>
                         <div class="container-fluid mt--7">
-{{--                            <div class="card-header border-0">--}}
-{{--                                <div class="row justify-content-end mt-2">--}}
-{{--                                    <div class="col-md-3 ">--}}
-{{--                                        <button type="button" class="btn medibg custom-btn text-white"--}}
-{{--                                                data-bs-toggle="modal" data-bs-target="#addUser">New User--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                            <div class="card-header border-0">
+                                <div class="row justify-content-end mt-2">
+                                    <div class="col-md-3 ">
+                                        <button type="button" class="btn medibg custom-btn text-white"
+                                                data-bs-toggle="modal" data-bs-target="#addUser">New User
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="row">
                                 <div class="col">
@@ -64,6 +64,7 @@
                                                 @foreach($users as $user)
                                                     @include('admin.pages.modals.users.update')
                                                     @include('admin.pages.modals.users.details')
+                                                    @include('admin.pages.modals.users.delete')
                                                 <tr>
 
                                                     <td class="budget">
@@ -99,7 +100,7 @@
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                                 <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#update-Role-{{$user->id}}">Update</a>
-                                                                <a class="dropdown-item" href="{{route('users.destroy',$user->id)}}">Delete</a>
+                                                                <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#user-delete-{{$user->id}}" >Delete</a>
 
                                                                 <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#details-Role-{{$user->id}}">View</a>
                                                             </div>
