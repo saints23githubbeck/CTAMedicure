@@ -15,11 +15,10 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-        UserSeeder::class
+        OrderSeeder::class
         ]);
 
-        // \App\Models\User::factory(10)->create();
-        $this->call(UserTableSeeder::class);
+   
 
     }
 }
