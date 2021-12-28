@@ -201,11 +201,11 @@ success:function(data){
         }else{
             output += '<td><span class="status text-white bg-success p-1 rounded shadow-lg">completed</span></td>';
         }
-        output +=  '<td class="text-right">';
-        output += '<a class="btn btn-warning" href={{ route("edit.prescription",$order->id) }}>Update</a>';
-        output += '<a class="btn btn-danger" href={{ route("delete.prescription",$order->id) }}>Delete</a>';
-        output += '<a class="btn btn-success" href={{ route("view.prescription",$order->id) }}>View</a>';
-        output += '<a class="btn btn-primary" href={{ route("status.prescription",$order->id) }}>Status</a>';
+        {{--output +=  '<td class="text-right">';--}}
+        {{--output += '<a class="btn btn-warning" href={{ route("edit.prescription",$order->id) }}>Update</a>';--}}
+        {{--output += '<a class="btn btn-danger" href={{ route("delete.prescription",$order->id) }}>Delete</a>';--}}
+        {{--output += '<a class="btn btn-success" href={{ route("view.prescription",$order->id) }}>View</a>';--}}
+        {{--output += '<a class="btn btn-primary" href={{ route("status.prescription",$order->id) }}>Status</a>';--}}
       
         output += '</td>';
                         
