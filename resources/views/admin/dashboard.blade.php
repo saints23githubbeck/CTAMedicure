@@ -116,7 +116,7 @@
         <!-- Page content -->
         <div class="container-fluid mt--6">
             <div class="row">
-                {{-- <div class="col-xl-8">
+                <div class="col-xl-8">
                     <div class="card bg-default">
                         <div class="card-header bg-transparent">
                             <div class="row align-items-center">
@@ -150,8 +150,8 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
-                <div class="col-xl-8">
+                </div>
+                <div class="col-xl-4">
                     <div class="card">
                         <div class="card-header bg-transparent">
                             <div class="row align-items-center">
