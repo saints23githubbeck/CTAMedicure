@@ -123,6 +123,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="container">
+                        <div class="col-md-12 mb-4">
+                            <ul class="pagination offset-lg-5 mt-2">
+                                <li ><a class="page-link btn medibg p-2 m-2 text-white" href="{{ $confirmOrders->previousPageUrl() }}">Previous</a></li>
+                                <li ><a class="page-link p-2 m-2 medibg text-white" href="{{ $confirmOrders->nextPageUrl() }}">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
