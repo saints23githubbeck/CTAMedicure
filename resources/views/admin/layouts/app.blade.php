@@ -10,8 +10,6 @@
 @include('admin.layouts.topNavbar')
 <!----top nav bar end----------->
 
- @include('admin.layouts.topNavbar')
-
 @yield('content')
 </div>
 <!-- Footer -->
