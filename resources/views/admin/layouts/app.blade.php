@@ -4,14 +4,14 @@
 <body >
 @include('admin.layouts.sidebar')
 <div class="main-content" id="panel">
-<<<<<<< HEAD
+
   <!----top nav bar----------->
   
 @include('admin.layouts.topNavbar')
 <!----top nav bar end----------->
-=======
+
  @include('admin.layouts.topNavbar')
->>>>>>> b829251ecfa185cbb7d3d48d72bddcf059c60bf9
+
 @yield('content')
 </div>
 <!-- Footer -->
