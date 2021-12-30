@@ -5,7 +5,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-lg-center" id="staticBackdropLabel">Order  Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close rounded-circle bg-danger text-white" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body ">
                 <h3 class="text-center">Order Details</h3>
@@ -19,16 +21,19 @@
 
 
             <div class="modal-footer">
+                @if($order->confirmedOrder->status ==0)
                 <form action="{{route('prescription.accerpt',$order->id)}}" method="post">
                     @csrf
                     <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Accerpt</button>
                 </form>
                 <form action="{{route('prescription.reject',$order->id)}}" method="post">
                     @csrf
-                    <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Reject</button>
+                    <button type="submit" class="btn btn-warning" data-bs-dismiss="modal">Reject</button>
                 </form>
-
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                 @else
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    @endif
             </div>
         </div>
     </div>

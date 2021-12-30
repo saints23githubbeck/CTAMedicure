@@ -57,8 +57,10 @@
                                             <table class="table align-items-center table-flush">
                                                 <thead class="thead-light text-dark ">
                                                 <tr>
+                                                    <th scope="col" class="sort" data-sort="budget">Order</th>
                                                     <th scope="col" class="sort" data-sort="budget">Order image</th>
                                                     <th scope="col" class="sort" data-sort="budget">quantity</th>
+                                                    <th scope="col" class="sort" data-sort="budget">Date</th>
                                                     <th scope="col" class="sort" data-sort="budget">Note</th>
                                                     <th scope="col" class="sort" data-sort="status">Status</th>
                                                     <th scope="col" class="sort" data-sort="completion" class="text-r">Action</th>
@@ -69,12 +71,18 @@
 
                                                 @foreach ($orders as $order)
                                                 <tr>
+                                                    <td >
+                                                        {{'mdc0'.$order->id}}
+                                                    </td>
 
-                                                    <td class="budget">
+                                                    <td >
                                                      <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$order->image) }}">
                                                     </td>
                                                     <td>
                                              {{ $order->quantity }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $order->created_at->format('d-M-Y' )}}
                                                     </td>
                                                     <td>
                                                         {{ $order->note }}
@@ -113,7 +121,7 @@
                                                             </a>
                                                             <div class="dropdown-menu ">
                                                                 <a class="dropdown-item  bg-success text-white text-center" data-bs-toggle="modal" data-bs-target="#update-pres-{{$order->id}}">Update</a>
-                                                                <a class="dropdown-item  bg-danger text-white text-center" data-bs-toggle="modal" data-bs-target="#role-pres-{{$order->id}}">Delete</a>
+                                                                <a class="dropdown-item  bg-danger text-white text-center" data-bs-toggle="modal" data-bs-target="#delete-pres-{{$order->id}}">Delete</a>
                                                                 <a class="dropdown-item btn  text-center" data-bs-toggle="modal" data-bs-target="#details-pres-{{$order->id}}">View</a>
                                                             </div>
                                                         </div>
@@ -123,6 +131,9 @@
                                                 @if($order->status == 1)
                                                 @include('admin.pages.modals.orders.previewOrder')
                                                 @endif
+                                                @include('admin.pages.modals.orders.details')
+                                                @include('admin.pages.modals.orders.order_edit')
+                                                @include('admin.pages.modals.orders.delete')
                                                 @endforeach
                                                 @if($orders->count() == 0)
                                                     <div class="text-center mt-3">
@@ -130,13 +141,6 @@
                                                     </div>
 
                                                 @endif
-                                                
-                                                    
-                                               
-                                             
-                                              
-
-
                                                 </tbody>
                                             </table>
                                         </div>
@@ -160,7 +164,21 @@
             </div>
 @endsection
 
-@section('footer_script') 
+@section('footer_script')
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .css({'background': 'url('+e.target.result+') center center no-repeat','background-size':'cover'});
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 <script>
     $(document).ready(function(){
 $.datepicker.setDefaults({

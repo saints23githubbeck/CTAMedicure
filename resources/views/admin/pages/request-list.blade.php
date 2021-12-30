@@ -30,11 +30,11 @@
                                             <table class="table my-5">
                                                 <thead class="border_botttom">
                                                 <tr>
-                                                    <th scope="col">Order Id</th>
+                                                    <th scope="col">Order</th>
                                                     <th scope="col">Image</th>
-                                                    <th scope="col">Order Date</th>
-                                                    <th scope="col">Current Status</th>
-                                                    <th scope="col">Preview Data</th>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Preview</th>
                                                     <th scope="col" class="text-center">Action</th>
                                                 </tr>
                                                 </thead>
@@ -43,30 +43,26 @@
                                                 @foreach($orders as $order)
                                                 <tr>
 
-                                                    <td>{{$order->id}}</td>
+                                                    <td>{{'mdc0'.$order->id}}</td>
                                                     <td class="budget">
                                                         <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$order->image) }}">
                                                     </td>
-                                                    <td>{{$order->created_at}}</td>
+                                                    <td>{{$order->created_at->format('d-M-Y')}}</td>
                                                     @if($order->status == 0)
                                                         <td class="badge badge-dot mr-4">
-
+                                                            <span  class="badge badge-dot mr-4">
+                                                                <i class="bg-warning"></i>
                                                             <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
+                                                            </span>
+
                                                         </td>
-
-                                                    @else
-                                                        <td class="badge badge-dot mr-4">
-
-                                                            <span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Waiting For Assign</span>
-                                                        </td>
-
                                                     @endif
                                                     <td>
-                                                        <a  data-bs-toggle="modal" data-bs-target="#details-order-{{$order->id}}">View</a>
+                                                        <a  data-bs-toggle="modal" data-bs-target="#details-pres-{{$order->id}}">View</a>
                                                     </td>
                                                     <td>
                                                         <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$order->id}}" class="btn btn-success">Approved</a>
-                                                        <a href="#" class="btn btn-danger">Rejected</a>
+                                                        {{--<a href="#" class="btn btn-danger">Rejected</a>--}}
                                                     </td>
                                                 </tr>
                                                       @include('admin.pages.modals.orders.details')
@@ -85,25 +81,33 @@
                                                 <thead class="border_botttom">
 
                                                 <tr>
-                                                    <th scope="col">Order Id</th>
-                                                    <th scope="col">Order Date</th>
-                                                    <th scope="col">Current Status</th>
-                                                    <th scope="col">Order Flow</th>
-                                                    <th scope="col">Preview Data</th>
-                                                    <th scope="col">Order Assign</th>
+                                                    <th scope="col">Order</th>
+                                                    <th scope="col"> Date</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Preview </th>
+                                                    <th scope="col">Assign</th>
                                                     <th scope="col" class="text-center">Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($confirmOrders as $approved)
                                                 <tr>
-                                                    <td>{{$approved->id}}</td>
-                                                    <td>{{$approved->created_at}}</td>
-                                                    <td>Pending</td>
+                                                    <td>{{'mdc0'.$approved->id}}</td>
+                                                    <td>{{$approved->created_at->format('d-M-Y')}}</td>
                                                     @if($approved->status == 0)
-                                                    <td class="text-warning">Pending Payments</td>
+                                                    <td >
+                                                        <span  class="badge badge-dot mr-4">
+                                                           <i class="bg-info"></i>
+                                                        <span class="status text-white bg-info p-1 rounded shadow-lg">Unapproved</span></td>
+                                                        </span>
+
                                                     @else
-                                                        <td class="text-warning">Accepted Waiting For Assign</td>
+                                                        <td>
+                                                            <span  class="badge badge-dot mr-4">
+                                                                  <i class="bg-warning"></i>
+                                                            <span class="status text-white bg-warning p-1 rounded shadow-lg">Approved But Unpaid</span></td>
+                                                            </span>
+
                                                         @endif
                                                     <td><a href="#" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
                                                     <td><span class="badge bg-primary text-white">Assign</span></td>
