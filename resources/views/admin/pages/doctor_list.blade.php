@@ -5,15 +5,15 @@
     <section>
         <div class="container pt-4">
             <div class="row">
-                <div class="col-lg-9 m-auto">
+                <div class="col-lg-11 m-auto">
                     <div class="card shadow p-3 mb-5 bg-white rounded">
                         <div class="card-header bg-white pt-3">
                             <i class="fas fa-user-md fa-2x"></i>
                             <div class="col-lg-10 text">
-                                <h5 class="font-weight-bold">Doctors</h3>
+                                <h5 style="font-size: 25px !important;" class="font-weight-bold">Doctors</h3>
                             <h6 class="font-weight-normal">List of Doctors</h5>
                                 <div class="button">
-                                    <button type="button" class="btn-primary p-1 text-white">Show/hide</button>
+                                    <button style="height: 43px!important; font-size: 15px!important;" type="button" class="btn-primary p-1 text-white">Show/hide</button>
                                     <button type="button" class="btn-success p-1">Copy</button>
                                     <button type="button" class="btn-danger p-1">Export</button>
                                     <button type="button" class="btn-info p-1">Reset</button>

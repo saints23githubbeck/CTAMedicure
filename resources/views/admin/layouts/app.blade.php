@@ -13,7 +13,7 @@
     var elem = document.documentElement;
     var show = document.getElementById('show');
     var hide = document.getElementById('hide');
-     
+
     function openFullscreen() {
       show.style.display = 'none';
       hide.style.display = 'block';
@@ -26,7 +26,7 @@
         elem.msRequestFullscreen();
       }
     }
-    
+
     function closeFullscreen() {
       show.style.display = 'block';
       hide.style.display = 'none';
@@ -37,7 +37,7 @@
         document.webkitExitFullscreen();
       } else if (document.msExitFullscreen) { /* IE11 */
         document.msExitFullscreen();
-        
+
       }
     }
   function loading(){
