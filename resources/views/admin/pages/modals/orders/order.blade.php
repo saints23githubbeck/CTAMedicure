@@ -5,7 +5,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close rounded-circle bg-danger text-white" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form action="{{ route('add.prescription') }}" method="POST" enctype="multipart/form-data">
@@ -44,11 +46,11 @@
                         {{--@endif--}}
                     {{--</div>--}}
                     <div class="form-group">
-                        <label for="description" class="col-form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" maxlength="250" cols="30" rows="5" style="resize: none" placeholder="Your Message Should Not Be More Than 250"></textarea>
-                        @if ($errors->has('description'))
+                        <label for="note" class="col-form-label">Description</label>
+                        <textarea class="form-control" id="note" name="note" maxlength="250" cols="30" rows="5" style="resize: none" placeholder="Your Message Should Not Be More Than 250"></textarea>
+                        @if ($errors->has('note'))
                             <span class="invalid-feedback text-danger" role="alert">
-                                <strong>{{ $errors->first('description') }}</strong>
+                                <strong>{{ $errors->first('note') }}</strong>
                             </span>
                         @endif
                     </div>
