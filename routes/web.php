@@ -1,9 +1,8 @@
 <?php
 
 
+use App\Http\Controllers\AppoinmentController;
 use App\Http\Controllers\PrescriptionController;
-
-
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 
@@ -98,11 +97,11 @@ Route::get('/dashboard', function () {
 
  Route::get('/orderlist', function () {
     return view('admin.pages.orderlist');
- })->name('orderlist'); 
- 
+ })->name('orderlist');
+
  Route::get('/billing_info', function () {
     return view('admin.pages.billing_info');
- })->name('billing_info'); 
+ })->name('billing_info');
 
 Route::get('/location', function () {
    return view('admin.pages.location');
@@ -138,10 +137,7 @@ Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'appr
 
 //return view('admin.pages.location');
 //})->name('location');
-Route::get('/appointments', function () {
-    return view('admin.pages.appointment');
-})->name('appointments');
-//
+
 Route::get('/prescriptions', function () {
     return view('admin.pages.prescription');
 })->name('prescriptions');
@@ -203,7 +199,7 @@ Route::get('/order', function () {
 Route::get('/request-list', function () {
     return view('admin.pages.request-list');
 })->name('requestList');
-//
+
 Route::prefix('admin')->group(function () {
 
 
@@ -220,8 +216,6 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{role}/delete', 'RoleController@destroy')->name('role.destroy');
 
         Route::post('/search', 'RoleController@search')->name('role.search');
-
-
     });
 
     Route::prefix('user')->group(function () {
@@ -233,4 +227,10 @@ Route::prefix('admin')->group(function () {
 
     });
 });
-
+// Appoinment controller
+Route::get('/appoinments',[AppoinmentController::class,'appointmentPage'])->name('appointments');
+Route::post('/appoinment-post',[AppoinmentController::class,'appoinmentPost'])->name('appoinmentPost');
+Route::get('/apoinment-delete/{id}',[AppoinmentController::class,'apoinmentDelete'])->name('apoinmentDelete');
+Route::get('/apoinment-edit/{id}',[AppoinmentController::class,'apoinmentEdit'])->name('appoinmentEdit');
+Route::post('/apoinment-update',[AppoinmentController::class,'apoinmentUpdate'])->name('appoinmentUpdate');
+Route::get('/apoinment-search',[AppoinmentController::class,'appoinSearch'])->name('appoinSearch');
