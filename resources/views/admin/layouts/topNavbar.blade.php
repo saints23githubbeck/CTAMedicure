@@ -3,7 +3,7 @@
 @guest
 
 @else --}}
-<nav class="navbar navbar-top navbar-expand navbar-dark medibg border-bottom">
+<nav class="navbar  navbar-top navbar-expand navbar-dark medibg border-bottom">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Search form -->

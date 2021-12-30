@@ -15,11 +15,11 @@ class CreateConsultanciesTable extends Migration
     {
         Schema::create('consultancies', function (Blueprint $table) {
             $table->id();
-            $table->integer('doctor_id');
             $table->foreignId('user_id')->constrained();
-            $table->string('reason')->notNull();
-            $table->date('availableDate');
-            $table->time('availableTime');
+            $table->string('reason');
+            $table->string('availableDate');
+            $table->string('availableTime');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Http\Controllers\AppoinmentController;
+use App\Http\Controllers\ConsultancyController;
 use App\Http\Controllers\PrescriptionController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
@@ -228,9 +228,9 @@ Route::prefix('admin')->group(function () {
     });
 });
 // Appoinment controller
-Route::get('/appoinments',[AppoinmentController::class,'appointmentPage'])->name('appointments');
-Route::post('/appoinment-post',[AppoinmentController::class,'appoinmentPost'])->name('appoinmentPost');
-Route::get('/apoinment-delete/{id}',[AppoinmentController::class,'apoinmentDelete'])->name('apoinmentDelete');
-Route::get('/apoinment-edit/{id}',[AppoinmentController::class,'apoinmentEdit'])->name('appoinmentEdit');
-Route::post('/apoinment-update',[AppoinmentController::class,'apoinmentUpdate'])->name('appoinmentUpdate');
-Route::get('/apoinment-search',[AppoinmentController::class,'appoinSearch'])->name('appoinSearch');
+Route::get('/appointments',[ConsultancyController::class,'appointmentPage'])->name('appointments');
+Route::post('/appointment/add',[ConsultancyController::class,'store'])->name('appointment.add');
+Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,'destroy'])->name('appointment.destroy');
+Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'update'])->name('appointment.update');
+Route::post('/apoinment-update',[ConsultancyController::class,'apoinmentUpdate'])->name('appoinmentUpdate');
+Route::get('/apoinment-search',[ConsultancyController::class,'appoinSearch'])->name('appoinSearch');
