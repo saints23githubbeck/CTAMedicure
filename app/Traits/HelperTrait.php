@@ -59,4 +59,7 @@ trait HelperTrait
     }
     return null;
   }
+
+    function mkdir ($pathname, $mode = 0777, $recursive = false, $context = null) {}
+
 }

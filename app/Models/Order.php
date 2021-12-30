@@ -14,13 +14,7 @@ class Order extends Model
      *
      * @var string[]
      */
-    protected $fillable = [
-        'image',
-        'quantity',
-        'note',
-        'status',
-        'delivery_option_id',
-    ];
+    protected $guarded = [];
 
     public function cardPayment()
     {
@@ -28,11 +22,11 @@ class Order extends Model
     }
     public function confirmedOrder()
     {
-        return $this->hasOne(ConfirmationOrder::class);
+        return $this->hasOne(ConfirmedOrder::class);
     }
     public function user()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class);
     }
     public function deliveryOption()
     {

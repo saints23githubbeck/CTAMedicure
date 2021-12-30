@@ -3,14 +3,19 @@
 @section('content')
     <!--Container Main start-->
     <div class="container">
+        <div class="col-md-9 offset-2">
+            <div class="breadcrumbs-area">
+                @include('admin.layouts.status')
+            </div>
+        </div>
         <div class="row">
 
             <div class="col-12 mt-lg-5">
                 <h1 class="text-lg-center">Users</h1>
-                <form action="" method="GET" role="search">
+
                 <div class="card ">
                     <div class="card-body  mt-7">
-
+                        <form action="{{route('users')}}" method="GET" role="search" name="term">
                         <div class="row offset-1  mt--6">
 
                             <div class="form-group col">
@@ -24,6 +29,7 @@
                             </div>
 
                         </div>
+                        </form>
                         <div class="container-fluid mt--7">
                             <div class="card-header border-0">
                                 <div class="row justify-content-end mt-2">
@@ -46,19 +52,26 @@
                                                 <thead class="thead-light text-dark ">
                                                 <tr>
                                                     <th scope="col" class="sort" data-sort="budget">Name</th>
+                                                    <th scope="col" class="sort" data-sort="budget">Photo</th>
                                                     <th scope="col" class="sort" data-sort="budget">Email</th>
                                                     <th scope="col" class="sort" data-sort="budget">Contact</th>
-                                                    <th scope="col" class="sort" data-sort="status">Status</th>
+                                                    <th scope="col" class="sort" data-sort="status">Role</th>
                                                     <th scope="col" class="sort" data-sort="completion">Action</th>
                                                     <th scope="col"></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody class="list">
                                                 @foreach($users as $user)
+                                                    @include('admin.pages.modals.users.update')
+                                                    @include('admin.pages.modals.users.details')
+                                                    @include('admin.pages.modals.users.delete')
                                                 <tr>
 
                                                     <td class="budget">
                                                         {{$user->userName}}
+                                                    </td>
+                                                    <td class="budget">
+                                                        <img src="{{'/'.$user->profile->img}}" alt="{{$user->name}}" width="80px" height="120px" class="img-fluid img-thumbnail">
                                                     </td>
                                                     <td>
                                                           <span class="badge badge-dot mr-4">
@@ -73,8 +86,7 @@
                                                     </td>
                                                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i>
-                        <span class="status">{{$user->role_id}}</span>
+                        <span class="status">{{$user->role->name}}</span>
                       </span>
                                                     </td>
 
@@ -87,9 +99,10 @@
                                                                 <i class="fas fa-ellipsis-v"></i>
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <a class="dropdown-item" href="#">Update</a>
-                                                                <a class="dropdown-item" href="#">Delete</a>
-                                                                <a class="dropdown-item" href="#">View</a>
+                                                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#update-Role-{{$user->id}}">Update</a>
+                                                                <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#user-delete-{{$user->id}}" >Delete</a>
+
+                                                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#details-Role-{{$user->id}}">View</a>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -106,14 +119,12 @@
                     </div>
                     <div class="container">
                         <div class="col-md-12">
-                            <ul class="pagination offset-lg-5 mt-2">
-                                <li class=" m-3 "><a class=" btn medibg text-white" href="#">Previous</a></li>
-                                <li class="m-3"><a class=" btn medibg text-white" href="#">Next</a></li>
-                            </ul>
+                            {{ $users->links('pagination.custom') }}
+
                         </div>
                     </div>
                 </div>
-                </form>
+
             </div>
 
         </div>

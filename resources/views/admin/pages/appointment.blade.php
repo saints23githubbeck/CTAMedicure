@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body justify-content-lg-between">
+                <div class="card-body ">
                     <h2 class="fw-bolder text-center">Appointments</h2>
                     @if (session('delete_message'))
                      <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Traits\ProfileTriat;
@@ -30,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -53,7 +54,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'userName' => ['required', 'string', 'max:20','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'role' => ['required', 'string'],
+            'role_id' => ['required', 'string'],
             'contactNumber' => ['required', 'string'],
             'password' => ['required', 'string', 'min:8'],
         ]);
@@ -68,19 +69,21 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        return User::create([
+      $user = User::create([
             'userName' => $data['userName'],
             'email' => $data['email'],
             'contactNumber' => $data['contactNumber'],
             'role_id' => $data['role_id'],
             'password' => Hash::make($data['password']),
         ]);
-
+        $profile = new Profile();
+        $profile->user_id = $user->id;
+        $profile->save();
 //        $profile = new Profile();
 //        $profile->image = 'default.png';
 //        $profile->user_id = $data->id;
 //        $profile->save();
-
+ return $user;
     }
 
 

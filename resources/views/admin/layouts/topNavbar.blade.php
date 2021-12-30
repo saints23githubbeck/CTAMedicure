@@ -1,4 +1,8 @@
+{{-- asdd
 <!-- Topnav -->
+@guest
+
+@else --}}
 <nav class="navbar navbar-top navbar-expand navbar-dark medibg border-bottom">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -191,14 +195,15 @@
                 </li>
             </ul>
             <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+                @if(auth()->user())
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
+                    <img alt="Image placeholder" src="{{'/'.auth()->user()->profile->img}}">
                   </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                                {{-- <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->userName}}</span> --}}
                             </div>
                         </div>
                     </a>
@@ -206,7 +211,7 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
-                        <a href="#!" class="dropdown-item">
+                        <a href="#!" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profile-update">
                             <i class="ni ni-single-02"></i>
                             <span>My profile</span>
                         </a>
@@ -228,8 +233,134 @@
                         </form>
                     </div>
                 </li>
+
+                    @endif
             </ul>
         </div>
+        @if(auth()->user())
+        <div class="modal fade" id="profile-update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-lg-center" id="staticBackdropLabel">Profile Update</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="{{'/'.auth()->user()->profile->img}}">
+                  </span>
+                            <div class="form-group">
+                                <input type="file" name="image">
+
+
+                            {{--<div class="form-group">--}}
+                                {{--<label for="role" class="col-form-label">First Name</label>--}}
+
+
+                                {{--<input--}}
+                                        {{--type="text"--}}
+                                        {{--id="userName"--}}
+                                        {{--class="form-control form-control-sm @error('firstName') is-invalid @enderror border" name="firstName"--}}
+                                        {{--value="{{auth()->user()->profile()->firstName}}"--}}
+                                {{--/>--}}
+                                {{--@error('firstName')--}}
+                                {{--<span class="invalid-feedback" role="alert">--}}
+                                    {{--<strong>{{ $message }}</strong>--}}
+                                {{--</span>--}}
+                                {{--@enderror--}}
+                            {{--</div>--}}
+
+                            </div>
+                            <div class="form-group">
+                                <label for="role" class="col-form-label">First Name</label>
+
+
+                                <input
+                                        type="text"
+                                        id="userName"
+                                        class="form-control form-control-sm @error('firstName') is-invalid @enderror border" name="firstName"
+                                        value="{{auth()->user()->profile->firstName}}"
+                                />
+                                @error('firstName')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="role" class="col-form-label">last Name</label>
+
+
+                                <input
+                                        type="text"
+                                        id="lastName"
+                                        class="form-control form-control-sm @error('lastName') is-invalid @enderror border" name="lastName"
+                                        value="{{auth()->user()->profile->lastName}}"
+                                />
+                                @error('lastName')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="role" class="col-form-label">Email</label>
+                                <input
+                                        type="email"
+                                        id="email"
+                                        class="form-control form-control-sm @error('email') is-invalid @enderror border" name="email"
+                                        value="{{auth()->user()->email}}"
+                                />
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="role" class="col-form-label">Contact Number</label>
+                                <input
+                                        type="number"
+                                        id="contactNumber"
+                                        class="form-control form-control-sm @error('contactNumber') is-invalid @enderror border" name="contactNumber"
+                                        value="{{auth()->user()->contactNumber}}"
+                                />
+                                @error('contactNumber')
+                                <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                                @enderror
+                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label for="role" class="col-form-label">Role</label>--}}
+{{--                                <select class="form-control form-control-sm @error('role_id') is-invalid @enderror border" name="role_id" required>--}}
+{{--                                    @foreach(App\Models\Role::all() as $role)--}}
+{{--                                        <option value="{{$role->id}}">{{$role->name}}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+
+{{--                                @if ($errors->has('role_id'))--}}
+{{--                                    <span class="invalid-feedback text-danger" role="alert">--}}
+{{--                                <strong>{{ $errors->first('role_id') }}</strong>--}}
+{{--                            </span>--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn medibg text-white ">Update</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 </nav>
 <!-- Header -->
+{{-- @endguest --}}
