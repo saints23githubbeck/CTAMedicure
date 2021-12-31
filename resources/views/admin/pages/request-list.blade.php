@@ -98,16 +98,17 @@
                                                     <td >
                                                         <span  class="badge badge-dot mr-4">
                                                            <i class="bg-info"></i>
-                                                        <span class="status text-white bg-info p-1 rounded shadow-lg">Unapproved</span></td>
-                                                        </span>
+                                                        <span class="status text-white bg-info p-1 rounded shadow-lg">Unapproved</span>
 
+                                                        </span>
+                                                        </td>
                                                     @else
                                                         <td>
                                                             <span  class="badge badge-dot mr-4">
                                                                   <i class="bg-warning"></i>
-                                                            <span class="status text-white bg-warning p-1 rounded shadow-lg">Approved But Unpaid</span></td>
+                                                            <span class="status text-white bg-warning p-1 rounded shadow-lg">Approved But Unpaid</span>
                                                             </span>
-
+                                                        </td>
                                                         @endif
                                                     <td><a href="#" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
                                                     <td><span class="badge bg-primary text-white">Assign</span></td>

@@ -26,7 +26,7 @@
 
 
                                     <span class="btn medibg text-white mt-4">Filter</span>
-                                    <span class="btn btn-danger text-white mt-4">Cancel</span>
+                                    {{--<span class="btn btn-danger text-white mt-4">Cancel</span>--}}
 
                                     {{--<button type="button" class="btn medibg text-black" name="filter" id="filter">Filter</button>--}}
                                     {{--<button type="button" class="btn btn-danger" name="refresh" id="refresh">Refresh</button>--}}

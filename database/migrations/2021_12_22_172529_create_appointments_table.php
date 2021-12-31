@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConsultancyConfirmsTable extends Migration
+class CreateAppointmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateConsultancyConfirmsTable extends Migration
      */
     public function up()
     {
-        Schema::create('consultancy_confirms', function (Blueprint $table) {
+        Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('consultancy_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->boolean('status')->default(0);
+            $table->string('consulation');
+            $table->string('doctor_name')->nullable();
+            $table->date('date')->nullable();
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateConsultancyConfirmsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('consultancy_confirms');
+        Schema::dropIfExists('appointments');
     }
 }

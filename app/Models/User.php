@@ -63,6 +63,12 @@ class User extends Authenticatable
         return $this->hasMany(Consultancy::class);
     }
 
+
+    public function consultancyConfirm()
+    {
+        return $this->hasMany(ConsultancyConfirm::class);
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);
