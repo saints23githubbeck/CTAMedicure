@@ -116,7 +116,14 @@ class PrescriptionController extends Controller
             'status'=>1,
         ]);
 
-        return back()->with('add','order Accerpted successfully.');
+        return redirect(route('prescription.checkout',$order))->with('add','order Accerpted successfully.');
+    }
+
+    public function checkout(Order $order){
+
+
+
+    return view('admin.order.order',compact('order'));
     }
 
     public function reject(Order $order){

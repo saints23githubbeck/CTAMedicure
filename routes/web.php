@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PrescriptionController;
 
 
@@ -28,12 +29,12 @@ Route::get('/', function () {
 
 });
 
-Route::get('/payment', function () {
-    return view('order.payment');
-});
-Route::get('/order', function () {
-    return view('order.order');
-});
+
+
+Route::post('/pay', [PaymentController::class, 'initialize'])->name('pay');
+// The callback url after a payment
+Route::get('/callback', [PaymentController::class, 'callback'])->name('callback');
+
 Route::get('/request', function () {
     return view('order.incoming_request');
 });
@@ -74,14 +75,6 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::get('/location', function () {
-    return view('admin.location');
-
-});
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
-
 
  Route::get('/detail/modal', function () {
     return view('admin.pages.detail_modal');
@@ -96,13 +89,6 @@ Route::get('/dashboard', function () {
  })->name('billing_info');
 
 
- Route::get('/orderlist', function () {
-    return view('admin.pages.orderlist');
- })->name('orderlist'); 
- 
- Route::get('/billing_info', function () {
-    return view('admin.pages.billing_info');
- })->name('billing_info'); 
 
 Route::get('/location', function () {
    return view('admin.pages.location');
@@ -113,11 +99,6 @@ Route::get('/location', function () {
 //     return view('admin.prescription');
 // })->name('prescription');
 
-
-Route::get('/location', function () {
-   return view('admin.location');
-
-})->name('location');
 //prescription start
 
 
@@ -130,10 +111,12 @@ Route::get('/status/prescription/{order_id}',[PrescriptionController::class,'sta
 Route::post('/update/prescription',[PrescriptionController::class,'edit_post'])->name('update.prescription');
 Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
 Route::post('/prescription/accerpt/{order}',[PrescriptionController::class,'accerpt'])->name('prescription.accerpt');
+Route::get('/prescription/checkout/{order}',[PrescriptionController::class,'checkout'])->name('prescription.checkout');
 Route::post('/prescription/reject/{order}',[PrescriptionController::class,'reject'])->name('prescription.reject');
 Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
 Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'approve'])->name('prescription.confirm');
 
+Route::get('payment/{id}',[PaymentController::class,'index'])->name('payment.details');
 //prescription end
 
 //return view('admin.pages.location');
@@ -166,10 +149,6 @@ Route::get('/incoming', function () {
 
 })->name('income');
 
-Route::get('/payment', function () {
-    return view('admin.order.payment');
-
-})->name('payment');
 
 Route::get('/order', function () {
     return view('admin.order.order');
@@ -189,10 +168,6 @@ Route::get('/incoming', function () {
 
 })->name('income');
 
-Route::get('/payment', function () {
-    return view('admin.order.payment');
-
-})->name('payment');
 
 Route::get('/order', function () {
     return view('admin.order.order');

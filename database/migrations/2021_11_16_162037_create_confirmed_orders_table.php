@@ -15,9 +15,13 @@ class CreateConfirmedOrdersTable extends Migration
     {
         Schema::create('confirmed_orders', function (Blueprint $table) {
             $table->id();
-            $table->decimal('amount', 8, 2);
+            $table->decimal('amount', 8, 2)->nullable();
+            $table->decimal('payment', 8, 2)->nullable();
+            $table->decimal('due', 8, 2)->nullable();
+            $table->string('pay_by')->nullable();
+            $table->string('transaction_id')->nullable();
             $table->string('note')->nullable();
-            $table->boolean('status');
+            $table->boolean('status')->default(0);
             $table->foreignId('order_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
