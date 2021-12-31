@@ -15,9 +15,15 @@ class CreateCardPaymentsTable extends Migration
     {
         Schema::create('card_payments', function (Blueprint $table) {
             $table->id();
-            $table->integer('cardNumber');
-            $table->string('expiryDate');
-            $table->integer('cvNumber');
+            $table->integer('cardNumber')->nullable();
+            $table->string('first_6digits')->nullable();
+            $table->string('last_4digits')->nullable();
+            $table->string('issuer')->nullable();
+            $table->string('country')->nullable();
+            $table->string('type')->nullable();
+            $table->string('expiry')->nullable();
+            $table->string('expiryDate')->nullable();
+            $table->integer('cvNumber')->nullable();
             $table->foreignId('order_id')->constrained();
             $table->timestamps();
         });

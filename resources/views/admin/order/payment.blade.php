@@ -20,13 +20,14 @@
                                 <span class="float-end rounded-circle btn-tool btn mt-0" style="background: #ebedf1; color: lightslategrey; font-weight: normal;"><i class="fas fa-times"></i></span>
                             </button>
                             <p class="text-center" style="color: blueviolet;">Choose payment method below</p>
+
                         </div>
                 </div>
                     <div class="me-5 ms-5">
 
 
 
-                        <form>
+                        <form action="post" method="post">
                             <!-- credit card info-->
                             <div class="row">
                                 <div class="col-md-4">
@@ -48,9 +49,9 @@
                                             <h4>Billing Info</h4>
                                         </div>
                                     </div>
-                                    <div class="form-group"> <label for="username">
+                                    <div class="form-group"> <label for="name">
                                             <h6>FULL NAME</h6>
-                                        </label>  <div class="input-group border"><input type="text" name="username" placeholder="John Doe" required class="form-control ">
+                                        </label>  <div class="input-group border"><input type="text" id="name" name="name" placeholder="John Doe" required class="form-control ">
                                         </div> </div>
                                     <div class="form-group"> <label for="address">
                                             <h6>ADDRESS</h6>
@@ -75,11 +76,20 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="username">
-                                            <h6>FULL NAME</h6>
+                                        <label for="email">
+                                            <h6>Email</h6>
                                         </label>
                                         <div class="input-group border">
-                                            <input type="text" name="username" placeholder="John Doe" required class="form-control ">
+                                            <input type="email" name="email" id="email" placeholder="John Doe" required class="form-control ">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="amount">
+                                            <h6>Amount</h6>
+                                        </label>
+                                        <div class="input-group border">
+                                            <input type="number" name="amount" id="amount" placeholder="$" required class="form-control ">
                                         </div>
                                     </div>
 
@@ -94,10 +104,10 @@
                                            <h4>Credit Card Info</h4>
                                         </div>
                                     </div>
-                                    <div class="form-group"> <label for="cardNumber">
+                                    <div class="form-group"> <label for="phone">
                                             <h6>Card number</h6>
                                         </label>
-                                        <div class="input-group "> <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control" required>
+                                        <div class="input-group "> <input type="text" name="phone"  id="phone" placeholder="Valid card number" class="form-control" required>
                                             <div class="input-group-append px-3">    <ul class="cards">
                                                     <li class="visa hand border">Visa</li>
                                                 </ul>  </div>
@@ -132,7 +142,7 @@
                                 <div class="row">
                                     <div class="col-md-4"><button class="btn btn-primary px-3 float-left mb-3">PREVIOUS</button></div>
                                     <div class="col-md-4"></div>
-                                    <div class="col-md-4"><button class="btn btn-primary px-3 float-end mb-3">CONFIRM</button></div>
+                                    <div class="col-md-4"><button type="submit" class="btn btn-primary px-3 float-end mb-3">CONFIRM</button></div>
                                 </div>
                                 </div>
 
@@ -153,6 +163,44 @@
 @endsection
 
 @section('extra-scripts')
+    <script>
+        $(function () {
+            $("makePaymentForm").submit( function (e){
+                e.preventDefault();
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var phone = $("#phone").val();
+                var amount = $("#amount").val();
+                makePayment(amount,email,phone,name)
+            });
+        });
+        function makePayment(amount,email,phone_number,name) {
+            FlutterwaveCheckout({
+                public_key: "FLWPUBK_TEST-SANDBOXDEMOKEY-X",
+                tx_ref: "RX1_{{substr(rand(0,time()),0,7)}}",
+                amount,
+                currency: "USD",
+                country: "US",
+                payment_options: " ",
+                customer: {
+                    email: email,
+                    phone_number,
+                    name,
+                },
+                callback: function (data) {
+                    console.log(data);
+                },
+                onclose: function() {
+                    // close modal
+                },
+                customizations: {
+                    title: "My store",
+                    description: "Payment for items in cart",
+                    logo: "https://assets.piedpiper.com/logo.png",
+                },
+            });
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
@@ -165,4 +213,5 @@
         });
 
     </script>
+
 @endsection
