@@ -1,4 +1,4 @@
-<div class="modal fade " id="user-delete-{{$user->id}}" tabindex="-1" role="dialog"
+<div class="modal fade " id="delete-pres-{{$order->id}}" tabindex="-1" role="dialog"
      aria-hidden="true">
     <div class="modal-dialog success-modal-content " role="document">
         <div class="modal-content bg-warning">
@@ -14,11 +14,11 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form  action="{{route('users.destroy',$user->id)}}" method="post">
+                <form  action="{{route('prescription.destroy',$order)}}" method="post">
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn text-light  medibg">Delete</button>
-                    <button type="button" class="btn text-light bg-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </form>
             </div>
         </div>

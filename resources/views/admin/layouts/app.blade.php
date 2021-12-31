@@ -4,8 +4,6 @@
 <body >
 @include('admin.layouts.sidebar')
 <div class="main-content" id="panel">
-  <!----top nav bar----------->
-  
 @include('admin.layouts.topNavbar')
 <!----top nav bar end----------->
 

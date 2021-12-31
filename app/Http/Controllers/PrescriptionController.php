@@ -77,6 +77,54 @@ class PrescriptionController extends Controller
 
     }
 
+    public function update(Request $request,Order $order){
+
+        try {
+            $this->validate(request(), [
+                'quantity'=>'required',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+                'note' => 'nullable'
+            ]);
+        } catch (ValidationException $e) {
+           dd( $e->getMessage());
+            return redirect()->back()->withErrors($e->errors())->with('error', $e->getMessage());
+        }
+//        dd($order->all());
+
+
+        $photo = request()->file('image');
+
+//            dd($photo);
+        if(request()->file('image')){
+//                dd('has file');
+            if (!is_dir($this->photos_path)) {
+//                    mkdir($this->photos_path, 0777);
+            }
+            $name = sha1(date('YmdHis'));
+            $save_name = $name . '.' . $photo->getClientOriginalExtension();
+
+            //      this creates and saves the thumbnail image
+            Image::make($photo)
+                ->resize(250, null, function ($constraints) {
+                    $constraints->aspectRatio();
+                });
+
+            // this saves the actual image
+            $photo->move($this->photos_path, $save_name);
+
+            $order->image = $save_name;
+        }
+        $order->update([
+            'quantity' => $request->quantity,
+            'note' => $request->note,
+            'user_id' => $order->user_id,
+            'image' => $save_name,
+        ]);
+
+        return back()->with('add','order updated successfully.');
+
+    }
+
     public function showRequest(){
 
      $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
@@ -135,5 +183,13 @@ class PrescriptionController extends Controller
         ]);
 
         return back()->with('add','order Rejected successfully.');
+    }
+
+    public function destroy(Order $order){
+
+        $order->delete();
+        
+
+        return back()->with('add','order deleted successfully.');
     }
 }
