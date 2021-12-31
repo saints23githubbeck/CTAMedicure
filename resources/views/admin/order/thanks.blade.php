@@ -87,10 +87,28 @@
                     <div class="card mb-3">
 
                         <div class="card-body">
-                            <h3 class="card-title" style="font-weight: bold;">Card Information</h3>
-                            <p class="card-text"><strong>First 6 Digits</strong>  : {{$order->cardPayment->first_6digits}} </p>
-                            <p class="card-text"><strong>Last 4 Digits</strong>  : {{$order->cardPayment->last_4digits}} </p>
+                            <h3 class="card-title" style="font-weight: bold;">Payment Information</h3>
+                            @if(isset($order->cardPayment->first_6digits))
+                            <p class="card-text"><strong>First 6 Digits</strong>  :
 
+                                {{$order->cardPayment->first_6digits}}
+
+                            </p>
+                            @endif
+                            @if(isset($order->cardPayment->last_4digits))
+                            <p class="card-text"><strong>Last 4 Digits</strong>  :
+
+                                {{$order->cardPayment->last_4digits}}
+
+                            </p>
+                            @endif
+                            @if(isset($order->confirmedOrder->pay_by))
+                            <p class="card-text"><strong>Payment By </strong>  :
+
+                                    {{$order->confirmedOrder->pay_by}}
+
+                            </p>
+                            @endif
                         </div>
 
                     </div>

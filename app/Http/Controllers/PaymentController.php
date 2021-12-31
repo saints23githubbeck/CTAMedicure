@@ -15,7 +15,10 @@ class PaymentController extends Controller
 
         return view('admin.order.thanks',compact('order'));
     }
-
+    public function delivery($id){
+        $order = Order::where('id',$id)->first();
+        return view('admin.order.delivery',compact('order'));
+    }
     public function store(Request $request){
 
         $request = [
@@ -108,10 +111,20 @@ class PaymentController extends Controller
         return redirect($payment['data']['link']);
     }
 
-    /**
-     * Obtain Rave callback information
-     * @return void
-     */
+
+    public function cashondelivery($id){
+        $order = Order::where('id',$id)->first();
+        $confirmed_order = ConfirmedOrder::where('user_id',auth()->user()->id)->where('order_id',$order->id)->first();
+        $confirmed_order->payment = '0';
+        $confirmed_order->due = $confirmed_order->amount;
+        $confirmed_order->pay_by = 'Cash On Delivery';
+        $confirmed_order->update();
+
+
+        return redirect()->route('payment.details', $order->id)->with('add','Your Order has been Successfully');
+
+    }
+
     public function callback()
     {
 
