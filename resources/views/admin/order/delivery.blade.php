@@ -22,8 +22,8 @@
                             </div>
 
                             <div class="text-center mb-4">
-                                <button class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;" type="submit">PICKUP</button>
-                                <a href="{{route('payment.delivery',$order->id)}}" class="btn bg-primary text-white px-5 py-1 mt-3 border-2" style="font-size: 24px; font-weight: bold;" type="button">DELIVERY</a>
+                                <a href="{{route('payment.cashondelivery',$order->id)}}" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">Cash on Delivery</a>
+                                <button class="btn bg-primary text-white px-5 py-1 mt-3 border-2" style="font-size: 24px; font-weight: bold;" type="submit">Pay Before Delivery</button>
                             </div>
 
 
