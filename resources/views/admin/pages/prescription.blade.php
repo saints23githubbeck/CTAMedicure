@@ -79,7 +79,7 @@
                                                      <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$order->image) }}">
                                                     </td>
                                                     <td>
-                                             {{ $order->quantity }}
+                                                     {{ $order->quantity }}
                                                     </td>
                                                     <td>
                                                         {{ $order->created_at->format('d-M-Y' )}}

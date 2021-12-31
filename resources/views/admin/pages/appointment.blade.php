@@ -75,7 +75,7 @@
                                                 <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
                                               </span>
 
-                                        @elseif($appointment->consultancyConfirm->status ==1 )
+                                        @elseif($appointment->consultancyConfirm->status == 1 )
                                             <span class="badge badge-dot mr-4">
                                                 <i class="bg-info"></i>
                                                  <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-{{$appointment->id}}"><span class="status text-white bg-info p-1 rounded shadow-lg">Waiting for Delivery</span></a>
