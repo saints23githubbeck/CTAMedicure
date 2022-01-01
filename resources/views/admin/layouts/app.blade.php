@@ -4,7 +4,9 @@
 <body >
 @include('admin.layouts.sidebar')
 <div class="main-content" id="panel">
-{{-- @include('admin.layouts.topNavbar') --}}
+@include('admin.layouts.topNavbar')
+<!----top nav bar end----------->
+
 @yield('content')
 </div>
 <!-- Footer -->
@@ -17,7 +19,7 @@
     var elem = document.documentElement;
     var show = document.getElementById('show');
     var hide = document.getElementById('hide');
-     
+
     function openFullscreen() {
       show.style.display = 'none';
       hide.style.display = 'block';
@@ -30,7 +32,7 @@
         elem.msRequestFullscreen();
       }
     }
-    
+
     function closeFullscreen() {
       show.style.display = 'block';
       hide.style.display = 'none';
@@ -41,7 +43,7 @@
         document.webkitExitFullscreen();
       } else if (document.msExitFullscreen) { /* IE11 */
         document.msExitFullscreen();
-        
+
       }
     }
   function loading(){
@@ -65,15 +67,16 @@
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"></script>
 
-{{--<script src="js/dashboard.js"></script>--}}
-{{--<script src="js/bootstrap.min.js"></script>--}}
-{{--<script src="js/material-dashboard.min.js"></script>--}}
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script> --}}
-<!-- Core -->
+
 <script src="{{asset('../assets/vendor/jquery/dist/jquery.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<<<<<<< HEAD
+=======
+{{-- <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script> --}}
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 
 <script src="{{asset('../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('../assets/vendor/js-cookie/js.cookie.js')}}"></script>

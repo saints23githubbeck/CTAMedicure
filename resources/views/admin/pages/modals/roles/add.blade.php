@@ -5,7 +5,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-lg-center" id="staticBackdropLabel">Add New Role</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close rounded-circle bg-danger text-white" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form action="{{route('role.add')}}" method="post">

@@ -1,118 +1,118 @@
 @extends('admin.layouts.app')
 @section('content')
-        <div class="header medibg pb-6">
-            <div class="container-fluid">
-                <div class="header-body">
-                    <div class="row align-items-center py-4">
-                        <div class="col-lg-6 col-7">
-                            <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
-                            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                                    <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Default</li>
-                                </ol>
-                            </nav>
-                        </div>
-                        <div class="col-lg-6 col-5 text-right">
-                            <a href="#" class="btn btn-sm btn-neutral">New</a>
-                            <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+<div class="header medibg pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Default</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    <a href="#" class="btn btn-sm btn-neutral">New</a>
+                    <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                </div>
+            </div>
+            <!-- Card stats -->
+            <div class="row">
+                <div class="col-xl-3 col-md-6 shadow-lg">
+                    <div class="card card-stats">
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0"> Appointments</h5>
+                                    {{--<span class="h2 font-weight-bold mb-0">{{ $all_appoinment }}</span>--}}
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                        <i class="fas fa-calendar-day fa-4x mx-3"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <p class="mt-3 mb-0 text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                <span class="text-nowrap">Appointments</span>
+                            </p> --}}
                         </div>
                     </div>
-                    <!-- Card stats -->
-                    <div class="row">
-                        <div class="col-xl-3 col-md-6 shadow-lg">
-                            <div class="card card-stats">
-                                <!-- Card body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0"> Appointments</h5>
-                                            <span class="h2 font-weight-bold mb-0">350,897</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                                <i class="fas fa-calendar-day fa-4x mx-3"></i>
-                                            </div>
-                                        </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-stats">
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Users</h5>
+                                    {{--<span class="h2 font-weight-bold mb-0">{{ $all_user }}</span>--}}
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                        <i class="fas fa-user-friends"></i>
                                     </div>
-                                    <p class="mt-3 mb-0 text-sm">
-                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                        <span class="text-nowrap">Appointments</span>
-                                    </p>
                                 </div>
                             </div>
+                            {{-- <p class="mt-3 mb-0 text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                <span class="text-nowrap">Since last month</span>
+                            </p> --}}
                         </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-stats">
-                                <!-- Card body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Users</h5>
-                                            <span class="h2 font-weight-bold mb-0">2,356</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                                <i class="fas fa-user-friends"></i>
-                                            </div>
-                                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-stats">
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Prescription</h5>
+                                    {{--<span class="h2 font-weight-bold mb-0">{{ $all_order }}</span>--}}
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                        <i class="fas fa-prescription-bottle fa-4x mx-3"></i>
                                     </div>
-                                    <p class="mt-3 mb-0 text-sm">
-                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                        <span class="text-nowrap">Since last month</span>
-                                    </p>
                                 </div>
                             </div>
+                            {{-- <p class="mt-3 mb-0 text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                <span class="text-nowrap">Since last month</span>
+                            </p> --}}
                         </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-stats">
-                                <!-- Card body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Prescription</h5>
-                                            <span class="h2 font-weight-bold mb-0">924</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
-                                                <i class="fas fa-prescription-bottle fa-4x mx-3"></i>
-                                            </div>
-                                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-stats">
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Prescriptions</h5>
+                                    {{--<span class="h2 font-weight-bold mb-0">{{ $this_month_order }}</span>--}}
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                        <i class="fas fa-prescription-bottle fa-4x mx-3"></i>
                                     </div>
-                                    <p class="mt-3 mb-0 text-sm">
-                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                        <span class="text-nowrap">Since last month</span>
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-stats">
-                                <!-- Card body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Prescriptions</h5>
-                                            <span class="h2 font-weight-bold mb-0">49,65%</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                                <i class="fas fa-prescription-bottle fa-4x mx-3"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="mt-3 mb-0 text-sm">
-                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                        <span class="text-nowrap">Since last month</span>
-                                    </p>
-                                </div>
-                            </div>
+                            {{-- <p class="mt-3 mb-0 text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                <span class="text-nowrap">Since last month</span>
+                            </p> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
         <!-- Page content -->
         <div class="container-fluid mt--6">
             <div class="row">
@@ -392,7 +392,7 @@
 
         </div>
 
-
+{{-- 
     <script>
       
         var options = {
@@ -444,8 +444,58 @@
         chart.render();
       
       
-    </script>
+    </script> --}}
 @endsection
 
+@section('footer_script')
+<script>
+    //
+// Bars chart
+//
+
+var BarsChart = (function() {
+{{--var datas = <?php echo json_encode($datas); ?>;--}}
+datas.shift();
+//
+// Variables
+//
+
+var $chart = $('#chart-bars');
+
+
+//
+// Methods
+//
+
+// Init chart
+function initChart($chart) {
+
+    // Create chart
+    var ordersChart = new Chart($chart, {
+        type: 'bar',
+        data: {
+            labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'Sales',
+                data: datas
+            }]
+        }
+    });
+
+    // Save to jQuery object
+    $chart.data('chart', ordersChart);
+}
+
+
+// Init chart
+if ($chart.length) {
+    initChart($chart);
+}
+
+})();
+
+</script>
+
+@endsection
 
   

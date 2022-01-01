@@ -14,13 +14,15 @@ class ConsultancyConfirm extends Model
      *
      * @var string[]
      */
-    protected $fillable = [
-        'consultancy_id',
-        'status',
-    ];
+    protected $guarded = [];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class);
+    }
+
+    public function consultancy()
+    {
+        return $this->belongsTo(Consultancy::class);
     }
 }
