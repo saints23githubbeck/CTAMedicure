@@ -32,6 +32,7 @@
                 </form>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                  @else
+                <a href="{{route('prescription.checkout',$order)}}"  class="btn btn-outline-success">pay Now</a>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     @endif
             </div>

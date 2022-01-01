@@ -102,7 +102,7 @@ class PaymentController extends Controller
 
         $payment = Flutterwave::initializePayment($data);
 
-
+//                    dd($data);
         if ($payment['status'] !== 'success') {
             // notify something went wrong
             return $payment;

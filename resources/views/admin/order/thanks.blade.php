@@ -119,6 +119,12 @@
 
                         </div>
                     </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <a href="{{route('prescription.show')}}"> <button class="btn btn-outline-success" > Prescriptions</button></a>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -102,6 +102,13 @@
 
                                                         </span>
                                                         </td>
+                                                        @elseif($approved->amount == $approved->due AND $approved->amount != $approved->payments)
+                                                            <td>
+                                                            <span  class="badge badge-dot mr-4">
+                                                                  <i class="bg-warning"></i>
+                                                            <span class="status text-white bg-success p-1 rounded shadow-lg">Cash On Delivery</span>
+                                                            </span>
+                                                            </td>
                                                     @else
                                                         <td>
                                                             <span  class="badge badge-dot mr-4">
