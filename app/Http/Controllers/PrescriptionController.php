@@ -77,34 +77,73 @@ class PrescriptionController extends Controller
 
     }
 
-    public function showRequest(){
+    public function update(Request $request,Order $order){
+
+        try {
+            $this->validate(request(), [
+                'quantity'=>'required',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+                'note' => 'nullable'
+            ]);
+        } catch (ValidationException $e) {
+           dd( $e->getMessage());
+            return redirect()->back()->withErrors($e->errors())->with('error', $e->getMessage());
+        }
+//        dd($order->all());
+
+
+        $photo = request()->file('image');
+
+//            dd($photo);
+        if(request()->file('image')){
+//                dd('has file');
+            if (!is_dir($this->photos_path)) {
+//                    mkdir($this->photos_path, 0777);
+            }
+            $name = sha1(date('YmdHis'));
+            $save_name = $name . '.' . $photo->getClientOriginalExtension();
+
+            //      this creates and saves the thumbnail image
+            Image::make($photo)
+                ->resize(250, null, function ($constraints) {
+                    $constraints->aspectRatio();
+                });
+
+            // this saves the actual image
+            $photo->move($this->photos_path, $save_name);
+
+            $order->image = $save_name;
+        }
+        $order->update([
+            'quantity' => $request->quantity,
+            'note' => $request->note,
+            'user_id' => $order->user_id,
+            'image' => $save_name,
+        ]);
+
+        return back()->with('add','order updated successfully.');
+
+    }
+
+        }
+    }
+function status($order_id){
+    echo $order_id;
+}
 
      $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
 
         $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
 
-        return view('admin.pages.request-list',compact('orders','confirmOrders'));
-    }
 
     public function acceptOrder(){
 
         $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
 
-        return view('admin.pages.request-list',compact('confirmOrders'));
-    }
+
+ 
 
 
-    public function approve( Request $request, Order $order){
-
-        $order->confirmedOrder()->create([
-            'amount'=>$request->amount,
-            'note'=>$request->description,
-            'status'=>0,
-            'user_id'=>auth()->id(),
-        ]);
-        $order->update([
-            'status'=>1,
-        ]);
 
         return back()->with('add','order Approved successfully.');
     }
@@ -116,7 +155,14 @@ class PrescriptionController extends Controller
             'status'=>1,
         ]);
 
-        return back()->with('add','order Accerpted successfully.');
+        return redirect(route('prescription.checkout',$order))->with('add','order Accerpted successfully.');
+    }
+
+    public function checkout(Order $order){
+
+
+
+    return view('admin.order.order',compact('order'));
     }
 
     public function reject(Order $order){
@@ -128,5 +174,13 @@ class PrescriptionController extends Controller
         ]);
 
         return back()->with('add','order Rejected successfully.');
+    }
+
+    public function destroy(Order $order){
+
+        $order->delete();
+        
+
+        return back()->with('add','order deleted successfully.');
     }
 }

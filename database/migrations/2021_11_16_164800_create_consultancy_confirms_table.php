@@ -16,7 +16,8 @@ class CreateConsultancyConfirmsTable extends Migration
         Schema::create('consultancy_confirms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('consultancy_id')->constrained();
-            $table->string('status')->default('Unconfirmed');
+            $table->foreignId('user_id')->constrained();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

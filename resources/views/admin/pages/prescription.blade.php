@@ -12,6 +12,11 @@
                     <div class="card">
                         <div class="card-body mx-2 my-5">
                             <h2 class="fw-bolder text-center">Prescriptions</h2>
+<<<<<<< HEAD
+                           
+                              
+=======
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
                             <div class="row my-3 ">
                                 <div class="form-group col">
                                     
@@ -24,15 +29,22 @@
                                 </div>
                                 <div class="form-group col">
 
+<<<<<<< HEAD
+                                    <button type="button" class="btn medibg text-black" name="filter" id="filter">Filter</button>
+                                    <button type="button" class="btn btn-danger" name="refresh" id="refresh">Refresh</button>
+
+                               
+=======
 
                                     <span class="btn medibg text-white mt-4">Filter</span>
-                                    <span class="btn btn-danger text-white mt-4">Cancel</span>
+                                    {{--<span class="btn btn-danger text-white mt-4">Cancel</span>--}}
 
                                     {{--<button type="button" class="btn medibg text-black" name="filter" id="filter">Filter</button>--}}
                                     {{--<button type="button" class="btn btn-danger" name="refresh" id="refresh">Refresh</button>--}}
 
                                
 
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 
                                 </div>
 
@@ -57,24 +69,44 @@
                                             <table class="table align-items-center table-flush">
                                                 <thead class="thead-light text-dark ">
                                                 <tr>
+                                                    <th scope="col" class="sort" data-sort="budget">Order</th>
                                                     <th scope="col" class="sort" data-sort="budget">Order image</th>
                                                     <th scope="col" class="sort" data-sort="budget">quantity</th>
+                                                    <th scope="col" class="sort" data-sort="budget">Date</th>
                                                     <th scope="col" class="sort" data-sort="budget">Note</th>
                                                     <th scope="col" class="sort" data-sort="status">Status</th>
+<<<<<<< HEAD
+                                                    <th scope="col" class="sort" data-sort="completion" class="text-right">Action</th>
+=======
                                                     <th scope="col" class="sort" data-sort="completion" class="text-r">Action</th>
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
                                                     
                                                 </tr>
                                                 </thead>
                                                 <tbody class="list">
+<<<<<<< HEAD
+                                                {{-- @php 
+                                                   
+                                                $orders = App\Models\Order::Paginate(2);
+                                                   
+                                                @endphp --}}
+=======
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 
                                                 @foreach ($orders as $order)
                                                 <tr>
+                                                    <td >
+                                                        {{'mdc0'.$order->id}}
+                                                    </td>
 
-                                                    <td class="budget">
+                                                    <td >
                                                      <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$order->image) }}">
                                                     </td>
                                                     <td>
-                                             {{ $order->quantity }}
+                                                     {{ $order->quantity }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $order->created_at->format('d-M-Y' )}}
                                                     </td>
                                                     <td>
                                                         {{ $order->note }}
@@ -99,8 +131,41 @@
                                               </span>
                                             @endif
 
+<<<<<<< HEAD
+                                                    <td class="text-right ">
+                                                        <a class="btn btn-warning" href={{ route("edit.prescription",$order->id) }}>Update</a>
+                                                        <a class="btn btn-danger" href={{ route("delete.prescription",$order->id) }}>Delete</a>
+                                                        <a class="btn btn-success" href={{ route("view.prescription",$order->id) }}>View</a>
+                                                      
+                                                        {{-- <div class="dropdown">
+                                                            <a class="btn btn-lg medibg shadow btn-icon-only text-white"
+                                                               href="#"
+                                                               role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                               aria-expanded="false">
+                                                                <i class="fas fa-ellipsis-v"></i>
+                                                            </a>
+                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                                <a class="dropdown-item" href="{{ route('edit.prescription',$order->id) }}">Update</a>
+                                                                <a class="dropdown-item" href="{{ route('delete.prescription',$order->id) }}">Delete</a>
+                                                                <a class="dropdown-item" href="{{ route('view.prescription',$order->id) }}"> view </a>
+   
+=======
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 
 
+<<<<<<< HEAD
+                                                            </div>
+                                                        </div> --}}
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+
+                                                
+                                                    
+                                               
+                                             
+                                              
+=======
                                               </td>
 
                                                     <td class="text-right">
@@ -113,7 +178,7 @@
                                                             </a>
                                                             <div class="dropdown-menu ">
                                                                 <a class="dropdown-item  bg-success text-white text-center" data-bs-toggle="modal" data-bs-target="#update-pres-{{$order->id}}">Update</a>
-                                                                <a class="dropdown-item  bg-danger text-white text-center" data-bs-toggle="modal" data-bs-target="#role-pres-{{$order->id}}">Delete</a>
+                                                                <a class="dropdown-item  bg-danger text-white text-center" data-bs-toggle="modal" data-bs-target="#delete-pres-{{$order->id}}">Delete</a>
                                                                 <a class="dropdown-item btn  text-center" data-bs-toggle="modal" data-bs-target="#details-pres-{{$order->id}}">View</a>
                                                             </div>
                                                         </div>
@@ -123,20 +188,17 @@
                                                 @if($order->status == 1)
                                                 @include('admin.pages.modals.orders.previewOrder')
                                                 @endif
+                                                @include('admin.pages.modals.orders.details')
+                                                @include('admin.pages.modals.orders.order_edit')
+                                                @include('admin.pages.modals.orders.delete')
                                                 @endforeach
                                                 @if($orders->count() == 0)
                                                     <div class="text-center mt-3">
                                                         <em>No users found</em>
                                                     </div>
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 
                                                 @endif
-                                                
-                                                    
-                                               
-                                             
-                                              
-
-
                                                 </tbody>
                                             </table>
                                         </div>
@@ -145,11 +207,22 @@
                             </div>
                         </div>
                         <div class="container">
+<<<<<<< HEAD
+                            <div class="col-md-12">
+
+                             
+                     {{ $orders->links('admin.pages.custom_paginate') }}
+                            
+                    </div>
+
+                            
+=======
                             <div class="col-md-12 mb-4">
                                 <ul class="pagination offset-lg-5 mt-2">
                                     <li ><a class="page-link btn medibg p-2 m-2 text-white" href="{{ $orders->previousPageUrl() }}">Previous</a></li>
                                     <li ><a class="page-link p-2 m-2 medibg text-white" href="{{ $orders->nextPageUrl() }}">Next</a></li>
                                 </ul>
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
                             </div>
                         </div>
 
@@ -160,7 +233,21 @@
             </div>
 @endsection
 
-@section('footer_script') 
+@section('footer_script')
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .css({'background': 'url('+e.target.result+') center center no-repeat','background-size':'cover'});
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 <script>
     $(document).ready(function(){
 $.datepicker.setDefaults({
@@ -242,6 +329,90 @@ if(from_date != '' && to_date != ''){
   }
 })
 
+<<<<<<< HEAD
+@section('footer_script') 
+<script>
+    $(document).ready(function(){
+$.datepicker.setDefaults({
+ dateFormat: 'yy-mm-dd'
+});
+
+$(function(){
+$('#from_date').datepicker();
+$('#to_date').datepicker();
+
+});
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+fetch_data();
+function fetch_data(from_date = '',to_date = ''){
+    $.ajax({
+type:'POST',
+url:'/filter/prescription',
+data:{from_date:from_date,to_date:to_date},
+dataType:"json",
+success:function(data){
+ 
+    var output = '';
+    for(var count = 0;count < data.length;count++){
+        output += '<tr>';
+           
+        output += "<td><img src={{ URL::to('/') }}/uploads/orders/"+data[count].image+" width='70px'/></td>";
+        // output += '<td><img src="'+"asset('uploads/orders/"+data[count].image+')"></td>';
+
+        output += '<td>'+data[count].quantity+'</td>';
+        output += '<td>'+data[count].note+'</td>';
+        if(data[count].status === 0){
+        output += '<td><span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span></td>';
+        }else{
+            output += '<td><span class="status text-white bg-success p-1 rounded shadow-lg">completed</span></td>';
+        }
+        output +=  '<td class="text-right">';
+        output += '<a class="btn btn-primary" href={{ route("edit.prescription",$order->id) }}>Update</a>';
+        output += '<a class="btn btn-danger" href={{ route("delete.prescription",$order->id) }}>Delete</a>';
+        output += '<a class="btn btn-success" href={{ route("view.prescription",$order->id) }}>View</a>';
+      
+        output += '</td>';
+                        
+       
+
+
+
+        output += '<tr>';
+    }
+$('.list').html(output);
+
+},
+error:function(xhr){
+    console.log(xhr.responseText);
+}
+});
+}
+
+$('#filter').click(function(){
+var from_date = $('#from_date').val();
+var to_date = $('#to_date').val();
+if(from_date != '' && to_date != ''){
+ fetch_data(from_date,to_date);
+}else{
+    const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+=======
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 Toast.fire({
   icon: 'warning',
   title: 'choose from and to date'

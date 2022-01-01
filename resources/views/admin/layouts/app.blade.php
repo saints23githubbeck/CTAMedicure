@@ -4,17 +4,13 @@
 <body >
 @include('admin.layouts.sidebar')
 <div class="main-content" id="panel">
-
-  <!----top nav bar----------->
-  
 @include('admin.layouts.topNavbar')
 <!----top nav bar end----------->
-
- @include('admin.layouts.topNavbar')
 
 @yield('content')
 </div>
 <!-- Footer -->
+
 @include('admin.layouts.footer')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
@@ -23,7 +19,7 @@
     var elem = document.documentElement;
     var show = document.getElementById('show');
     var hide = document.getElementById('hide');
-     
+
     function openFullscreen() {
       show.style.display = 'none';
       hide.style.display = 'block';
@@ -36,7 +32,7 @@
         elem.msRequestFullscreen();
       }
     }
-    
+
     function closeFullscreen() {
       show.style.display = 'block';
       hide.style.display = 'none';
@@ -47,7 +43,7 @@
         document.webkitExitFullscreen();
       } else if (document.msExitFullscreen) { /* IE11 */
         document.msExitFullscreen();
-        
+
       }
     }
   function loading(){
@@ -77,7 +73,10 @@
 
 <script src="{{asset('../assets/vendor/jquery/dist/jquery.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<<<<<<< HEAD
+=======
 {{-- <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script> --}}
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 
 <script src="{{asset('../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('../assets/vendor/js-cookie/js.cookie.js')}}"></script>

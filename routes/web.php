@@ -1,9 +1,11 @@
 <?php
 
 
+use App\Http\Controllers\PaymentController;
+
+use App\Http\Controllers\ConsultancyController;
+
 use App\Http\Controllers\PrescriptionController;
-
-
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 
@@ -24,14 +26,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.index');
+
+
 });
 
-Route::get('/payment', function () {
-    return view('order.payment');
-});
-Route::get('/order', function () {
-    return view('order.order');
-});
+
+
+Route::post('/pay', [PaymentController::class, 'initialize'])->name('pay');
+// The callback url after a payment
+Route::get('/callback', [PaymentController::class, 'callback'])->name('callback');
+
 Route::get('/request', function () {
     return view('order.incoming_request');
 });
@@ -72,14 +76,6 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::get('/location', function () {
-    return view('admin.location');
-
-});
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
-
 
  Route::get('/detail/modal', function () {
     return view('admin.pages.detail_modal');
@@ -94,13 +90,15 @@ Route::get('/dashboard', function () {
  })->name('billing_info');
 
 
+
  Route::get('/orderlist', function () {
     return view('admin.pages.orderlist');
- })->name('orderlist'); 
- 
+ })->name('orderlist');
+
  Route::get('/billing_info', function () {
     return view('admin.pages.billing_info');
- })->name('billing_info'); 
+ })->name('billing_info');
+
 
 Route::get('/location', function () {
    return view('admin.pages.location');
@@ -110,39 +108,55 @@ Route::get('/location', function () {
 // Route::get('/prescription', function () {
 //     return view('admin.prescription');
 // })->name('prescription');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 
-Route::get('/location', function () {
-   return view('admin.location');
-
-})->name('location');
 //prescription start
 
 
+<<<<<<< HEAD
+Route::get('/prescription/aa',[PrescriptionController::class,'index'])->name('prescription');
+Route::post('filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
+Route::get('/delete/prescription/{order_id}',[PrescriptionController::class,'delete'])->name('delete.prescription');
+=======
 Route::get('/prescription',[PrescriptionController::class,'index'])->name('pres');
 Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
-Route::get('/delete/prescription/{order_id}',[PrescriptionController::class,'delete'])->name('delete.prescription');
+Route::delete('/prescription/{order}/delete',[PrescriptionController::class,'destroy'])->name('prescription.destroy');
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'])->name('view.prescription');
 Route::get('/edit/prescription/{order_id}',[PrescriptionController::class,'edit'])->name('edit.prescription');
 Route::get('/status/prescription/{order_id}',[PrescriptionController::class,'status'])->name('status.prescription');
-Route::post('/update/prescription',[PrescriptionController::class,'edit_post'])->name('update.prescription');
+Route::patch('/prescription/{order}/update',[PrescriptionController::class,'update'])->name('update.prescription');
 Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
 Route::post('/prescription/accerpt/{order}',[PrescriptionController::class,'accerpt'])->name('prescription.accerpt');
+Route::get('/prescription/checkout/{order}',[PrescriptionController::class,'checkout'])->name('prescription.checkout');
 Route::post('/prescription/reject/{order}',[PrescriptionController::class,'reject'])->name('prescription.reject');
 Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
 Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'approve'])->name('prescription.confirm');
 
+Route::get('payment/{id}',[PaymentController::class,'index'])->name('payment.details');
+Route::get('delivery/{id}',[PaymentController::class,'delivery'])->name('payment.delivery');
+Route::get('cash/delivery/{id}',[PaymentController::class,'cashondelivery'])->name('payment.cashondelivery');
 //prescription end
 
 //return view('admin.pages.location');
 //})->name('location');
+<<<<<<< HEAD
 Route::get('/appointments', function () {
     return view('admin.pages.appointment');
 })->name('appointments');
 //
+// Route::get('/prescriptions', function () {
+//     return view('admin.pages.prescription');
+// })->name('prescriptions');
+=======
+
 Route::get('/prescriptions', function () {
     return view('admin.pages.prescription');
 })->name('prescriptions');
+>>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 //
 
 // Route::get('/users', function () {
@@ -164,10 +178,6 @@ Route::get('/incoming', function () {
 
 })->name('income');
 
-Route::get('/payment', function () {
-    return view('admin.order.payment');
-
-})->name('payment');
 
 Route::get('/order', function () {
     return view('admin.order.order');
@@ -187,10 +197,6 @@ Route::get('/incoming', function () {
 
 })->name('income');
 
-Route::get('/payment', function () {
-    return view('admin.order.payment');
-
-})->name('payment');
 
 Route::get('/order', function () {
     return view('admin.order.order');
@@ -201,7 +207,7 @@ Route::get('/order', function () {
 Route::get('/request-list', function () {
     return view('admin.pages.request-list');
 })->name('requestList');
-//
+
 Route::prefix('admin')->group(function () {
 
 
@@ -218,8 +224,6 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{role}/delete', 'RoleController@destroy')->name('role.destroy');
 
         Route::post('/search', 'RoleController@search')->name('role.search');
-
-
     });
 
     Route::prefix('user')->group(function () {
@@ -231,4 +235,10 @@ Route::prefix('admin')->group(function () {
 
     });
 });
-
+// Appoinment controller
+Route::get('/appointments',[ConsultancyController::class,'appointmentPage'])->name('appointments');
+Route::post('/appointment/add',[ConsultancyController::class,'store'])->name('appointment.add');
+Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,'destroy'])->name('appointment.destroy');
+Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'update'])->name('appointment.update');
+Route::post('/apoinment-update',[ConsultancyController::class,'apoinmentUpdate'])->name('appoinmentUpdate');
+Route::get('/apoinment-search',[ConsultancyController::class,'appoinSearch'])->name('appoinSearch');

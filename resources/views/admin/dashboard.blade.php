@@ -28,7 +28,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0"> Appointments</h5>
-                                    <span class="h2 font-weight-bold mb-0">{{ $all_appoinment }}</span>
+                                    {{--<span class="h2 font-weight-bold mb-0">{{ $all_appoinment }}</span>--}}
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -50,7 +50,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Users</h5>
-                                    <span class="h2 font-weight-bold mb-0">{{ $all_user }}</span>
+                                    {{--<span class="h2 font-weight-bold mb-0">{{ $all_user }}</span>--}}
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -72,7 +72,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Prescription</h5>
-                                    <span class="h2 font-weight-bold mb-0">{{ $all_order }}</span>
+                                    {{--<span class="h2 font-weight-bold mb-0">{{ $all_order }}</span>--}}
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -94,7 +94,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Prescriptions</h5>
-                                    <span class="h2 font-weight-bold mb-0">{{ $this_month_order }}</span>
+                                    {{--<span class="h2 font-weight-bold mb-0">{{ $this_month_order }}</span>--}}
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -116,7 +116,7 @@
         <!-- Page content -->
         <div class="container-fluid mt--6">
             <div class="row">
-                {{-- <div class="col-xl-8">
+                <div class="col-xl-8">
                     <div class="card bg-default">
                         <div class="card-header bg-transparent">
                             <div class="row align-items-center">
@@ -150,8 +150,8 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
-                <div class="col-xl-8">
+                </div>
+                <div class="col-xl-4">
                     <div class="card">
                         <div class="card-header bg-transparent">
                             <div class="row align-items-center">
@@ -454,7 +454,7 @@
 //
 
 var BarsChart = (function() {
-var datas = <?php echo json_encode($datas); ?>;
+{{--var datas = <?php echo json_encode($datas); ?>;--}}
 datas.shift();
 //
 // Variables
