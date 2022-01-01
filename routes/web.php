@@ -139,9 +139,9 @@ Route::get('/prescriptions', function () {
 })->name('prescriptions');
 //
 
-Route::get('/users', function () {
-    return view('admin.pages.user');
-})->name('users');
+// Route::get('/users', function () {
+//     return view('admin.pages.user');
+// })->name('users');
 
 //Route::get('/users', function () {
 //    return view('admin.pages.user');
