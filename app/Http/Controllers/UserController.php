@@ -21,7 +21,10 @@ class UserController extends Controller
         }
 
         $users  = $users->with('role')->orderBy('id', 'DESC')->paginate(10);
+
         $roles = Role::all();
+ echo 'lasjdl';
+        die();
         return view('admin.pages.user', compact('users','roles'));
     }
 
