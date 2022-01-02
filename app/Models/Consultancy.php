@@ -14,16 +14,18 @@ class Consultancy extends Model
      *
      * @var string[]
      */
-    protected $fillable = [
-        'doctor_id',
-        'user_id',
-        'reason',
-        'availableDate',
-        'availableTime',
-    ];
+    protected $guarded = [];
     
     public function user()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function consultancyConfirm()
+    {
+        return $this->hasOne(ConsultancyConfirm::class);
     }
 }
