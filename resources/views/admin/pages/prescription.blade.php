@@ -63,7 +63,7 @@
                                                     <th scope="col" class="sort" data-sort="budget">Date</th>
                                                     <th scope="col" class="sort" data-sort="budget">Note</th>
                                                     <th scope="col" class="sort" data-sort="status">Status</th>
-                                                    <th scope="col" class="sort" data-sort="completion" class="text-r">Action</th>
+                                                    <th scope="col" class="sort" data-sort="status">Action</th>
                                                     
                                                 </tr>
                                                 </thead>
@@ -94,16 +94,15 @@
                                                 <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
                                               </span>
 
-                                            @elseif($order->confirmedOrder->status ==1 )
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-info"></i>
-                                                 <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-{{$order->id}}"><span class="status text-white bg-info p-1 rounded shadow-lg">Waiting for Delivery</span></a>
-                                              </span>
-                                                @else
+                                            @elseif($order->status == 1)
                                                             <span class="badge badge-dot mr-4">
                                                 <i class="bg-success"></i>
                                                  <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-{{$order->id}}"><span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Review Now</span></a>
-
+                                              </span>
+                                                @else
+                                                            <span class="badge badge-dot mr-4">
+                                                <i class="bg-info"></i>
+                                                 <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-{{$order->id}}"><span class="status text-white bg-info p-1 rounded shadow-lg">Waiting for Delivery</span></a>
                                               </span>
                                             @endif
 

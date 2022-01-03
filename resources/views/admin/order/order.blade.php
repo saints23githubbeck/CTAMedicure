@@ -29,12 +29,11 @@
                             </div>
 
                             <div class="text-center mb-4">
-                                <a href="{{route('pay',$order->id)}}" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">PICKUP</a>
-                                <a href="{{route('pay.mobile',$order->id)}}" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">MOBILE MONEY</a>
+                                <button data-bs-toggle="modal" data-bs-target="#payPlan" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">PICKUP</button>
                                 <a href="{{route('payment.delivery',$order->id)}}" class="btn bg-primary text-white px-5 py-1 mt-3 border-2" style="font-size: 24px; font-weight: bold;">DELIVERY</a>
                             </div>
 
-
+                            @include('admin.pages.modals.orders.payPlan')
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="card">

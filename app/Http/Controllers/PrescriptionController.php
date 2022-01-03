@@ -21,7 +21,8 @@ class PrescriptionController extends Controller
 
     public function index()
     {
-       $orders = Order::orderBy('created_at','desc')->where('user_id',auth()->user()->id)->paginate(5);
+       $orders = Order::with('confirmedOrder')->orderBy('created_at','desc')->where('user_id',auth()->user()->id)->paginate(5);
+//       dd($orders);
 
     return view('admin.pages.prescription',compact('orders'));
     }

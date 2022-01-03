@@ -34,7 +34,7 @@ Route::get('/', function () {
 
 Route::get('/pay/{id}', [PaymentController::class, 'initialize'])->name('pay');
 // The callback url after a payment
-Route::get('/callback', [PaymentController::class, 'callback'])->name('callback');
+Route::post('/callback', [PaymentController::class, 'callback'])->name('callback');
 Route::get('/pay/mobile/{id}', [PaymentController::class, 'mobile'])->name('pay.mobile');
 // The callback url after a payment
 Route::get('/callback/mobile', [PaymentController::class, 'callbackm'])->name('callback.mobile');

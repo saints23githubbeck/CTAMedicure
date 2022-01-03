@@ -17,6 +17,7 @@
                 <h3 class="text-center">Confirmed Details</h3>
                 <p class="text-center">Amount : <span class="mr--5">{{$order->confirmedOrder->amount}}</span></p>
                 <p class="text-center">Contact : <span class="mr--5">{{$order->confirmedOrder->user->contactNumber}}</span></p>
+                <p class="text-center">Payments Plan : <span class="mr--5">{{$order->confirmedOrder->pay_by}}</span></p>
             </div>
 
 
@@ -31,9 +32,12 @@
                     <button type="submit" class="btn btn-warning" data-bs-dismiss="modal">Reject</button>
                 </form>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                 @else
+                 @elseif($order->confirmedOrder->amoun == $order->confirmedOrder->due)
                 <a href="{{route('prescription.checkout',$order)}}"  class="btn btn-outline-success">pay Now</a>
+
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    @else
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     @endif
             </div>
         </div>
