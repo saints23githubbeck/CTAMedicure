@@ -14,16 +14,24 @@
 
                     </div>
                     <div class="col-md-8">
-                        <form method="POST" action="{{ route('pay') }}" id="paymentForm">
-                            {{ csrf_field() }}
+{{--@php--}}
+{{--    if($_POST['payment'] == "pay") {--}}
+{{--    $pay = 1;--}}
+{{--    } else {--}}
+{{--    $pay = 2;--}}
+{{--    }--}}
+{{--@endphp--}}
 
+
+                                {{ csrf_field() }}
                             <div class="float-start d-inline mt-2">
                                 <span class="" style="font-size: 40px;"><i class="fas fa-long-arrow-alt-left"></i></span>
                             </div>
 
                             <div class="text-center mb-4">
-                                <button class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;" type="submit">PICKUP</button>
-                                <a href="{{route('payment.delivery',$order->id)}}" class="btn bg-primary text-white px-5 py-1 mt-3 border-2" style="font-size: 24px; font-weight: bold;" type="button">DELIVERY</a>
+                                <a href="{{route('pay',$order->id)}}" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">PICKUP</a>
+                                <a href="{{route('pay.mobile',$order->id)}}" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">MOBILE MONEY</a>
+                                <a href="{{route('payment.delivery',$order->id)}}" class="btn bg-primary text-white px-5 py-1 mt-3 border-2" style="font-size: 24px; font-weight: bold;">DELIVERY</a>
                             </div>
 
 
@@ -127,7 +135,7 @@
                             <button type="submit" class="btn btn-primary order my-5" style="">Pay Now</button>
 
                         </div>
-                        </form>
+
                     </div>
                     <div class="col-md-2">
 
