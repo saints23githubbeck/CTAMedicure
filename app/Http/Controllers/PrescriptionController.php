@@ -133,17 +133,9 @@ class PrescriptionController extends Controller
 
     public function showRequest(){
 
+     $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
 
-
-        if (auth()->user()->role_id == 1){
-            $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
-
-            $confirmOrders = ConfirmedOrder::orderBy('created_at','desc')->paginate(5);
-        }else{
-            $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
-
-            $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
-        }
+        $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
 
         return view('admin.pages.request-list',compact('orders','confirmOrders'));
     }

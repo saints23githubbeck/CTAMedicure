@@ -63,8 +63,12 @@
                                                     <th scope="col" class="sort" data-sort="budget">Date</th>
                                                     <th scope="col" class="sort" data-sort="budget">Note</th>
                                                     <th scope="col" class="sort" data-sort="status">Status</th>
-                                                    <th scope="col" class="sort" data-sort="status">Action</th>
-                                                    
+
+                                                    <th scope="col" class="sort" data-sort="status">Location</th>
+                                                    <th scope="col" class="sort" data-sort="completion" class="text-r">Action</th>
+
+                    
+                            
                                                 </tr>
                                                 </thead>
                                                 <tbody class="list">
@@ -110,6 +114,7 @@
 
                                               </td>
 
+<<<<<<< HEAD
                                                     <td>
                                                         <a data-bs-toggle="modal" data-bs-target="#update-pres-{{$order->id}}" class="bg-success btn-sm text-white "  ><i
                                                                     class="fas fa-edit"></i></a>
@@ -117,6 +122,28 @@
                                                                     class="fas fa-eye"></i></a>
                                                         <a class=" bg-danger btn-sm text-white " data-bs-toggle="modal" data-bs-target="#delete-pres-{{$order->id}}"><i
                                                                     class="fas fa-trash"> </i></a>
+=======
+                                            <td><a href="{{ url('/location', $order->id) }}" class="btn btn-primary" href="">Location</a></td>
+                                             
+
+                                                    <td class="text-right">
+                                                        
+                                                        <div class="dropdown">
+                                                            <a class="btn btn-lg medibg text-white shadow btn-icon-only"
+                                                               href="#"
+                                                               role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                               aria-expanded="false">
+                                                                <i class="fas fa-ellipsis-v"></i>
+                                                            </a>
+                                                            <div class="dropdown-menu ">
+                                                                <a class="dropdown-item  bg-success text-white text-center" data-bs-toggle="modal" data-bs-target="#update-pres-{{$order->id}}">Update</a>
+                                                                <a class="dropdown-item  bg-danger text-white text-center" data-bs-toggle="modal" data-bs-target="#delete-pres-{{$order->id}}">Delete</a>
+                                                                <a class="dropdown-item btn  text-center" data-bs-toggle="modal" data-bs-target="#details-pres-{{$order->id}}">View</a>
+                                                             
+                                                            
+                                                            </div>
+                                                        </div>
+>>>>>>> 8dae7dfd11e0c6f9ff7f475c9a1177675f0ea264
                                                     </td>
 
                                                 </tr>
