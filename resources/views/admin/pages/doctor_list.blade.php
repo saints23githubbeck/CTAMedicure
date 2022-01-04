@@ -22,8 +22,6 @@
 
                                     
                             </div>
-                            
-                             
                         </div>
                         <div class="row justify-content-between">
                             <div class="col-4">

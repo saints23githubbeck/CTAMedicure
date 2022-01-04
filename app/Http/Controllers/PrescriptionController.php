@@ -21,7 +21,12 @@ class PrescriptionController extends Controller
 
     public function index()
     {
-       $orders = Order::with('confirmedOrder')->orderBy('created_at','desc')->where('user_id',auth()->user()->id)->paginate(5);
+        if (auth()->user()->role_id == 1){
+            $orders = Order::with('confirmedOrder')->orderBy('created_at','desc')->paginate(5);
+        }else{
+            $orders = Order::with('confirmedOrder')->orderBy('created_at','desc')->where('user_id',auth()->user()->id)->paginate(5);
+        }
+
 //       dd($orders);
 
     return view('admin.pages.prescription',compact('orders'));
@@ -128,9 +133,17 @@ class PrescriptionController extends Controller
 
     public function showRequest(){
 
-     $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
 
-        $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
+
+        if (auth()->user()->role_id == 1){
+            $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
+
+            $confirmOrders = ConfirmedOrder::orderBy('created_at','desc')->paginate(5);
+        }else{
+            $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
+
+            $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
+        }
 
         return view('admin.pages.request-list',compact('orders','confirmOrders'));
     }

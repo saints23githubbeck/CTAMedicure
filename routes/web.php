@@ -219,6 +219,7 @@ Route::prefix('admin')->group(function () {
 });
 // Appoinment controller
 Route::get('/appointments',[ConsultancyController::class,'appointmentPage'])->name('appointments');
+Route::get('/appointments/list',[ConsultancyController::class,'appointmentList'])->name('appointment.list');
 Route::post('/appointment/add',[ConsultancyController::class,'store'])->name('appointment.add');
 Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,'destroy'])->name('appointment.destroy');
 Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'update'])->name('appointment.update');

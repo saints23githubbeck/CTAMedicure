@@ -72,20 +72,13 @@
                                                      {{$role->description}}
                                                     </td>
 
-                                                    <td class="text-right">
-                                                        <div class="dropdown">
-                                                            <a class="btn btn-lg medibg shadow btn-icon-only text-light"
-                                                               href="#"
-                                                               role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                               aria-expanded="false">
-                                                                <i class="fas fa-ellipsis-v"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#update-Role-{{$role->id}}">Update</a>
-                                                                <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#role-delete-{{$role->id}}">Delete</a>
-                                                                <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#details-Role-{{$role->id}}">View</a>
-                                                            </div>
-                                                        </div>
+                                                    <td>
+                                                        <a data-bs-toggle="modal" data-bs-target="#update-Role-{{$role->id}}"class="bg-success btn-sm text-white "  ><i
+                                                                    class="fas fa-edit"></i></a>
+                                                        <a class="bg-info btn-sm text-white" data-bs-toggle="modal" data-bs-target="#details-Role-{{$role->id}}"><i
+                                                                    class="fas fa-eye"></i></a>
+                                                        <a class=" bg-danger btn-sm text-white " data-bs-toggle="modal" data-bs-target="#role-delete-{{$role->id}}"><i
+                                                                    class="fas fa-trash"> </i></a>
                                                     </td>
                                                 </tr>
 
