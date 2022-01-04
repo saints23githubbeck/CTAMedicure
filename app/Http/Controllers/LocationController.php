@@ -14,9 +14,11 @@ class LocationController extends Controller
 function add(Request $request){
 admin_location::insert([
     'location_name'=>$request->location,
+    
     'created_at'=>Carbon::now()
 ]);
 return back();
+
 }
     //admin location page
     function admin_location(){
