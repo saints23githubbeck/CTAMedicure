@@ -105,6 +105,7 @@ Route::get('/dashboard', function () {
 Route::get('/location/{order_id}',[LocationController::class,'index'])->name('location');
 Route::get('/admin/location',[LocationController::class,'admin_location'])->name('admin_location');
 Route::post('/location/add',[LocationController::class,'insert'])->name('insert.location');
+Route::post('/add/location/',[LocationController::class,'add'])->name('add.admin_location');
 Route::post('/edit/admin/location',[LocationController::class,'update_admin'])->name('update.admin_location');
 
 
