@@ -8,7 +8,7 @@ use App\Http\Controllers\ConsultancyController;
 use App\Http\Controllers\PrescriptionController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -102,10 +102,18 @@ Route::get('/dashboard', function () {
  })->name('billing_info');
 
 
-Route::get('/location', function () {
-   return view('admin.pages.location');
+//location
 
-})->name('location');
+Route::get('/location/{order_id}',[LocationController::class,'index'])->name('location');
+Route::get('/admin/location',[LocationController::class,'admin_location'])->name('admin_location');
+Route::post('/location/add',[LocationController::class,'insert'])->name('insert.location');
+Route::post('/edit/admin/location',[LocationController::class,'update_admin'])->name('update.admin_location');
+
+
+// Route::get('/location', function () {
+//    return view('admin.pages.location');
+
+// })->name('location');
 
 // Route::get('/prescription', function () {
 //     return view('admin.prescription');

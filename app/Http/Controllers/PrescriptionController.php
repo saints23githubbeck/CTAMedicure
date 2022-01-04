@@ -19,7 +19,7 @@ class PrescriptionController extends Controller
         $this->photos_path = public_path('uploads/orders');
     }
 
-    public function index()
+ public function index()
     {
        $orders = Order::with('confirmedOrder')->orderBy('created_at','desc')->where('user_id',auth()->user()->id)->paginate(5);
 //       dd($orders);
@@ -27,7 +27,7 @@ class PrescriptionController extends Controller
     return view('admin.pages.prescription',compact('orders'));
     }
 
-    public function insert(){
+  public function insert(){
 
         try {
             $this->validate(request(), [
@@ -126,37 +126,26 @@ class PrescriptionController extends Controller
 
     }
 
-    public function showRequest(){
+        
+    
+function status($order_id){
 
-     $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
+    echo $order_id;
 
-        $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
+}
 
-        return view('admin.pages.request-list',compact('orders','confirmOrders'));
-    }
+    //  $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
 
-    public function acceptOrder(){
-
-        $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
-
-        return view('admin.pages.request-list',compact('confirmOrders'));
-    }
+    //     $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
 
 
-    public function approve( Request $request, Order $order){
+public function acceptOrder(){
 
-        $order->confirmedOrder()->create([
-            'amount'=>$request->amount,
-            'note'=>$request->description,
-            'status'=>0,
-            'user_id'=>auth()->id(),
-        ]);
-        $order->update([
-            'status'=>1,
-        ]);
+ $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
 
-        return back()->with('add','order Approved successfully.');
-    }
+ return back()->with('add','order Approved successfully.');
+
+}
 
 
     public function accerpt(Order $order){
@@ -193,4 +182,5 @@ class PrescriptionController extends Controller
 
         return back()->with('add','order deleted successfully.');
     }
+
 }

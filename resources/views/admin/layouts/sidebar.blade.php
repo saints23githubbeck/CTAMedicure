@@ -35,6 +35,11 @@
                         </a>
                     </li>
                     <li class="nav-item ">
+                        <a class="nav-link" href="{{route('admin_location')}}">
+                            <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">Admin location</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
                         <a class="nav-link" href="{{route('users')}}">
                             <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">Users</span>
                         </a>

@@ -63,8 +63,12 @@
                                                     <th scope="col" class="sort" data-sort="budget">Date</th>
                                                     <th scope="col" class="sort" data-sort="budget">Note</th>
                                                     <th scope="col" class="sort" data-sort="status">Status</th>
-                                                    <th scope="col" class="sort" data-sort="status">Action</th>
-                                                    
+
+                                                    <th scope="col" class="sort" data-sort="status">Location</th>
+                                                    <th scope="col" class="sort" data-sort="completion" class="text-r">Action</th>
+
+                    
+                            
                                                 </tr>
                                                 </thead>
                                                 <tbody class="list">
@@ -110,7 +114,11 @@
 
                                               </td>
 
+                                            <td><a href="{{ url('/location', $order->id) }}" class="btn btn-primary" href="">Location</a></td>
+                                             
+
                                                     <td class="text-right">
+                                                        
                                                         <div class="dropdown">
                                                             <a class="btn btn-lg medibg text-white shadow btn-icon-only"
                                                                href="#"
@@ -122,6 +130,8 @@
                                                                 <a class="dropdown-item  bg-success text-white text-center" data-bs-toggle="modal" data-bs-target="#update-pres-{{$order->id}}">Update</a>
                                                                 <a class="dropdown-item  bg-danger text-white text-center" data-bs-toggle="modal" data-bs-target="#delete-pres-{{$order->id}}">Delete</a>
                                                                 <a class="dropdown-item btn  text-center" data-bs-toggle="modal" data-bs-target="#details-pres-{{$order->id}}">View</a>
+                                                             
+                                                            
                                                             </div>
                                                         </div>
                                                     </td>
