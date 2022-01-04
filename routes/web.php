@@ -32,10 +32,12 @@ Route::get('/', function () {
 
 
 
-Route::post('/pay', [PaymentController::class, 'initialize'])->name('pay');
+Route::get('/pay/{id}', [PaymentController::class, 'initialize'])->name('pay');
 // The callback url after a payment
-Route::get('/callback', [PaymentController::class, 'callback'])->name('callback');
-
+Route::post('/callback', [PaymentController::class, 'callback'])->name('callback');
+Route::get('/pay/mobile/{id}', [PaymentController::class, 'mobile'])->name('pay.mobile');
+// The callback url after a payment
+Route::get('/callback/mobile', [PaymentController::class, 'callbackm'])->name('callback.mobile');
 Route::get('/request', function () {
     return view('order.incoming_request');
 });
@@ -121,7 +123,7 @@ Route::post('/edit/admin/location',[LocationController::class,'update_admin'])->
 
 
 Route::get('/prescription',[PrescriptionController::class,'index'])->name('pres');
-Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
+//Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
 Route::delete('/prescription/{order}/delete',[PrescriptionController::class,'destroy'])->name('prescription.destroy');
 Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'])->name('view.prescription');
 Route::get('/edit/prescription/{order_id}',[PrescriptionController::class,'edit'])->name('edit.prescription');

@@ -62,6 +62,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($appointments as $key=> $appointment)
+
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td>{{ $appointment->consultancyConfirm->user->profile->firstName.' '.$appointment->consultancyConfirm->user->profile->firstName}}</td>
