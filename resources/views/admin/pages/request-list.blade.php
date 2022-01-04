@@ -98,7 +98,7 @@
                                                     <td >
                                                         <span  class="badge badge-dot mr-4">
                                                            <i class="bg-info"></i>
-                                                        <span class="status text-white bg-info p-1 rounded shadow-lg">Unapproved</span>
+                                                        <span class="status text-white bg-info p-1 rounded shadow-lg">Approved But Unpaid</span>
 
                                                         </span>
                                                         </td>
