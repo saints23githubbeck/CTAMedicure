@@ -19,14 +19,14 @@ class PrescriptionController extends Controller
         $this->photos_path = public_path('uploads/orders');
     }
 
-    public function index()
+ public function index()
     {
        $orders = Order::orderBy('created_at','desc')->where('user_id',auth()->user()->id)->paginate(5);
 
     return view('admin.pages.prescription',compact('orders'));
     }
 
-    public function insert(){
+  public function insert(){
 
         try {
             $this->validate(request(), [
@@ -125,28 +125,26 @@ class PrescriptionController extends Controller
 
     }
 
-        }
-    }
+        
+    
 function status($order_id){
+
     echo $order_id;
+
 }
 
-     $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
+    //  $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
 
-        $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
-
-
-    public function acceptOrder(){
-
-        $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
+    //     $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
 
 
- 
+public function acceptOrder(){
 
+ $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
 
+ return back()->with('add','order Approved successfully.');
 
-        return back()->with('add','order Approved successfully.');
-    }
+}
 
 
     public function accerpt(Order $order){
@@ -183,4 +181,5 @@ function status($order_id){
 
         return back()->with('add','order deleted successfully.');
     }
+
 }

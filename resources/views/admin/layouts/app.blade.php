@@ -73,10 +73,7 @@
 
 <script src="{{asset('../assets/vendor/jquery/dist/jquery.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<<<<<<< HEAD
-=======
 {{-- <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script> --}}
->>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 
 <script src="{{asset('../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('../assets/vendor/js-cookie/js.cookie.js')}}"></script>

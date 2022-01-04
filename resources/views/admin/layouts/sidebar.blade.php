@@ -30,12 +30,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-<<<<<<< HEAD
-                        <a class="nav-link" href="{{route('prescription')}}">
-=======
                         <a class="nav-link" href="{{route('pres')}}">
->>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
                             <i class="fas fa-prescription-bottle"></i> <span class="nav_name text-white ">Prescription</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('admin_location')}}">
+                            <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">Admin location</span>
                         </a>
                     </li>
                     <li class="nav-item ">

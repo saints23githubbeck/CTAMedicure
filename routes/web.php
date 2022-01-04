@@ -8,7 +8,7 @@ use App\Http\Controllers\ConsultancyController;
 use App\Http\Controllers\PrescriptionController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -100,31 +100,29 @@ Route::get('/dashboard', function () {
  })->name('billing_info');
 
 
-Route::get('/location', function () {
-   return view('admin.pages.location');
+//location
 
-})->name('location');
+Route::get('/location/{order_id}',[LocationController::class,'index'])->name('location');
+Route::get('/admin/location',[LocationController::class,'admin_location'])->name('admin_location');
+Route::post('/location/add',[LocationController::class,'insert'])->name('insert.location');
+Route::post('/edit/admin/location',[LocationController::class,'update_admin'])->name('update.admin_location');
+
+
+// Route::get('/location', function () {
+//    return view('admin.pages.location');
+
+// })->name('location');
 
 // Route::get('/prescription', function () {
 //     return view('admin.prescription');
 // })->name('prescription');
-<<<<<<< HEAD
-
-=======
->>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 
 //prescription start
 
 
-<<<<<<< HEAD
-Route::get('/prescription/aa',[PrescriptionController::class,'index'])->name('prescription');
-Route::post('filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
-Route::get('/delete/prescription/{order_id}',[PrescriptionController::class,'delete'])->name('delete.prescription');
-=======
 Route::get('/prescription',[PrescriptionController::class,'index'])->name('pres');
 Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
 Route::delete('/prescription/{order}/delete',[PrescriptionController::class,'destroy'])->name('prescription.destroy');
->>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'])->name('view.prescription');
 Route::get('/edit/prescription/{order_id}',[PrescriptionController::class,'edit'])->name('edit.prescription');
 Route::get('/status/prescription/{order_id}',[PrescriptionController::class,'status'])->name('status.prescription');
@@ -143,20 +141,10 @@ Route::get('cash/delivery/{id}',[PaymentController::class,'cashondelivery'])->na
 
 //return view('admin.pages.location');
 //})->name('location');
-<<<<<<< HEAD
-Route::get('/appointments', function () {
-    return view('admin.pages.appointment');
-})->name('appointments');
-//
-// Route::get('/prescriptions', function () {
-//     return view('admin.pages.prescription');
-// })->name('prescriptions');
-=======
 
 Route::get('/prescriptions', function () {
     return view('admin.pages.prescription');
 })->name('prescriptions');
->>>>>>> 18d1ccb5eb7a1fc3fd2627d8ef9aae4472020300
 //
 
 // Route::get('/users', function () {
