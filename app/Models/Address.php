@@ -18,6 +18,7 @@ class Address extends Model
         'contact',
         'location',
         'user_id',
+        'country'
     ];
     public function user()
     {

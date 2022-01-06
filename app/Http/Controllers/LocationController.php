@@ -6,21 +6,35 @@ use App\Models\Order_location;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use App\Models\admin_location;
-
+// use App\Models\admin_location;
+use App\Models\Address;
 class LocationController extends Controller
 {
 
+function add(Request $request){
+    Address::insert([
+    'contact'=>$request->contact,
+    'location'=>$request->location,
+    'country'=>$request->country,
+    'user_id'=>Auth::id(),
+    'created_at'=>Carbon::now()
+]);
+return back();
+
+}
     //admin location page
     function admin_location(){
-        $locations = admin_location::find(1)->location_name;
-        return view('admin.pages.admin_location',[
-            'locations'=>$locations
-        ]);
+        // $locations = admin_location::find(1)->location_name
+     
+        return view('admin.pages.admin_location');
     }
 function update_admin(Request $request){
-admin_location::find(1)->update([
- 'location_name'=>$request->location
+    Address::find(1)->update([
+        'contact'=>$request->contact,
+        'location'=>$request->location,
+        'country'=>$request->country,
+        'user_id'=>Auth::id(),
+        'updated_at'=>Carbon::now()
 ]);  
 return back()->with('update','My location changed.');
 }
@@ -84,7 +98,7 @@ function index($order_id){
         }
     }  
     
-    $addressFrom = admin_location::find(1)->location_name;
+    $addressFrom = Address::find(1)->location_name;
     $addressTo   = $request->location;
     
     
