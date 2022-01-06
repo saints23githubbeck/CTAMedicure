@@ -194,7 +194,12 @@ class PaymentController extends Controller
             'tx_ref' => $reference,
             "currency" => "GHS",
             'phone_number' => auth()->user()->contactNumber,
-            'network' => 'MTN'
+            'network' => 'MTN',
+            'meta' => [
+                'price' => $order->confirmedOrder->amount,
+                'order_id' => $id,
+                'user_id' => auth()->user()->id
+            ],
         ];
 
         $charge = Flutterwave::payments()->momoGH($data);
@@ -215,34 +220,34 @@ class PaymentController extends Controller
 
             $transactionID = Flutterwave::getTransactionIDFromCallback();
             $data = Flutterwave::verifyTransaction($transactionID);
-//
-//            $confirmed_order = ConfirmedOrder::where('user_id',auth()->user()->id)->where('order_id',json_decode($data['data']['meta']['order_id']))->first();
-//            $confirmed_order->payment = json_decode($data['data']['charged_amount']);
-//            $confirmed_order->due = json_decode($data['data']['charged_amount'])-$confirmed_order->amount;
-//            $confirmed_order->pay_by = json_decode($data['data']['payment_type']);
-//            $confirmed_order->transaction_id = json_decode($data['data']['tx_ref']);
-//            $confirmed_order->update();
-//
-//            $card_payment = new CardPayment();
-//            $card_payment->order_id = json_decode($data['data']['meta']['order_id']);
-//            $card_payment->first_6digits = json_decode($data['data']['card']['first_6digits']);
-//            $card_payment->last_4digits = json_decode($data['data']['card']['last_4digits']);
-//            $card_payment->issuer = json_decode($data['data']['card']['issuer']);
-//            $card_payment->country = json_decode($data['data']['card']['country']);
-//            $card_payment->type = json_decode($data['data']['card']['type']);
-//            $card_payment->expiry = json_decode($data['data']['card']['expiry']);
-//            $card_payment->save();
 
-        //    return redirect()->route('payment.details', json_decode($data['data']['meta']['order_id']))->with('add','Transaction has been Successfully');
-              dd($data);
+            $confirmed_order = ConfirmedOrder::where('user_id',auth()->user()->id)->where('order_id',json_decode($data['data']['meta']['order_id']))->first();
+            $confirmed_order->payment = json_decode($data['data']['charged_amount']);
+            $confirmed_order->due = json_decode($data['data']['charged_amount'])-$confirmed_order->amount;
+            $confirmed_order->pay_by = json_decode($data['data']['payment_type']);
+            $confirmed_order->transaction_id = json_decode($data['data']['tx_ref']);
+            $confirmed_order->update();
+
+            $card_payment = new CardPayment();
+            $card_payment->order_id = json_decode($data['data']['meta']['order_id']);
+            $card_payment->first_6digits = json_decode($data['data']['card']['first_6digits']);
+            $card_payment->last_4digits = json_decode($data['data']['card']['last_4digits']);
+            $card_payment->issuer = json_decode($data['data']['card']['issuer']);
+            $card_payment->country = json_decode($data['data']['card']['country']);
+            $card_payment->type = json_decode($data['data']['card']['type']);
+            $card_payment->expiry = json_decode($data['data']['card']['expiry']);
+            $card_payment->save();
+
+           return redirect()->route('payment.details', json_decode($data['data']['meta']['order_id']))->with('add','Transaction has been Successfully');
+         //     dd($data);
         }
         elseif ($status ==  'cancelled'){
             //Put desired action/code after transaction has been cancelled here
 
-      //      return redirect()->route('pres')->with('add','transaction has been cancelled');
+            return redirect()->route('pres')->with('add','transaction has been cancelled');
         }
         else{
-        //    return redirect()->route('pres')->with('add','Payment Failed');
+            return redirect()->route('pres')->with('add','Payment Failed');
         }
         // Get the transaction from your DB using the transaction reference (txref)
         // Check if you have previously given value for the transaction. If you have, redirect to your successpage else, continue

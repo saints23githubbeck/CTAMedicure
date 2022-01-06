@@ -6,27 +6,49 @@ use App\Models\Order_location;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use App\Models\admin_location;
-
+// use App\Models\admin_location;
+use App\Models\Address;
 class LocationController extends Controller
 {
 
-    //admin location page
-    function admin_location()
-    {
-        $locations = admin_location::find(1)->location_name;
-        return view('admin.pages.admin_location', [
-            'locations' => $locations
+        public function add(Request $request){
+//           dd($request->all());
+            Address::insert([
+            'distance'=>$request->distance,
+            'location'=>$request->location,
+            'country'=>$request->country  ?? 'Ghana',
+            'user_id'=>Auth::id(),
         ]);
+
+            return redirect(route('pres'))->with('add','Your location added successfully.');
+
+}
+
+
+    public function location(){
+        // $locations = admin_location::find(1)->location_name
+
+        return view('admin.pages.location');
     }
 
-    function update_admin(Request $request)
-    {
-        admin_location::find(1)->update([
-            'location_name' => $request->location
+         public function update_admin(Request $request){
+            Address::find(1)->update([
+                'distance'=>$request->distance,
+                'location'=>$request->location,
+                'country'=>$request->country,
+                'user_id'=>Auth::id(),
         ]);
-        return back()->with('update', 'My location changed.');
-    }
+            return back()->with('update','My location changed.');
+}
+
+
+//    function update_admin(Request $request)
+//    {
+//        admin_location::find(1)->update([
+//            'location_name' => $request->location
+//        ]);
+//        return back()->with('update', 'My location changed.');
+//    }
 
 
     function index($order_id)
@@ -89,21 +111,22 @@ class LocationController extends Controller
             }
         }
 
-        $addressFrom = admin_location::find(1)->location_name;
+
+        $addressFrom = auth()->user()->address->location;
         $addressTo = $request->location;
 
 
         $distance = getDistance($addressFrom, $addressTo, "M");
 
 
-        Order_location::insert([
-            'order_id' => $request->order_id,
-            'user_id' => Auth::id(),
-            'distance_miles' => $distance,
-            'location' => $request->location,
-            'created_at' => Carbon::now(),
-
+        Address::insert([
+            'distance'=>$distance,
+            'location'=>$request->location,
+            'country'=>$request->country,
+            'user_id'=>Auth::id(),
         ]);
         return redirect('prescription')->with('add', 'location added successfully.');
-    }
+
+ }
+
 }

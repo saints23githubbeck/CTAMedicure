@@ -8,14 +8,6 @@
             <div class="card">
                 <div class="card-body ">
                     <h2 class="fw-bolder text-center">Appointments</h2>
-                    @if (session('delete_message'))
-                     <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-                        <strong>{{ session('delete_message') }}</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                     </div>
-                     @endif
                     <div class="row my-3 ">
                         <div class="form-group col">
 
