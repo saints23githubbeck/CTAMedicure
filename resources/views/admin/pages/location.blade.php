@@ -7,11 +7,11 @@
        <div class="row ">
            
            <div class="col-md-12 my-5">
-    @if(App\Models\Order_location::where('order_id',$order_id)->exists())
+    @if(App\Models\Distance::where('order_id',$order_id)->exists())
     <div class="card">
         <div class="card-body">
             Your location :
-            <h4>Distance : {{ App\Models\Order_location::where('order_id',$order_id)->first()->distance_miles }} miles</h4>
+            <h4>Distance : {{ App\Models\Distance::where('order_id',$order_id)->first()->distance_miles }} miles</h4>
         </div>
     </div>
     @else

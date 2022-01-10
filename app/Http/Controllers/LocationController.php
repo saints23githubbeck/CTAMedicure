@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order_location;
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-// use App\Models\admin_location;
+
 use App\Models\Address;
+use App\Models\Distance;
 class LocationController extends Controller
 {
 
@@ -49,6 +50,7 @@ function index($order_id){
      ]);
  }
  function insert(Request $request){
+     
     function getDistance($addressFrom, $addressTo, $unit = ''){
         // Google API key
         $apiKey = 'AIzaSyCORKyh23LUQPdrAg7RCtNGhuyIcFRK3zI';
@@ -107,7 +109,7 @@ function index($order_id){
     
     
     
- Order_location::insert([
+Distance::insert([
     'order_id'=>$request->order_id,
     'user_id'=>Auth::id(),
     'distance_miles'=>$distance,
