@@ -105,9 +105,9 @@ Route::get('/dashboard', function () {
 //location
 
 Route::get('/location/{order_id}',[LocationController::class,'index'])->name('location');
-Route::get('/admin/location',[LocationController::class,'admin_location'])->name('admin_location');
-Route::post('/location/add',[LocationController::class,'insert'])->name('insert.location');
-Route::post('/add/location/',[LocationController::class,'add'])->name('add.admin_location');
+Route::get('/admin/location',[LocationController::class,'location'])->name('location');
+Route::post('/location/add',[LocationController::class,'insert'])->name('location.store');
+Route::post('/add/location/',[LocationController::class,'add'])->name('add.location');
 Route::post('/edit/admin/location',[LocationController::class,'update_admin'])->name('update.admin_location');
 
 
@@ -136,10 +136,13 @@ Route::get('/prescription/checkout/{order}',[PrescriptionController::class,'chec
 Route::post('/prescription/reject/{order}',[PrescriptionController::class,'reject'])->name('prescription.reject');
 Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
 Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'approve'])->name('prescription.confirm');
-
+Route::post('/change/prescription/location',[PrescriptionController::class,'change_order_location'])->name('change.location');
 Route::get('payment/{id}',[PaymentController::class,'index'])->name('payment.details');
 Route::get('delivery/{id}',[PaymentController::class,'delivery'])->name('payment.delivery');
 Route::get('cash/delivery/{id}',[PaymentController::class,'cashondelivery'])->name('payment.cashondelivery');
+Route::get('/admin/location',[PrescriptionController::class,'admin_location'])->name('admin.location');
+Route::post('/admin/location/change',[PrescriptionController::class,'admin_location_change'])->name('admin.location.change');
+Route::post('/admin/location/add',[PrescriptionController::class,'admin_location_add'])->name('admin.location.add');
 //prescription end
 
 //return view('admin.pages.location');
@@ -228,6 +231,7 @@ Route::prefix('admin')->group(function () {
 });
 // Appoinment controller
 Route::get('/appointments',[ConsultancyController::class,'appointmentPage'])->name('appointments');
+Route::get('/appointments/list',[ConsultancyController::class,'appointmentList'])->name('appointment.list');
 Route::post('/appointment/add',[ConsultancyController::class,'store'])->name('appointment.add');
 Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,'destroy'])->name('appointment.destroy');
 Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'update'])->name('appointment.update');

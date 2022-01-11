@@ -4,16 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Consultancy;
+use App\Models\ConsultancyConfirm;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Monolog\Handler\CubeHandler;
 
 class ConsultancyController extends Controller{
 
     function appointmentPage(){
-        $appointments = Consultancy::latest()->paginate(10);
-        $doctors = User::where('role_id',2)->get();
+        if (auth()->user()->role_id == 1){
+            $appointments = Consultancy::latest()->paginate(10);
+            $doctors = User::where('role_id',2)->get();
+        }else{
+            $appointments = Consultancy::where('user_id',auth()->user()->id)->latest()->paginate(10);
+            $doctors = User::where('role_id',2)->get();
+        }
+
         return view('admin.pages.appointment',compact('appointments','doctors'));
+    }
+
+    function appointmentList(){
+
+        if (auth()->user()->role_id == 1){
+            $appointments = ConsultancyConfirm::where('status',0)->orderBy('created_at','desc')->paginate(5);
+            $completeAppointments = ConsultancyConfirm::where('status',1)->orderBy('created_at','desc')->paginate(5);
+        }else{
+            $appointments = ConsultancyConfirm::where('user_id',auth()->user()->id)->where('status',0)->orderBy('created_at','desc')->paginate(5);
+            $completeAppointments = ConsultancyConfirm::where('status',1)->orderBy('created_at','desc')->paginate(5);
+        }
+//            dd($appointments);
+
+//        $appointments = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
+        return view('admin.pages.appointment-list',compact('appointments','completeAppointments'));
     }
     function store(Request $request){
 

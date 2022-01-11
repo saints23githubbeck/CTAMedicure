@@ -18,7 +18,7 @@
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn text-light  medibg">Delete</button>
-                    <button type="button" class="btn text-light bg-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </form>
             </div>
         </div>

@@ -3,11 +3,6 @@
 @section('content')
     <!--Container Main start-->
     <div class="container">
-        <div class="col-md-9 offset-2">
-            <div class="breadcrumbs-area">
-                @include('admin.layouts.status')
-            </div>
-        </div>
         <div class="row">
 
             <div class="col-12 mt-lg-5">
@@ -24,7 +19,7 @@
                                 name="term">
                             </div>
                             <div class="form-group col">
-                                <button type="submit"> <span class="btn medibg text-white">Search</span> </button>
+                                <a type="submit"> <span class="btn medibg text-white">Search</span> </a>
 
                             </div>
 
@@ -34,9 +29,9 @@
                             <div class="card-header border-0">
                                 <div class="row justify-content-end mt-2">
                                     <div class="col-md-3 ">
-                                        <button type="button" class="btn medibg custom-btn text-white"
+                                        <a  class="btn medibg custom-btn text-white"
                                                 data-bs-toggle="modal" data-bs-target="#addUser">New User
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -70,8 +65,8 @@
                                                     <td class="budget">
                                                         {{$user->userName}}
                                                     </td>
-                                                    <td class="budget">
-                                                        <img src="{{'/'.$user->profile->img}}" alt="{{$user->name}}" width="80px" height="120px" class="img-fluid img-thumbnail">
+                                                    <td >
+                                                        <img src="{{'/public/uploads/user'.$user->profile->img}}" alt="{{$user->name}}" width="50"  class="img-fluid rounded-circle img-thumbnail">
                                                     </td>
                                                     <td>
                                                           <span class="badge badge-dot mr-4">
@@ -89,24 +84,17 @@
                         <span class="status">{{$user->role->name}}</span>
                       </span>
                                                     </td>
-
-                                                    <td class="text-right">
-                                                        <div class="dropdown">
-                                                            <a class="btn btn-lg medibg shadow btn-icon-only text-light"
-                                                               href="#"
-                                                               role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                               aria-expanded="false">
-                                                                <i class="fas fa-ellipsis-v"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#update-Role-{{$user->id}}">Update</a>
-                                                                <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#user-delete-{{$user->id}}" >Delete</a>
-
-                                                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#details-Role-{{$user->id}}">View</a>
-                                                            </div>
-                                                        </div>
+                                                    <td>
+                                                        <a data-bs-toggle="modal" data-bs-target="#update-Role-{{$user->id}}" class="bg-success btn-sm text-white "  ><i
+                                                                    class="fas fa-edit"></i></a>
+                                                        <a class="bg-info btn-sm text-white" data-bs-toggle="modal" data-bs-target="#details-Role-{{$user->id}}"><i
+                                                                    class="fas fa-eye"></i></a>
+                                                        <a class=" bg-danger btn-sm text-white "data-bs-toggle="modal" data-bs-target="#user-delete-{{$user->id}}"><i
+                                                                    class="fas fa-trash"> </i></a>
                                                     </td>
                                                 </tr>
+
+
                                                 @endforeach
 
                                                 </tbody>

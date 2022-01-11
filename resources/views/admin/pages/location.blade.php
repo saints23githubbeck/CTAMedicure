@@ -1,59 +1,48 @@
-@extends('admin.layouts.app')
 
-@section('content')
-    <!--Container Main start-->
-    <div class="height-100 bg-light">
-        
-       <div class="row ">
-           
-           <div class="col-md-12 my-5">
-    @if(App\Models\Distance::where('order_id',$order_id)->exists())
-    <div class="card">
-        <div class="card-body">
-            Your location :
-            <h4>Distance : {{ App\Models\Distance::where('order_id',$order_id)->first()->distance_miles }} miles</h4>
-        </div>
-    </div>
-    @else
-
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title text-primary text-center my-4">Enter your delivery location</h4>
-                <p class="card-text text-primary ms-3 mb-4">
-                This help us pick the best suppliers associated with your given address
-                </p>
-                <form action="{{ route('insert.location') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="order_id" value="{{ $order_id }}">
-                <div class="my-5 mx-5">
-                    <div class="input-group">
-                        
-                        <input type="text" class="form-control" name="location" placeholder="Location" />
-                        <div class="input-group-text">
-                          
-                            <label for=""> Locate me</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-grid col-6 mx-auto my-auto">
-                    <button type="submit" class="btn btn-lg fw-bolder btn-danger">
-                       <p class="h5 mx-auto"> Add</p>
+    <div class="modal fade " id="location" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog success-modal-content " role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="btn-close rounded-circle  text-white" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            </form>
-    
+                <div class="modal-body">
+                    <h4 class="card-title text-primary text-center my-4">Enter your location</h4>
+
+                    <form action="{{route('change.location')}}" method="POST">
+                        @csrf
+                        <div class="my-5 mx-5">
+                            <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
+                                <div class="input-group">
+                                    {{-- <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ !$errors->has('location') }}" required> --}}
+                                    <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ App\Models\Address::where('user_id',Auth::id())->first()->location }}" required>
+                                    <div class="input-group-append">
+                                        <div class="input-group-text btn-success btn" data-toggle="tooltip"
+                                             title="Click To Find Location Automatically">
+                                            <span class="fas fa-location-arrow "></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @if ($errors->has('location'))
+                                    <div id="location-error" class="error text-danger pl-3"  style="display: block;">
+                                        <strong>{{ $errors->first('location') }}</strong>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn text-light  medibg">Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-
- 
-
-
-    @endif
-
-           </div>
-       </div>
     </div>
-@endsection
+
+
+
 
 
   

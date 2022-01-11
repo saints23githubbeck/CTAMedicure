@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddressesTable extends Migration
+class CreateAdminAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('addresses', function (Blueprint $table) {
+        Schema::create('admin_addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('distance')->nullable();
-            $table->string('location')->notNull();
-            $table->string('country')->default('Ghana');
-            $table->foreignId('user_id')->constrained();
+            $table->string('location');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('addresses');
+        Schema::dropIfExists('admin_addresses');
     }
 }

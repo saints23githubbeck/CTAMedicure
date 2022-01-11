@@ -1,154 +1,75 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <!--Container Main start-->
-    <div class="height-100 bg-light">
-        
-       <div class="row ">
-           
-           <div class="col-md-12 my-5">
-@if (App\Models\Address::where('id',1)->exists())
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title text-primary text-center my-4">Enter admin exact location</h4>
-        <p class="card-text text-primary ms-3 mb-4">
-        
-        </p>
-        <form action="{{ route('update.admin_location') }}" method="POST">
-            @csrf
-    
+<div class="container">
+    <div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            
+        <div class="card-header">
+            <h4 class="card-title text-primary text-center my-4">Enter admin location</h4>
+
+        </div>
+<div class="card-body">
+    @if(App\Models\Admin_address::where('id',1)->exists())
+    <form action="{{route('admin.location.change')}}" method="POST">
+        @csrf
         <div class="my-5 mx-5">
-            <div class="input-group">
-                <div class="input-group-text">
-                  
-                    <label for="">contact</label>
+            <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
+                <div class="input-group">
+                    {{-- <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ !$errors->has('location') }}" required> --}}
+                    <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ App\Models\Admin_address::find(1)->first()->location }}" required>
+                    <div class="input-group-append">
+                        <div class="input-group-text btn-success btn" data-toggle="tooltip"
+                             title="Click To Find Location Automatically">
+                            <span class="fas fa-location-arrow "></span>
+                        </div>
+                    </div>
                 </div>
-      
-                <input type="text" class="form-control" name="contact" value="{{ App\Models\Address::find(1)->contact }}" placeholder="contact" />
-               
+                @if ($errors->has('location'))
+                    <div id="location-error" class="error text-danger pl-3"  style="display: block;">
+                        <strong>{{ $errors->first('location') }}</strong>
+                    </div>
+                @endif
             </div>
         </div>
-        <div class="my-5 mx-5">
-            <div class="input-group">
-                <div class="input-group-text">
-                  
-                    <label for=""> Location</label>
-                </div>
-      
-                <input type="text" class="form-control" name="location" value="{{ App\Models\Address::find(1)->location }}" placeholder="Location" />
-               
-            </div>
-        </div>
-        <div class="my-5 mx-5">
-            <div class="input-group">
-                <div class="input-group-text">
-                  
-                    <label for=""> Country</label>
-                </div>
-      
-                <input type="text" class="form-control" name="country" value="{{ App\Models\Address::find(1)->country }}" placeholder="country" />
-               
-            </div>
-        </div>
-        <div class="d-grid col-6 mx-auto my-auto">
-            <button type="submit" class="btn btn-lg fw-bolder btn-danger">
-               <p class="h5 mx-auto"> update</p>
-            </button>
+        <div class="text-center">
+            <button type="submit" class="btn text-light  medibg">change</button>
         </div>
     </form>
-
-    </div>
-</div>
 @else
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title text-primary text-center my-4">Enter admin exact location</h4>
-        <p class="card-text text-primary ms-3 mb-4">
-        
-        </p>
-        <form action="{{ route('add.admin_location') }}" method="POST">
-            @csrf
-            <div class="my-5 mx-5">
-                <div class="input-group">
-                    <div class="input-group-text">
-                      
-                        <label for="">Contact</label>
+<form action="{{route('admin.location.add')}}" method="POST">
+    @csrf
+    <div class="my-5 mx-5">
+        <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
+            <div class="input-group">
+                {{-- <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ !$errors->has('location') }}" required> --}}
+                <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" required>
+                <div class="input-group-append">
+                    <div class="input-group-text btn-success btn" data-toggle="tooltip"
+                         title="Click To Find Location Automatically">
+                        <span class="fas fa-location-arrow "></span>
                     </div>
-          
-                    <input type="text" class="form-control" name="contact"  placeholder="contact" />
-                   
                 </div>
             </div>
-            <div class="my-5 mx-5">
-                <div class="input-group">
-                    <div class="input-group-text">
-                      
-                        <label for="">Location</label>
-                    </div>
-          
-                    <input type="text" class="form-control" name="location" placeholder="Location" />
-                   
+            @if ($errors->has('location'))
+                <div id="location-error" class="error text-danger pl-3"  style="display: block;">
+                    <strong>{{ $errors->first('location') }}</strong>
                 </div>
-            </div>
-            <div class="my-5 mx-5">
-                <div class="input-group">
-                    <div class="input-group-text">
-                      
-                        <label for="">Country</label>
-                    </div>
-          
-                    <input type="text" class="form-control" name="country"  placeholder="country" />
-                   
-                </div>
-            </div>
-    
-        <div class="d-grid col-6 mx-auto my-auto">
-            <button type="submit" class="btn btn-lg fw-bolder btn-danger">
-               <p class="h5 mx-auto"> Add</p>
-            </button>
+            @endif
         </div>
-    </form>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn text-light  medibg">Add</button>
+    </div>
+</form>
+   @endif
 
+</div>
+    </div>    
     </div>
 </div>
-
-
-
-@endif
-
-
-
- 
-
-
-
-           </div>
-       </div>
-    </div>
 @endsection
 
 
-  
-@section('footer_script')
-@if(session('update'))
-<script>
-    const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.addEventListener('mouseenter', Swal.stopTimer)
-    toast.addEventListener('mouseleave', Swal.resumeTimer)
-  }
-})
 
-Toast.fire({
-  icon: 'update',
-  title: '{{ session("add") }}'
-})
-</script>
-
-@endif
-@endsection

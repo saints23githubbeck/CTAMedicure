@@ -6,7 +6,7 @@
 <div class="main-content" id="panel">
 @include('admin.layouts.topNavbar')
 <!----top nav bar end----------->
-
+    @include('admin.layouts.status')
 @yield('content')
 </div>
 <!-- Footer -->

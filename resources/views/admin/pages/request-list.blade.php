@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             <div class="col-12 mt-lg-5">
-                <h1 class="text-lg-center">Request List</h1>
+                <h1 class="text-lg-center">Prescription</h1>
                 <div class="card-body  mt-7">
                     <div class="row offset-1  mt--6">
                         <div class="form-group col">

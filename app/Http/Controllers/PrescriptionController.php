@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\ConfirmedOrder;
+use App\Models\Address;
+use App\Models\Admin_address;
+use App\Models\admin_location;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Illuminate\Validation\ValidationException;
 use Intervention\Image\Facades\Image;
-
-
+use Laravel\Ui\Presets\React;
+use Carbon\Carbon;
 class PrescriptionController extends Controller
 {
 
@@ -19,15 +22,20 @@ class PrescriptionController extends Controller
         $this->photos_path = public_path('uploads/orders');
     }
 
- public function index()
+    public function index()
     {
-       $orders = Order::with('confirmedOrder')->orderBy('created_at','desc')->where('user_id',auth()->user()->id)->paginate(5);
+        if (auth()->user()->role_id == 1){
+            $orders = Order::with('confirmedOrder')->orderBy('created_at','desc')->paginate(5);
+        }else{
+            $orders = Order::with('confirmedOrder')->orderBy('created_at','desc')->where('user_id',auth()->user()->id)->paginate(5);
+        }
+
 //       dd($orders);
 
     return view('admin.pages.prescription',compact('orders'));
     }
 
-  public function insert(){
+    public function insert(){
 
         try {
             $this->validate(request(), [
@@ -126,26 +134,37 @@ class PrescriptionController extends Controller
 
     }
 
-        
-    
-function status($order_id){
+    public function showRequest(){
 
-    echo $order_id;
+     $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
 
-}
+        $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
 
-    //  $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
+        return view('admin.pages.request-list',compact('orders','confirmOrders'));
+    }
 
-    //     $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
+    public function acceptOrder(){
+
+        $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
+
+        return view('admin.pages.request-list',compact('confirmOrders'));
+    }
 
 
-public function acceptOrder(){
+    public function approve( Request $request, Order $order){
 
- $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
+        $order->confirmedOrder()->create([
+            'amount'=>$request->amount,
+            'note'=>$request->description,
+            'status'=>0,
+            'user_id'=>auth()->id(),
+        ]);
+        $order->update([
+            'status'=>1,
+        ]);
 
- return back()->with('add','order Approved successfully.');
-
-}
+        return back()->with('add','order Approved successfully.');
+    }
 
 
     public function accerpt(Order $order){
@@ -182,5 +201,88 @@ public function acceptOrder(){
 
         return back()->with('add','order deleted successfully.');
     }
+    public function change_order_location(Request $request){
+   $country = Address::where('user_id',Auth::id())->first()->country;
+   $exact_location = $country.','.$request->location;
+   function getDistance($addressFrom, $addressTo, $unit = ''){
+    // Google API key
+    $apiKey = 'AIzaSyCORKyh23LUQPdrAg7RCtNGhuyIcFRK3zI';
+    
+    // Change address format
+    $formattedAddrFrom    = str_replace(' ', '+', $addressFrom);
+    $formattedAddrTo     = str_replace(' ', '+', $addressTo);
+    
+    // Geocoding API request with start address
+    $geocodeFrom = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='.$formattedAddrFrom.'&sensor=false&key='.$apiKey);
+    $outputFrom = json_decode($geocodeFrom);
+    if(!empty($outputFrom->error_message)){
+        // return $outputFrom->error_message;  
 
+    }
+    
+    // Geocoding API request with end address
+    $geocodeTo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='.$formattedAddrTo.'&sensor=false&key='.$apiKey);
+    $outputTo = json_decode($geocodeTo);
+    if(!empty($outputTo->error_message)){
+        // return $outputTo->error_message;
+        
+    }
+    
+    // Get latitude and longitude from the geodata
+    $latitudeFrom    = $outputFrom->results[0]->geometry->location->lat;
+    $longitudeFrom    = $outputFrom->results[0]->geometry->location->lng;
+    $latitudeTo        = $outputTo->results[0]->geometry->location->lat;
+    $longitudeTo    = $outputTo->results[0]->geometry->location->lng;
+    
+    // Calculate distance between latitude and longitude
+    $theta    = $longitudeFrom - $longitudeTo;
+    $dist    = sin(deg2rad($latitudeFrom)) * sin(deg2rad($latitudeTo)) +  cos(deg2rad($latitudeFrom)) * cos(deg2rad($latitudeTo)) * cos(deg2rad($theta));
+    $dist    = acos($dist);
+    $dist    = rad2deg($dist);
+    $miles    = $dist * 60 * 1.1515;
+    
+    // Convert unit and return distance
+    $unit = strtoupper($unit);
+    if($unit == "K"){
+        return round($miles * 1.609344, 2).' km';
+    }elseif($unit == "M"){
+        return round($miles, 2); 
+       
+    }else{
+        return round($miles * 1609.344, 2).' meters'; 
+    }
+}  
+
+
+$addressFrom = Admin_address::find(1)->location;
+$addressTo   = $exact_location;
+
+// Get distance in km
+
+$distance = getDistance($addressFrom, $addressTo, "M");
+Address::where('user_id',Auth::id())->update([
+'distance'=>$distance,
+'location'=>$exact_location,
+'updated_at'=>Carbon::now()
+]);
+return back();
+}
+public function admin_location(){
+    
+    return view('admin.pages.admin_location');
+}
+public function admin_location_change(Request $request){
+Admin_address::find(1)->update([
+    'location'=>$request->location,
+    'updated_at'=>Carbon::now()
+]);
+return back();
+}
+public function admin_location_add(Request $request){
+Admin_address::insert([
+    'location'=>$request->location,
+    'created_at'=>Carbon::now()
+]);
+return back();
+}
 }

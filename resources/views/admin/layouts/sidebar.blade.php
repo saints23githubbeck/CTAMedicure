@@ -35,8 +35,8 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{route('admin_location')}}">
-                            <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">Admin location</span>
+                        <a class="nav-link" href="{{route('admin.location')}}">
+                            <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">location</span>
                         </a>
                     </li>
                     <li class="nav-item ">
@@ -51,7 +51,12 @@
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('prescription.show')}}">
-                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Request List</span>
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Prescription Request </span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('appointment.list')}}">
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Appointment Request </span>
                         </a>
                     </li>
                     <li class="nav-item ">
