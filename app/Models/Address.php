@@ -14,13 +14,9 @@ class Address extends Model
      *
      * @var string[]
      */
-    protected $fillable = [
-        'contact',
-        'location',
-        'user_id',
-    ];
+    protected $guarded = [];
     public function user()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class);
     }
 }

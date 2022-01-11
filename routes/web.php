@@ -105,8 +105,9 @@ Route::get('/dashboard', function () {
 //location
 
 Route::get('/location/{order_id}',[LocationController::class,'index'])->name('location');
-Route::get('/admin/location',[LocationController::class,'admin_location'])->name('admin_location');
-Route::post('/location/add',[LocationController::class,'insert'])->name('insert.location');
+Route::get('/admin/location',[LocationController::class,'location'])->name('location');
+Route::post('/location/add',[LocationController::class,'insert'])->name('location.store');
+Route::post('/location/{order}',[LocationController::class,'add'])->name('location.add');
 Route::post('/edit/admin/location',[LocationController::class,'update_admin'])->name('update.admin_location');
 
 
@@ -131,7 +132,9 @@ Route::get('/status/prescription/{order_id}',[PrescriptionController::class,'sta
 Route::patch('/prescription/{order}/update',[PrescriptionController::class,'update'])->name('update.prescription');
 Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
 Route::post('/prescription/accerpt/{order}',[PrescriptionController::class,'accerpt'])->name('prescription.accerpt');
-Route::get('/prescription/checkout/{order}',[PrescriptionController::class,'checkout'])->name('prescription.checkout');
+Route::get('/prescription/location/{order}',[PrescriptionController::class,'checkout'])->name('prescription.checkout');
+Route::get('/prescription/checkout/{order}',[PrescriptionController::class,'checkoutWithLocation'])->name('prescription.checkout.location');
+
 Route::post('/prescription/reject/{order}',[PrescriptionController::class,'reject'])->name('prescription.reject');
 Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
 Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'approve'])->name('prescription.confirm');

@@ -15,9 +15,9 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('contact')->notNull();
+            $table->string('distance')->nullable();
             $table->string('location')->notNull();
-            $table->string('country')->notNull()->default('Ghana');
+            $table->string('country')->default('Ghana');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
