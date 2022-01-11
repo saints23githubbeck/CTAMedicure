@@ -34,11 +34,11 @@
                             <i class="fas fa-prescription-bottle"></i> <span class="nav_name text-white ">Prescription</span>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('location')}}">
-                            <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">location</span>
-                        </a>
-                    </li>
+                    {{--<li class="nav-item ">--}}
+                        {{--<a class="nav-link" href="{{route('location')}}">--}}
+                            {{--<i class="fas fa-user-friends "></i> <span class="nav_name text-white ">location</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('users')}}">
                             <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">Users</span>

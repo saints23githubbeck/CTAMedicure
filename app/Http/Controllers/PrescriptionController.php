@@ -175,10 +175,17 @@ class PrescriptionController extends Controller
 
     public function checkout(Order $order){
 
-
-
-    return view('admin.order.order',compact('order'));
+        return view('admin.order.order',compact('order'));
     }
+
+    public function checkoutWithLocation(Order $order){
+
+
+
+    return view('admin.order.orderLocation',compact('order'));
+    }
+
+
 
     public function reject(Order $order){
 

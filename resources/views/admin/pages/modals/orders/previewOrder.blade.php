@@ -33,9 +33,16 @@
                 </form>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                  @elseif($order->confirmedOrder->amoun == $order->confirmedOrder->due)
-                <a href="{{route('prescription.checkout',$order)}}"  class="btn btn-outline-success">pay Now</a>
+                    @if(auth()->user()->address == null)
+                        <a href="{{route('prescription.checkout',$order)}}"  class="btn btn-outline-success">pay Now </a>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        @include('admin.pages.location')
+                        @else
 
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                       <a href="{{route('prescription.checkout.location',$order)}}"  class="btn btn-outline-success">pay Now</a>
+
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    @endif
                     @else
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     @endif
