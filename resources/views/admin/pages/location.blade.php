@@ -11,12 +11,16 @@
                 <div class="modal-body">
                     <h4 class="card-title text-primary text-center my-4">Enter your location</h4>
 
+                    <form action="{{route('change.location')}}" method="POST">
+
                     <form action="{{route('location.add',$order)}}" method="POST">
+
                         @csrf
                         <div class="my-5 mx-5">
                             <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
                                 <div class="input-group">
-                                    <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ !$errors->has('location') }}" required>
+                                    {{-- <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ !$errors->has('location') }}" required> --}}
+                                    <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ App\Models\Address::where('user_id',Auth::id())->first()->location }}" required>
                                     <div class="input-group-append">
                                         <div class="input-group-text btn-success btn" data-toggle="tooltip"
                                              title="Click To Find Location Automatically">
