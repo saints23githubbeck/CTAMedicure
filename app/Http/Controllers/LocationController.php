@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Order;
-use App\Models\Order_location;
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-// use App\Models\admin_location;
+
 use App\Models\Address;
+use App\Models\Distance;
 class LocationController extends Controller
 {
 
