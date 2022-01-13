@@ -9,20 +9,20 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
+
                     <div class="col-md-12">
 
                                 {{ csrf_field() }}
 
-
                             <div class="text-center mb-4">
-                                <button data-bs-toggle="modal" data-bs-target="#location" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">Your Location</button>
-
+                                <button data-bs-toggle="modal" data-bs-target="#payPlan" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">PICKUP</button>
+                                <a href="{{route('payment.delivery',$order->id)}}" class="btn bg-primary text-white px-5 py-1 mt-3 border-2" style="font-size: 24px; font-weight: bold;">DELIVERY</a>
                             </div>
 
                             @include('admin.pages.modals.orders.payPlan')
                             @include('admin.pages.location')
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-lg-7">
                                 <div class="card">
                                     <div class="card-body">
                                         <table class="table table-borderless">
@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-5">
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <h6 class="card-title" style="font-weight: bold;">Delivery Address</h6>

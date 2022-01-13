@@ -12,6 +12,9 @@
                     <h4 class="card-title text-primary text-center my-4">Enter your location</h4>
 
                     <form action="{{route('change.location')}}" method="POST">
+
+                    <form action="{{route('location.add',$order)}}" method="POST">
+
                         @csrf
                         <div class="my-5 mx-5">
                             <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
@@ -45,4 +48,4 @@
 
 
 
-  
+
