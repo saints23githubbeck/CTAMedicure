@@ -14,15 +14,15 @@
 
                     </div>
                     <div class="col-md-8">
-                        <form method="POST" action="{{ route('pay',$order->id) }}" id="paymentForm">
-                            {{ csrf_field() }}
+{{--                        <form method="POST" action="{{ route('pay',$order->id) }}" id="paymentForm">--}}
+{{--                            {{ csrf_field() }}--}}
 
                             <div class="float-start d-inline mt-2">
                                 <span class="" style="font-size: 40px;"><i class="fas fa-long-arrow-alt-left"></i></span>
                             </div>
 
                             <div class="text-center mb-4">
-                                <a href="{{route('payment.cashondelivery',$order->id)}}" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">Cash on Delivery</a>
+                                <a href="{{route('payment.cashondelivery',[$order->id,$charge])}}" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">Cash on Delivery</a>
                                 <a  data-bs-toggle="modal" data-bs-target="#payPlan" class="btn bg-primary text-white px-5 py-1 mt-3 border-2" style="font-size: 24px; border-color: #4400AD;">Pay Before Delivery</a>
 
                             </div>
@@ -77,13 +77,14 @@
                                             </tr>
                                             <tr>
                                                 <th class="float-left">Delivery Charge:</th>
-                                                <th class="float-end">$0</th>
+                                                <th class="float-end">{{$distance}}/${{$charge}} </th>
 
                                             </tr>
                                             <tr>
                                                 <th class="float-left">Total:</th>
-                                                <th class="float-end">${{$order->confirmedOrder->amount}}</th>
-                                                <input type="text" name="amount" value="{{$order->confirmedOrder->amount}}" hidden>
+                                                <th class="float-end">${{$order->confirmedOrder->amount+$charge}}</th>
+                                                <input type="text" name="amount" value="{{$order->confirmedOrder->amount+$charge}}" hidden>
+                                                <input type="text" name="delivery_charge" value="{{$order->confirmedOrder->amount+$charge}}" hidden>
                                                 <input type="text" name="order_id" value="{{$order->id}}" hidden>
                                             </tr>
 
@@ -124,10 +125,10 @@
                                 <img src="{{asset('sujon/mtn.png')}}" alt="mtn" class="cart-img-show">
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary order my-5" style="">Pay Now</button>
+{{--                        <div class="text-center">--}}
+{{--                            <button type="submit" class="btn btn-primary order my-5" style="">Pay Now</button>--}}
 
-                        </div>
+{{--                        </div>--}}
                         </form>
                     </div>
                     <div class="col-md-2">

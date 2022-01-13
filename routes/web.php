@@ -141,7 +141,7 @@ Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'appr
 
 Route::get('payment/{id}',[PaymentController::class,'index'])->name('payment.details');
 Route::get('delivery/{id}',[PaymentController::class,'delivery'])->name('payment.delivery');
-Route::get('cash/delivery/{id}',[PaymentController::class,'cashondelivery'])->name('payment.cashondelivery');
+Route::get('cash/delivery/{id}/{charge}',[PaymentController::class,'cashondelivery'])->name('payment.cashondelivery');
 //prescription end
 
 //return view('admin.pages.location');
