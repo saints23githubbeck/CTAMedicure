@@ -70,7 +70,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody class="list">
-
+                                             @if(count($orders) > 0)
                                                 @foreach ($orders as $order)
                                                 <tr>
                                                     <td >
@@ -78,7 +78,7 @@
                                                     </td>
 
                                                     <td >
-                                                     <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$order->image) }}">
+                                                     <img style="width:50px;height:50px" src="{{ asset('uploads/orders/'.$order->image) }}">
                                                     </td>
                                                     <td>
                                                      {{ $order->quantity }}
@@ -154,11 +154,11 @@
                                                 @include('admin.pages.modals.orders.order_edit')
                                                 @include('admin.pages.modals.orders.delete')
                                                 @endforeach
+                                             @endif
                                                 @if($orders->count() == 0)
                                                     <div class="text-center mt-3">
                                                         <em>No users found</em>
                                                     </div>
-
                                                 @endif
                                                 </tbody>
                                             </table>
