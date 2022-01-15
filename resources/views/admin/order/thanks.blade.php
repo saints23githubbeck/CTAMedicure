@@ -58,10 +58,16 @@
 
                                 </tr>
 
+                                <tr>
+                                    <th class="float-left">Delivery Charge:</th>
+                                    <th class="float-end">{{$order->confirmedOrder->delivery_charge}} </th>
+
+                                </tr>
+
 
                                 <tr>
                                     <th class="float-left">Total:</th>
-                                    <th class="float-end">${{$order->confirmedOrder->amount}}</th>
+                                    <th class="float-end">${{$order->confirmedOrder->amount+$order->confirmedOrder->delivery_charge}}</th>
                                     <input type="text" name="amount" value="{{$order->confirmedOrder->amount}}" hidden>
                                     <input type="text" name="order_id" value="{{$order->id}}" hidden>
                                 </tr>

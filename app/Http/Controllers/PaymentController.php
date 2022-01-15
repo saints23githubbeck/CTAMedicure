@@ -17,7 +17,58 @@ class PaymentController extends Controller
     }
     public function delivery($id){
         $order = Order::where('id',$id)->first();
-        return view('admin.order.delivery',compact('order'));
+
+        $addressFrom = $order->user->address->location;
+        $addressTo = auth()->user()->address->location;
+        // Google API key
+        $apiKey = env('GOOGLE_MAP_API');
+
+        // Change address format
+        $formattedAddrFrom    = str_replace(' ', '+', $addressFrom);
+        $formattedAddrTo     = str_replace(' ', '+', $addressTo);
+
+        // Geocoding API request with start address
+        $geocodeFrom = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='.$formattedAddrFrom.'&sensor=false&key='.$apiKey);
+        $outputFrom = json_decode($geocodeFrom);
+        if(!empty($outputFrom->error_message)){
+            return $outputFrom->error_message;
+        }
+
+        // Geocoding API request with end address
+        $geocodeTo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='.$formattedAddrTo.'&sensor=false&key='.$apiKey);
+        $outputTo = json_decode($geocodeTo);
+        if(!empty($outputTo->error_message)){
+            return $outputTo->error_message;
+        }
+
+        // Get latitude and longitude from the geodata
+        $latitudeFrom    = $outputFrom->results[0]->geometry->location->lat;
+        $longitudeFrom    = $outputFrom->results[0]->geometry->location->lng;
+        $latitudeTo        = $outputTo->results[0]->geometry->location->lat;
+        $longitudeTo    = $outputTo->results[0]->geometry->location->lng;
+
+        // Calculate distance between latitude and longitude
+        $theta    = $longitudeFrom - $longitudeTo;
+        $dist    = sin(deg2rad($latitudeFrom)) * sin(deg2rad($latitudeTo)) +  cos(deg2rad($latitudeFrom)) * cos(deg2rad($latitudeTo)) * cos(deg2rad($theta));
+        $dist    = acos($dist);
+        $dist    = rad2deg($dist);
+        $miles    = $dist * 60 * 1.1515;
+
+        // Convert unit and return distance
+        $unit = "";
+        $unit = strtoupper($unit);
+        if($unit == "K"){
+            $distance = round($miles * 1.609344, 2).' km';
+        }elseif($unit == "M"){
+            $distance = round($miles * 1609.344, 2).' meters';
+        }else{
+            $distance = round($miles, 2).' miles';
+            $distan = round($miles, 2);
+            $charge = $distan*env('PRICE_PER_MILES');
+        }
+//return  $outputTo;
+
+        return view('admin.order.delivery',compact('order','distance','charge'));
     }
     public function store(Request $request){
 
@@ -249,22 +300,18 @@ class PaymentController extends Controller
         else{
             return redirect()->route('pres')->with('add','Payment Failed');
         }
-        // Get the transaction from your DB using the transaction reference (txref)
-        // Check if you have previously given value for the transaction. If you have, redirect to your successpage else, continue
-        // Confirm that the currency on your db transaction is equal to the returned currency
-        // Confirm that the db transaction amount is equal to the returned amount
-        // Update the db transaction record (including parameters that didn't exist before the transaction is completed. for audit purpose)
-        // Give value for the transaction
-        // Update the transaction to note that you have given value for the transaction
-        // You can also redirect to your success page from here
+
 
     }
 
-    public function cashondelivery($id){
+    public function cashondelivery($id,$charge){
         $order = Order::where('id',$id)->first();
+
+
         $confirmed_order = ConfirmedOrder::where('user_id',auth()->user()->id)->where('order_id',$order->id)->first();
         $confirmed_order->payment = '0';
-        $confirmed_order->due = $confirmed_order->amount;
+        $confirmed_order->due = $confirmed_order->amount+$charge;
+        $confirmed_order->delivery_charge = $charge;
         $confirmed_order->pay_by = 'Cash On Delivery';
         $confirmed_order->update();
 

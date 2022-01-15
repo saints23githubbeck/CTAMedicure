@@ -70,7 +70,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody class="list">
-
+                                             @if(count($orders) > 0)
                                                 @foreach ($orders as $order)
                                                 <tr>
                                                     <td >
@@ -78,7 +78,7 @@
                                                     </td>
 
                                                     <td >
-                                                     <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$order->image) }}">
+                                                     <img style="width:50px;height:50px" src="{{ asset('uploads/orders/'.$order->image) }}">
                                                     </td>
                                                     <td>
                                                      {{ $order->quantity }}
@@ -115,6 +115,7 @@
                                                 <i class="bg-success"></i>
                                                  <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-{{$order->id}}"><span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Review Now</span></a>
                                               </span>
+
                                             @endif
 
 
@@ -123,14 +124,27 @@
 
 
                                                     <td>
+                                                        @if($order->status == 0)
                                                         <a data-bs-toggle="modal" data-bs-target="#update-pres-{{$order->id}}" class="bg-success btn-sm text-white "  ><i
                                                                     class="fas fa-edit"></i></a>
                                                         <a class="bg-info btn-sm text-white" data-bs-toggle="modal" data-bs-target="#details-pres-{{$order->id}}"><i
                                                                     class="fas fa-eye"></i></a>
                                                         <a class=" bg-danger btn-sm text-white " data-bs-toggle="modal" data-bs-target="#delete-pres-{{$order->id}}"><i
                                                                     class="fas fa-trash"> </i></a>
-
-                                                   
+                                                    @elseif($order->confirmedOrder->status == 0)
+                                                            <a class="bg-info btn-sm text-white" data-bs-toggle="modal" data-bs-target="#details-pres-{{$order->id}}"><i
+                                                                        class="fas fa-eye"></i></a>
+                                                            <a class=" bg-danger btn-sm text-white " data-bs-toggle="modal" data-bs-target="#delete-pres-{{$order->id}}"><i
+                                                                        class="fas fa-trash"> </i></a>
+                                                    @elseif( $order->confirmedOrder->pay_by == null AND $order->confirmedOrder->due == null)
+                                                            <a class="bg-info btn-sm text-white" data-bs-toggle="modal" data-bs-target="#details-pres-{{$order->id}}"><i
+                                                                        class="fas fa-eye"></i></a>
+                                                            <a class=" bg-danger btn-sm text-white " data-bs-toggle="modal" data-bs-target="#delete-pres-{{$order->id}}"><i
+                                                                        class="fas fa-trash"> </i></a>
+                                                    @elseif($order->confirmedOrder->amount == $order->confirmedOrder->due)
+                                                            <a class="bg-info btn-sm text-white" data-bs-toggle="modal" data-bs-target="#details-pres-{{$order->id}}"><i
+                                                                        class="fas fa-eye"></i></a>
+                                                    @endif
 
                                                 </tr>
                                                 @if($order->status == 1)
@@ -140,11 +154,11 @@
                                                 @include('admin.pages.modals.orders.order_edit')
                                                 @include('admin.pages.modals.orders.delete')
                                                 @endforeach
+                                             @endif
                                                 @if($orders->count() == 0)
                                                     <div class="text-center mt-3">
                                                         <em>No users found</em>
                                                     </div>
-
                                                 @endif
                                                 </tbody>
                                             </table>

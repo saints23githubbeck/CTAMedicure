@@ -9,29 +9,16 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-
-                    <div class="col-md-2">
-
-                    </div>
-                    <div class="col-md-8">
+                    <div class="col-md-12">
 
                                 {{ csrf_field() }}
-                            <div class="float-start d-inline mt-2">
-                                <span class="" style="font-size: 40px;"><i class="fas fa-long-arrow-alt-left"></i></span>
-                            </div>
-                                 {{--@if(auth()->user()->addrees == null)--}}
-                            {{--<div class="text-center mb-4">--}}
-                                {{--<button data-bs-toggle="modal" data-bs-target="#location" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">Your Location</button>--}}
-                            {{--</div>--}}
-                            {{--@else--}}
+
 
                             <div class="text-center mb-4">
                                 <button data-bs-toggle="modal" data-bs-target="#location" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">Your Location</button>
 
-                                <button data-bs-toggle="modal" data-bs-target="#payPlan" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">PICKUP</button>
-                                <a href="{{route('payment.delivery',$order->id)}}" class="btn bg-primary text-white px-5 py-1 mt-3 border-2" style="font-size: 24px; font-weight: bold;">DELIVERY</a>
                             </div>
-                        {{--@endif--}}
+
                             @include('admin.pages.modals.orders.payPlan')
                             @include('admin.pages.location')
                         <div class="row">
@@ -68,7 +55,7 @@
                                             </tr>
                                             <tr>
                                                 <th class="float-left">Order Date:</th>
-                                                <th class="float-end">{{$order->created_at}}</th>
+                                                <th class="float-end">{{$order->created_at->format('D-M-Y')}}</th>
 
                                             </tr>
                                             <tr>
@@ -117,7 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-center" style="color: blueviolet;">Choose payment method below</p>
+                        <p class="text-center" style="color: blueviolet;">Available Payment Plan</p>
                         <div class="row text-center">
                             <div class="col-md-4 ">
                                 <img src="{{asset('sujon/visa.png')}}" alt="visa" class="cart-img-show">
@@ -130,11 +117,6 @@
                                 <img src="{{asset('sujon/mtn.png')}}" alt="mtn" class="cart-img-show">
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary order my-5" style="">Pay Now</button>
-
-                        </div>
-
                     </div>
                     <div class="col-md-2">
 

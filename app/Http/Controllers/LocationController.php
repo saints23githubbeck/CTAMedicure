@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Order;
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -12,16 +14,20 @@ use App\Models\Distance;
 class LocationController extends Controller
 {
 
-        public function add(Request $request){
+        public function add(Request $request , Order $order){
 //           dd($request->all());
-            Address::insert([
+           auth()->user()->address()->create([
             'distance'=>$request->distance,
             'location'=>$request->location,
             'country'=>$request->country  ?? 'Ghana',
-            'user_id'=>Auth::id(),
         ]);
 
-            return redirect(route('pres'))->with('add','Your location added successfully.');
+
+              return redirect(route('prescription.checkout.location',$order))->with('add','Your location added successfully.');
+
+
+
+
 
 }
 
