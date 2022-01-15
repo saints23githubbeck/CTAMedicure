@@ -253,8 +253,12 @@ class PrescriptionController extends Controller
     }
 }  
 
+if(Admin_address::find(1)->location){
+    $addressFrom = Admin_address::find(1)->location;
+}else{
+    $addressFrom = 'ghana';
+}
 
-$addressFrom = Admin_address::find(1)->location;
 $addressTo   = $exact_location;
 
 // Get distance in km
