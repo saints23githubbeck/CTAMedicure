@@ -215,23 +215,23 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('role')->group(function () {
 
-        Route::post('/add', 'RoleController@store')->name('role.add');
+        Route::post('/add', 'RoleController@store')->name('role.add')->middleware(['auth','can:isAdmin,App\Models\Role']);
 
-        Route::get('/show', 'RoleController@show')->name('roles.show');
+        Route::get('/show', 'RoleController@show')->name('roles.show')->middleware(['auth','can:isAdmin,App\Models\Role']);
 
-        Route::patch('/{role}/update', 'RoleController@update')->name('role.update');
+        Route::patch('/{role}/update', 'RoleController@update')->name('role.update')->middleware(['auth','can:isAdmin,App\Models\Role']);
 
-        Route::delete('/{role}/delete', 'RoleController@destroy')->name('role.destroy');
+        Route::delete('/{role}/delete', 'RoleController@destroy')->name('role.destroy')->middleware(['auth','can:isAdmin,App\Models\Role']);
 
-        Route::post('/search', 'RoleController@search')->name('role.search');
+        Route::post('/search', 'RoleController@search')->name('role.search')->middleware(['auth','can:isAdmin,App\Models\Role']);
     });
 
     Route::prefix('user')->group(function () {
 
-        Route::get('/index', 'UserController@index')->name('users');
-        Route::get('/delete/{id}', 'UserController@destroy')->name('users.destroy');
-        Route::patch('/{id}/update', 'UserController@update')->name('user.update');
-        Route::post('update', 'UserController@store')->name('user.store');
+        Route::get('/index', 'UserController@index')->name('users')->middleware(['auth','can:isAdmin,App\Models\User']);
+        Route::get('/delete/{id}', 'UserController@destroy')->name('users.destroy')->middleware(['auth','can:isAdmin,App\Models\User']);
+        Route::patch('/{id}/update', 'UserController@update')->name('user.update')->middleware(['auth','can:isAdmin,App\Models\User']);
+        Route::post('update', 'UserController@store')->name('user.store')->middleware(['auth','can:isAdmin,App\Models\User']);
 
     });
 });

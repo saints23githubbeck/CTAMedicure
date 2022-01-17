@@ -8,6 +8,11 @@
                 <a href="{{route('dashboard.show')}}" class="nav_logo fw-bolder text-white "> <span class="nav_logo-name ">MEDICARE</span> </a>
             </a>
         </div>
+        <div class="sidenav-header  align-items-center">
+            <a class="navbar-brand" href="javascript:void(0)">
+                {{ Auth::user()->userName }}
+            </a>
+        </div>
         <div class="navbar-inner">
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
@@ -19,20 +24,26 @@
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
-                    @can('update',App\Models\Consultancy::all())
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('appointments')}}">
-                            <i class="fas fa-calendar-day"></i> <span class="nav_name text-white ">Appointments</span>
-                        </a>
-                    </li>
-                    @endcan
+     
+@can('update','App\Models\Consultancy')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('appointments')}}">
+                        <i class="fas fa-calendar-day"></i> <span class="nav_name text-white ">Appointments</span>
+                    </a>
+                </li>
+@endcan
+               
+
                   
-                 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('roles.show')}}">
-                            <i class="fas fa-user-friends"></i> <span class="nav_name text-white ">Roles</span>
-                        </a>
-                    </li>
+                  
+                 @can('isAdmin','App\Models\Role')
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('roles.show')}}">
+                        <i class="fas fa-user-friends"></i> <span class="nav_name text-white ">Roles</span>
+                    </a>
+                </li>
+                 @endcan
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('pres')}}">
                             <i class="fas fa-prescription-bottle"></i> <span class="nav_name text-white ">Prescription</span>
@@ -66,11 +77,14 @@
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Prescription Request </span>
                         </a>
                     </li>
+                    @can('update','App\Models\Consultancy')
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('appointment.list')}}">
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Appointment Request </span>
                         </a>
                     </li>
+                    @endcan
+                  
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('delivery')}}">
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Delivary List</span>

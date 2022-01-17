@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Consultancy;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
@@ -18,6 +19,7 @@ class DashboardController extends Controller
 
     public function Dashboard()
     {
+    
         $all_user = User::count();
         $all_order = Order::count();
         $all_appoinment = Consultancy::count();
@@ -48,6 +50,7 @@ class DashboardController extends Controller
              'all_appoinment'=>$all_appoinment,
              'this_month_order'=>$this_month_order,
              'datas'=>$datas
+             
          ]);
     }
 
