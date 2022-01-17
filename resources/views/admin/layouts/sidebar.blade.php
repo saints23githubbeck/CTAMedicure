@@ -19,11 +19,15 @@
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
+                    @can('update',App\Models\Consultancy::all())
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('appointments')}}">
                             <i class="fas fa-calendar-day"></i> <span class="nav_name text-white ">Appointments</span>
                         </a>
                     </li>
+                    @endcan
+                  
+                 
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('roles.show')}}">
                             <i class="fas fa-user-friends"></i> <span class="nav_name text-white ">Roles</span>

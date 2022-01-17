@@ -28,4 +28,6 @@ class Consultancy extends Model
     {
         return $this->hasOne(ConsultancyConfirm::class);
     }
+ 
+
 }
