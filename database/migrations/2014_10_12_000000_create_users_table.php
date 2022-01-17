@@ -18,14 +18,23 @@ class CreateUsersTable extends Migration
             $table->string('userName')->notNull();
             $table->string('email')->unique();
             $table->string('contactNumber')->notNull();
-            $table->foreignId('role_id')->constrained('roles');
+            $table->integer('role_id')->unsigned();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+         
 
+          
 
             $table->rememberToken();
             $table->timestamps();
         });
+        Schema::table('users', function($table)
+{
+
+    $table->foreign('role_id')->references('id')->on('roles');
+
+
+});
     }
 
     /**
