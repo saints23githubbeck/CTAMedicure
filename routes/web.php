@@ -44,9 +44,9 @@ Route::get('/request', function () {
 Auth::routes();
 
 
-Route::get('/delivery', function () {
-   return view('admin.pages.delivery');
-})->name('delivery');
+//Route::get('/delivery', function () {
+//   return view('admin.pages.delivery');
+//})->name('delivery');
 
 
 Route::get('/completed/delivery', function () {
@@ -108,6 +108,7 @@ Route::get('/location/{order_id}',[LocationController::class,'index'])->name('lo
 Route::get('/admin/location',[LocationController::class,'location'])->name('location');
 Route::post('/location/add',[LocationController::class,'insert'])->name('location.store');
 Route::post('/location/{order}',[LocationController::class,'add'])->name('location.add');
+Route::post('/location',[LocationController::class,'store'])->name('location.add');
 Route::post('/edit/admin/location',[LocationController::class,'update_admin'])->name('update.admin_location');
 
 
@@ -138,7 +139,7 @@ Route::get('/prescription/checkout/{order}',[PrescriptionController::class,'chec
 Route::post('/prescription/reject/{order}',[PrescriptionController::class,'reject'])->name('prescription.reject');
 Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
 Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'approve'])->name('prescription.confirm');
-Route::post('/change/prescription/location',[PrescriptionController::class,'change_order_location'])->name('change.location');
+//Route::post('/change/prescription/location',[PrescriptionController::class,'change_order_location'])->name('change.location');
 Route::get('payment/{id}',[PaymentController::class,'index'])->name('payment.details');
 Route::get('delivery/{id}',[PaymentController::class,'delivery'])->name('payment.delivery');
 
@@ -230,8 +231,15 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/index', 'UserController@index')->name('users');
         Route::get('/delete/{id}', 'UserController@destroy')->name('users.destroy');
-        Route::patch('/{id}/update', 'UserController@update')->name('user.update');
+        Route::patch('/user/{user}', 'UserController@update')->name('user.update');
         Route::post('update', 'UserController@store')->name('user.store');
+        Route::get('/delivery/{approved}', 'UserController@delivery')->name('delivery.show');
+
+    });
+
+    Route::prefix('delivery')->group(function () {
+
+        Route::post('{delivery}', 'DeliveryController@assign')->name('delivery.assign');
 
     });
 });

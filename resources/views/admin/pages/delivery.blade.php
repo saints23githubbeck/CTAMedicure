@@ -67,42 +67,40 @@
                     <thead>
                       <tr>
         
-                        <th scope="col">Delivary Name</th>
+                        <th scope="col">#</th>
+                        <th scope="col">UserName</th>
                         <th scope="col">Phone Number</th>
-                        <th scope="col">Email</th>
                         <th scope="col">Location</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Assign</th>
                         <th scope="col">Action</th>
                        
                       </tr>
                     </thead>
+                      {{--{{dd($userDeliveries)}}--}}
                     <tbody>
+                    @foreach($userDeliveries as $deliver)
                       <tr>
-                       <td>Lorem ipsum</td>
-                        <td>3563465444</td>
-                        <td>lorem@gmail.com</td>
-                        <td>Lorem ipsume</td>
-                        <td><span class="text-success fw-bold">completed</span></td>
+                       <td>{{$loop->iteration}}</td>
+                        <td>{{$deliver->userName}}</td>
+                        <td>{{$deliver->contactNumber}}</td>
+                          <td>{{$deliver->address->location}}</td>
+                          @if($deliver->address->location == $approved->user->address->location)
+                              <td>
+                                  {{--<a  class="bg-success btn-sm text-white" data-bs-target="modal" data-bs-toggle="#assign-delivery">assign</a>--}}
+                                  <a href=""  data-bs-toggle="modal" data-bs-target="#assign-delivery-{{$deliver->id}}"><span class="status text-white bg-info p-1 rounded shadow-lg">assign</span></a>
+
+                                  @include('admin.pages.modals.deliveries.assign')
+                              </td>
+                              @else
+                              <td><a href="#" class="btn btn_custom">view</a></td>
+                          @endif
+                        {{--<td><span class="text-success fw-bold">completed</span></td>--}}
                         <td><a href="#" class="btn btn_custom">view</a></td>
+
                       </tr>
-                      <tr>
-                        <td>Lorem ipsum</td>
-                         <td>356346544</td>
-                         <td>lorem@gmail.com</td>
-                         <td>Lorem ipsume</td>
-                         <td><span class="text-danger fw-bold">Failed</span></td>
-                         <td><a href="#" class="btn btn_custom">view</a></td>
-                       </tr>
-                       <tr>
-                        <td>Lorem ipsum</td>
-                         <td>3563465444</td>
-                         <td>lorem@gmail.com</td>
-                         <td>Lorem ipsume</td>
-                         <td><span class="text-warning fw-bold">In Route</span></td>
-                         <td><a href="#" class="btn btn_custom">view</a></td>
-                       </tr>
-                    
-                
+
+                        @endforeach
+
                     </tbody>
                   </table>
                 </div>

@@ -64,14 +64,14 @@
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('appointment.list')}}">
-                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Appointment Request </span>
+                            <i class="fas fa-tasks"></i><span class="nav_name text-white">Appointment Request</span>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('delivery')}}">
-                            <i class="fas fa-tasks"></i><span class="nav_name text-white ">Delivary List</span>
-                        </a>
-                    </li>
+                    {{--<li class="nav-item ">--}}
+                        {{--<a class="nav-link" href="{{route('delivery.show')}}">--}}
+                            {{--<i class="fas fa-tasks"></i><span class="nav_name text-white ">Delivery List</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('completed_delivery')}}">
                             <i class="fas fa-tasks"></i><span class="nav_name text-white ">Completed Delivery</span>

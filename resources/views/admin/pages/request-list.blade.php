@@ -27,49 +27,68 @@
                                     <div class="border_give">
                                         <h4 class="text-lg-left test">Searching List</h4>
                                         <div class="table-responsive">
-                                            <table class="table my-5">
-                                                <thead class="border_botttom">
-                                                <tr>
-                                                    <th scope="col">Order</th>
-                                                    <th scope="col">Image</th>
-                                                    <th scope="col">Date</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col">Preview</th>
-                                                    <th scope="col" class="text-center">Action</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
+                                            {{--{{dd(auth()->user()->address)}}--}}
+                                            @if(auth()->user()->address == null)
+                                                <td><a class="status badge text-white btn-danger p-3 rounded shadow-lg" href="#" data-bs-toggle="modal" data-bs-target="#location">Please Update yor Location</a></td>
+                                                @include('admin.pages.modals.users.location')
+                                                @else
+                                                <table class="table my-5">
+                                                    <thead class="border_botttom">
+                                                    <tr>
+                                                        <th scope="col">Order</th>
+                                                        <th scope="col">Image</th>
+                                                        <th scope="col">Date</th>
+                                                        <th scope="col">Status</th>
+                                                        <th scope="col">Preview</th>
+                                                        <th scope="col" class="text-center">Action</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
 
-                                                @foreach($orders as $order)
-                                                <tr>
 
-                                                    <td>{{'mdc0'.$order->id}}</td>
-                                                    <td class="budget">
-                                                        <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$order->image) }}">
-                                                    </td>
-                                                    <td>{{$order->created_at->format('d-M-Y')}}</td>
-                                                    @if($order->status == 0)
-                                                        <td class="badge badge-dot mr-4">
+
+                                                    @foreach($orders as $order)
+                                                        <tr>
+
+                                                            <td>{{'mdc0'.$order->id}}</td>
+                                                            <td class="budget">
+                                                                <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$order->image) }}">
+                                                            </td>
+                                                            <td>{{$order->created_at->format('d-M-Y')}}</td>
+                                                            @if($order->status == 0)
+                                                                <td class="badge badge-dot mr-4">
                                                             <span  class="badge badge-dot mr-4">
-                                                                <i class="bg-warning"></i>
-                                                            <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
+
+                                                            <span class="status badge text-white bg-warning p-1 rounded shadow-lg">Pending</span>
                                                             </span>
 
-                                                        </td>
-                                                    @endif
-                                                    <td>
-                                                        <a  data-bs-toggle="modal" data-bs-target="#details-pres-{{$order->id}}">View</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$order->id}}" class="btn btn-success">Approved</a>
-                                                        {{--<a href="#" class="btn btn-danger">Rejected</a>--}}
-                                                    </td>
-                                                </tr>
-                                                      @include('admin.pages.modals.orders.details')
-                                                      @include('admin.pages.modals.orders.approve')
+                                                                </td>
+                                                            @endif
+                                                            <td>
+                                                                <a   data-bs-toggle="modal" data-bs-target="#details-pres-{{$order->id}}">View</a>
+                                                            </td>
+                                                            <td>
+                                                                @if( auth()->user()->role->name == 'admin')
+                                                                    <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$order->id}}" class="btn btn-success">Approved</a>
+
+                                                                @elseif($order->user->address->location == auth()->user()->address->location)
+                                                                    <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$order->id}}" class="btn btn-success">Approved</a>
+                                                                    {{--<a href="#" class="btn btn-danger">Rejected</a>--}}
+                                                                @else
+                                                                    <span
+                                                                            class=" p-1 rounded shadow-lg text-danger">Out Of your range
+                                                            </span>
+                                                                    {{--<a href="#" class="btn btn-danger">Rejected</a>--}}
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        @include('admin.pages.modals.orders.details')
+                                                        @include('admin.pages.modals.orders.approve')
+
                                                     @endforeach
-                                                </tbody>
-                                            </table>
+                                                    </tbody>
+                                                </table>
+                                                @endif
                                         </div>
                                     </div>
                                 </div>
@@ -97,7 +116,7 @@
                                                     @if($approved->status == 0)
                                                     <td >
                                                         <span  class="badge badge-dot mr-4">
-                                                           <i class="bg-info"></i>
+
                                                         <span class="status text-white bg-info p-1 rounded shadow-lg">Approved But Unpaid</span>
 
                                                         </span>
@@ -105,20 +124,34 @@
                                                         @elseif($approved->amount == $approved->due AND $approved->amount != $approved->payments)
                                                             <td>
                                                             <span  class="badge badge-dot mr-4">
-                                                                  <i class="bg-warning"></i>
-                                                            <span class="status text-white bg-success p-1 rounded shadow-lg">Cash On Delivery</span>
+
+                                                            <span class="status badge text-white bg-success p-1 rounded shadow-lg">Cash On Delivery</span>
                                                             </span>
                                                             </td>
                                                     @else
                                                         <td>
                                                             <span  class="badge badge-dot mr-4">
-                                                                  <i class="bg-warning"></i>
-                                                            <span class="status text-white bg-warning p-1 rounded shadow-lg">Approved But Unpaid</span>
+
+                                                            <span class="status badge text-white bg-warning p-1 rounded shadow-lg">Approved But Unpaid</span>
                                                             </span>
                                                         </td>
                                                         @endif
                                                     <td><a href="#" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
-                                                    <td><span class="badge bg-primary text-white">Assign</span></td>
+                                                    @if($approved->amount == $approved->due AND $approved->amount != $approved->payments)
+                                                        <td>
+                                                            <span  class="badge badge-dot mr-4">
+
+                                                            <a href="{{route('delivery.show',$approved->id)}}" class="badge bg-primary text-white">Assign</a>
+                                                            </span>
+                                                        </td>
+                                                    @else
+                                                        <td>
+                                                            <span  class="badge badge-dot mr-4">
+
+                                                            <span class="badge bg-primary text-white">can`t Assign</span>
+                                                            </span>
+                                                        </td>
+                                                    @endif
                                                     <td>
                                                         <a href=""><i class="fab fa-telegram-plane"></i></a>
                                                         <a href=""><i class="fas fa-pills"></i></a>
