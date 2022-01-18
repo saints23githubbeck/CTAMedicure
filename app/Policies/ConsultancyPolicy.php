@@ -31,7 +31,7 @@ public function update(User $user){
 // return $user->role_id === $role->id;
 // return $user->id == 3 ? Response::allow() : Response::deny('what');
 
-return $user->relation_to_role->name == 'patients' || $user->relation_to_role->name == 'Administrator' ? Response::allow() : Response::deny('you are not own and this page is authorized !');
+return $user->relation_to_role->name == 'patients' || $user->relation_to_role->name == 'Administrator' || $user->relation_to_role->name == 'Doctor'  ? Response::allow() : Response::deny('you are not own and this page is authorized !');
 
 }
 

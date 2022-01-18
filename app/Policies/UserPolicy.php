@@ -22,4 +22,6 @@ class UserPolicy
     public function isAdmin(User $user){
         return  $user->relation_to_role->name == 'Administrator';
           }
+       
+
 }
