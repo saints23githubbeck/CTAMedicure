@@ -251,7 +251,7 @@ Route::prefix('admin')->group(function () {
 });
 
 // Appoinment controller
-Route::get('/appointments',[ConsultancyController::class,'appointmentPage'])->name('appointments')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::get('/appointments',[ConsultancyController::class,'appointmentPage'])->name('appointments')->middleware(['auth','can:isAdmin_Patient,App\Models\Role']);
 Route::get('/appointments/list',[ConsultancyController::class,'appointmentList'])->name('appointment.list')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::post('/appointment/add',[ConsultancyController::class,'store'])->name('appointment.add')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,'destroy'])->name('appointment.destroy')->middleware(['auth','can:update,App\Models\Consultancy']);
