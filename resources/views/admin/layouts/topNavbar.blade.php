@@ -221,11 +221,11 @@
                         </a>
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-divider" href="{{ route('logout') }}"
+                        <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            <i class="ni ni-user-run"></i>
-                            <span>{{ __('Logout') }}</span>
+                            <i class="ni ni-user-run center"></i>
+                            <span class="text-danger">{{ __('Logout') }}</span>
 
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
