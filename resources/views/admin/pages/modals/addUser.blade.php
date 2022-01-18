@@ -79,6 +79,21 @@
                             @enderror
                         </div>
                         <div class="mb-1 col-12 form-outline">
+                            <label class="form-label font-weight-bold" for="form3Example97">Location</label>
+                            <select class="form-control form-control-sm @error('location') is-invalid @enderror border" name="location" required>
+
+                                    <option value="Abeka-Lapaz">Abeka-Lapaz</option>
+                                <option value="Abeka-Lapaz">Abeka-Lapaz</option>
+                                <option value="Ablekuma"> Ablekuma</option>
+
+                            </select>
+                            @error('location')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                            @enderror
+                        </div>
+                        <div class="mb-1 col-12 form-outline">
                             <label class="form-label font-weight-bold" for="form3Example97">Password</label>
                             <input
                                     type="password"

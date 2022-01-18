@@ -145,7 +145,11 @@ class RegisterController extends Controller
         }  
         
         
-        $addressFrom = Admin_address::find(1)->location;
+        if(Admin_address::find(1)->location){
+            $addressFrom = Admin_address::find(1)->location;
+        }else{
+            $addressFrom = 'ghana';
+        }
         $addressTo   = $user_exact_location;
         
         // Get distance in km
