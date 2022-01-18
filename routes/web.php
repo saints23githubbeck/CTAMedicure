@@ -216,18 +216,24 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('role')->group(function () {
 
-        Route::post('/add', 'RoleController@store')->name('role.add');
+        Route::post('/add', 'RoleController@store')->name('role.add')->middleware(['auth','can:isAdmin,App\Models\Role']);
 
-        Route::get('/show', 'RoleController@show')->name('roles.show');
+        Route::get('/show', 'RoleController@show')->name('roles.show')->middleware(['auth','can:isAdmin,App\Models\Role']);
 
-        Route::patch('/{role}/update', 'RoleController@update')->name('role.update');
+        Route::patch('/{role}/update', 'RoleController@update')->name('role.update')->middleware(['auth','can:isAdmin,App\Models\Role']);
 
-        Route::delete('/{role}/delete', 'RoleController@destroy')->name('role.destroy');
+        Route::delete('/{role}/delete', 'RoleController@destroy')->name('role.destroy')->middleware(['auth','can:isAdmin,App\Models\Role']);
 
-        Route::post('/search', 'RoleController@search')->name('role.search');
+        Route::post('/search', 'RoleController@search')->name('role.search')->middleware(['auth','can:isAdmin,App\Models\Role']);
     });
 
     Route::prefix('user')->group(function () {
+
+
+        Route::get('/index', 'UserController@index')->name('users')->middleware(['auth','can:isAdmin,App\Models\User']);
+        Route::get('/delete/{id}', 'UserController@destroy')->name('users.destroy')->middleware(['auth','can:isAdmin,App\Models\User']);
+        Route::patch('/{id}/update', 'UserController@update')->name('user.update')->middleware(['auth','can:isAdmin,App\Models\User']);
+        Route::post('update', 'UserController@store')->name('user.store')->middleware(['auth','can:isAdmin,App\Models\User']);
 
         Route::get('/index', 'UserController@index')->name('users');
         Route::get('/delete/{id}', 'UserController@destroy')->name('users.destroy');
@@ -243,11 +249,12 @@ Route::prefix('admin')->group(function () {
 
     });
 });
+
 // Appoinment controller
-Route::get('/appointments',[ConsultancyController::class,'appointmentPage'])->name('appointments');
-Route::get('/appointments/list',[ConsultancyController::class,'appointmentList'])->name('appointment.list');
-Route::post('/appointment/add',[ConsultancyController::class,'store'])->name('appointment.add');
-Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,'destroy'])->name('appointment.destroy');
-Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'update'])->name('appointment.update');
-Route::post('/apoinment-update',[ConsultancyController::class,'apoinmentUpdate'])->name('appoinmentUpdate');
-Route::get('/apoinment-search',[ConsultancyController::class,'appoinSearch'])->name('appoinSearch');
+Route::get('/appointments',[ConsultancyController::class,'appointmentPage'])->name('appointments')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::get('/appointments/list',[ConsultancyController::class,'appointmentList'])->name('appointment.list')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::post('/appointment/add',[ConsultancyController::class,'store'])->name('appointment.add')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,'destroy'])->name('appointment.destroy')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'update'])->name('appointment.update')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::post('/apoinment-update',[ConsultancyController::class,'apoinmentUpdate'])->name('appoinmentUpdate')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::get('/apoinment-search',[ConsultancyController::class,'appoinSearch'])->name('appoinSearch')->middleware(['auth','can:update,App\Models\Consultancy']);

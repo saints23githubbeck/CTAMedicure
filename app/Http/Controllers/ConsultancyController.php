@@ -14,6 +14,7 @@ class ConsultancyController extends Controller{
 
     function appointmentPage(){
         if (auth()->user()->role_id == 1){
+            
             $appointments = Consultancy::latest()->paginate(10);
             $doctors = User::where('role_id',2)->get();
         }else{

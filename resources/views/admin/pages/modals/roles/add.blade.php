@@ -21,6 +21,7 @@
                             <option value="Delivery">Delivery</option>
                             <option value="Pharmacy">Pharmacy</option>
                             <option value="patients">patients</option>
+                            
                         </select>
                         @if ($errors->has('name'))
                             <span class="invalid-feedback text-danger" role="alert">
