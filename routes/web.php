@@ -236,6 +236,7 @@ Route::prefix('admin')->group(function () {
         Route::post('update', 'UserController@store')->name('user.store')->middleware(['auth','can:isAdmin,App\Models\User']);
 
         Route::get('/index', 'UserController@index')->name('users');
+        Route::get('/action', 'UserController@action')->name('users.action');
         Route::get('/delete/{id}', 'UserController@destroy')->name('users.destroy');
         Route::patch('/user/{user}', 'UserController@update')->name('user.update');
         Route::post('update', 'UserController@store')->name('user.store');
