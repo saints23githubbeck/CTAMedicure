@@ -1,4 +1,11 @@
 @extends('admin.layouts.app')
+@section('head')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+@endsection
+
+
 
 @section('content')
     <!--Container Main start-->
@@ -10,13 +17,12 @@
 
                 <div class="card ">
                     <div class="card-body  mt-7">
-                        <form action="{{route('users')}}" method="GET" role="search" name="term">
+
                         <div class="row offset-1  mt--6">
 
                             <div class="form-group col">
 
-                                <input type="text" class="form-control" id="inputPassword4" placeholder="Search user"
-                                name="term">
+                                <input type="text" name="search" id="search" class="form-control" placeholder="Search Customer Data" />
                             </div>
                             <div class="form-group col">
                                 <a type="submit"> <span class="btn medibg text-white">Search</span> </a>
@@ -24,7 +30,7 @@
                             </div>
 
                         </div>
-                        </form>
+
                         <div class="container-fluid mt--7">
                             <div class="card-header border-0">
                                 <div class="row justify-content-end mt-2">
@@ -120,5 +126,32 @@
     @include('admin.pages.modals.addUser')
 @endsection
 
+@section('footer')
+    <script>
+        $(document).ready(function(){
 
+            fetch_customer_data();
+
+            function fetch_customer_data(query = '')
+            {
+                $.ajax({
+                    url:"{{ route('users.action') }}",
+                    method:'GET',
+                    data:{query:query},
+                    dataType:'json',
+                    success:function(data)
+                    {
+                        $('tbody').html(data.table_data);
+                        $('#total_records').text(data.total_data);
+                    }
+                })
+            }
+
+            $(document).on('keyup', '#search', function(){
+                var query = $(this).val();
+                fetch_customer_data(query);
+            });
+        });
+    </script>
+@endsection
 

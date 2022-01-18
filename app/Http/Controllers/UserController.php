@@ -26,6 +26,84 @@ class UserController extends Controller
 
         return view('admin.pages.user', compact('users','roles'));
     }
+    function action(Request $request)
+    {
+        if($request->ajax())
+        {
+            $output = '';
+            $query = $request->get('query');
+            if($query != '')
+            {
+                $data = User::where('userName', 'like', '%'.$query.'%')
+                    ->orWhere('email', 'like', '%'.$query.'%')
+                    ->orWhere('contactNumber', 'like', '%'.$query.'%')
+                    ->get();
+
+            }
+            else
+            {
+                $data = User::
+                    orderBy('id', 'desc')
+                    ->get();
+            }
+            $total_row = $data->count();
+            if($total_row > 0)
+            {
+                foreach($data as $row)
+                {
+                    $output .= '
+      <tr>
+
+                                                    <td class="budget">'
+                                                        .$row->userName.'
+                                                    </td>
+                                                    <td >
+                                                        <img src="/public/uploads/user/'.$row->profile->img.'" alt="'.$row->name.'" width="50"  class="img-fluid rounded-circle img-thumbnail">
+                                                    </td>
+                                                    <td>
+                                                          <span class="badge badge-dot mr-4">
+
+                                                            <span class="status">'.$row->email.'</span>
+                                                          </span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="avatar-group">
+                                                            '.$row->contactNumber.'
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                      <span class="badge badge-dot mr-4">
+                        <span class="status">'.$row->role->name.'</span>
+                      </span>
+                                                    </td>
+                                                    <td>
+                                                        <a data-bs-toggle="modal" data-bs-target="#update-Role-'.$row->id.'" class="bg-success btn-sm text-white "  ><i
+                                                                    class="fas fa-edit"></i></a>
+                                                        <a class="bg-info btn-sm text-white" data-bs-toggle="modal" data-bs-target="#details-Role-'.$row->id.'"><i
+                                                                    class="fas fa-eye"></i></a>
+                                                        <a class=" bg-danger btn-sm text-white "data-bs-toggle="modal" data-bs-target="#user-delete-'.$row->id.'"><i
+                                                                    class="fas fa-trash"> </i></a>
+                                                    </td>
+                                                </tr>
+        ';
+                }
+            }
+            else
+            {
+                $output = '
+       <tr>
+        <td align="center" colspan="5">No Data Found</td>
+       </tr>
+       ';
+            }
+            $data = array(
+                'table_data'  => $output,
+                'total_data'  => $total_row
+            );
+
+            echo json_encode($data);
+        }
+    }
 
 
     public function create()
