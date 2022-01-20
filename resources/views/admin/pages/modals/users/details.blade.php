@@ -13,7 +13,7 @@
                <p> <strong>Name : </strong> {{$user->userName}}</p>
                 <p> <strong>Email : </strong> {{$user->email}}</p>
                 <p> <strong>Contact Number : </strong> {{$user->contactNumber}}</p>
-                {{-- <p> <strong>Role : </strong> {{$user->role->name}}</p> --}}
+                <p> <strong>Role : </strong> {{$user->role->name ?? 'no'}}</p>
 
             </div>
 

@@ -9,9 +9,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h4 class="card-title text-primary text-center my-4">Enter your location</h4>
+                    <h4 class="card-title text-primary text-center my-4">Select your location</h4>
 
-                    <form action="{{route('change.location')}}" method="POST">
+                    {{--<form action="{{route('change.location')}}" method="POST">--}}
 
                     <form action="{{route('location.add',$order)}}" method="POST">
 
@@ -20,14 +20,18 @@
                             <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
                                 <div class="input-group">
                                     {{-- <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ !$errors->has('location') }}" required> --}}
-                                    {{-- <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ App\Models\Address::where('user_id',Auth::id())->first()->location }}" required>
-                                    --}}
-                                    <div class="input-group-append">
-                                        <div class="input-group-text btn-success btn" data-toggle="tooltip"
-                                             title="Click To Find Location Automatically">
-                                            <span class="fas fa-location-arrow "></span>
-                                        </div>
-                                    </div>
+                                    <select class="form-control form-control-lg @error('location') is-invalid @enderror border" name="location" required>
+
+                                        <option value="Abeka-Lapaz">Abeka-Lapaz</option>
+                                        <option value="Abeka-Lapaz">Abeka-Lapaz</option>
+                                        <option value="Ablekuma"> Ablekuma</option>
+
+                                    </select>
+                                    @error('location')
+                                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                                    @enderror
                                 </div>
                                 @if ($errors->has('location'))
                                     <div id="location-error" class="error text-danger pl-3"  style="display: block;">

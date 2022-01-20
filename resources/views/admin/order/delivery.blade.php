@@ -22,7 +22,7 @@
                             </div>
 
                             <div class="text-center mb-4">
-                                <a href="{{route('payment.cashondelivery',[$order->id,$charge])}}" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">Cash on Delivery</a>
+                                <a href="{{route('payment.cashondelivery',$order->id)}}" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">Cash on Delivery</a>
                                 <a  data-bs-toggle="modal" data-bs-target="#payPlan" class="btn bg-primary text-white px-5 py-1 mt-3 border-2" style="font-size: 24px; border-color: #4400AD;">Pay Before Delivery</a>
 
                             </div>
@@ -77,14 +77,15 @@
                                             </tr>
                                             <tr>
                                                 <th class="float-left">Delivery Charge:</th>
-                                                <th class="float-end">{{$distance}}/${{$charge}} </th>
-
+                                                @if($order->user->address->location == $order->confirmedOrder->user->address->location)
+                                                <th class="float-end">{{5}} </th>
+                                                    @endif
                                             </tr>
                                             <tr>
                                                 <th class="float-left">Total:</th>
-                                                <th class="float-end">${{$order->confirmedOrder->amount+$charge}}</th>
-                                                <input type="text" name="amount" value="{{$order->confirmedOrder->amount+$charge}}" hidden>
-                                                <input type="text" name="delivery_charge" value="{{$order->confirmedOrder->amount+$charge}}" hidden>
+                                                <th class="float-end">${{$order->confirmedOrder->amount + 5.00}}</th>
+                                                <input type="text" name="amount" value="{{$order->confirmedOrder->amount}}" hidden>
+                                                <input type="text" name="delivery_charge" value="{{$order->confirmedOrder->amount}}" hidden>
                                                 <input type="text" name="order_id" value="{{$order->id}}" hidden>
                                             </tr>
 
@@ -99,7 +100,10 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <h6 class="card-title" style="font-weight: bold;">Delivery Address</h6>
-                                        <p class="card-text" style="font-weight: bold;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure </p>
+                                        <p class="card-text" style="font-weight: bold;">
+                                            Pick From : {{$order->confirmedOrder->user->address->location}} <br>
+                                            To : {{$order->user->address->location}}
+                                         </p>
 
                                     </div>
                                 </div>

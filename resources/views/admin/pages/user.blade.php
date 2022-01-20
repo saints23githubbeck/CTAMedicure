@@ -81,9 +81,14 @@
                                                     </td>
                                                     <td>
                       <span class="badge badge-dot mr-4">
+
                         {{-- <span class="status">{{$user->role->name}}</span>
                     --}}
                     </span>
+
+                        <span class="status">{{$user->role->name ?? 'no'}}</span>
+                      </span>
+
                                                     </td>
                                                     <td>
                                                         <a data-bs-toggle="modal" data-bs-target="#update-Role-{{$user->id}}" class="bg-success btn-sm text-white "  ><i

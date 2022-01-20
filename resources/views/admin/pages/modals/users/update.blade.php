@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('user.update',$user->id)}}" method="post">
+                <form action="{{route('user.update',$user)}}" method="post">
                     @method('PATCH')
                     @csrf
 
@@ -71,6 +71,21 @@ value="{{$user->userName}}"
                                 <strong>{{ $errors->first('name') }}</strong>
                             </span>
                         @endif
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label font-weight-bold" for="form3Example97">Location</label>
+                        <select class="form-control form-control-sm @error('location') is-invalid @enderror border" name="location" required>
+
+                            <option value="Abeka-Lapaz">Abeka-Lapaz</option>
+                            <option value="Abeka-Lapaz">Ablekuma</option>
+                            <option value="Ablekuma"> Ablekuma</option>
+
+                        </select>
+                        @error('location')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
 
                     <div class="modal-footer">
