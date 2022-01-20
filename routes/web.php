@@ -9,7 +9,9 @@ use App\Http\Controllers\PrescriptionController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\DeliveryController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -43,10 +45,17 @@ Route::get('/request', function () {
 });
 Auth::routes();
 
+/*Delivary start */
 
-Route::get('/delivery', function () {
-   return view('admin.pages.delivery');
-})->name('delivery');
+// Route::get('/delivery', function () {
+//     return view('admin.pages.delivery');
+// })->name('delivery');
+
+Route::get('/delivery', [DeliveryController::class,'index'])->name('delivery');
+Route::post('/delivary_approved',[DeliveryController::class,'approved'])->name('delivary_approved');
+
+
+/*Delivary end*/
 
 
 Route::get('/completed/delivery', function () {

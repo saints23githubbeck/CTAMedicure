@@ -136,7 +136,7 @@ class PrescriptionController extends Controller
 
     public function showRequest(){
 
-     $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
+        $orders = Order::where('status',0)->orderBy('created_at','desc')->paginate(5);
 
         $confirmOrders = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
 
