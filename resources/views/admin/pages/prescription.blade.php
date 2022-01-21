@@ -209,6 +209,8 @@ $('#from_date').datepicker();
 $('#to_date').datepicker();
 
 });
+
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -260,6 +262,8 @@ error:function(xhr){
 }
 });
 }
+
+
 
 $('#filter').click(function(){
 var from_date = $('#from_date').val();

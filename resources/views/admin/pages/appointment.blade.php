@@ -12,16 +12,16 @@
                         <div class="form-group col">
 
                             From
-                            <input type="date" name="form_date" class="form-control"  id="from_date" placeholder=" Filter From">
+                            <input type="text" name="from_date" class="form-control"  id="from_date" placeholder=" Filter From" readonly/>
                         </div>
                         <div class="form-group col">
                             To
-                            <input type="date" name="to_date" class="form-control"  id="to_date" placeholder="Filter To">
+                            <input type="text" name="to_date" class="form-control"  id="to_date" placeholder="Filter To" readonly/>
                         </div>
                         <div class="form-group col">
 
 
-                            <span class="btn medibg text-white mt-4">Filter</span>
+                            <button type="button" id="filter" class="btn medibg text-white mt-4">Filter</button>
                             {{--<span class="btn btn-danger text-white mt-4">Cancel</span>--}}
 
                             {{--<button type="button" class="btn medibg text-black" name="filter" id="filter">Filter</button>--}}
@@ -52,7 +52,7 @@
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="listing">
                                 @foreach ($appointments as $key=> $appointment)
 
                                 <tr>
@@ -85,14 +85,22 @@
                                                     class="fas fa-trash"> </i></a>
                                     </td>
 
-                                    @include('admin.pages.modals.appointments.modals.delete')
-                                    @include('admin.pages.modals.appointments.modals.edit')
-                                    @include('admin.pages.modals.appointments.modals.details')
+                               
+
+
                                 </tr>
                                 @endforeach
                             </tbody>
 
                         </table>
+                        @foreach ($appointments as $key=> $appointment)
+                        @include('admin.pages.modals.appointments.modals.delete')
+                        @include('admin.pages.modals.appointments.modals.edit')
+                        @include('admin.pages.modals.appointments.modals.details')
+                        @endforeach
+                      
+
+
                     </div>
                 </div>
                 <div class="container">
@@ -113,4 +121,120 @@
 @endsection
 
 
+@section('footer_script')
+<script>
+    $(document).ready(function(){
+        $.datepicker.setDefaults({
+ dateFormat: 'yy-mm-dd'
+});
 
+$(function(){
+$('#from_date').datepicker();
+$('#to_date').datepicker();
+
+});
+
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+
+// fetch_data();
+// function fetch_data(from_date = '',to_date = ''){
+//     $.ajax({
+// type:'POST',
+// url:'/appointment/filter',
+// data:{from_date:from_date,to_date:to_date},
+// dataType:"json",
+// success:function(data){
+ 
+// alert('hello');
+
+
+// },
+// error:function(xhr){
+//     console.log(xhr.responseText);
+// }
+// });
+// }
+
+
+
+$('#filter').click(function(){
+var from_date = $('#from_date').val();
+var to_date = $('#to_date').val();
+if(from_date != '' && to_date != ''){
+//  fetch_data(from_date,to_date);
+$.ajax({
+    type:'POST',
+    url:'/appointment/filter',
+    data:{from_date:from_date,to_date:to_date},
+    dataType:'json',
+    success:function(data){
+        var output = '';
+        var a = 1;
+    for(var count = 0;count < data.length;count++){
+
+        output += '<tr>';
+        output += '<td>'+a+'</td>';
+        output += '<td>'+'just for Testing'+'</td>';
+        output += '<td>'+data[count].availableDate+'</td>';
+        output += '<td>'+data[count].availableTime+'</td>';
+        output += '<td>'+data[count].reason+'</td>';
+        if(data[count].status === 0){
+        output += '<td> <span class="badge badge-dot mr-4"><i class="bg-warning"></i><span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span></span></td>';
+        }else{
+            output += '<td><span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-{{$appointment->id}}"><span class="status text-white bg-info p-1 rounded shadow-lg">Waiting for Delivery</span></a></span></td>';
+        }
+        output +=  '<td class="text-right">';
+        output += '<a data-bs-toggle="modal" data-bs-target="#update-appo-'+data[count].id+'" class="bg-success btn-sm text-white" ><i class="fas fa-edit"></i></a>';
+        output += ' <a class="bg-info btn-sm text-white" data-bs-toggle="modal" data-bs-target="#details-appo-'+data[count].id+'"><i class="fas fa-eye"></i></a>';
+        output += '<a class=" bg-danger btn-sm text-white "data-bs-toggle="modal" data-bs-target="#delete-appo-'+data[count].id+'"><i class="fas fa-trash"> </i></a>';
+      
+        output += '</td>';
+                        
+       
+
+
+
+        output += '<tr>';
+        a++;
+    }
+$('.listing').html(output);
+    },
+    error:function(xhr){
+    console.log(xhr.responseText);
+}
+});
+
+
+}else{
+    const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'warning',
+  title: 'choose from and to date'
+})
+
+}
+
+});
+
+
+    });
+</script>
+
+@endsection
