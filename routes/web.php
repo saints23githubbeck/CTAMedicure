@@ -136,7 +136,7 @@ Route::post('/edit/admin/location',[LocationController::class,'update_admin'])->
 
 
 Route::get('/prescription',[PrescriptionController::class,'index'])->name('pres');
-//Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
+Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
 Route::delete('/prescription/{order}/delete',[PrescriptionController::class,'destroy'])->name('prescription.destroy');
 Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'])->name('view.prescription');
 Route::get('/edit/prescription/{order_id}',[PrescriptionController::class,'edit'])->name('edit.prescription');
