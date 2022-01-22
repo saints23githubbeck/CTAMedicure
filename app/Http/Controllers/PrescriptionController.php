@@ -26,11 +26,30 @@ class PrescriptionController extends Controller
 public function filter(Request $request){
     $from_date = $request->from_date;
     $to_date = $request->to_date;
-    $data = DB::select("SELECT * FROM orders WHERE created_at BETWEEN '$from_date 00:00:00' AND '$to_date 23:59:59' LIMIT 5");
+    // $data = DB::select("SELECT * FROM orders JOIN confirmed_orders ON orders.id=confirmed_orders.order_id   WHERE created_at BETWEEN '$from_date 00:00:00' AND '$to_date 23:59:59' LIMIT 5");
+    // $data = DB::select("SELECT * FROM orders LEFT JOIN confirmed_orders ON orders.id=confirmed_orders.order_id WHERE created_at BETWEEN '$from_date 00:00:00' AND '$to_date 23:59:59'");
 
-    $json_data = json_encode($data);
+    // $processexist = Process::join('bags', 'processes.bag_id', '=', 'bags.id')
+    // ->select('bags.column1', 'bags.columns2')
+    // ->where('bags.type', $bag->type)
+    // ->whereDate('processes.created_at', Carbon::today())
     
-    return $json_data;
+    // ->latest()
+    // ->first();
+    
+    // User::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))->get();
+
+// $data = Order::join('confirmed_orders', 'order.id', '=', 'confirmed_orders.order_id')
+// ->select('*')
+// ->whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))
+// ->get();
+// $data = Order::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))->join('confirmed_orders', 'order.id', '=', 'confirmed_orders.order_id')->get();
+//working code
+
+
+$data = DB::select("SELECT * FROM orders AS ord JOIN confirmed_orders AS cno ON ord.id=cno.order_id WHERE ord.created_at BETWEEN '$from_date 00:00:00' AND '$to_date 23:59:59' LIMIT 5");
+$json_data = json_encode($data);
+return $json_data;
 
 
    /*
@@ -104,7 +123,7 @@ public function filter(Request $request){
         }else{
             $orders = Order::with('confirmedOrder')->orderBy('created_at','desc')->where('user_id',auth()->user()->id)->paginate(5);
         }
-        $confirmorders = ConfirmedOrder::all();
+        $confirmorders = json_encode(ConfirmedOrder::all());
 
 //       dd($orders);
 

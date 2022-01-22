@@ -163,6 +163,9 @@ Route::post('/admin/location/add',[PrescriptionController::class,'admin_location
 
 //prescription end
 
+
+
+
 //return view('admin.pages.location');
 //})->name('location');
 
