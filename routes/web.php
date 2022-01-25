@@ -114,7 +114,35 @@ Route::get('/billing_info', function () {
 //prescription start
 
 
-//prescription end
+Route::get('/prescription',[PrescriptionController::class,'index'])->name('pres');
+Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
+Route::delete('/prescription/{order}/delete',[PrescriptionController::class,'destroy'])->name('prescription.destroy');
+Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'])->name('view.prescription');
+Route::get('/edit/prescription/{order_id}',[PrescriptionController::class,'edit'])->name('edit.prescription');
+Route::get('/status/prescription/{order_id}',[PrescriptionController::class,'status'])->name('status.prescription');
+Route::patch('/prescription/{order}/update',[PrescriptionController::class,'update'])->name('update.prescription');
+Route::post('/add/prescription',[PrescriptionController::class,'insert'])->name('add.prescription');
+Route::post('/prescription/accerpt/{order}',[PrescriptionController::class,'accerpt'])->name('prescription.accerpt');
+Route::get('/prescription/location/{order}',[PrescriptionController::class,'checkout'])->name('prescription.checkout');
+Route::get('/prescription/checkout/{order}',[PrescriptionController::class,'checkoutWithLocation'])->name('prescription.checkout.location');
+
+Route::post('/prescription/reject/{order}',[PrescriptionController::class,'reject'])->name('prescription.reject');
+Route::get('/prescription/show',[PrescriptionController::class,'showRequest'])->name('prescription.show');
+Route::post('/prescription/{order}/confirm',[PrescriptionController::class,'approve'])->name('prescription.confirm');
+//Route::post('/change/prescription/location',[PrescriptionController::class,'change_order_location'])->name('change.location');
+Route::get('payment/{id}',[PaymentController::class,'index'])->name('payment.details');
+Route::get('delivery/{id}',[PaymentController::class,'delivery'])->name('payment.delivery');
+
+Route::get('cash/delivery/{id}/{charge}',[PaymentController::class,'cashondelivery'])->name('payment.cashondelivery');
+
+Route::get('cash/delivery/{id}',[PaymentController::class,'cashondelivery'])->name('payment.cashondelivery');
+Route::get('/admin/location',[PrescriptionController::class,'admin_location'])->name('admin.location');
+Route::get('/location_typehead',[PrescriptionController::class,'autocomlete_admin_location']);
+Route::post('/admin/location/change',[PrescriptionController::class,'admin_location_change'])->name('admin.location.change');
+Route::post('/admin/location/add',[PrescriptionController::class,'admin_location_add'])->name('admin.location.add');
+
+
+
 
 //return view('admin.pages.location');
 //})->name('location');
@@ -279,3 +307,13 @@ Route::prefix('admin')->group(function () {
 });
 
 // Appoinment controller
+
+Route::get('/appointments',[ConsultancyController::class,'appointmentPage'])->name('appointments')->middleware(['auth','can:isAdmin_Patient,App\Models\Role']);
+Route::get('/appointments/list',[ConsultancyController::class,'appointmentList'])->name('appointment.list')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::post('/appointment/add',[ConsultancyController::class,'store'])->name('appointment.add')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::post('/appointment/filter',[ConsultancyController::class,'filter'])->name('filter.appoinment')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,'destroy'])->name('appointment.destroy')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'update'])->name('appointment.update')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::post('/apoinment-update',[ConsultancyController::class,'apoinmentUpdate'])->name('appoinmentUpdate')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::get('/apoinment-search',[ConsultancyController::class,'appoinSearch'])->name('appoinSearch')->middleware(['auth','can:update,App\Models\Consultancy']);
+
