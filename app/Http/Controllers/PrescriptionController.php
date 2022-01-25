@@ -6,6 +6,7 @@ use App\Models\ConfirmedOrder;
 use App\Models\Address;
 use App\Models\Admin_address;
 use App\Models\admin_location;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Illuminate\Validation\ValidationException;
@@ -377,6 +378,16 @@ public function admin_location(){
     
     return view('admin.pages.admin_location');
 }
+public function autocomlete_admin_location(Request $request){
+    $data = $request->all();
+    $query = $data['query'];
+    $filter_data = Location::select('name')
+    ->where('name','LIKE','%'.$query.'%')->get();
+    return response()->json($filter_data);
+
+
+}
+
 public function admin_location_change(Request $request){
 Admin_address::find(1)->update([
     'location'=>$request->location,
