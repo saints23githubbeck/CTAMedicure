@@ -6,22 +6,117 @@ use App\Models\ConfirmedOrder;
 use App\Models\Address;
 use App\Models\Admin_address;
 use App\Models\admin_location;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Illuminate\Validation\ValidationException;
 use Intervention\Image\Facades\Image;
-use Laravel\Ui\Presets\React;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 class PrescriptionController extends Controller
 {
 
+
     private $photos_path;
+    
     public function __construct()
     {
 //        $this->middleware('auth:admin');
         $this->photos_path = public_path('uploads/orders');
     }
+public function filter(Request $request){
+    $from_date = $request->from_date;
+    $to_date = $request->to_date;
+    // $data = DB::select("SELECT * FROM orders JOIN confirmed_orders ON orders.id=confirmed_orders.order_id   WHERE created_at BETWEEN '$from_date 00:00:00' AND '$to_date 23:59:59' LIMIT 5");
+    // $data = DB::select("SELECT * FROM orders LEFT JOIN confirmed_orders ON orders.id=confirmed_orders.order_id WHERE created_at BETWEEN '$from_date 00:00:00' AND '$to_date 23:59:59'");
 
+    // $processexist = Process::join('bags', 'processes.bag_id', '=', 'bags.id')
+    // ->select('bags.column1', 'bags.columns2')
+    // ->where('bags.type', $bag->type)
+    // ->whereDate('processes.created_at', Carbon::today())
+    
+    // ->latest()
+    // ->first();
+    
+    // User::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))->get();
+
+// $data = Order::join('confirmed_orders', 'order.id', '=', 'confirmed_orders.order_id')
+// ->select('*')
+// ->whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))
+// ->get();
+// $data = Order::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))->join('confirmed_orders', 'order.id', '=', 'confirmed_orders.order_id')->get();
+//working code
+
+
+$data = DB::select("SELECT * FROM orders AS ord JOIN confirmed_orders AS cno ON ord.id=cno.order_id WHERE ord.created_at BETWEEN '$from_date 00:00:00' AND '$to_date 23:59:59' LIMIT 5");
+$json_data = json_encode($data);
+return $json_data;
+
+
+   /*
+    $output = '';
+    
+    foreach($data as $datas){
+        $cn_status = ConfirmedOrder::where('order_id',$datas->id)->first()->status;
+        $cn_payby = ConfirmedOrder::where('order_id',$datas->id)->first()->payby;
+        $cn_due = ConfirmedOrder::where('order_id',$datas->id)->first()->due;
+        $cn_amount = ConfirmedOrder::where('order_id',$datas->id)->first()->amount;
+    
+      
+        $output .= '<tr>';
+        $output .= '<td>mdc0'.$datas->id.'</td>';
+        $output .= '<td>Image</td>';
+        $output .= '<td>'.$datas->quantity.'</td>';
+        $output .= '<td>'.$datas->created_at.'</td>';
+        $output .= '<td>'.$datas->note.'</td>';
+        $output .= '<td>';
+        if($datas->status == 0){
+        $output .= '<span class="badge badge-dot mr-4">
+        <i class="bg-warning"></i>
+        <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
+      </span>';
+        }elseif($cn_status == 0){
+                      $output .= '<span class="badge badge-dot mr-4">
+                      <i class="bg-info"></i>
+                       <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-'.$datas->id.'"><span class="status text-white bg-info p-1 rounded shadow-lg text-capitalize">approved Review Now</span></a>
+                    </span>';  
+    }elseif($cn_payby == null AND $cn_due == null){
+                    $output .= '<span class="badge badge-dot mr-4">
+                    <i class="bg-success"></i>
+                     <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order'.$datas->id.'"><span class="status text-white bg-success p-1 rounded shadow-lg">You Confirmed but Unpaid</span></a>
+                  </span>';
+}elseif($cn_amount == $cn_due){
+                        $output .= '<span class="badge badge-dot mr-4">
+                        <i class="bg-info"></i>
+                         <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-'.$datas->id.'"><span class="status text-white bg-info p-1 rounded shadow-lg">Paid Waiting for Delivery</span></a>
+                      </span>';
+}else{
+                      $output .= '<span class="badge badge-dot mr-4">
+                      <i class="bg-success"></i>
+                       <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-'.$datas->id.'"><span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Review Now</span></a>
+                    </span>';  
+
+}
+
+
+
+        $output .=' </td>';
+
+        
+
+        $output .= '</tr>';
+
+
+
+    }
+    echo $output;
+*/
+
+
+
+    
+
+}
     public function index()
     {
         if (auth()->user()->role_id == 1){
@@ -29,10 +124,11 @@ class PrescriptionController extends Controller
         }else{
             $orders = Order::with('confirmedOrder')->orderBy('created_at','desc')->where('user_id',auth()->user()->id)->paginate(5);
         }
+        $confirmorders = json_encode(ConfirmedOrder::all());
 
 //       dd($orders);
 
-    return view('admin.pages.prescription',compact('orders'));
+    return view('admin.pages.prescription',compact('orders','confirmorders'));
     }
 
     public function insert(){
@@ -282,6 +378,16 @@ public function admin_location(){
     
     return view('admin.pages.admin_location');
 }
+public function autocomlete_admin_location(Request $request){
+    $data = $request->all();
+    $query = $data['query'];
+    $filter_data = Location::select('name')
+    ->where('name','LIKE','%'.$query.'%')->get();
+    return response()->json($filter_data);
+
+
+}
+
 public function admin_location_change(Request $request){
 Admin_address::find(1)->update([
     'location'=>$request->location,

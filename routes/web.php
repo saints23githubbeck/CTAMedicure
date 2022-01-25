@@ -136,7 +136,7 @@ Route::post('/edit/admin/location',[LocationController::class,'update_admin'])->
 
 
 Route::get('/prescription',[PrescriptionController::class,'index'])->name('pres');
-//Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
+Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
 Route::delete('/prescription/{order}/delete',[PrescriptionController::class,'destroy'])->name('prescription.destroy');
 Route::get('/view/prescription/{order_id}',[PrescriptionController::class,'view'])->name('view.prescription');
 Route::get('/edit/prescription/{order_id}',[PrescriptionController::class,'edit'])->name('edit.prescription');
@@ -158,10 +158,14 @@ Route::get('cash/delivery/{id}/{charge}',[PaymentController::class,'cashondelive
 
 Route::get('cash/delivery/{id}',[PaymentController::class,'cashondelivery'])->name('payment.cashondelivery');
 Route::get('/admin/location',[PrescriptionController::class,'admin_location'])->name('admin.location');
+Route::get('/location_typehead',[PrescriptionController::class,'autocomlete_admin_location']);
 Route::post('/admin/location/change',[PrescriptionController::class,'admin_location_change'])->name('admin.location.change');
 Route::post('/admin/location/add',[PrescriptionController::class,'admin_location_add'])->name('admin.location.add');
 
 //prescription end
+
+
+
 
 //return view('admin.pages.location');
 //})->name('location');

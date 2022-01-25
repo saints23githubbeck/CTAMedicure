@@ -22,6 +22,8 @@
 
 
                             <button type="button" id="filter" class="btn medibg text-white mt-4">Filter</button>
+                            <button type="button" id="refresh" class="btn medibg text-white mt-4">Refresh</button>
+                          
                             {{--<span class="btn btn-danger text-white mt-4">Cancel</span>--}}
 
                             {{--<button type="button" class="btn medibg text-black" name="filter" id="filter">Filter</button>--}}
@@ -234,6 +236,15 @@ Toast.fire({
 });
 
 
+$('#refresh').click(function(){
+$('#from_date').val('');
+$('#to_date').val('');
+location.reload();
+});
+$(window).ready(()=>{
+     var myElement = document.querySelector("#my-element");
+     myElement.addEventListener("event", handler);
+});
     });
 </script>
 

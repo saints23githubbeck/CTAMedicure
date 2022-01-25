@@ -72,4 +72,21 @@
 @endsection
 
 
+@section('footer_script')
+<script>
+$(document).ready(function(){
+var path = "{{ url('/location_typehead') }}";
+$('#location').typeahead({
+source:function(query,process){
+    return $.get(path,{query:query},function(data){
+  return process(data);
+    });
+}
+});
 
+});
+
+</script>
+
+
+@endsection
