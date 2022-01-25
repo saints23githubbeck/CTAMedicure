@@ -11,7 +11,7 @@ class Delivery extends Model
 
     protected $guarded = [];
 
-    public function confirmOrder()
+    public function confirmedOrder()
     {
         return $this->belongsTo(ConfirmedOrder::class);
     }

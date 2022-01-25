@@ -10,11 +10,12 @@
                 </button>
             </div>
             <div class="modal-body ">
-                <img style="width:150px;height:150px" class="img-fluid img-center rounded mb-2" src="{{ asset('uploads/orders/'.$approved->order->image) }}">
+                {{--<img style="width:150px;height:150px" class="img-fluid img-center rounded mb-2" src="{{ asset('uploads/orders/'.$approved->order->image) }}">--}}
                 <hr>
-                <h4 class="text-center">Amount: <span class="mr--5">{{$approved->amount}}</span></h4>
-                <h4 class="text-center">Description : <span class="mr--5">{{$approved->note}}</span></h4>
-                <h4 class="text-center">Confirm By : <span class="mr--5">{{$approved->relation_to_user->contactNumber}}</span></h4>
+                <h4 class="text-center">Amount: <span class="mr--5">{{$approved->confirmedOrder->amount}}</span></h4>
+                <h4 class="text-center">Pick From : <span class="mr--5">{{$approved->confirmedOrder->order->user->address->location}}</span></h4>
+                <h4 class="text-center">Pick To : <span class="mr--5">{{$approved->confirmedOrder->user->address->location}}</span></h4>
+                {{--<h4 class="text-center">Confirm By : <span class="mr--5">{{$approved->relation_to_user->contactNumber}}</span></h4>--}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

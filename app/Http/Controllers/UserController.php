@@ -23,7 +23,7 @@ class UserController extends Controller
             $users->with('role')->where('userName', 'Like', '%' . request('term') . '%');
         }
 
-        $users  = $users->with('role')->orderBy('id', 'DESC')->paginate(10);
+        $users  = $users->with('role')->orderBy('id', 'DESC')->paginate(3);
 
         $roles = Role::all();
 

@@ -1,6 +1,6 @@
 
 <!-- Modal -->
-<div class="modal fade" id="details-pres-{{$delivary->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="details-pres-{{$coming->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,12 +10,15 @@
                 </button>
             </div>
             <div class="modal-body ">
-                <img style="width:150px;height:150px" class="img-fluid img-center rounded mb-2" src="{{ asset('uploads/orders/'.$delivary->relation_to_order->image) }}">
-               <p class="text-center"><span class="text-bold">Description : </span>{{$delivary->note}}</p>
-                <p class="text-center"> <span class="text-dark">Date Ordered : </span>{{$delivary->created_at->format('d-M-Y')}}</p>
+                {{--<img style="width:150px;height:150px" class="img-fluid img-center rounded mb-2" src="{{ asset('uploads/orders/'.$coming->relation_to_order->image) }}">--}}
+               <p class="text-center"><span class="text-bold">Pick From : </span>{{$coming->confirmedOrder->user->address->location.' -- '.$coming->confirmedOrder->user->contactNumber}}</p>
+               <p class="text-center"><span class="text-bold"> To : </span>{{$coming->confirmedOrder->order->user->address->location.'--  '.$coming->confirmedOrder->order->user->contactNumber}}</p>
+               <p class="text-center"><span class="text-bold">Amount : </span>{{$coming->confirmedOrder->amount}}</p>
+               <p class="text-center"><span class="text-bold">Status : </span>{{$coming->confirmedOrder->pay_by}}</p>
+                <p class="text-center"> <span class="text-dark">Date Ordered : </span>{{$coming->created_at->format('d-M-Y')}}</p>
                 <hr>
-                <h4 class="text-center">Ordered By : <span class="mr--5">{{$delivary->relation_to_user->userName}}</span></h4>
-                <h4 class="text-center">Contact : <span class="mr--5">{{$delivary->relation_to_user->contactNumber}}</span></h4>
+                {{--<h4 class="text-center">Ordered By : <span class="mr--5">{{$coming->relation_to_user->userName}}</span></h4>--}}
+                {{--<h4 class="text-center">Contact : <span class="mr--5">{{$coming->relation_to_user->contactNumber}}</span></h4>--}}
             </div>
 
 

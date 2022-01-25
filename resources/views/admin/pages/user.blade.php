@@ -1,12 +1,9 @@
 @extends('admin.layouts.app')
 @section('head')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />--}}
+{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
 @endsection
-
-
-
 @section('content')
     <!--Container Main start-->
     <div class="container">
@@ -25,12 +22,11 @@
                                 <input type="text" name="search" id="search" class="form-control" placeholder="Search User" />
                             </div>
                             <div class="form-group col">
-{{--                                <a type="submit"> <span class="btn medibg text-white">Search</span> </a>--}}
+                                <a type="submit"> <span class="btn medibg text-white">Search</span> </a>
 
                             </div>
 
                         </div>
-               </form>
                         @can('isAdmin','App\Models\User')
 
                         <div class="container-fluid mt--7">
@@ -70,7 +66,7 @@
                                                     @include('admin.pages.modals.users.update')
                                                     @include('admin.pages.modals.users.details')
                                                     @include('admin.pages.modals.users.delete')
-
+                                                    <tr>
 
                                                     <td class="budget">
                                                         {{$user->userName}}
@@ -124,11 +120,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container">
-                        <div class="col-md-12">
-                            {{ $users->links('pagination.custom') }}
-
+                    <div class="container mb-3">
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <ul class="pagination offset-lg-5 ">
+                                    <li ><a class="page-link btn medibg p-2 m-2 text-white" href="{{ $users->previousPageUrl() }}">Previous</a></li>
+                                    <li ><a class="page-link p-2 m-2 medibg text-white" href="{{ $users->nextPageUrl() }}">Next</a></li>
+                                </ul>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -165,7 +166,7 @@
     </script>
 @endsection
 
-@section('footer')
+{{--@section('footer')--}}
 
-@endsection
+{{--@endsection--}}
 

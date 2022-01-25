@@ -44,13 +44,13 @@
                         </li>
                     @endcan
 
-                    @can('isAdmin','App\Models\User')
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{route('admin.location')}}">
-                                <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">location</span>
-                            </a>
-                        </li>
-                    @endcan
+                    {{--@can('isAdmin','App\Models\User')--}}
+                        {{--<li class="nav-item ">--}}
+                            {{--<a class="nav-link" href="{{route('admin.location')}}">--}}
+                                {{--<i class="fas fa-user-friends "></i> <span class="nav_name text-white ">location</span>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                    {{--@endcan--}}
 
 
                     {{--<li class="nav-item ">--}}
@@ -94,7 +94,7 @@
                     @endcan
                     @can('isAdmin_Pharmacy_Delivary','App\Models\Role')
                         <li class="nav-item ">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{route('delivery.show')}}">
                                 <i class="fas fa-tasks"></i><span class="nav_name text-white ">Delivary List</span>
                             </a>
                         </li>

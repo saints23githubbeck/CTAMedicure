@@ -3,11 +3,6 @@
 @section('content')
     <!--Container Main start-->
     <div class="container">
-        <div class="col-md-9 offset-2">
-            <div class="breadcrumbs-area">
-                @include('admin.layouts.status')
-            </div>
-        </div>
         <div class="row">
             <div class="col-12 mt-lg-5">
                 <h1 class="text-lg-center">Prescription</h1>
@@ -110,6 +105,7 @@
                                                 </thead>
                                                 <tbody>
                                                 @foreach($confirmOrders as $approved)
+                                                    {{--{{dd($approved->delivery->count)}}--}}
                                                 <tr>
                                                     <td>{{'mdc0'.$approved->id}}</td>
                                                     <td>{{$approved->created_at->format('d-M-Y')}}</td>
@@ -138,10 +134,14 @@
                                                         @endif
                                                     <td><a href="#" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
                                                     @if($approved->amount == $approved->due AND $approved->amount != $approved->payments)
+
                                                         <td>
                                                             <span  class="badge badge-dot mr-4">
-
-                                                            <a href="{{route('delivery.show',$approved->id)}}" class="badge bg-primary text-white">Assign</a>
+                                                                @if(!$approved->delivery)
+                                                            <a href="{{route('delivery.assign.show',$approved->id)}}" class="badge bg-primary text-white">Assign</a>
+                                                                    @else
+                                                                    <a href="#" class="badge bg-info text-white">Already Assigned</a>
+                                                                @endif
                                                             </span>
                                                         </td>
                                                     @else
