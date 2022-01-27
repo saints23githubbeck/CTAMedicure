@@ -262,7 +262,7 @@ Route::prefix('admin')->group(function () {
 //Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
         Route::delete('/{order}', [PrescriptionController::class, 'destroy'])->name('prescription.destroy');
         Route::get('/view/{order_id}', [PrescriptionController::class, 'view'])->name('view.prescription');
-        Route::get('/{order_id}', [PrescriptionController::class, 'edit'])->name('edit.prescription');
+//        Route::get('/{order_id}', [PrescriptionController::class, 'edit'])->name('edit.prescription');
         Route::get('/status/{order_id}', [PrescriptionController::class, 'status'])->name('status.prescription');
         Route::patch('/{order}', [PrescriptionController::class, 'update'])->name('update.prescription');
         Route::post('/add', [PrescriptionController::class, 'insert'])->name('add.prescription');
@@ -316,4 +316,6 @@ Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,
 Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'update'])->name('appointment.update')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::post('/apoinment-update',[ConsultancyController::class,'apoinmentUpdate'])->name('appoinmentUpdate')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::get('/apoinment-search',[ConsultancyController::class,'appoinSearch'])->name('appoinSearch')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::patch('/complete/{appointment}',[ConsultancyController::class,'markComplete'])->name('appointment.complete')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::post('/medication/{appointment}',[ConsultancyController::class,'medication'])->name('appointment.medication')->middleware(['auth','can:update,App\Models\Consultancy']);
 

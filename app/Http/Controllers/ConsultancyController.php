@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\Consultancy;
 use App\Models\ConsultancyConfirm;
+use App\Models\Medication;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -147,7 +148,39 @@ class ConsultancyController extends Controller{
        return view('admin.pages.appointment',compact('appoinmentsSearch','doctors'));
     }
 
+    function markComplete(Consultancy $appointment){
+//            dd($appointment);
+        $appointment->consultancyConfirm()->update([
+            'status' => 1
+        ]);
 
+        return view('admin.pages.modals.appointments.medication',compact('appointment'))->with(' Appointment Completed Successfully');
+    }
+
+
+    function medication( Request $request, Consultancy $appointment){
+//            dd($appointment->consultancyConfirm->id);
+        try {
+            $this->validate(request(), [
+                'medication'=>'nullable',
+                'advice'=>'nullable',
+            ]);
+
+        } catch (ValidationException $e) {
+//
+            return redirect()->back()->withErrors($e->errors())->with('error', $e->getMessage());
+        }
+
+        Medication::create([
+            'medication' => $request->medication,
+            'advice' => $request->medication,
+            'consultancy_confirm_id' => $appointment->consultancyConfirm->id
+        ]);
+
+        return redirect()->route('appointment.list')->with(' Medications added Successfully');
+    }
 
 }
+
+
 

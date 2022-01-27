@@ -12,13 +12,13 @@ class DeliveryController extends Controller
 {
     public function index()
     {
-//        if (auth()->user()->role_id = 1){
-//            $myIncomingDeliveries = Delivery::where('status', 0)->orderBy('created_at', 'desc')->Paginate(5);
-//            $myAccerptDeliveries = Delivery::where('status', 1)->orderBy('created_at', 'desc')->Paginate(5);
-//        }else{
+        if (auth()->user()->role_id = 1){
+            $myIncomingDeliveries = Delivery::where('status', 0)->orderBy('created_at', 'desc')->Paginate(5);
+            $myAccerptDeliveries = Delivery::where('status', 1)->orderBy('created_at', 'desc')->Paginate(5);
+        }else{
             $myIncomingDeliveries = Delivery::where('status', 0)->where('user_id',auth()->id())->orderBy('created_at', 'desc')->Paginate(5);
             $myAccerptDeliveries = Delivery::where('status', 1)->where('user_id',auth()->id())->orderBy('created_at', 'desc')->Paginate(5);
-//        }
+        }
 
         return view('admin.pages.delivery', compact('myAccerptDeliveries','myIncomingDeliveries'));
     }
@@ -45,6 +45,8 @@ class DeliveryController extends Controller
         $delivery = Role::where('id', 3)->pluck('id');
 
         $userDeliveries = User::where('role_id', $delivery)->get();
+
+//        dd($userDeliveries);
 
         return view('admin.pages.modals.orders.delivery', compact('userDeliveries', 'approved'));
     }
