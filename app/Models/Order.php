@@ -32,4 +32,7 @@ class Order extends Model
     {
         return $this->belongsTo(DeliveryOption::class, 'id');
     }
+    public function relation_to_confirm_order(){
+        return $this->hasOne(ConfirmedOrder::class,'order_id','id');
+    }
 }

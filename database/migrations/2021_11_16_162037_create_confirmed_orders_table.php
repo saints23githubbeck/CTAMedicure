@@ -17,6 +17,7 @@ class CreateConfirmedOrdersTable extends Migration
             $table->id();
             $table->decimal('amount', 8, 2)->nullable();
             $table->decimal('payment', 8, 2)->nullable();
+            $table->decimal('delivery_charge', 8, 2)->nullable();
             $table->decimal('due', 8, 2)->nullable();
             $table->string('pay_by')->nullable();
             $table->string('transaction_id')->nullable();

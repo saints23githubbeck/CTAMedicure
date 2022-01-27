@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
+use App\Models\ConfirmedOrder;
+use App\Models\Order;
 use App\Models\Profile;
 use App\Models\Role;
 use App\Models\User;
@@ -20,11 +23,89 @@ class UserController extends Controller
             $users->with('role')->where('userName', 'Like', '%' . request('term') . '%');
         }
 
-        $users  = $users->with('role')->orderBy('id', 'DESC')->paginate(10);
+        $users  = $users->with('role')->orderBy('id', 'DESC')->paginate(3);
 
         $roles = Role::all();
 
         return view('admin.pages.user', compact('users','roles'));
+    }
+    function action(Request $request)
+    {
+        if($request->ajax())
+        {
+            $output = '';
+            $query = $request->get('query');
+            if($query != '')
+            {
+                $data = User::where('userName', 'like', '%'.$query.'%')
+                    ->orWhere('email', 'like', '%'.$query.'%')
+                    ->orWhere('contactNumber', 'like', '%'.$query.'%')
+                    ->get();
+
+            }
+            else
+            {
+                $data = User::
+                    orderBy('id', 'desc')
+                    ->get();
+            }
+            $total_row = $data->count();
+            if($total_row > 0)
+            {
+                foreach($data as $row)
+                {
+                    $output .= '
+      <tr>
+
+                                                    <td class="budget">'
+                                                        .$row->userName.'
+                                                    </td>
+                                                    <td >
+                                                        <img src="/public/uploads/user/'.$row->profile->img.'" alt="'.$row->name.'" width="50"  class="img-fluid rounded-circle img-thumbnail">
+                                                    </td>
+                                                    <td>
+                                                          <span class="badge badge-dot mr-4">
+
+                                                            <span class="status">'.$row->email.'</span>
+                                                          </span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="avatar-group">
+                                                            '.$row->contactNumber.'
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                      <span class="badge badge-dot mr-4">
+                        <span class="status">'.$row->role->name.'</span>
+                      </span>
+                                                    </td>
+                                                    <td>
+                                                        <a data-bs-toggle="modal" data-bs-target="#update-Role-'.$row->id.'" class="bg-success btn-sm text-white "  ><i
+                                                                    class="fas fa-edit"></i></a>
+                                                        <a class="bg-info btn-sm text-white" data-bs-toggle="modal" data-bs-target="#details-Role-'.$row->id.'"><i
+                                                                    class="fas fa-eye"></i></a>
+                                                        <a class=" bg-danger btn-sm text-white "data-bs-toggle="modal" data-bs-target="#user-delete-'.$row->id.'"><i
+                                                                    class="fas fa-trash"> </i></a>
+                                                    </td>
+                                                </tr>
+        ';
+                }
+            }
+            else
+            {
+                $output = '
+       <tr>
+        <td align="center" colspan="5">No Data Found</td>
+       </tr>
+       ';
+            }
+            $data = array(
+                'table_data'  => $output,
+                'total_data'  => $total_row
+            );
+
+            echo json_encode($data);
+        }
     }
 
 
@@ -94,9 +175,15 @@ class UserController extends Controller
     }
 
 
-    public function show($id)
+    public function delivery(ConfirmedOrder $approved)
     {
-        //
+      $delivery = Role::where('name','delivery')->value('id');
+
+
+      $userDeliveries = User::where('role_id',$delivery)->get();
+
+//        return $userDeliveries;
+      return view('admin.pages.delivery',compact('userDeliveries','approved'));
     }
 
 
@@ -106,16 +193,29 @@ class UserController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
 
-        $user = User::where('id',$id)->first();
-        $user->userName = $request->userName;
-        $user->email = $request->email;
-        $user->contactNumber = $request->contactNumber;
-        $user->role_id = $request->role_id;
-        $user->userName = $request->userName;
-        $user->update();
+//  dd(request()->all());
+        $user->update([
+            'userName'=>$request->userName,
+            'email'=>$request->email,
+            'contactNumber'=>$request->contactNumber,
+            'role_id'=>$request->role_id,
+        ]);
+//        $user->userName = $request->userName;
+//        $user->email = $request->email;
+//        $user->contactNumber = $request->contactNumber;
+//        $user->role_id = $request->role_id;
+//        $user->userName = $request->userName;
+//        $user->update();
+
+          $user->address()->updateOrCreate([
+            'distance'=>$request->distance ?? 'Null',
+            'location'=>$request->location,
+            'country'=>$request->country ?? 'Ghana',
+        ]);
+
         return back()->with('status','User Updated Successfully');
     }
 

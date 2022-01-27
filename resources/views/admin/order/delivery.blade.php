@@ -14,8 +14,8 @@
 
                     </div>
                     <div class="col-md-8">
-                        <form method="POST" action="{{ route('pay',$order->id) }}" id="paymentForm">
-                            {{ csrf_field() }}
+{{--                        <form method="POST" action="{{ route('pay',$order->id) }}" id="paymentForm">--}}
+{{--                            {{ csrf_field() }}--}}
 
                             <div class="float-start d-inline mt-2">
                                 <span class="" style="font-size: 40px;"><i class="fas fa-long-arrow-alt-left"></i></span>
@@ -77,13 +77,15 @@
                                             </tr>
                                             <tr>
                                                 <th class="float-left">Delivery Charge:</th>
-                                                <th class="float-end">$0</th>
-
+                                                @if($order->user->address->location == $order->confirmedOrder->user->address->location)
+                                                <th class="float-end">{{5}} </th>
+                                                    @endif
                                             </tr>
                                             <tr>
                                                 <th class="float-left">Total:</th>
-                                                <th class="float-end">${{$order->confirmedOrder->amount}}</th>
+                                                <th class="float-end">${{$order->confirmedOrder->amount + 5.00}}</th>
                                                 <input type="text" name="amount" value="{{$order->confirmedOrder->amount}}" hidden>
+                                                <input type="text" name="delivery_charge" value="{{$order->confirmedOrder->amount}}" hidden>
                                                 <input type="text" name="order_id" value="{{$order->id}}" hidden>
                                             </tr>
 
@@ -98,7 +100,10 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <h6 class="card-title" style="font-weight: bold;">Delivery Address</h6>
-                                        <p class="card-text" style="font-weight: bold;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure </p>
+                                        <p class="card-text" style="font-weight: bold;">
+                                            Pick From : {{$order->confirmedOrder->user->address->location}} <br>
+                                            To : {{$order->user->address->location}}
+                                         </p>
 
                                     </div>
                                 </div>
@@ -124,10 +129,10 @@
                                 <img src="{{asset('sujon/mtn.png')}}" alt="mtn" class="cart-img-show">
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary order my-5" style="">Pay Now</button>
+{{--                        <div class="text-center">--}}
+{{--                            <button type="submit" class="btn btn-primary order my-5" style="">Pay Now</button>--}}
 
-                        </div>
+{{--                        </div>--}}
                         </form>
                     </div>
                     <div class="col-md-2">

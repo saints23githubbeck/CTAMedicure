@@ -23,10 +23,10 @@ class RoleController extends Controller
          $request->validated();
 
      } catch (ValidationException $e) {
-//            dd($e->getMessage());
+            dd($e->getMessage());
          return redirect()->back()->withErrors($e->errors())->withInput(request()->all())->with('error', $e->getMessage());
      }
-//  dd(request('description'));
+//  dd(request()->all());
    Role::firstOrCreate([
        'name' => $request->name,
        'description' => $request->description

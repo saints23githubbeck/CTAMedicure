@@ -25,4 +25,12 @@ class ConfirmedOrder extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function delivery()
+    {
+        return $this->hasOne(Delivery::class);
+    }
+    public function relation_to_user(){
+        return $this->hasOne(User::class,'id','user_id');
+    }
 }

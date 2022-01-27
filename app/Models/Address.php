@@ -15,6 +15,7 @@ class Address extends Model
      * @var string[]
      */
     protected $guarded = [];
+
     public function user()
     {
         return $this->belongsTo(User::class);

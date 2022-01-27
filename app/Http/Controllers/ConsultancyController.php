@@ -9,11 +9,47 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Monolog\Handler\CubeHandler;
+use Illuminate\Support\Facades\DB;
 
 class ConsultancyController extends Controller{
+    function filter(Request $request){
 
+        $fromdate = $request->from_date;
+        $todate = $request->to_date;
+        // echo $fromdate;
+        // echo '<br>';
+        // echo $todate;
+        //$data =  DB::select("SELECT * FROM orders WHERE created_at BETWEEN '$fromdate 00:00:00' AND  '$todate 23:59:59'");
+        
+         // return view('admin.pages.prescription',[
+        //     'orders'=>$data
+        // ]);
+        
+            // $data = Order::where('created_at','=',$request->from)->where('created_at','=',$request->to)->get();
+            // print_r($data);
+        
+        //all code start
+        $data =  DB::select("SELECT * FROM consultancies WHERE created_at BETWEEN '$fromdate 00:00:00' AND '$todate 23:59:59'");
+        
+        // $send_html = '';
+        
+        // foreach($data as $appointment){
+      
+        //     $send_html .= "
+        //  <tr>
+        //  <td>$appointment->reason</td>
+        //  </tr>
+        // ";
+        // }
+        // echo $send_html;
+    $json_data = json_encode($data);
+    return $json_data;
+   
+        }
+         
     function appointmentPage(){
         if (auth()->user()->role_id == 1){
+            
             $appointments = Consultancy::latest()->paginate(10);
             $doctors = User::where('role_id',2)->get();
         }else{
