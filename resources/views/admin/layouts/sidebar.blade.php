@@ -58,7 +58,13 @@
     </a>
 </li>
 @endcan
-               
+@can('isAdmin','App\Models\User')
+<li class="nav-item ">
+    <a class="nav-link" href="{{route('constant.setting')}}">
+        <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">Constant settings</span>
+    </a>
+</li>
+@endcan              
 
                     {{--<li class="nav-item ">--}}
                         {{--<a class="nav-link" href="{{route('location')}}">--}}

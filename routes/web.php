@@ -4,12 +4,13 @@
 use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\ConsultancyController;
-
+use App\Http\Controllers\ConstantController;
 use App\Http\Controllers\PrescriptionController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DeliveryController;
+use App\Models\Consultancy;
 use Illuminate\Support\Facades\Route;
 
 
@@ -274,3 +275,10 @@ Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,
 Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'update'])->name('appointment.update')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::post('/apoinment-update',[ConsultancyController::class,'apoinmentUpdate'])->name('appoinmentUpdate')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::get('/apoinment-search',[ConsultancyController::class,'appoinSearch'])->name('appoinSearch')->middleware(['auth','can:update,App\Models\Consultancy']);
+
+
+//constant settings 
+Route::get('/constant/settings',[ConstantController::class,'index'])->name('constant.setting');
+Route::post('/constant/add',[ConstantController::class,'add'])->name('constant.add');
+Route::post('/constant/delete',[ConstantController::class,'delete'])->name('constant.delete');
+Route::post('/constant/update',[ConstantController::class,'update'])->name('constant.update');
