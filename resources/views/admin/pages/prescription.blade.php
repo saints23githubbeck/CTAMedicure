@@ -334,22 +334,6 @@
                         $('.listing').html(output);
 
 
-// var output = '';
-
-// for(var count = 0;count < data.length;count++){
-
-//     output += '<tr>';
-
-//     output += '<td>mdc0'+data[count].id+'</td>';
-//     output += "<td><img src={{ URL::to('/') }}/uploads/orders/"+data[count].image+" width='70px'/></td>";
-//     output += '<td>'+data[count].quantity+'</td>';
-//     output += '<td>'+data[count].created_at+'</td>';
-//     output += '<td>'+data[count].note+'</td>';
-//     output += '</tr>';
-// }
-// $('.listing').html(output);
-
-
                     },
                     error: function (xhr) {
                         console.log(xhr.responseText);

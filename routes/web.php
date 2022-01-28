@@ -137,7 +137,7 @@ Route::get('cash/delivery/{id}/{charge}',[PaymentController::class,'cashondelive
 
 Route::get('cash/delivery/{id}',[PaymentController::class,'cashondelivery'])->name('payment.cashondelivery');
 Route::get('/admin/location',[PrescriptionController::class,'admin_location'])->name('admin.location');
-Route::get('/location_typehead',[PrescriptionController::class,'autocomlete_admin_location']);
+Route::get('/location_typehead',[PrescriptionController::class,'autocomplete']);
 Route::post('/admin/location/change',[PrescriptionController::class,'admin_location_change'])->name('admin.location.change');
 Route::post('/admin/location/add',[PrescriptionController::class,'admin_location_add'])->name('admin.location.add');
 
