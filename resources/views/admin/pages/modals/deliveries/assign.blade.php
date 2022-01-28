@@ -1,6 +1,6 @@
 
 <!-- Modal -->
-<div class="modal fade" id="assign-delivery-{{$deliver->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="assign-delivery-{{$deliver->id}}-{{$approved->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,15 +12,15 @@
             <div class="modal-body ">
                 <form action="{{route('delivery.assign',$deliver)}}" method="POST">
                     @csrf
-                    {{--<div class="form-group">--}}
-                        {{--<label for="amount" class="col-form-label">Amount</label>--}}
-                        {{--<input type="number" class="form-control  {{$errors->has('amount') ? ' is-invalid' : ''}}" name="amount" value="{{old('amount')}}" required>--}}
-                        {{--@if ($errors->has('amount'))--}}
-                            {{--<span class="invalid-feedback text-danger" role="alert">--}}
-                                {{--<strong>{{ $errors->first('amount') }}</strong>--}}
-                            {{--</span>--}}
-                        {{--@endif--}}
-                    {{--</div>--}}
+
+                    <div class="form-group">
+                        <input type="hidden" class="form-control  {{$errors->has('confirmed_order_id') ? ' is-invalid' : ''}}" name="confirmed_order_id" value="{{old('confirmed_order_id',$approved->id)}}" >
+                        @if ($errors->has('confirmed_order_id'))
+                            <span class="invalid-feedback text-danger" role="alert">
+                                <strong>{{ $errors->first('confirmed_order_id') }}</strong>
+                            </span>
+                        @endif
+                    </div>
                     {{--<div class="form-group">--}}
                         {{--<label for="description" class="col-form-label">Description</label>--}}
                         {{--<textarea class="form-control" id="description" name="description" maxlength="250" cols="30" rows="5" style="resize: none" placeholder="Your Message Should Not Be More Than 250"></textarea>--}}

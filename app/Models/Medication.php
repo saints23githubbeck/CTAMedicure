@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Delivery extends Model
+class Medication extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function confirmedOrder()
+    public function consultancyConfirm()
     {
-        return $this->belongsTo(ConfirmedOrder::class);
+        return $this->belongsTo(ConsultancyConfirm::class);
     }
 }

@@ -3,11 +3,6 @@
 @section('content')
     <!--Container Main start-->
     <div class="container">
-        <div class="col-md-9 offset-2">
-            <div class="breadcrumbs-area">
-                @include('admin.layouts.status')
-            </div>
-        </div>
         <div class="row">
             <div class="col-12 mt-lg-5">
                 <h1 class="text-lg-center">Delivery list</h1>
@@ -30,9 +25,7 @@
                                             <table class="table my-5">
                                                 <thead class="border_botttom">
                                                 <tr>
-                                                    <th scope="col">Delivary Id</th>
-                                                  
-                                                    <th scope="col">Image</th>
+                                                    <th scope="col">#</th>
                                                     <th scope="col">Date</th>
                                                     <th scope="col">Status</th>
                                                     <th scope="col">Preview</th>
@@ -40,36 +33,31 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                    
-                                                @foreach($delivary_assign as $delivary)
+                                                {{--{{dd($myIncomingDeliveries)}}--}}
+                                                @foreach($myIncomingDeliveries as $coming)
                                                 <tr>
-
-                                     
-                                                    <td>{{'del'.sprintf('%02d',$delivary->relation_to_order->id) }}</td>
-                                    
-                                                    <td class="budget">
-                                                        <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$delivary->relation_to_order->image) }}">
-                                                    </td>
-                                                    <td>{{$delivary->created_at->format('d-M-Y')}}</td>
-                                                    @if($delivary->status == 0)
+                                                    <td>{{$loop->iteration}}</td>
+                                                    <td>{{$coming->created_at->format('d-M-Y')}}</td>
+                                                    @if($coming->status == 0)
                                                         <td class="badge badge-dot mr-4">
                                                             <span  class="badge badge-dot mr-4">
-                                                                <i class="bg-warning"></i>
                                                             <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
                                                             </span>
 
                                                         </td>
                                                     @endif
                                                     <td>
-                                                        <a  data-bs-toggle="modal" data-bs-target="#details-pres-{{$delivary->id}}">View</a>
+                                                        <a class="badge badge-dot mr-4 bg-primary p-1 text-white"  data-bs-toggle="modal" data-bs-target="#details-pres-{{$coming->id}}">View</a>
                                                     </td>
                                                     <td>
-                                                        <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$delivary->id}}" class="btn btn-success">Approved</a>
+                                                        <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$coming->id}}" class="btn-sm btn-success">Approved</a>
+                                                        <a href="#"  data-bs-toggle="modal" data-bs-target="#deliveryRej-{{$coming->id}}" class="btn-sm btn-danger">Reject</a>
                                                         {{--<a href="#" class="btn btn-danger">Rejected</a>--}}
                                                     </td>
                                                 </tr>
                                                       @include('admin.pages.modals.orders.delivary_details')
                                                       @include('admin.pages.modals.orders.delivary_approve')
+                                                      @include('admin.pages.modals.deliveries.delete')
 
 
                                                     @endforeach
@@ -86,24 +74,22 @@
                                                 <thead class="border_botttom">
 
                                                 <tr>
-                                                    <th scope="col">Delivary id</th>
-                                                   
+                                                    <th scope="col"> #</th>
                                                     <th scope="col"> Date</th>
                                                     <th scope="col">Image</th>
                                                     <th scope="col">Status</th>
                                                     <th scope="col">Preview </th>
-                                                    <th scope="col">Assign</th>
-                                                    <th scope="col" class="text-center">Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($delivary_complete as $approved)
+                                                @foreach($myAccerptDeliveries as $approved)
                                                 <tr>
-                                                    <td>{{'del'.sprintf('%02d',$approved->relation_to_order->id) }}</td>
-                                                
+                                                    {{--<td>{{'del'.sprintf('%02d',$approved->relation_to_order->id) }}</td>--}}
+                                                 {{--{{dd($approved->confirmedOrder->amount)}}--}}
+                                                    <td>{{$loop->iteration}}</td>
                                                     <td>{{$approved->created_at->format('d-M-Y')}}</td>
                                                     <td class="budget">
-                                                      <img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$approved->relation_to_order->image) }}">
+                                                      <img style="width:40px;height:40px" src="{{ asset('uploads/orders/'.$approved->confirmedOrder->order->image) }}">
                                                   </td>
 
                                                     @if($approved->status == 0)
@@ -114,10 +100,9 @@
 
                                                         </span>
                                                     </td>
-                                                        @elseif($approved->amount == $approved->due AND $approved->amount != $approved->payments)
+                                                        @elseif($approved->confirmedOrder->amount == $approved->confirmedOrder->due AND $approved->confirmedOrder->amount != $approved->confirmedOrder->payments)
                                                             <td>
                                                             <span  class="badge badge-dot mr-4">
-                                                                  <i class="bg-warning"></i>
                                                             <span class="status text-white bg-success p-1 rounded shadow-lg">Cash On Delivery</span>
                                                             </span>
                                                             </td>
@@ -129,13 +114,7 @@
                                                             </span>
                                                         </td>
                                                         @endif
-                                                    <td><a href="#" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
-                                                    <td><span class="badge bg-primary text-white">Assign</span></td>
-                                                    <td>
-                                                        <a href=""><i class="fab fa-telegram-plane"></i></a>
-                                                        <a href=""><i class="fas fa-pills"></i></a>
-                                                        <a href=""><i class="fas fa-user"></i></a>
-                                                    </td>
+                                                    <td><a href="#" class="badge badge-dot mr-4 bg-primary p-1 text-white" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
                                                 </tr>
                                                     @include('admin.pages.modals.orders.delivaryApproveDetails')
                                                 @endforeach
@@ -150,8 +129,8 @@
                     <div class="container">
                         <div class="col-md-12 mb-4">
                             <ul class="pagination offset-lg-5 mt-2">
-                                <li ><a class="page-link btn medibg p-2 m-2 text-white" href="{{ $delivary_complete->previousPageUrl() }}">Previous</a></li>
-                                <li ><a class="page-link p-2 m-2 medibg text-white" href="{{ $delivary_complete->nextPageUrl() }}">Next</a></li>
+                                {{--<li ><a class="page-link btn medibg p-2 m-2 text-white" href="{{ $delivary_complete->previousPageUrl() }}">Previous</a></li>--}}
+                                {{--<li ><a class="page-link p-2 m-2 medibg text-white" href="{{ $delivary_complete->nextPageUrl() }}">Next</a></li>--}}
                             </ul>
                         </div>
                     </div>
@@ -159,7 +138,7 @@
             </div>
         </div>
     </div>
-    @include('admin.pages.modals.addUser')
+
 @endsection
 
 @section('footer_script')
@@ -178,4 +157,9 @@ Swal.fire({
 
 
 
+
+
+
+
 @endsection
+

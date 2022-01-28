@@ -25,4 +25,9 @@ class ConsultancyConfirm extends Model
     {
         return $this->belongsTo(Consultancy::class);
     }
+
+    public function medication()
+    {
+        return $this->hasOne(Medication::class);
+    }
 }
