@@ -147,6 +147,7 @@
         </div>
     </div>
     @include('admin.pages.modals.addUser')
+
     <script>
         $(document).ready(function () {
 
