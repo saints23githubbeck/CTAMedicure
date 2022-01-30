@@ -13,7 +13,7 @@
                 <form  action="{{route('delivery.assign.reject',$coming)}}" method="post">
                     @method('DELETE')
                     @csrf
-                    <button type="submit" class="btn text-white  medibg">Delete</button>
+                    <button type="submit" class="btn text-white  medibg">Reject</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </form>
             </div>

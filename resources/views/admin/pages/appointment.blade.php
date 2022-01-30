@@ -45,8 +45,8 @@
                         <table class="table my-5">
                             <thead>
                             <tr>
-                                <th scope="col">consultancy</th>
-                                <th scope="col">Doctor Name</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Doctor</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Time</th>
                                 <th scope="col">Reason</th>
@@ -55,11 +55,11 @@
                             </tr>
                             </thead>
                             <tbody class="listing">
-                                @foreach ($appointments as $key=> $appointment)
+                                @foreach ($appointments as  $appointment)
 
                                 <tr>
-                                    <td>{{ ++$key }}</td>
-                                    <td>{{ $appointment->consultancyConfirm->user->profile->firstName.' '.$appointment->consultancyConfirm->user->profile->firstName}}</td>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{ $appointment->consultancyConfirm->user->profile->firstName.' '.$appointment->consultancyConfirm->user->profile->lastName}}</td>
                                     <td>{{ $appointment->availableDate }}</td>
                                     <td>{{ $appointment->availableTime }}</td>
                                     <td>{{ Str::limit($appointment->reason, '18')  }}</td>
@@ -189,7 +189,7 @@ $.ajax({
         if(data[count].status === 0){
         output += '<td> <span class="badge badge-dot mr-4"><i class="bg-warning"></i><span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span></span></td>';
         }else{
-            output += '<td><span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-{{$appointment->id}}"><span class="status text-white bg-info p-1 rounded shadow-lg">Waiting for Delivery</span></a></span></td>';
+            output += '<td><span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-"><span class="status text-white bg-info p-1 rounded shadow-lg">Waiting for Delivery</span></a></span></td>';
         }
         output +=  '<td class="text-right">';
         output += '<a data-bs-toggle="modal" data-bs-target="#update-appo-'+data[count].id+'" class="bg-success btn-sm text-white" ><i class="fas fa-edit"></i></a>';

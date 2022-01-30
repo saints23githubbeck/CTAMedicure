@@ -3,11 +3,6 @@
 @section('content')
     <!--Container Main start-->
     <div class="container">
-        <div class="col-md-9 offset-2">
-            <div class="breadcrumbs-area">
-                @include('admin.layouts.status')
-            </div>
-        </div>
         <div class="row">
             <div class="col-12 mt-lg-5">
                 <h1 class="text-lg-center">Delivery list</h1>
@@ -79,14 +74,11 @@
                                                 <thead class="border_botttom">
 
                                                 <tr>
-                                                    <th scope="col">Delivary id</th>
-                                                   
+                                                    <th scope="col"> #</th>
                                                     <th scope="col"> Date</th>
                                                     <th scope="col">Image</th>
                                                     <th scope="col">Status</th>
                                                     <th scope="col">Preview </th>
-                                                    <th scope="col">Assign</th>
-                                                    <th scope="col" class="text-center">Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -94,9 +86,10 @@
                                                 <tr>
                                                     {{--<td>{{'del'.sprintf('%02d',$approved->relation_to_order->id) }}</td>--}}
                                                  {{--{{dd($approved->confirmedOrder->amount)}}--}}
+                                                    <td>{{$loop->iteration}}</td>
                                                     <td>{{$approved->created_at->format('d-M-Y')}}</td>
                                                     <td class="budget">
-                                                      {{--<img style="width:50px;height:50px"src="{{ asset('uploads/orders/'.$approved->relation_to_order->image) }}">--}}
+                                                      <img style="width:40px;height:40px" src="{{ asset('uploads/orders/'.$approved->confirmedOrder->order->image) }}">
                                                   </td>
 
                                                     @if($approved->status == 0)
@@ -110,7 +103,6 @@
                                                         @elseif($approved->confirmedOrder->amount == $approved->confirmedOrder->due AND $approved->confirmedOrder->amount != $approved->confirmedOrder->payments)
                                                             <td>
                                                             <span  class="badge badge-dot mr-4">
-                                                                  <i class="bg-warning"></i>
                                                             <span class="status text-white bg-success p-1 rounded shadow-lg">Cash On Delivery</span>
                                                             </span>
                                                             </td>
@@ -122,7 +114,7 @@
                                                             </span>
                                                         </td>
                                                         @endif
-                                                    <td><a href="#" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
+                                                    <td><a href="#" class="badge badge-dot mr-4 bg-primary p-1 text-white" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
                                                 </tr>
                                                     @include('admin.pages.modals.orders.delivaryApproveDetails')
                                                 @endforeach

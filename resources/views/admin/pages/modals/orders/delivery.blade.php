@@ -22,8 +22,6 @@
 
                                                         <button id="minimize" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-group-task" aria-expanded="false" aria-controls="collapse-group-task">
                                                             <i class="fas fa-minus"></i>
-
-
                                                         </button>
                                                         <button onclick="loading()"  id="load"> <i class="fas fa-redo-alt"></i>  </button>
 

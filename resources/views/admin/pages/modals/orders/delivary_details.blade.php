@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body ">
-                {{--<img style="width:150px;height:150px" class="img-fluid img-center rounded mb-2" src="{{ asset('uploads/orders/'.$coming->relation_to_order->image) }}">--}}
+                <img style="width:150px;height:150px" class="img-fluid img-center rounded mb-2" src="{{ asset('uploads/orders/'.$coming->confirmedOrder->order->image) }}">
                <p class="text-center"><span class="text-bold">Pick From : </span>{{$coming->confirmedOrder->user->address->location.' -- '.$coming->confirmedOrder->user->contactNumber}}</p>
                <p class="text-center"><span class="text-bold"> To : </span>{{$coming->confirmedOrder->order->user->address->location.'--  '.$coming->confirmedOrder->order->user->contactNumber}}</p>
                <p class="text-center"><span class="text-bold">Amount : </span>{{$coming->confirmedOrder->amount}}</p>

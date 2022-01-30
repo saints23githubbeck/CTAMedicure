@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body ">
-                {{--<img style="width:150px;height:150px" class="img-fluid img-center rounded mb-2" src="{{ asset('uploads/orders/'.$approved->order->image) }}">--}}
+                <img style="width:150px;height:150px" class="img-fluid img-center rounded mb-2" src="{{ asset('uploads/orders/'.$approved->confirmedOrder->order->image) }}">
                 <hr>
                 <h4 class="text-center">Amount: <span class="mr--5">{{$approved->confirmedOrder->amount}}</span></h4>
                 <h4 class="text-center">Pick From : <span class="mr--5">{{$approved->confirmedOrder->order->user->address->location}}</span></h4>

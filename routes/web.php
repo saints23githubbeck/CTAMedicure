@@ -4,12 +4,13 @@
 use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\ConsultancyController;
-
+use App\Http\Controllers\ConstantController;
 use App\Http\Controllers\PrescriptionController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DeliveryController;
+use App\Models\Consultancy;
 use Illuminate\Support\Facades\Route;
 
 
@@ -137,7 +138,7 @@ Route::get('cash/delivery/{id}/{charge}',[PaymentController::class,'cashondelive
 
 Route::get('cash/delivery/{id}',[PaymentController::class,'cashondelivery'])->name('payment.cashondelivery');
 Route::get('/admin/location',[PrescriptionController::class,'admin_location'])->name('admin.location');
-Route::get('/location_typehead',[PrescriptionController::class,'autocomlete_admin_location']);
+Route::get('/location_typehead',[PrescriptionController::class,'autocomplete']);
 Route::post('/admin/location/change',[PrescriptionController::class,'admin_location_change'])->name('admin.location.change');
 Route::post('/admin/location/add',[PrescriptionController::class,'admin_location_add'])->name('admin.location.add');
 
@@ -262,7 +263,7 @@ Route::prefix('admin')->group(function () {
 //Route::post('/filter/prescription',[PrescriptionController::class,'filter'])->name('filter.prescription');
         Route::delete('/{order}', [PrescriptionController::class, 'destroy'])->name('prescription.destroy');
         Route::get('/view/{order_id}', [PrescriptionController::class, 'view'])->name('view.prescription');
-        Route::get('/{order_id}', [PrescriptionController::class, 'edit'])->name('edit.prescription');
+//        Route::get('/{order_id}', [PrescriptionController::class, 'edit'])->name('edit.prescription');
         Route::get('/status/{order_id}', [PrescriptionController::class, 'status'])->name('status.prescription');
         Route::patch('/{order}', [PrescriptionController::class, 'update'])->name('update.prescription');
         Route::post('/add', [PrescriptionController::class, 'insert'])->name('add.prescription');
@@ -316,4 +317,16 @@ Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,
 Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'update'])->name('appointment.update')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::post('/apoinment-update',[ConsultancyController::class,'apoinmentUpdate'])->name('appoinmentUpdate')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::get('/apoinment-search',[ConsultancyController::class,'appoinSearch'])->name('appoinSearch')->middleware(['auth','can:update,App\Models\Consultancy']);
+
+
+
+//constant settings 
+Route::get('/constant/settings',[ConstantController::class,'index'])->name('constant.setting');
+Route::post('/constant/add',[ConstantController::class,'add'])->name('constant.add');
+Route::post('/constant/delete',[ConstantController::class,'delete'])->name('constant.delete');
+Route::post('/constant/update',[ConstantController::class,'update'])->name('constant.update');
+
+Route::patch('/complete/{appointment}',[ConsultancyController::class,'markComplete'])->name('appointment.complete')->middleware(['auth','can:update,App\Models\Consultancy']);
+Route::post('/medication/{appointment}',[ConsultancyController::class,'medication'])->name('appointment.medication')->middleware(['auth','can:update,App\Models\Consultancy']);
+
 
