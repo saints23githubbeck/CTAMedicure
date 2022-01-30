@@ -1,23 +1,20 @@
 
 <!-- Modal -->
-<div class="modal fade" id="approve-order-{{$delivary->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="approve-order-{{$coming->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-lg-center" id="staticBackdropLabel">Order  Details</h5>
-                <button type="button" class="btn-close rounded-circle bg-danger text-white" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <div class="modal-body ">
-             
-                <form action="{{ route('delivary_approved') }}" method="POST">
+                <div class="success-message flex">
+                    <p class="item-title">
+                        <span class="text-capitalize text-xl-center ml-xl-5 font-weight-bolder text-warning">You Are Approving  this Delivery </span></p>
+                </div>
+                <form action="{{ route('delivery.approved',$coming) }}" method="POST">
                     @csrf
                     
-                      <input type="hidden" name="delivary_id" value="{{ $delivary->id }}">
+                      {{--<input type="hidden" name="delivary_id" value="{{ $coming->id }}">--}}
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn medibg">Approved</button>
+                        <button type="submit" class="btn medibg text-white">Approved</button>
                     </div>
                 </form>
             </div>

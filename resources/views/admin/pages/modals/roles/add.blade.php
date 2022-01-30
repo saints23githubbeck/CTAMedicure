@@ -20,7 +20,7 @@
                             <option value="Administrator">Administrator</option>
                             <option value="Delivery">Delivery</option>
                             <option value="Pharmacy">Pharmacy</option>
-                            <option value="patients">patients</option>
+                            <option value="patients">Patients</option>
                             
                         </select>
                         @if ($errors->has('name'))

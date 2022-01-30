@@ -7,6 +7,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 use App\Models\Consultancy;
 use App\Models\Role;
+
 class ConsultancyPolicy
 {
     use HandlesAuthorization;
@@ -22,18 +23,21 @@ class ConsultancyPolicy
     }
 
 public function update(User $user){
-    
-// echo   $role->find($user->find($consultancy->user_id)->role_id)->name;
 
 
-//   $role->find($user->find($consultancy->user_id)->role_id)->name == 'patients' ? Response::allow() : Response::deny('you can not get this page !');
 
-// return $user->role_id === $role->id;
-// return $user->id == 3 ? Response::allow() : Response::deny('what');
-
-return $user->relation_to_role->name == 'patients' || $user->relation_to_role->name == 'Administrator' || $user->relation_to_role->name == 'Doctor'  ? Response::allow() : Response::deny('you are not own and this page is authorized !');
+return  $user->relation_to_role->name == 'Administrator'   || $user->relation_to_role->name == 'Doctor'  ? Response::allow() : Response::deny('you are not own and this page is authorized !');
 
 }
+
+
+    public function view(User $user){
+
+
+
+        return $user->relation_to_role->name == 'Administrator' || $user->relation_to_role->name == 'patients' ? Response::allow() : Response::deny('you are not own and this page is authorized !');
+
+    }
 
 
 }

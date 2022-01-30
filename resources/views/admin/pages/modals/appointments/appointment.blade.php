@@ -11,6 +11,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            {{--{{dd($doctors->first()->profilr->lastName)}}--}}
 
             <div class="modal-body">
                 <form action="{{route('appointment.add')}}" method="POST">
@@ -20,7 +21,6 @@
                     <label for="user_id" class="col-form-label">Doctors</label>
                     <select class="form-control {{$errors->has('user_id') ? ' is-invalid' : ''}}" name="user_id" value="{{old('user_id')}}" required>
                     <option value="">--select doctor --</option>
-                   <option value="1">charles</option>
                     @foreach ($doctors as $doctor)
                     <option value="{{$doctor->id}}">{{$doctor->profile->firstName.' '.$doctor->profile->lastName}}</option>
                     @endforeach
