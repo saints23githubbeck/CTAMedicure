@@ -45,6 +45,7 @@
                     @endcan
 
                   
+<<<<<<< HEAD
                         @can('isAdmin','App\Models\User')
                         <li class="nav-item ">
                             <a class="nav-link" href="{{route('admin.location')}}">
@@ -59,6 +60,45 @@
                             </a>
                         </li>
                         @endcan
+=======
+@can('isAdmin','App\Models\User')
+<li class="nav-item ">
+    <a class="nav-link" href="{{route('admin.location')}}">
+        <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">location</span>
+    </a>
+</li>
+@endcan
+
+@can('isAdmin','App\Models\User')
+<li class="nav-item ">
+    <a class="nav-link" href="{{route('constant.setting')}}">
+        <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">Constant settings</span>
+    </a>
+</li>
+@endcan
+@can('isAdmin','App\Models\User')
+<li class="nav-item ">
+    <a class="nav-link" href="{{route('doctors')}}">
+        <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">All doctors</span>
+    </a>
+</li>
+@endcan           
+@can('isAdmin','App\Models\User')
+<li class="nav-item ">
+    <a class="nav-link" href="{{route('pharmacys')}}">
+        <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">All pharmacists</span>
+    </a>
+</li>
+@endcan        
+@can('isAdmin','App\Models\User')
+<li class="nav-item ">
+    <a class="nav-link" href="{{route('deliverys')}}">
+        <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">All delivery boys</span>
+    </a>
+</li>
+@endcan     
+
+>>>>>>> aabe6b87182a00e5c8b69e2141a61bb4b8853565
 
 
                     {{--@can('isAdmin','App\Models\User')--}}

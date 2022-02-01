@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\ShowAdminUsersController;
 use App\Models\Consultancy;
 use Illuminate\Support\Facades\Route;
 
@@ -317,6 +318,12 @@ Route::delete('/appointment/{appointment}/delete',[ConsultancyController::class,
 Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'update'])->name('appointment.update')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::post('/apoinment-update',[ConsultancyController::class,'apoinmentUpdate'])->name('appoinmentUpdate')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::get('/apoinment-search',[ConsultancyController::class,'appoinSearch'])->name('appoinSearch')->middleware(['auth','can:update,App\Models\Consultancy']);
+//doctors,delivery,pharmacy
+Route::get('/all/doctors',[ShowAdminUsersController::class,'doctors'])->name('doctors');
+Route::get('/all/deliverys',[ShowAdminUsersController::class,'deliverys'])->name('deliverys');
+Route::get('/all/pharmacys',[ShowAdminUsersController::class,'pharmacys'])->name('pharmacys');
+
+
 
 
 
