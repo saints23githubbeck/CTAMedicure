@@ -304,11 +304,10 @@ class PrescriptionController extends Controller
 
     public function autocomplete(Request $request)
     {
-        $data = $request->all();
-        $query = $data['query'];
-        $filter_data = Location::select('name')
-            ->where('name', 'LIKE', '%' . $query . '%')->get();
-        return response()->json($filter_data);
+        $filter_data = Location::where('name', 'LIKE', "%{$request->name}%")->get();
+
+
+        return $filter_data;
 
 
     }

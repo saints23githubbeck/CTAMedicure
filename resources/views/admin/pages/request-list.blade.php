@@ -24,7 +24,7 @@
                                         <div class="table-responsive">
                                             {{--{{dd(auth()->user()->address)}}--}}
                                             @if(auth()->user()->address == null)
-                                                <td><a class="status badge text-white btn-danger p-3 rounded shadow-lg" href="#" data-bs-toggle="modal" data-bs-target="#location">Please Update yor Location</a></td>
+                                                <td><a class="status badge text-white btn-danger p-3 rounded shadow-lg" href="#" data-bs-toggle="modal" data-bs-target="#locationModel">Please Update yor Location</a></td>
                                                 @include('admin.pages.modals.users.location')
                                                 @else
                                                 <table class="table my-5">

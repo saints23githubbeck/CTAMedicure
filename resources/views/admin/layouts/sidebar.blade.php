@@ -45,20 +45,20 @@
                     @endcan
 
                   
-@can('isAdmin','App\Models\User')
-<li class="nav-item ">
-    <a class="nav-link" href="{{route('admin.location')}}">
-        <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">location</span>
-    </a>
-</li>
-@endcan
-@can('isAdmin','App\Models\User')
-<li class="nav-item ">
-    <a class="nav-link" href="{{route('constant.setting')}}">
-        <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">Constant settings</span>
-    </a>
-</li>
-@endcan              
+                        @can('isAdmin','App\Models\User')
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{route('admin.location')}}">
+                                <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">location</span>
+                            </a>
+                        </li>
+                        @endcan
+                        @can('isAdmin','App\Models\User')
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{route('constant.setting')}}">
+                                <i class="fas fa-user-friends "></i> <span class="nav_name text-white ">Constant settings</span>
+                            </a>
+                        </li>
+                        @endcan
 
 
                     {{--@can('isAdmin','App\Models\User')--}}

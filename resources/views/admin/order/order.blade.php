@@ -15,7 +15,7 @@
 
 
                             <div class="text-center mb-4">
-                                <button data-bs-toggle="modal" data-bs-target="#location" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">Your Location</button>
+                                <button data-bs-toggle="modal" data-bs-target="#locationModel" class="btn text-primary px-5 py-1 mt-3 bg-white border-primary border-2" style="font-size: 24px; border-color: #4400AD;">Your Location</button>
 
                             </div>
 

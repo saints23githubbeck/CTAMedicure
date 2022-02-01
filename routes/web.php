@@ -300,9 +300,9 @@ Route::prefix('admin')->group(function () {
     Route::prefix('location')->group(function () {
         Route::get('/{order_id}', [LocationController::class, 'index'])->name('location');
         Route::get('/location', [LocationController::class, 'location'])->name('location');
-        Route::post('/', [LocationController::class, 'insert'])->name('location.store');
+//        Route::post('/', [LocationController::class, 'insert'])->name('location.store');
         Route::post('/{order}', [LocationController::class, 'add'])->name('location.add');
-        Route::post('/add', [LocationController::class, 'store'])->name('location.add');
+        Route::post('/add', [LocationController::class, 'store'])->name('location.store');
         Route::post('/edit', [LocationController::class, 'update_admin'])->name('update.admin_location');
     });
 });
