@@ -31,6 +31,12 @@
                @error('availableTime')
           <p class="text-danger">{{ $message }}</p>
                @enderror
+            <div class="form-group">
+                <label for="">Speciality</label><br>
+               <input type="text" name="speciality" class="form-control">
+               @error('speciality')
+          <p class="text-danger">{{ $message }}</p>
+               @enderror
             </div>
             <div class="form-group">
                 <label for="">Price</label><br>

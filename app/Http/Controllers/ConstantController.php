@@ -24,12 +24,14 @@ public function add(Request $request){
     $request->validate([
    'doctor_id'=>'required',
    'availableTime'=>'required',
+   'speciality'=>'required',
    'price'=>'required',
     ]);
 
     Constant_settings::insert([
     'user_id'=>$request->doctor_id,
     'availableTime'=>$request->availableTime,
+    'speciality'=>$request->speciality,
     'price'=>$request->price
     ]);
 return back();
@@ -45,15 +47,18 @@ public function update(Request $request){
     $request->validate([
         'doctor_id'=>'required',
         'availableTime'=>'required',
+        'speciality'=>'required',
         'price'=>'required',
          ]);
 
   Constant_settings::find($request->id)->update([
  'user_id'=>$request->doctor_id,
  'availableTime'=>$request->availableTime,
+ 'speciality'=>$request->speciality,
  'price'=>$request->price,
   ]);
   return back();
+
 
 }
 }

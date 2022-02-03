@@ -12,6 +12,7 @@
             <div class="modal-body">
                  <p> <strong>Doctor name : </strong> {{ App\Models\User::find($constant->id)->userName }}</p>
                 <p> <strong>Available time : </strong> {{$constant->availableTime}}</p>
+                <p> <strong>Speciality : </strong> {{$constant->speciality}}</p>
                 <p> <strong>Doctor charge : </strong> {{$constant->price}}</p>
                
 
