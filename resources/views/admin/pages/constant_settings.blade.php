@@ -33,6 +33,7 @@
                                                 <tr>
                                                     <th scope="col" class="sort" data-sort="budget">Doctor name</th>
                                                     <th scope="col" class="sort" data-sort="budget">Available Time</th>
+                                                    <th scope="col" class="sort" data-sort="budget">Speciality</th>
                                                     <th scope="col" class="sort" data-sort="budget">Price</th>
                                                     <th scope="col" class="sort" data-sort="completion">Action</th>
                                                     <th scope="col"></th>
@@ -50,6 +51,9 @@
                                                     </td>
                                                     <td class="budget">
                                                         {{ $constant->availableTime }}
+                                                     </td>
+                                                    <td class="budget">
+                                                        {{ $constant->speciality }}
                                                      </td>
                                                      <td class="budget">
                                                         {{ $constant->price }}

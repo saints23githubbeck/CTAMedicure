@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Constant_settings extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','availableTime','price'];
+    protected $fillable = ['user_id','availableTime','price','speciality'];
 }

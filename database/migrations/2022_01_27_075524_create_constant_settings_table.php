@@ -17,6 +17,7 @@ class CreateConstantSettingsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->time('availableTime');
+            $table->string('speciality');
             $table->integer('price');
             $table->timestamps();
         });
