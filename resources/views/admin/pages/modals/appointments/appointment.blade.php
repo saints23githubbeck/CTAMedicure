@@ -19,10 +19,10 @@
 
                     <div class="form-group">
                     <label for="user_id" class="col-form-label">Doctors</label>
-                    <select class="form-control {{$errors->has('user_id') ? ' is-invalid' : ''}}" name="user_id" value="{{old('user_id')}}" required>
+                    <select class="form-control {{$errors->has('user_id') ? ' is-invalid' : ''}}" name="user_id" value="{{old('user_id')}}" id="doctor_id" required>
                     <option value="">--select doctor --</option>
                     @foreach ($doctors as $doctor)
-                    <option value="{{$doctor->id}}">{{$doctor->profile->firstName.' '.$doctor->profile->lastName}}</option>
+                    <option value="{{$doctor->id}}">{{$doctor->userName}}</option>
                     @endforeach
 
                     </select>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group">
                         <label for="availableTime" class="col-form-label">Time</label>
-                       <input type="time" class="form-control {{$errors->has('availableTime') ? ' is-invalid' : ''}}" name="availableTime" value="{{old('availableTime')}}" required>
+                       <input type="time" class="form-control {{$errors->has('availableTime') ? ' is-invalid' : ''}}" name="availableTime" id="time" value="" required>
                         @if ($errors->has('availableTime'))
                             <span class="invalid-feedback text-danger" role="alert">
                                 <strong>{{ $errors->first('availableTime') }}</strong>
