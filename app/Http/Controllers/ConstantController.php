@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Constant_settings;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Day;
 class ConstantController extends Controller
 {
 public function index(){
@@ -21,20 +22,48 @@ public function index(){
         'doctors'=>$doctors
     ]);
 }
+public function delete_time($id){
+    Day::find($id)->delete();
+    return back();
+}
+public function add_time(Request $request){
+$request->validate([
+    'day'=>'required',
+    'availableTime'=>'required',
+    'closedTime'=>'required',
+]);
+if(Day::where('constant_id',$request->constant_id)->where('AvailableDate',$request->day)->exists()){
+
+    return back()->with('exists',$request->day.'available time already given');
+
+}else{
+    Day::insert([
+        'constant_id'=>$request->constant_id,
+        'availableTime'=>$request->availableTime,
+        'closedTime'=>$request->closedTime,
+        'AvailableDate'=>$request->day,
+    ]);
+    return back();
+}
+
+}
 public function add(Request $request){
     $request->validate([
    'doctor_id'=>'required',
-   'availableTime'=>'required',
    'speciality'=>'required',
    'price'=>'required',
     ]);
-
+if(Constant_settings::where('user_id',$request->doctor_id)->exists()){
+ return back()->with('exists','This doctor had been already assigned');
+}else{
     Constant_settings::insert([
-    'user_id'=>$request->doctor_id,
-    'availableTime'=>$request->availableTime,
-    'speciality'=>$request->speciality,
-    'price'=>$request->price
-    ]);
+        'user_id'=>$request->doctor_id,
+        'speciality'=>$request->speciality,
+        'price'=>$request->price
+        ]);
+}
+
+   
 return back();
 
 }
@@ -47,14 +76,12 @@ public function update(Request $request){
 
     $request->validate([
         'doctor_id'=>'required',
-        'availableTime'=>'required',
         'speciality'=>'required',
         'price'=>'required',
          ]);
 
   Constant_settings::find($request->id)->update([
  'user_id'=>$request->doctor_id,
- 'availableTime'=>$request->availableTime,
  'speciality'=>$request->speciality,
  'price'=>$request->price,
   ]);
