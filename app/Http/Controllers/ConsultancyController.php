@@ -8,11 +8,16 @@ use App\Models\ConsultancyConfirm;
 use App\Models\Medication;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Constant_settings;
 use Illuminate\Validation\ValidationException;
 use Monolog\Handler\CubeHandler;
 use Illuminate\Support\Facades\DB;
 
 class ConsultancyController extends Controller{
+    public function gettime(Request $request){
+  $time = Constant_settings::where('user_id',$request->doctor_id)->first()->availableTime;
+  echo $time;
+    }
     function filter(Request $request){
 
         $fromdate = $request->from_date;

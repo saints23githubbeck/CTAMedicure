@@ -125,6 +125,28 @@
 
 @section('footer_script')
 <script>
+    $('#doctor_id').on('change',function(){
+         var doctor_id = $(this).val();
+ $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$.ajax({
+ type:'POST',
+ url:'/gettime',
+ data:{doctor_id:doctor_id},
+ success:function(data){
+  $('#time').val(data);
+ },
+ error:function(xhr){
+     console.log(xhr.responseText);
+ }
+ 
+});
+
+    });
     $(document).ready(function(){
         $.datepicker.setDefaults({
  dateFormat: 'yy-mm-dd'

@@ -9,6 +9,7 @@ use App\Models\Role;
 class ConstantController extends Controller
 {
 public function index(){
+    
  $doctors_id = Role::where('name','Doctor')->first()->id;
 
  $doctors = User::where('role_id',$doctors_id)->get();
