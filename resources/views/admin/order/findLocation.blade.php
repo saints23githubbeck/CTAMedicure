@@ -18,7 +18,7 @@
                             <div class="input-group">
                                 <input type="text" name="location" id="location" class="form-control"
                                        placeholder="Enter Your Location" value="{{ !$errors->has('location') }}"
-                                       required>
+                                       required autocomplete="off">
                                 <div class="input-group-append">
                                     <div class="input-group-text btn-success btn" data-toggle="tooltip"
                                          title="Click To Find Location Automatically">

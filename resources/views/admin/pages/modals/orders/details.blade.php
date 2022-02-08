@@ -9,20 +9,19 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-<<<<<<< HEAD
+
             <div class="modal-body">
-                {{ $order->id }}
+                {{--{{ $order->id }}--}}
             </div>
-            {{-- <div class="modal-body ">
-                <img style="width:150px;height:150px" class="img-fluid img-center rounded mb-2" src="{{ asset('uploads/orders/'.$delivary->relation_to_order->image) }}">
-               <p class="text-center"><span class="text-bold">Description : </span>{{$delivary->note}}</p>
-                <p class="text-center"> <span class="text-dark">Date Ordered : </span>{{$delivary->created_at->format('d-M-Y')}}</p>
-=======
+            <div class="modal-body ">
+                {{--<img style="width:150px;height:150px" class="img-fluid img-center rounded mb-2" src="{{ asset('uploads/orders/'.$delivary->relation_to_order->image) }}">--}}
+               {{--<p class="text-center"><span class="text-bold">Description : </span>{{$delivary->note}}</p>--}}
+                {{--<p class="text-center"> <span class="text-dark">Date Ordered : </span>{{$delivary->created_at->format('d-M-Y')}}</p>--}}
+
              <div class="modal-body ">
                 <img style="width:150px;height:150px" class="img-fluid img-center rounded mb-2" src="{{ asset('uploads/orders/'.$order->image) ?? 'no'}}">
                <p class="text-center"><span class="text-bold">Description : </span>{{$order->note}}</p>
                 <p class="text-center"> <span class="text-dark">Date Ordered : </span>{{$order->created_at->format('d-M-Y')}}</p>
->>>>>>> 4bb2ebdd5cc53da8abe38f19c1fcac0ac8b4d18d
                 <hr>
                 <h4 class="text-center">Ordered By : <span class="mr--5">{{$order->user->userName}}</span></h4>
                 <h4 class="text-center">Contact : <span class="mr--5">{{$order->user->contactNumber}}</span></h4>

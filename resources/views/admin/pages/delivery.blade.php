@@ -114,7 +114,7 @@
                                                             </span>
                                                         </td>
                                                         @endif
-                                                    <td><a href="#" class="badge badge-dot mr-4 bg-primary p-1 text-white" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
+                                                    <td><a href="#" class=" status badge badge-dot mr-4 bg-primary p-1 text-white" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
                                                 </tr>
                                                     @include('admin.pages.modals.orders.delivaryApproveDetails')
                                                 @endforeach

@@ -66,7 +66,7 @@
                                                 <th scope="col" class="sort" data-sort="budget">Date</th>
                                                 <th scope="col" class="sort" data-sort="budget">Note</th>
                                                 <th scope="col" class="sort" data-sort="status">Status</th>
-                                                <th scope="col" class="sort" data-sort="completion" class="text-r">
+                                                <th scope="col" class="sort" data-sort="completion">
                                                     Action
                                                 </th>
 
@@ -74,7 +74,7 @@
                                             </tr>
                                             </thead>
                                             <tbody class="listing">
-                                            @if(count($orders) > 0)
+
                                                 @foreach ($orders as $order)
                                                     <tr>
                                                         <td>
@@ -138,7 +138,7 @@
                                                         <td>
                                                             @if($order->status == 0)
                                                                 <a data-bs-toggle="modal"
-                                                                   data-bs-target="#update-pres-{{$order->id}}"
+                                                                   data-bs-target="#edit-pres-{{$order->id}}"
                                                                    class="bg-success btn-sm text-white "><i
                                                                             class="fas fa-edit"></i></a>
                                                                 <a class="bg-info btn-sm text-white"
@@ -174,103 +174,41 @@
                                                                             class="fas fa-eye"></i></a>
                                                         @endif
 
+                                                        </td>
+                                                        <td>
+                                                            @if($order->status == 1)
+                                                                @include('admin.pages.modals.orders.previewOrder')
+                                                            @endif
+                                                        </td>
+                                                    <td> @include('admin.pages.modals.orders.order_edit')</td>
+                                                    <td> @include('admin.pages.modals.orders.details')</td>
+                                                    <td> @include('admin.pages.modals.orders.delete')</td>
+
+
+
+
+
                                                     </tr>
 
 
-
-
-
                                                 @endforeach
-                                            @endif
-                                            @if($orders->count() == 0)
-                                                <div class="text-center mt-3">
-                                                    <em>No users found</em>
-                                                </div>
-                                            @endif
+
+
                                             </tbody>
                                         </table>
-                                        <!--all modals start-->
-                                    @foreach ($orders as $order)
-
-                                        @if($order->status == 1)
-                                            @include('admin.pages.modals.orders.previewOrder')
-                                        @endif
-
-
-                                        @include('admin.pages.modals.orders.details')
-                                        @include('admin.pages.modals.orders.order_edit')
-                                        @include('admin.pages.modals.orders.delete')
-                                    @endforeach
-                                    <!--all modals end-->
-
-<<<<<<< HEAD
-                                                @endforeach
-                                             @endif
-                                                @if($orders->count() == 0)
-                                                    <div class="text-center mt-3">
-                                                        <em>No users found</em>
-                                                    </div>
-                                                @endif
-                                                </tbody>
-                                            </table>
-<!--all modals start-->
-@foreach ($orders as $order)
-
-{{-- @if($order->status == 1)
-@include('admin.pages.modals.orders.previewOrder')
-@endif --}}
-
-
-@include('admin.pages.modals.orders.details')
-@include('admin.pages.modals.orders.order_edit')
-@include('admin.pages.modals.orders.delete')
-@endforeach
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--all modals end-->
-
-                                        </div>
-=======
->>>>>>> 4bb2ebdd5cc53da8abe38f19c1fcac0ac8b4d18d
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="container">
-                        <div class="col-md-12 mb-4">
-                            <ul class="pagination offset-lg-5 mt-2">
-                                <li><a class="page-link btn medibg p-2 m-2 text-white"
-                                       href="{{ $orders->previousPageUrl() }}">Previous</a></li>
-                                <li><a class="page-link p-2 m-2 medibg text-white" href="{{ $orders->nextPageUrl() }}">Next</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
                 </div>
+
+
             </div>
         </div>
-
     </div>
+
+
 @endsection
 
 @section('footer_script')
@@ -291,167 +229,9 @@
             }
         }
 
-        $(document).ready(function(){
-            var path = "{{ url('/location_typehead') }}";
-            $('#location').typeahead({
-                source:function(query,process){
-                    return $.get(path,{query:query},function(data){
-                        return process(data);
-                    });
-                }
-            });
-
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-function fetch_data(from_date = '',to_date = ''){
-    $.ajax({
-type:'POST',
-url:'/filter/prescription',
-data:{from_date:from_date,to_date:to_date},
-dataType:"json",
-success:function(data){
-  
-console.log(data);
-=======
-            function fetch_data(from_date = '', to_date = '') {
-                $.ajax({
-                    type: 'POST',
-                    url: '/filter/prescription',
-                    data: {from_date: from_date, to_date: to_date},
-                    dataType: "json",
-                    success: function (data) {
->>>>>>> 4bb2ebdd5cc53da8abe38f19c1fcac0ac8b4d18d
-
-// var output = '';
-
-<<<<<<< HEAD
-// for(var count = 0;count < data.length;count++){
-   
-//     output += '<tr>';
-    
-//     output += '<td>mdc0'+data[count].id+'</td>';
-//     output += "<td><img src={{ URL::to('/') }}/uploads/orders/"+data[count].image+" width='70px'/></td>";
-//     output += '<td>'+data[count].quantity+'</td>';
-//     output += '<td>'+data[count].created_at+'</td>';
-//     output += '<td>'+data[count].note+'</td>';
-//     output += '<td><a href="'+data[count].id+'" class="btn btn-priamry">Edit</a></td>';
-//     output += '<td>';
-//     output += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#details-pres-'+data[count].id+'">Launch demo modal</button>';
-//     output += '</td>';
-
-
-//     output += '</tr>';
-// }
-// $('.listing').html(output);
-
-//  output += '<td>';
- /*order status*/
-
-// if(data[count].status == 0){
-//   output += '<span class="badge badge-dot mr-4"><i class="bg-warning"></i><span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span></span>'; 
-// }else if(data[count].status == 0){
-//   output += '<span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-info p-1 rounded shadow-lg text-capitalize">approved Review Now</span></a></span>';   
-// }else if(data[count].pay_by == null && data[count].due == null){
-//  output += '<span class="badge badge-dot mr-4"><i class="bg-success"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-success p-1 rounded shadow-lg">You Confirmed but Unpaid</span></a></span>';
-// }else if(data[count].amount == data[count].due){
-//   output += '<span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-info p-1 rounded shadow-lg">Paid Waiting for Delivery</span></a></span>';      
-// }else{
-//   output += '<span class="badge badge-dot mr-4"><i class="bg-success"></i> <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Review Now</span></a></span>';     
-
-// }
-
-                                            
-// output += '</td>';  
- /*order end*/
-=======
-                        var output = '';
-
-                        for (var count = 0; count < data.length; count++) {
-
-                            output += '<tr>';
-
-                            output += '<td>mdc0' + data[count].id + '</td>';
-                            output += "<td><img src={{ URL::to('/') }}/uploads/orders/" + data[count].image + " width='70px'/></td>";
-                            output += '<td>' + data[count].quantity + '</td>';
-                            output += '<td>' + data[count].created_at + '</td>';
-                            output += '<td>' + data[count].note + '</td>';
-
-                            output += '<td>';
-                            /*order status*/
-
-                            if (data[count].status == 0) {
-                                output += '<span class="badge badge-dot mr-4"><i class="bg-warning"></i><span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span></span>';
-                            } else if (data[count].status == 0) {
-                                output += '<span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-info p-1 rounded shadow-lg text-capitalize">approved Review Now</span></a></span>';
-                            } else if (data[count].pay_by == null && data[count].due == null) {
-                                output += '<span class="badge badge-dot mr-4"><i class="bg-success"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-success p-1 rounded shadow-lg">You Confirmed but Unpaid</span></a></span>';
-                            } else if (data[count].amount == data[count].due) {
-                                output += '<span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-info p-1 rounded shadow-lg">Paid Waiting for Delivery</span></a></span>';
-                            } else {
-                                output += '<span class="badge badge-dot mr-4"><i class="bg-success"></i> <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Review Now</span></a></span>';
->>>>>>> 4bb2ebdd5cc53da8abe38f19c1fcac0ac8b4d18d
-
-                            }
-
-
-<<<<<<< HEAD
-// var output = '';
-=======
-                            output += '</td>';
-                            /*order end*/
-
-
-                            output += '</tr>';
-                        }
-                        $('.listing').html(output);
->>>>>>> 4bb2ebdd5cc53da8abe38f19c1fcac0ac8b4d18d
-
-
-                    },
-                    error: function (xhr) {
-                        console.log(xhr.responseText);
-                    }
-                });
-            }
-
-
-            $('#filter').click(function () {
-                var from_date = $('#from_date').val();
-                var to_date = $('#to_date').val();
-                if (from_date != '' && to_date != '') {
-                    fetch_data(from_date, to_date);
-                } else {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: 'warning',
-                        title: 'choose from and to date'
-                    })
-
-                }
-
-            });
-
-            $('#refresh').click(function () {
-                $('#from_date').val('');
-                $('#to_date').val('');
-                location.reload();
-            });
->>>>>>> aabe6b87182a00e5c8b69e2141a61bb4b8853565
-        });
     </script>
+
+
 
 
 

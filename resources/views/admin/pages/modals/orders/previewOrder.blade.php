@@ -32,7 +32,10 @@
                     <button type="submit" class="btn btn-warning" data-bs-dismiss="modal">Reject</button>
                 </form>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                 @elseif($order->confirmedOrder->amoun == $order->confirmedOrder->due)
+                @elseif( $order->confirmedOrder->pay_by == null AND $order->confirmedOrder->due == null)
+                 @elseif($order->confirmedOrder->amount == $order->confirmedOrder->due)
+                    <a href="{{route('prescription.checkout',$order)}}"  class="btn btn-outline-success">pay Now </a>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     @if(auth()->user()->address == null)
                         <a href="{{route('prescription.checkout',$order)}}"  class="btn btn-outline-success">pay Now </a>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

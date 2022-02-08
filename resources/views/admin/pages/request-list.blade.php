@@ -64,10 +64,10 @@
                                                             </td>
                                                             <td>
                                                                 @if( auth()->user()->role->name == 'admin')
-                                                                    <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$order->id}}" class="btn btn-success">Approved</a>
+                                                                    <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$order->id}}" class="btn-sm btn-success">Approved</a>
 
                                                                 @elseif($order->user->address->location == auth()->user()->address->location)
-                                                                    <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$order->id}}" class="btn btn-success">Approved</a>
+                                                                    <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$order->id}}" class="btn-sm btn-success">Approved</a>
                                                                     {{--<a href="#" class="btn btn-danger">Rejected</a>--}}
                                                                 @else
                                                                     <span
@@ -76,9 +76,11 @@
                                                                     {{--<a href="#" class="btn btn-danger">Rejected</a>--}}
                                                                 @endif
                                                             </td>
+                                                            <td> @include('admin.pages.modals.orders.details')</td>
+                                                            <td>@include('admin.pages.modals.orders.approve')</td>
                                                         </tr>
-                                                        @include('admin.pages.modals.orders.details')
-                                                        @include('admin.pages.modals.orders.approve')
+
+
 
                                                     @endforeach
                                                     </tbody>
@@ -100,7 +102,6 @@
                                                     <th scope="col">Status</th>
                                                     <th scope="col">Preview </th>
                                                     <th scope="col">Assign</th>
-                                                    <th scope="col" class="text-center">Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -140,7 +141,7 @@
                                                                 @if(!$approved->delivery)
                                                             <a href="{{route('delivery.assign.show',$approved->id)}}" class="badge bg-primary text-white">Assign</a>
                                                                     @else
-                                                                    <a href="#" class="badge bg-info text-white">Already Assigned</a>
+                                                                    <a href="#" class=" status badge bg-info text-white">Already Assigned</a>
                                                                 @endif
                                                             </span>
                                                         </td>
@@ -148,15 +149,15 @@
                                                         <td>
                                                             <span  class="badge badge-dot mr-4">
 
-                                                            <span class="badge bg-primary text-white">can`t Assign</span>
+                                                            <span class=" status badge bg-primary text-white">can`t Assign</span>
                                                             </span>
                                                         </td>
                                                     @endif
-                                                    <td>
-                                                        <a href=""><i class="fab fa-telegram-plane"></i></a>
-                                                        <a href=""><i class="fas fa-pills"></i></a>
-                                                        <a href=""><i class="fas fa-user"></i></a>
-                                                    </td>
+                                                    {{--<td>--}}
+                                                        {{--<a href=""><i class="fab fa-telegram-plane"></i></a>--}}
+                                                        {{--<a href=""><i class="fas fa-pills"></i></a>--}}
+                                                        {{--<a href=""><i class="fas fa-user"></i></a>--}}
+                                                    {{--</td>--}}
                                                 </tr>
                                                     @include('admin.pages.modals.orders.orderApprovedetails')
                                                 @endforeach
