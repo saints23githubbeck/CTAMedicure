@@ -319,6 +319,7 @@ Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'
 Route::post('/apoinment-update',[ConsultancyController::class,'apoinmentUpdate'])->name('appoinmentUpdate')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::get('/apoinment-search',[ConsultancyController::class,'appoinSearch'])->name('appoinSearch')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::post('/gettime',[ConsultancyController::class,'gettime']);
+Route::post('/getDay',[ConsultancyController::class,'getDay']);
 //doctors,delivery,pharmacy
 Route::get('/all/doctors',[ShowAdminUsersController::class,'doctors'])->name('doctors');
 Route::get('/all/deliverys',[ShowAdminUsersController::class,'deliverys'])->name('deliverys');
@@ -332,7 +333,9 @@ Route::get('/all/pharmacys',[ShowAdminUsersController::class,'pharmacys'])->name
 Route::get('/constant/settings',[ConstantController::class,'index'])->name('constant.setting');
 Route::post('/constant/add',[ConstantController::class,'add'])->name('constant.add');
 Route::post('/constant/delete',[ConstantController::class,'delete'])->name('constant.delete');
+Route::post('/add/time',[ConstantController::class,'add_time'])->name('constant.time.add');
 Route::post('/constant/update',[ConstantController::class,'update'])->name('constant.update');
+Route::get('/time/delete/{id}',[ConstantController::class,'delete_time'])->name('time.delete');
 
 Route::patch('/complete/{appointment}',[ConsultancyController::class,'markComplete'])->name('appointment.complete')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::post('/medication/{appointment}',[ConsultancyController::class,'medication'])->name('appointment.medication')->middleware(['auth','can:update,App\Models\Consultancy']);

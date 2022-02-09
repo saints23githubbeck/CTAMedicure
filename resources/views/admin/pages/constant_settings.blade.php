@@ -13,6 +13,13 @@
                         <div class="container-fluid mt--7">
                             <div class="card-header border-0">
                                 <div class="row justify-content-end mt-2">
+                                    <div class="col-md-9">
+                                        @if(session('exists'))
+<div class="alert alert-danger">
+    {{ session('exists') }}
+</div>
+                                        @endif
+                                    </div>
                                     <div class="col-md-3 ">
                                         <a  class="btn medibg custom-btn text-white"
                                                 data-bs-toggle="modal" data-bs-target="#addUser">Doctor time
@@ -27,15 +34,16 @@
                                         <!-- Card header -->
 
                                         <!-- Light table -->
+                             
                                         <div class="table-responsive">
                                             <table class="table align-items-center table-flush">
                                                 <thead class="thead-light text-dark ">
                                                 <tr>
                                                     <th scope="col" class="sort" data-sort="budget">Doctor name</th>
-                                                    <th scope="col" class="sort" data-sort="budget">Available Time</th>
                                                     <th scope="col" class="sort" data-sort="budget">Speciality</th>
                                                     <th scope="col" class="sort" data-sort="budget">Price</th>
-                                                    <th scope="col" class="sort" data-sort="completion">Action</th>
+                                                    <th scope="col" class="sort" data-sort="budget">time</th>
+<th scope="col" class="sort" data-sort="completion">Action</th>
                                                     <th scope="col"></th>
                                                 </tr>
                                                 </thead>
@@ -44,20 +52,23 @@
                                                     @include('admin.pages.modals.constant.update')
                                                     @include('admin.pages.modals.constant.details')
                                                     @include('admin.pages.modals.constant.delete')
-                                                <tr>
+                                                    @include('admin.pages.modals.constant.time')
+                                                    
+                                                    <tr>
 
                                                     <td class="budget">
                                                        {{ App\Models\User::find($constant->user_id)->userName }}
                                                     </td>
-                                                    <td class="budget">
-                                                        {{ $constant->availableTime }}
-                                                     </td>
-                                                    <td class="budget">
+                                                   <td class="budget">
                                                         {{ $constant->speciality }}
                                                      </td>
                                                      <td class="budget">
                                                         {{ $constant->price }}
                                                      </td>
+                                                    <td>
+                                                        <a data-bs-toggle="modal" data-bs-target="#timeadd-{{$constant->id}}" class="bg-success btn-sm text-white">    
+                                                        Time</a>
+                                                    </td>
                                                     
                                                
                                                     <td>

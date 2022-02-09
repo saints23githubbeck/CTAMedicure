@@ -138,7 +138,7 @@ $.ajax({
  url:'/gettime',
  data:{doctor_id:doctor_id},
  success:function(data){
-  $('#time').val(data);
+$('#day').html(data);
  },
  error:function(xhr){
      console.log(xhr.responseText);
@@ -147,6 +147,30 @@ $.ajax({
 });
 
     });
+    $('#day').on('change',function(){
+        var doctor_id = $('#doctor_id').val();
+         var day_name = $(this).val();
+ $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$.ajax({
+ type:'POST',
+ url:'/getDay',
+ data:{day_name:day_name,doctor_id:doctor_id},
+ success:function(data){
+$('#time').val(data);
+ },
+ error:function(xhr){
+     console.log(xhr.responseText);
+ }
+ 
+});
+
+    });
+
     $(document).ready(function(){
         $.datepicker.setDefaults({
  dateFormat: 'yy-mm-dd'
