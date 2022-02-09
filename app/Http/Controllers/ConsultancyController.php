@@ -13,12 +13,16 @@ use Illuminate\Validation\ValidationException;
 use Monolog\Handler\CubeHandler;
 use Illuminate\Support\Facades\DB;
 
-class ConsultancyController extends Controller{
-    public function gettime(Request $request){
-  $time = Constant_settings::where('user_id',$request->doctor_id)->first()->availableTime;
-  echo $time;
+class ConsultancyController extends Controller
+{
+    public function gettime(Request $request)
+    {
+        $time = Constant_settings::where('user_id', $request->doctor_id)->first()->availableTime;
+        echo $time;
     }
-    function filter(Request $request){
+
+    function filter(Request $request)
+    {
 
         $fromdate = $request->from_date;
         $todate = $request->to_date;
@@ -26,21 +30,21 @@ class ConsultancyController extends Controller{
         // echo '<br>';
         // echo $todate;
         //$data =  DB::select("SELECT * FROM orders WHERE created_at BETWEEN '$fromdate 00:00:00' AND  '$todate 23:59:59'");
-        
-         // return view('admin.pages.prescription',[
+
+        // return view('admin.pages.prescription',[
         //     'orders'=>$data
         // ]);
-        
-            // $data = Order::where('created_at','=',$request->from)->where('created_at','=',$request->to)->get();
-            // print_r($data);
-        
+
+        // $data = Order::where('created_at','=',$request->from)->where('created_at','=',$request->to)->get();
+        // print_r($data);
+
         //all code start
-        $data =  DB::select("SELECT * FROM consultancies WHERE created_at BETWEEN '$fromdate 00:00:00' AND '$todate 23:59:59'");
-        
+        $data = DB::select("SELECT * FROM consultancies WHERE created_at BETWEEN '$fromdate 00:00:00' AND '$todate 23:59:59'");
+
         // $send_html = '';
-        
+
         // foreach($data as $appointment){
-      
+
         //     $send_html .= "
         //  <tr>
         //  <td>$appointment->reason</td>
@@ -48,45 +52,49 @@ class ConsultancyController extends Controller{
         // ";
         // }
         // echo $send_html;
-    $json_data = json_encode($data);
-    return $json_data;
-   
-        }
-         
-    function appointmentPage(){
-        if (auth()->user()->role_id == 1){
-            
-            $appointments = Consultancy::latest()->paginate(10);
-            $doctors = User::where('role_id',2)->get();
-        }else{
-            $appointments = Consultancy::where('user_id',auth()->user()->id)->latest()->paginate(10);
-            $doctors = User::where('role_id',2)->get();
-        }
+        $json_data = json_encode($data);
+        return $json_data;
 
-        return view('admin.pages.appointment',compact('appointments','doctors'));
     }
 
-    function appointmentList(){
+    function appointmentPage()
+    {
+        if (auth()->user()->role_id == 1) {
 
-        if (auth()->user()->role_id == 1){
-            $appointments = ConsultancyConfirm::where('status',0)->orderBy('created_at','desc')->paginate(5);
-            $completeAppointments = ConsultancyConfirm::where('status',1)->orderBy('created_at','desc')->paginate(5);
-        }else{
-            $appointments = ConsultancyConfirm::where('user_id',auth()->user()->id)->where('status',0)->orderBy('created_at','desc')->paginate(5);
-            $completeAppointments = ConsultancyConfirm::where('status',1)->orderBy('created_at','desc')->paginate(5);
+            $appointments = Consultancy::latest()->paginate(10);
+            $doctors = User::where('role_id', 2)->get();
+        } else {
+            $appointments = Consultancy::where('user_id', auth()->user()->id)->latest()->paginate(10);
+            $doctors = User::where('role_id', 2)->get();
+        }
+
+        return view('admin.pages.appointment', compact('appointments', 'doctors'));
+    }
+
+    function appointmentList()
+    {
+
+        if (auth()->user()->role_id == 1) {
+            $appointments = ConsultancyConfirm::where('status', 0)->orderBy('created_at', 'desc')->paginate(5);
+            $completeAppointments = ConsultancyConfirm::where('status', 1)->orderBy('created_at', 'desc')->paginate(5);
+        } else {
+            $appointments = ConsultancyConfirm::where('user_id', auth()->user()->id)->where('status', 0)->orderBy('created_at', 'desc')->paginate(5);
+            $completeAppointments = ConsultancyConfirm::where('status', 1)->orderBy('created_at', 'desc')->paginate(5);
         }
 //            dd($appointments);
 
 //        $appointments = ConfirmedOrder::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(5);
-        return view('admin.pages.appointment-list',compact('appointments','completeAppointments'));
+        return view('admin.pages.appointment-list', compact('appointments', 'completeAppointments'));
     }
-    function store(Request $request){
+
+    function store(Request $request)
+    {
 
         try {
             $this->validate(request(), [
-                'reason'=>'required',
-                'availableDate'=>'required',
-                'availableTime'=>'required',
+                'reason' => 'required',
+                'availableDate' => 'required',
+                'availableTime' => 'required',
                 'user_id' => 'required'
             ]);
 
@@ -109,18 +117,20 @@ class ConsultancyController extends Controller{
         return back()->with(' Successfully Request');
     }
 
-    function destroy(Consultancy $consultancy){
-       $consultancy->delete();
-        return back()->with('delete_message','Appoinment Deleted Successfully');
+    function destroy(Consultancy $consultancy)
+    {
+        $consultancy->delete();
+        return back()->with('delete_message', 'Appoinment Deleted Successfully');
     }
 
 
-    function update(Request $request, Consultancy $appointment){
+    function update(Request $request, Consultancy $appointment)
+    {
         try {
             $this->validate(request(), [
-                'reason'=>'required',
-                'availableDate'=>'required',
-                'availableTime'=>'required',
+                'reason' => 'required',
+                'availableDate' => 'required',
+                'availableTime' => 'required',
                 'user_id' => 'required'
             ]);
 
@@ -130,10 +140,10 @@ class ConsultancyController extends Controller{
         }
 
         $appointment->update([
-        'reason' => $request->reason,
-        'availableDate' => $request->availableDate,
-        'availableTime' => $request->availableTime,
-        'user_id' => auth()->id()
+            'reason' => $request->reason,
+            'availableDate' => $request->availableDate,
+            'availableTime' => $request->availableTime,
+            'user_id' => auth()->id()
         ]);
 
 
@@ -145,30 +155,33 @@ class ConsultancyController extends Controller{
 
     }
 
-    function appoinSearch(Request $request){
-       $start = $request->start;
-       $end = $request->end;
-       $appoinmentsSearch = Consultancy::whereBetween('availableDate',[$start,$end])->get();
-        $doctors = User::where('role_id',2)->get();
-       return view('admin.pages.appointment',compact('appoinmentsSearch','doctors'));
+    function appoinSearch(Request $request)
+    {
+        $start = $request->start;
+        $end = $request->end;
+        $appoinmentsSearch = Consultancy::whereBetween('availableDate', [$start, $end])->get();
+        $doctors = User::where('role_id', 2)->get();
+        return view('admin.pages.appointment', compact('appoinmentsSearch', 'doctors'));
     }
 
-    function markComplete(Consultancy $appointment){
+    function markComplete(Consultancy $appointment)
+    {
 //            dd($appointment);
         $appointment->consultancyConfirm()->update([
             'status' => 1
         ]);
 
-        return view('admin.pages.modals.appointments.medication',compact('appointment'))->with(' Appointment Completed Successfully');
+        return view('admin.pages.modals.appointments.medication', compact('appointment'))->with(' Appointment Completed Successfully');
     }
 
 
-    function medication( Request $request, Consultancy $appointment){
+    function medication(Request $request, Consultancy $appointment)
+    {
 //            dd($appointment->consultancyConfirm->id);
         try {
             $this->validate(request(), [
-                'medication'=>'nullable',
-                'advice'=>'nullable',
+                'medication' => 'nullable',
+                'advice' => 'nullable',
             ]);
 
         } catch (ValidationException $e) {
