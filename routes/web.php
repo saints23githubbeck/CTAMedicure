@@ -319,6 +319,7 @@ Route::patch('/appointment/{appointment}/update',[ConsultancyController::class,'
 Route::post('/apoinment-update',[ConsultancyController::class,'apoinmentUpdate'])->name('appoinmentUpdate')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::get('/apoinment-search',[ConsultancyController::class,'appoinSearch'])->name('appoinSearch')->middleware(['auth','can:update,App\Models\Consultancy']);
 Route::post('/gettime',[ConsultancyController::class,'gettime']);
+Route::post('/getDay',[ConsultancyController::class,'getDay']);
 //doctors,delivery,pharmacy
 Route::get('/all/doctors',[ShowAdminUsersController::class,'doctors'])->name('doctors');
 Route::get('/all/deliverys',[ShowAdminUsersController::class,'deliverys'])->name('deliverys');

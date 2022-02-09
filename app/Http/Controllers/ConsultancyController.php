@@ -11,14 +11,27 @@ use Illuminate\Http\Request;
 use App\Models\Constant_settings;
 use Illuminate\Validation\ValidationException;
 use Monolog\Handler\CubeHandler;
+use App\Models\Day;
 use Illuminate\Support\Facades\DB;
 
 class ConsultancyController extends Controller{
     public function gettime(Request $request){
-  $time = Constant_settings::where('user_id',$request->doctor_id)->first()->availableTime;
-  echo $time;
-    }
-    function filter(Request $request){
+  $constant_id = Constant_settings::where('user_id',$request->doctor_id)->first()->id;
+  $days = Day::where('constant_id',$constant_id)->get(['AvailableDate']);
+
+  $send_html = '<option>--select day--</option>';
+foreach($days as $day){
+    $send_html .= '<option value="'.$day->AvailableDate.'">'.$day->AvailableDate.'</option>';
+}    
+echo $send_html;
+}
+
+public function getDay(Request $request){
+    $constant_id = Constant_settings::where('user_id',$request->doctor_id)->first()->id;
+  $time = Day::where('constant_id',$constant_id)->where('AvailableDate',$request->day_name)->first()->availableTime;
+ echo $time;
+}
+function filter(Request $request){
 
         $fromdate = $request->from_date;
         $todate = $request->to_date;
