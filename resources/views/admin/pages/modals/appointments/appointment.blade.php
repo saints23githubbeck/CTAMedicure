@@ -21,8 +21,11 @@
                     <label for="user_id" class="col-form-label">Doctors</label>
                     <select class="form-control {{$errors->has('user_id') ? ' is-invalid' : ''}}" name="user_id" value="{{old('user_id')}}" id="doctor_id" required>
                     <option value="">--select doctor --</option>
-                    @foreach ($doctors as $doctor)
-                    <option value="{{$doctor->id}}">{{$doctor->userName}}</option>
+                    @foreach (App\Models\Constant_settings::all() as $doctor)
+                   
+          <option value="{{$doctor->user_id}}">{{App\Models\User::find($doctor->user_id)->userName}}</option>
+         
+                 
                     @endforeach
 
                     </select>

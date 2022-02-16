@@ -29,9 +29,11 @@ public function delete_time($id){
 public function add_time(Request $request){
 $request->validate([
     'day'=>'required',
+    'duration'=>'required',
     'availableTime'=>'required',
     'closedTime'=>'required',
 ]);
+
 if(Day::where('constant_id',$request->constant_id)->where('AvailableDate',$request->day)->exists()){
 
     return back()->with('exists',$request->day.'available time already given');
@@ -39,6 +41,7 @@ if(Day::where('constant_id',$request->constant_id)->where('AvailableDate',$reque
 }else{
     Day::insert([
         'constant_id'=>$request->constant_id,
+        'duration'=>$request->duration,
         'availableTime'=>$request->availableTime,
         'closedTime'=>$request->closedTime,
         'AvailableDate'=>$request->day,
