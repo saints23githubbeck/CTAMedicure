@@ -16,20 +16,76 @@ use Illuminate\Support\Facades\DB;
 
 class ConsultancyController extends Controller{
     public function gettime(Request $request){
+ 
+ 
+
   $constant_id = Constant_settings::where('user_id',$request->doctor_id)->first()->id;
   $days = Day::where('constant_id',$constant_id)->get(['AvailableDate']);
+
+
 
   $send_html = '<option>--select day--</option>';
 foreach($days as $day){
     $send_html .= '<option value="'.$day->AvailableDate.'">'.$day->AvailableDate.'</option>';
 }    
 echo $send_html;
+
 }
 
 public function getDay(Request $request){
-    $constant_id = Constant_settings::where('user_id',$request->doctor_id)->first()->id;
-  $time = Day::where('constant_id',$constant_id)->where('AvailableDate',$request->day_name)->first()->availableTime;
- echo $time;
+
+$constant_id = Constant_settings::where('user_id',$request->doctor_id)->first()->id; 
+$start_time = Day::where('constant_id',$constant_id)->where('AvailableDate',$request->day_name)->first()->availableTime;
+$end_time = Day::where('constant_id',$constant_id)->where('AvailableDate',$request->day_name)->first()->closedTime;
+$duration = Day::where('constant_id',$constant_id)->where('AvailableDate',$request->day_name)->first()->duration;
+
+
+$start_time_break = explode(':',$start_time);
+$start_mins = ($start_time_break[0]*60) + $start_time_break[1];
+$end_time_break = explode(':',$end_time);
+$end_mins = ($end_time_break[0]*60) + $end_time_break[1];
+
+$total_mins = $end_mins - $start_mins;
+
+$doctor_total_consult_will_be = $total_mins / $duration;
+$total_appoinment = Consultancy::where('doctor_id',$request->doctor_id)->where('AvailableDate',$request->day_name)->count();
+
+
+$your_time = $start_mins + ($duration * $total_appoinment);
+ 
+     
+
+    
+
+
+//   $previous_patient_need_time = $total_appoinment * $duration;
+//   $i_have_to_go = $start_time + $previous_patient_need_time;
+//   echo $i_have_to_go;
+
+
+
+
+if($doctor_total_consult_will_be > $total_appoinment){
+   //Decimal to time 
+$t_h = $your_time / 60;
+$t_h_b = explode('.',$t_h);
+$h = sprintf('%02d',$t_h_b[0]);
+$str = intval(substr($t_h_b[1],0,2));
+
+$m = '.'.sprintf('%02d',$str);
+$mins = round($m * 60);
+if($mins < 10){
+    echo $h.':0'.$mins.':00';
+}else{
+    echo $h.':'.$mins.':00';
+}
+
+
+
+}else{
+return back()->with('cannot','This day already booked');
+}
+//   echo $time;
 }
 function filter(Request $request){
 
@@ -113,6 +169,7 @@ function filter(Request $request){
         $consultancy->availableDate = $request->availableDate;
         $consultancy->availableTime = $request->availableTime;
         $consultancy->user_id = auth()->id();
+        $consultancy->doctor_id = $request->user_id;
         $consultancy->save();
 //        dd($consultancy->id);
         $consultancy->consultancyConfirm()->create([

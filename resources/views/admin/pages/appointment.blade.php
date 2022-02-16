@@ -40,6 +40,13 @@
                             <button type="button" class="btn medibg custom-btn text-white" data-bs-toggle="modal" data-bs-target="#appointment">New Appointments</button>
                         </div>
                     </div>
+                    @if(session('cannot'))
+                    <div class="row">
+<div class="alert alert-danger">
+    {{ session('cannot') }}
+</div>
+                    </div>
+                    @endif
 
                     <div class="table-responsive">
                         <table class="table my-5">
@@ -133,12 +140,13 @@
     }
 });
 
-$.ajax({
+$.ajax({ 
  type:'POST',
  url:'/gettime',
  data:{doctor_id:doctor_id},
  success:function(data){
 $('#day').html(data);
+
  },
  error:function(xhr){
      console.log(xhr.responseText);
@@ -162,6 +170,7 @@ $.ajax({
  data:{day_name:day_name,doctor_id:doctor_id},
  success:function(data){
 $('#time').val(data);
+
  },
  error:function(xhr){
      console.log(xhr.responseText);
