@@ -26,13 +26,7 @@
                <p class="text-danger">{{ $message }}</p>
                @enderror
             </div>
-            <div class="form-group">
-                <label for="">Available time</label><br>
-               <input type="time" name="availableTime" value="{{ $constant->availableTime }}" class="form-control">
-               @error('availableTime')
-          <p class="text-danger">{{ $message }}</p>
-               @enderror
-            </div>
+      
             <div class="form-group">
                 <label for="">Speciality</label><br>
                <input type="text" name="speciality" value="{{ $constant->speciality }}" class="form-control">

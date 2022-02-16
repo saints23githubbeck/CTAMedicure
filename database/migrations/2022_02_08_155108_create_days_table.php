@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConstantSettingsTable extends Migration
+class CreateDaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateConstantSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('constant_settings', function (Blueprint $table) {
+        Schema::create('days', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->string('speciality');
-            $table->integer('price');
-            $table->integer('duration');
+            $table->foreignId('constant_setting_id')->constrained();
+            $table->string('availableTime')->nullable();
+            $table->string('closedTime')->nullable();
+            $table->string('AvailableDate')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateConstantSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('constant_settings');
+        Schema::dropIfExists('days');
     }
 }

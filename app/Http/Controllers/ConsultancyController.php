@@ -11,18 +11,35 @@ use Illuminate\Http\Request;
 use App\Models\Constant_settings;
 use Illuminate\Validation\ValidationException;
 use Monolog\Handler\CubeHandler;
+use App\Models\Day;
 use Illuminate\Support\Facades\DB;
+
 
 class ConsultancyController extends Controller
 {
     public function gettime(Request $request)
     {
-        $time = Constant_settings::where('user_id', $request->doctor_id)->first()->availableTime;
-        echo $time;
+        $constant_id = Constant_settings::where('user_id', $request->doctor_id)->first()->id;
+        $days = Day::where('constant_setting_id', $constant_id)->get(['AvailableDate']);
+
+
+        $send_html = '<option>--select day--</option>';
+        foreach ($days as $day) {
+            $send_html .= '<option value="' . $day->AvailableDate . '">' . $day->AvailableDate . '</option>';
+        }
+        echo $send_html;
+    }
+
+    public function getDay(Request $request)
+    {
+        $constant_id = Constant_settings::where('user_id', $request->doctor_id)->first()->id;
+        $time = Day::where('constant_setting_id', $constant_id)->where('AvailableDate', $request->day_name)->first()->availableTime;
+        echo $time ;
     }
 
     function filter(Request $request)
     {
+
 
         $fromdate = $request->from_date;
         $todate = $request->to_date;
@@ -89,7 +106,7 @@ class ConsultancyController extends Controller
 
     function store(Request $request)
     {
-
+//        dd($request->$request->user_id);
         try {
             $this->validate(request(), [
                 'reason' => 'required',
@@ -102,11 +119,18 @@ class ConsultancyController extends Controller
 //
             return redirect()->back()->withErrors($e->errors())->with('error', $e->getMessage());
         }
+        $skips=["[","]","\""];
+        $duration = Constant_settings::select('duration')->where('user_id', $request->user_id)->pluck('duration');
+        $data = str_replace($skips,'',$duration);
+////        dd(substr($request->availableTime, 0,2).':'.$dat);
+//         $time = Consultancy::select('availableTime')->where('availableDate',$request->availableDate)->get();
+//         dd($time);
 
         $consultancy = new Consultancy();
         $consultancy->reason = $request->reason;
         $consultancy->availableDate = $request->availableDate;
-        $consultancy->availableTime = $request->availableTime;
+
+        $consultancy->availableTime = substr($request->availableTime, 0,2).':'.$data;
         $consultancy->user_id = auth()->id();
         $consultancy->save();
 //        dd($consultancy->id);

@@ -33,23 +33,27 @@
                     @endif
                     </div>
                     <div class="form-group">
+                        <label for="">Available day</label><br>
+                       <select class="form-control" id="day" name="availableDate">
+                           <option value="">--select day---</option>
+                       </select>
+                       @if ($errors->has('availableDate'))
+                       <span class="invalid-feedback text-danger" role="alert">
+                       <strong>{{ $errors->first('day') }}</strong>
+                       </span>
+                       @endif
+                    </div>
+
+                    <div class="form-group">
                         <label for="reason" class="col-form-label">Reason Of Consultancy</label>
-                        <textarea  class="form-control {{$errors->has('reason') ? ' is-invalid' : ''}}"  name="reason" value="{{old('reason')}}"maxlength="250" cols="30" rows="5" style="resize: none" placeholder="Your Message Should Not Be More Than 250"></textarea>
+                        <textarea  class="form-control {{$errors->has('reason') ? ' is-invalid' : ''}}"  name="reason" value="{{old('reason')}}" maxlength="250" cols="30" rows="5" style="resize: none" placeholder="Your Message Should Not Be More Than 250"></textarea>
                         @if ($errors->has('reason'))
                             <span class="invalid-feedback text-danger" role="alert">
                                 <strong>{{ $errors->first('reason') }}</strong>
                             </span>
                         @endif
                     </div>
-                    <div class="form-group">
-                        <label for="availableDate" class="col-form-label">Date</label>
-                        <input type="date" class="form-control {{$errors->has('availableDate') ? ' is-invalid' : ''}}" name="availableDate" value="{{old('availableDate')}}" required>
-                        @if ($errors->has('availableDate'))
-                            <span class="invalid-feedback text-danger" role="alert">
-                                <strong>{{ $errors->first('availableDate') }}</strong>
-                            </span>
-                        @endif
-                    </div>
+  
                     <div class="form-group">
                         <label for="availableTime" class="col-form-label">Time</label>
                        <input type="time" class="form-control {{$errors->has('availableTime') ? ' is-invalid' : ''}}" name="availableTime" id="time" value="" required>
