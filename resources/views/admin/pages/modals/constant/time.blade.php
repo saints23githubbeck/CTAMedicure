@@ -29,7 +29,13 @@
                <p class="text-danger">{{ $message }}</p>
                @enderror
             </div>
-           
+            <div class="form-group">
+                <label for="">Duration(minutes)</label><br>
+               <input type="number" name="duration" class="form-control">
+               @error('duration')
+          <p class="text-danger">{{ $message }}</p>
+               @enderror
+            </div>
 
             <div class="form-group">
                 <label for="">Available Time</label><br>

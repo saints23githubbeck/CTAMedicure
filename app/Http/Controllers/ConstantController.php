@@ -19,6 +19,40 @@ class ConstantController extends Controller
         $doctors = User::where('role_id', $doctors_id)->get();
 
 
+    $constants = Constant_settings::all();
+    return view('admin.pages.constant_settings',[
+        'constants'=>$constants,
+        'doctors'=>$doctors
+    ]);
+}
+public function delete_time($id){
+    Day::find($id)->delete();
+    return back();
+}
+public function add_time(Request $request){
+$request->validate([
+    'day'=>'required',
+    'duration'=>'required',
+    'availableTime'=>'required',
+    'closedTime'=>'required',
+]);
+
+if(Day::where('constant_id',$request->constant_id)->where('AvailableDate',$request->day)->exists()){
+
+    return back()->with('exists',$request->day.'available time already given');
+
+}else{
+    Day::insert([
+        'constant_id'=>$request->constant_id,
+        'duration'=>$request->duration,
+        'availableTime'=>$request->availableTime,
+        'closedTime'=>$request->closedTime,
+        'AvailableDate'=>$request->day,
+    ]);
+    return back();
+}
+
+
         $constants = Constant_settings::all();
         return view('admin.pages.constant_settings', [
             'constants' => $constants,
@@ -26,36 +60,7 @@ class ConstantController extends Controller
         ]);
     }
 
-    public function delete_time($id)
-    {
-        Day::find($id)->delete();
-        return back();
-    }
 
-    public function add_time(Request $request)
-    {
-//        dd($request->all());
-        $request->validate([
-            'day' => 'required',
-            'availableTime' => 'required',
-            'closedTime' => 'required',
-            'constant_setting_id' => 'required',
-        ]);
-        if (Day::where('constant_setting_id', $request->constant_setting_id)->where('AvailableDate', $request->day)->exists()) {
-
-            return back()->with('exists', $request->day . 'available time already given');
-
-        } else {
-            Day::insert([
-                'constant_setting_id' => $request->constant_setting_id,
-                'availableTime' => $request->availableTime,
-                'closedTime' => $request->closedTime,
-                'AvailableDate' => $request->day,
-            ]);
-            return back();
-        }
-
-    }
 
     public function add(Request $request)
     {
