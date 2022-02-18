@@ -75,7 +75,9 @@ $str = intval(substr($t_h_b[1],0,2));
 $m = '.'.sprintf('%02d',$str);
 $mins = round($m * 60);
 if($mins < 10){
-    echo $h.':0'.$mins.':00';
+    echo $h.':0'.$mins.':00'; 
+  
+
 }else{
     echo $h.':'.$mins.':00';
 }

@@ -59,7 +59,7 @@
   
                     <div class="form-group">
                         <label for="availableTime" class="col-form-label">Time</label>
-                       <input type="time" class="form-control {{$errors->has('availableTime') ? ' is-invalid' : ''}}" name="availableTime" id="time" value="" required>
+                       <input type="text" class="form-control {{$errors->has('availableTime') ? ' is-invalid' : ''}}" name="availableTime" id="time" value="" required readonly>
                         @if ($errors->has('availableTime'))
                             <span class="invalid-feedback text-danger" role="alert">
                                 <strong>{{ $errors->first('availableTime') }}</strong>

@@ -203,53 +203,6 @@
                                     @endforeach
                                     <!--all modals end-->
 
-<<<<<<< HEAD
-                                                @endforeach
-                                             @endif
-                                                @if($orders->count() == 0)
-                                                    <div class="text-center mt-3">
-                                                        <em>No users found</em>
-                                                    </div>
-                                                @endif
-                                                </tbody>
-                                            </table>
-<!--all modals start-->
-@foreach ($orders as $order)
-
-{{-- @if($order->status == 1)
-@include('admin.pages.modals.orders.previewOrder')
-@endif --}}
-
-
-@include('admin.pages.modals.orders.details')
-@include('admin.pages.modals.orders.order_edit')
-@include('admin.pages.modals.orders.delete')
-@endforeach
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--all modals end-->
-
-                                        </div>
-=======
->>>>>>> 4bb2ebdd5cc53da8abe38f19c1fcac0ac8b4d18d
                                     </div>
                                 </div>
                             </div>
@@ -334,17 +287,6 @@
             });
 
 
-<<<<<<< HEAD
-function fetch_data(from_date = '',to_date = ''){
-    $.ajax({
-type:'POST',
-url:'/filter/prescription',
-data:{from_date:from_date,to_date:to_date},
-dataType:"json",
-success:function(data){
-  
-console.log(data);
-=======
             function fetch_data(from_date = '', to_date = '') {
                 $.ajax({
                     type: 'POST',
@@ -352,50 +294,9 @@ console.log(data);
                     data: {from_date: from_date, to_date: to_date},
                     dataType: "json",
                     success: function (data) {
->>>>>>> 4bb2ebdd5cc53da8abe38f19c1fcac0ac8b4d18d
 
 // var output = '';
 
-<<<<<<< HEAD
-// for(var count = 0;count < data.length;count++){
-   
-//     output += '<tr>';
-    
-//     output += '<td>mdc0'+data[count].id+'</td>';
-//     output += "<td><img src={{ URL::to('/') }}/uploads/orders/"+data[count].image+" width='70px'/></td>";
-//     output += '<td>'+data[count].quantity+'</td>';
-//     output += '<td>'+data[count].created_at+'</td>';
-//     output += '<td>'+data[count].note+'</td>';
-//     output += '<td><a href="'+data[count].id+'" class="btn btn-priamry">Edit</a></td>';
-//     output += '<td>';
-//     output += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#details-pres-'+data[count].id+'">Launch demo modal</button>';
-//     output += '</td>';
-
-
-//     output += '</tr>';
-// }
-// $('.listing').html(output);
-
-//  output += '<td>';
- /*order status*/
-
-// if(data[count].status == 0){
-//   output += '<span class="badge badge-dot mr-4"><i class="bg-warning"></i><span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span></span>'; 
-// }else if(data[count].status == 0){
-//   output += '<span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-info p-1 rounded shadow-lg text-capitalize">approved Review Now</span></a></span>';   
-// }else if(data[count].pay_by == null && data[count].due == null){
-//  output += '<span class="badge badge-dot mr-4"><i class="bg-success"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-success p-1 rounded shadow-lg">You Confirmed but Unpaid</span></a></span>';
-// }else if(data[count].amount == data[count].due){
-//   output += '<span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-info p-1 rounded shadow-lg">Paid Waiting for Delivery</span></a></span>';      
-// }else{
-//   output += '<span class="badge badge-dot mr-4"><i class="bg-success"></i> <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Review Now</span></a></span>';     
-
-// }
-
-                                            
-// output += '</td>';  
- /*order end*/
-=======
                         var output = '';
 
                         for (var count = 0; count < data.length; count++) {
@@ -421,14 +322,10 @@ console.log(data);
                                 output += '<span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-info p-1 rounded shadow-lg">Paid Waiting for Delivery</span></a></span>';
                             } else {
                                 output += '<span class="badge badge-dot mr-4"><i class="bg-success"></i> <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Review Now</span></a></span>';
->>>>>>> 4bb2ebdd5cc53da8abe38f19c1fcac0ac8b4d18d
 
                             }
 
 
-<<<<<<< HEAD
-// var output = '';
-=======
                             output += '</td>';
                             /*order end*/
 
@@ -436,7 +333,6 @@ console.log(data);
                             output += '</tr>';
                         }
                         $('.listing').html(output);
->>>>>>> 4bb2ebdd5cc53da8abe38f19c1fcac0ac8b4d18d
 
 
                     },
