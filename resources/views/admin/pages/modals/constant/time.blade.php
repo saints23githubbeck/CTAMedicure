@@ -13,6 +13,7 @@
                 <form method="POST" action="{{route('constant.time.add')}}">
                     @csrf
                     <input type="hidden" name="constant_setting_id" value="{{ $constant->id }}">
+                    <input type="hidden" name="default" value="{{ $constant->duration }}">
             <div class="form-group">
                 <label for="">Available day</label><br>
                <select class="form-control" name="day">
@@ -31,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label for="">Duration(minutes)</label><br>
-               <input type="number" name="duration" class="form-control">
+               <input type="number" name="duration" value="{{ $constant->duration }}" class="form-control">
                @error('duration')
           <p class="text-danger">{{ $message }}</p>
                @enderror

@@ -17,6 +17,7 @@ class CreateDaysTable extends Migration
             $table->id();
             $table->foreignId('constant_setting_id')->constrained();
             $table->string('availableTime')->nullable();
+            $table->integer('duration');
             $table->string('closedTime')->nullable();
             $table->string('AvailableDate')->nullable();
             $table->timestamps();

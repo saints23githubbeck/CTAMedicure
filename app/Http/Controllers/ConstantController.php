@@ -19,38 +19,45 @@ class ConstantController extends Controller
         $doctors = User::where('role_id', $doctors_id)->get();
 
 
-    $constants = Constant_settings::all();
-    return view('admin.pages.constant_settings',[
-        'constants'=>$constants,
-        'doctors'=>$doctors
-    ]);
-}
-public function delete_time($id){
-    Day::find($id)->delete();
-    return back();
-}
-public function add_time(Request $request){
-$request->validate([
-    'day'=>'required',
-    'duration'=>'required',
-    'availableTime'=>'required',
-    'closedTime'=>'required',
-]);
+        $constants = Constant_settings::all();
+        return view('admin.pages.constant_settings', [
+            'constants' => $constants,
+            'doctors' => $doctors
+        ]);
+    }
 
-if(Day::where('constant_id',$request->constant_id)->where('AvailableDate',$request->day)->exists()){
+    public function delete_time($id)
+    {
+        Day::find($id)->delete();
+        return back();
+    }
 
-    return back()->with('exists',$request->day.'available time already given');
+    public function add_time(Request $request)
+    {
+        $request->validate([
+            'day' => 'required',
+            'duration' => 'nullable',
+            'availableTime' => 'required',
+            'default' => 'nullable',
+            'closedTime' => 'required',
+            'constant_setting_id' => 'required',
+        ]);
+//        dd($request->all());
 
-}else{
-    Day::insert([
-        'constant_id'=>$request->constant_id,
-        'duration'=>$request->duration,
-        'availableTime'=>$request->availableTime,
-        'closedTime'=>$request->closedTime,
-        'AvailableDate'=>$request->day,
-    ]);
-    return back();
-}
+        if (Day::where('constant_setting_id', $request->constant_setting_id)->where('AvailableDate', $request->day)->exists()) {
+
+            return back()->with('exists', $request->day . 'available time already given');
+
+        } else {
+            Day::insert([
+                'constant_setting_id' => $request->constant_setting_id,
+                'duration' => $request->duration ?? $request->default,
+                'availableTime' => $request->availableTime,
+                'closedTime' => $request->closedTime,
+                'AvailableDate' => $request->day,
+            ]);
+            return back();
+        }
 
 
         $constants = Constant_settings::all();
@@ -59,7 +66,6 @@ if(Day::where('constant_id',$request->constant_id)->where('AvailableDate',$reque
             'doctors' => $doctors
         ]);
     }
-
 
 
     public function add(Request $request)

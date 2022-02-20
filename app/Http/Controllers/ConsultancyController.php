@@ -23,7 +23,7 @@ class ConsultancyController extends Controller
 
 
                 $constant_id = Constant_settings::where('user_id', $request->doctor_id)->first()->id;
-                $days = Day::where('constant_id', $constant_id)->get(['AvailableDate']);
+                $days = Day::where('constant_setting_id', $constant_id)->get(['AvailableDate']);
 
 
                 $send_html = '<option>--select day--</option>';
@@ -38,9 +38,11 @@ class ConsultancyController extends Controller
             {
 
                 $constant_id = Constant_settings::where('user_id', $request->doctor_id)->first()->id;
-                $start_time = Day::where('constant_id', $constant_id)->where('AvailableDate', $request->day_name)->first()->availableTime;
-                $end_time = Day::where('constant_id', $constant_id)->where('AvailableDate', $request->day_name)->first()->closedTime;
-                $duration = Day::where('constant_id', $constant_id)->where('AvailableDate', $request->day_name)->first()->duration;
+//                dd($constant_id);
+                $start_time = Day::where('constant_setting_id', $constant_id)->where('AvailableDate', $request->day_name)->first()->availableTime;
+                $end_time = Day::where('constant_setting_id', $constant_id)->where('AvailableDate', $request->day_name)->first()->closedTime;
+                $duration = Day::where('constant_setting_id', $constant_id)->where('AvailableDate', $request->day_name)->first()->duration;
+
 
 
                 $start_time_break = explode(':', $start_time);
@@ -127,9 +129,12 @@ class ConsultancyController extends Controller
 
                     $appointments = Consultancy::latest()->paginate(10);
                     $doctors = User::where('role_id', 2)->get();
+
+
                 } else {
                     $appointments = Consultancy::where('user_id', auth()->user()->id)->latest()->paginate(10);
                     $doctors = User::where('role_id', 2)->get();
+//                    dd($doctors);
                 }
 
                 return view('admin.pages.appointment', compact('appointments', 'doctors'));
@@ -153,7 +158,7 @@ class ConsultancyController extends Controller
 
             function store(Request $request)
             {
-//        dd($request->$request->user_id);
+//        dd($request->user_id);
                 try {
                     $this->validate(request(), [
                         'reason' => 'required',
@@ -176,10 +181,8 @@ class ConsultancyController extends Controller
                 $consultancy = new Consultancy();
                 $consultancy->reason = $request->reason;
                 $consultancy->availableDate = $request->availableDate;
-
                 $consultancy->availableTime = substr($request->availableTime, 0, 2) . ':' . $data;
                 $consultancy->user_id = auth()->id();
-                $consultancy->doctor_id = $request->user_id;
                 $consultancy->save();
 //        dd($consultancy->id);
                 $consultancy->consultancyConfirm()->create([
@@ -242,6 +245,8 @@ class ConsultancyController extends Controller
                 $appointment->consultancyConfirm()->update([
                     'status' => 1
                 ]);
+
+
 
                 return view('admin.pages.modals.appointments.medication', compact('appointment'))->with(' Appointment Completed Successfully');
             }

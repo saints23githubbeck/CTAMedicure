@@ -6,7 +6,7 @@
 
         @include('admin.pages.modals.orders.order')
 
-
+        @if($orders->count() > 0)
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -78,12 +78,12 @@
                                                 @foreach ($orders as $order)
                                                     <tr>
                                                         <td>
-                                                            {{'mdc0'.$order->id}}
+                                                            {{$order->id}}
                                                         </td>
 
                                                         <td>
-                                                            <img style="width:50px;height:50px"
-                                                                 src="{{ asset('uploads/orders/'.$order->image) }}">
+                                                            <img style="height:30px"
+                                                                class="rounded" src="{{ asset('uploads/orders/'.$order->image) }}">
                                                         </td>
                                                         <td>
                                                             {{ $order->quantity }}
@@ -97,8 +97,7 @@
                                                         <td>
                                                             @if($order->status == 0)
                                                                 <span class="badge badge-dot mr-4">
-                                                <i class="bg-warning"></i>
-                                                <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
+                                                <span class="status badge text-white bg-warning p-1 rounded shadow-lg">Pending</span>
                                               </span>
                                                             @elseif($order->confirmedOrder->status == 0)
                                                                 <span class="badge badge-dot mr-4">
@@ -108,21 +107,21 @@
                                                              class="status text-white bg-info p-1 rounded shadow-lg text-capitalize">approved Review Now</span></a>
                                               </span>
                                                             @elseif( $order->confirmedOrder->pay_by == null AND $order->confirmedOrder->due == null)
-                                                                <span class="badge badge-dot mr-4">
+
                                                 <i class="bg-success"></i>
                                                  <a href="" data-bs-toggle="modal"
                                                     data-bs-target="#preview-order-{{$order->id}}"><span
-                                                             class="status text-white bg-success p-1 rounded shadow-lg">You Confirmed but Unpaid</span></a>
+                                                             class="status text-white bg-success p-1 rounded shadow-lg">Confirmed but Unpaid</span></a>
                                               </span>
                                                             @elseif($order->confirmedOrder->amount == $order->confirmedOrder->due)
-                                                                <span class="badge badge-dot mr-4">
+
                                                 <i class="bg-info"></i>
                                                  <a href="" data-bs-toggle="modal"
                                                     data-bs-target="#preview-order-{{$order->id}}"><span
                                                              class="status text-white bg-info p-1 rounded shadow-lg">Paid Waiting for Delivery</span></a>
                                               </span>
                                                             @else
-                                                                <span class="badge badge-dot mr-4">
+
                                                 <i class="bg-success"></i>
                                                  <a href="" data-bs-toggle="modal"
                                                     data-bs-target="#preview-order-{{$order->id}}"><span
@@ -154,19 +153,19 @@
                                                                    data-bs-toggle="modal"
                                                                    data-bs-target="#details-pres-{{$order->id}}"><i
                                                                             class="fas fa-eye"></i></a>
-                                                                <a class=" bg-danger btn-sm text-white "
-                                                                   data-bs-toggle="modal"
-                                                                   data-bs-target="#delete-pres-{{$order->id}}"><i
-                                                                            class="fas fa-trash"> </i></a>
+                                                                {{--<a class=" bg-danger btn-sm text-white "--}}
+                                                                   {{--data-bs-toggle="modal"--}}
+                                                                   {{--data-bs-target="#delete-pres-{{$order->id}}"><i--}}
+                                                                            {{--class="fas fa-trash"> </i></a>--}}
                                                             @elseif( $order->confirmedOrder->pay_by == null AND $order->confirmedOrder->due == null)
                                                                 <a class="bg-info btn-sm text-white"
                                                                    data-bs-toggle="modal"
                                                                    data-bs-target="#details-pres-{{$order->id}}"><i
                                                                             class="fas fa-eye"></i></a>
-                                                                <a class=" bg-danger btn-sm text-white "
-                                                                   data-bs-toggle="modal"
-                                                                   data-bs-target="#delete-pres-{{$order->id}}"><i
-                                                                            class="fas fa-trash"> </i></a>
+                                                                {{--<a class=" bg-danger btn-sm text-white "--}}
+                                                                   {{--data-bs-toggle="modal"--}}
+                                                                   {{--data-bs-target="#delete-pres-{{$order->id}}"><i--}}
+                                                                            {{--class="fas fa-trash"> </i></a>--}}
                                                             @elseif($order->confirmedOrder->amount == $order->confirmedOrder->due)
                                                                 <a class="bg-info btn-sm text-white"
                                                                    data-bs-toggle="modal"
@@ -206,6 +205,25 @@
 
             </div>
         </div>
+            @else
+            <div class="row justify-content-end mb-3">
+                <div class="col-md-3 ">
+
+
+                    <button type="button" class="btn medibg custom-btn text-white" data-bs-toggle="modal"
+                            data-bs-target="#order">Buy Prescription
+                    </button>
+
+                </div>
+            </div>
+            @include('admin.pages.modals.orders.order')
+            <div class="text-center mb-4">
+                <img src="{{asset('/img/result.gif')}}" class="img-fluid" alt="">
+                <i>No records were found</i>
+            </div>
+        @endif
+
+
     </div>
 
 

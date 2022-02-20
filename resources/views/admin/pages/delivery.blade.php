@@ -21,6 +21,7 @@
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                     <div class="border_give">
                                         <h4 class="text-lg-left test">Searching List</h4>
+                                        @if($myIncomingDeliveries->count()>0)
                                         <div class="table-responsive">
                                             <table class="table my-5">
                                                 <thead class="border_botttom">
@@ -40,18 +41,17 @@
                                                     <td>{{$coming->created_at->format('d-M-Y')}}</td>
                                                     @if($coming->status == 0)
                                                         <td class="badge badge-dot mr-4">
-                                                            <span  class="badge badge-dot mr-4">
-                                                            <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
+                                                            <span class="status badge text-white bg-danger p-1 rounded shadow-lg">Pending</span>
                                                             </span>
 
                                                         </td>
                                                     @endif
                                                     <td>
-                                                        <a class="badge badge-dot mr-4 bg-primary p-1 text-white"  data-bs-toggle="modal" data-bs-target="#details-pres-{{$coming->id}}">View</a>
+                                                        <a class="badge badge mr-4 bg-primary p-1 text-white"  data-bs-toggle="modal" data-bs-target="#details-pres-{{$coming->id}}">View</a>
                                                     </td>
                                                     <td>
-                                                        <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$coming->id}}" class="btn-sm btn-success">Approved</a>
-                                                        <a href="#"  data-bs-toggle="modal" data-bs-target="#deliveryRej-{{$coming->id}}" class="btn-sm btn-danger">Reject</a>
+                                                        <a href="#"  data-bs-toggle="modal" data-bs-target="#approve-order-{{$coming->id}}" class="badge  btn-sm btn-success">Approved</a>
+                                                        <a href="#"  data-bs-toggle="modal" data-bs-target="#deliveryRej-{{$coming->id}}" class="badge btn-sm btn-danger">Reject</a>
                                                         {{--<a href="#" class="btn btn-danger">Rejected</a>--}}
                                                     </td>
                                                 </tr>
@@ -64,11 +64,26 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                            @else
+                                            <div class="text-center mb-4">
+                                                <img src="{{asset('/img/result.gif')}}" class="img-fluid" alt="">
+                                                <i>No records were found</i>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="container">
+                                        <div class="col-md-12 mb-4">
+                                            <ul class="pagination offset-lg-5 mt-2">
+
+                                                {{ $myIncomingDeliveries->render() }}
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                     <div class="border_give">
                                         <h4 class="text-lg-left test">Searching List</h4>
+                                        @if($myAccerptDeliveries->count()>0)
                                         <div class="table-responsive">
                                             <table class="table my-5">
                                                 <thead class="border_botttom">
@@ -89,21 +104,20 @@
                                                     <td>{{$loop->iteration}}</td>
                                                     <td>{{$approved->created_at->format('d-M-Y')}}</td>
                                                     <td class="budget">
-                                                      <img style="width:40px;height:40px" src="{{ asset('uploads/orders/'.$approved->confirmedOrder->order->image) }}">
+                                                      <img class="rounded" style="height:30px" src="{{ asset('uploads/orders/'.$approved->confirmedOrder->order->image) }}">
                                                   </td>
 
                                                     @if($approved->status == 0)
                                                     <td >
                                                         <span  class="badge badge-dot mr-4">
-                                                           <i class="bg-info"></i>
-                                                        <span class="status text-white bg-info p-1 rounded shadow-lg">Approved But Unpaid</span>
+                                                        <span class="status badge text-white bg-info p-1 rounded shadow-lg">Approved But Unpaid</span>
 
                                                         </span>
                                                     </td>
                                                         @elseif($approved->confirmedOrder->amount == $approved->confirmedOrder->due AND $approved->confirmedOrder->amount != $approved->confirmedOrder->payments)
                                                             <td>
-                                                            <span  class="badge badge-dot mr-4">
-                                                            <span class="status text-white bg-success p-1 rounded shadow-lg">Cash On Delivery</span>
+
+                                                            <span class="status badge text-white bg-success p-1 rounded shadow-lg">Cash On Delivery</span>
                                                             </span>
                                                             </td>
                                                     @else
@@ -114,12 +128,28 @@
                                                             </span>
                                                         </td>
                                                         @endif
-                                                    <td><a href="#" class=" status badge badge-dot mr-4 bg-primary p-1 text-white" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">View</a></td>
+                                                    <td><a href="#" class=" status badge badge-dot mr-4 bg-primary p-1 text-white" data-bs-toggle="modal" data-bs-target="#approved-order-{{$approved->id}}">
+                                                            View</a></td>
                                                 </tr>
                                                     @include('admin.pages.modals.orders.delivaryApproveDetails')
                                                 @endforeach
                                                 </tbody>
                                             </table>
+                                        </div>
+                                            @else
+                                            <div class="text-center mb-4">
+                                                <img src="{{asset('/img/result.gif')}}" class="img-fluid" alt="">
+                                                <i>No records were found</i>
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    <div class="container">
+                                        <div class="col-md-12 mb-4">
+                                            <ul class="pagination offset-lg-5 mt-2">
+
+                                                {{ $myAccerptDeliveries->render() }}
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>

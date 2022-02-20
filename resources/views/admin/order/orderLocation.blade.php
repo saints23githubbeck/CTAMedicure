@@ -38,15 +38,12 @@
                                             <tr>
                                                 <th class="float-left">Status:</th>
 
-                                                @if($order->status == 0)
+                                                @if($order->confirmedOrder->pay_by == null AND $order->confirmedOrder->due == null)
 
-                                                    <th class="float-end">Pending</th>
-                                                @elseif($order->confirmedOrder->status ==1 )
+                                                    <th class="float-end">Order Not Confirmed for Delivery</th>
+                                                @elseif($order->confirmedOrder->amount == $order->confirmedOrder->due)
 
-                                                    <th class="float-end">Waiting for Delivery</th>
-                                                @else
-
-                                                    <th class="float-end">Accepted Review Now</th>
+                                                    <th class="float-end">Order Confirmed Waiting for Delivery</th>
 
                                                 @endif
 
@@ -91,7 +88,10 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <h6 class="card-title" style="font-weight: bold;">Delivery Address</h6>
-                                        <p class="card-text" style="font-weight: bold;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure </p>
+                                        <p class="card-text" style="font-weight: bold;">
+                                            Pick From : {{$order->confirmedOrder->user->address->location}} <br>
+                                            To : {{$order->user->address->location}}
+                                        </p>
 
                                     </div>
                                 </div>

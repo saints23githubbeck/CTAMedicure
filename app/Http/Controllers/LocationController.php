@@ -18,7 +18,7 @@ class LocationController extends Controller
     public function store(Request $request)
     {
 //           dd($request->all());
-        auth()->user()->address()->create([
+        auth()->user()->address()->firstOrCreate([
             'distance' => $request->distance,
             'location' => $request->location,
             'country' => $request->country ?? 'Ghana',
@@ -33,7 +33,7 @@ class LocationController extends Controller
     public function add(Request $request, Order $order)
     {
 //           dd($request->all());
-        auth()->user()->address()->create([
+        auth()->user()->address()->firstOrCreate([
             'distance' => $request->distance,
             'location' => $request->location,
             'country' => $request->country ?? 'Ghana',
