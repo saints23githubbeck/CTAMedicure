@@ -16,9 +16,9 @@ class CreateConstantSettingsTable extends Migration
         Schema::create('constant_settings', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('duration');            
             $table->string('speciality');
             $table->integer('price');
+            $table->integer('duration');
             $table->timestamps();
         });
     }

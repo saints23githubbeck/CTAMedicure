@@ -1,5 +1,5 @@
 
-    <div class="modal fade " id="location" tabindex="-1" role="dialog"
+    <div class="modal fade " id="locationModel" tabindex="-1" role="dialog"
          aria-hidden="true">
         <div class="modal-dialog success-modal-content " role="document">
             <div class="modal-content ">
@@ -13,30 +13,33 @@
 
                     {{--<form action="{{route('change.location')}}" method="POST">--}}
 
-                    <form action="{{route('location.add')}}" method="POST">
 
-                        @csrf
-                        <div class="my-5 mx-5">
-                            <div class="input-group">
-                                {{-- <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ !$errors->has('location') }}" required> --}}
-                                <select class="form-control form-control-lg @error('location') is-invalid @enderror border" name="location" required>
 
-                                    <option value="Abeka-Lapaz">Abeka-Lapaz</option>
-                                    <option value="Abeka-Lapaz">Abeka-Lapaz</option>
-                                    <option value="Ablekuma"> Ablekuma</option>
-
-                                </select>
-                                @error('location')
-                                <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn text-light  medibg">Save</button>
-                        </div>
-                    </form>
+                            <form action="{{route('location.store')}}" method="POST">
+                                @csrf
+                                <div class="my-5 mx-5">
+                                    <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
+                                        <div class="input-group">
+                                            {{-- <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" value="{{ !$errors->has('location') }}" required> --}}
+                                            <input type="text" name="location" id="location" class="form-control" placeholder="Enter Your Location" required autocomplete="off">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text btn-success btn" data-toggle="tooltip"
+                                                     title="Click To Find Location Automatically">
+                                                    <span class="fas fa-location-arrow "></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if ($errors->has('location'))
+                                            <div id="location-error" class="error text-danger pl-3"  style="display: block;">
+                                                <strong>{{ $errors->first('location') }}</strong>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn text-light  medibg">Add</button>
+                                </div>
+                            </form>
                 </div>
             </div>
         </div>
@@ -44,6 +47,23 @@
 
 
 
+    @section('footer_script')
+        <script>
+            $(document).ready(function(){
+                var path = "{{ url('/location_typehead') }}";
+                $('#location').typeahead({
+                    source:function(query,process){
+                        return $.get(path,{query:query},function(data){
+                            return process(data);
+                        });
+                    }
+                });
 
+            });
+
+        </script>
+
+
+    @endsection
 
 

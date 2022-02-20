@@ -16,9 +16,18 @@
                 <hr>
                 <h3 class="text-center">Confirmed Details</h3>
                 <p class="text-center">Amount : <span class="mr--5">{{$order->confirmedOrder->amount}}</span></p>
-                <p class="text-center">Contact : <span class="mr--5">{{$order->confirmedOrder->user->contactNumber}}</span></p>
-                <p class="text-center">Payments Plan : <span class="mr--5">{{$order->confirmedOrder->pay_by}}</span></p>
+                <p class="text-center">Pharmacy : <span class="mr--5">{{$order->confirmedOrder->user->contactNumber}}</span></p>
+                <p class="text-center">Payments Plan : <span class="mr--5">{{$order->confirmedOrder->pay_by ?? 'Unpaid'}}</span></p>
             </div>
+
+            @if($order->confirmedOrder->delivery)
+                <p class="text-center">Delivery  : <span class="mr--5">
+                        {{$order->confirmedOrder->delivery->user->contactNumber}}
+                    </span>
+                </p>
+                <p class="text-center">userName : <span class="mr--5">{{$order->confirmedOrder->delivery->user->userName}}</span></p>
+
+            @endif
 
 
             <div class="modal-footer">
@@ -32,14 +41,19 @@
                     <button type="submit" class="btn btn-warning" data-bs-dismiss="modal">Reject</button>
                 </form>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                 @elseif($order->confirmedOrder->amoun == $order->confirmedOrder->due)
+                @elseif( $order->confirmedOrder->pay_by == null AND $order->confirmedOrder->due == null)
+                    <a href="{{route('prescription.checkout',$order)}}"  class="btn btn-outline-success">pay Now </a>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                 @elseif($order->confirmedOrder->amount == $order->confirmedOrder->due)
+                    {{--<a href="{{route('prescription.checkout',$order)}}"  class="btn btn-outline-success">pay Now </a>--}}
+                    {{--<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>--}}
                     @if(auth()->user()->address == null)
-                        <a href="{{route('prescription.checkout',$order)}}"  class="btn btn-outline-success">pay Now </a>
+                        {{--<a href="{{route('prescription.checkout',$order)}}"  class="btn btn-outline-success">pay Now </a>--}}
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         @include('admin.pages.location')
                         @else
 
-                       <a href="{{route('prescription.checkout.location',$order)}}"  class="btn btn-outline-success">pay Now</a>
+                       {{--<a href="{{route('prescription.checkout.location',$order)}}"  class="btn btn-outline-success">pay Now</a>--}}
 
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     @endif

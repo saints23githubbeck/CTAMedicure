@@ -72,15 +72,14 @@
                                     <td>{{ Str::limit($appointment->reason, '18')  }}</td>
                                     <td>
                                         @if($appointment->status == 0)
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-warning"></i>
+                                            <span class=" badge badge-dot mr-4">
                                                 <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
                                               </span>
 
                                         @elseif($appointment->consultancyConfirm->status == 1 )
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-info"></i>
-                                                 <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-{{$appointment->id}}"><span class="status text-white bg-info p-1 rounded shadow-lg">Waiting for Delivery</span></a>
+                                            <span class=" status badge badge-dot mr-4">
+
+                                                 <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-{{$appointment->id}}"><span class="status text-white bg-info p-1 rounded shadow-lg">Confirmed</span></a>
                                               </span>
 
                                         @endif

@@ -49,7 +49,7 @@
 
                     <div class="form-group">
                         <label for="reason" class="col-form-label">Reason Of Consultancy</label>
-                        <textarea  class="form-control {{$errors->has('reason') ? ' is-invalid' : ''}}"  name="reason" value="{{old('reason')}}"maxlength="250" cols="30" rows="5" style="resize: none" placeholder="Your Message Should Not Be More Than 250"></textarea>
+                        <textarea  class="form-control {{$errors->has('reason') ? ' is-invalid' : ''}}"  name="reason" value="{{old('reason')}}" maxlength="250" cols="30" rows="5" style="resize: none" placeholder="Your Message Should Not Be More Than 250"></textarea>
                         @if ($errors->has('reason'))
                             <span class="invalid-feedback text-danger" role="alert">
                                 <strong>{{ $errors->first('reason') }}</strong>

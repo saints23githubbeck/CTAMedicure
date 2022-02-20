@@ -15,4 +15,9 @@ class Delivery extends Model
     {
         return $this->belongsTo(ConfirmedOrder::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

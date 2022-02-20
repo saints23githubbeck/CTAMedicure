@@ -6,7 +6,7 @@
 
         @include('admin.pages.modals.orders.order')
 
-
+        @if($orders->count() > 0)
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -66,7 +66,7 @@
                                                 <th scope="col" class="sort" data-sort="budget">Date</th>
                                                 <th scope="col" class="sort" data-sort="budget">Note</th>
                                                 <th scope="col" class="sort" data-sort="status">Status</th>
-                                                <th scope="col" class="sort" data-sort="completion" class="text-r">
+                                                <th scope="col" class="sort" data-sort="completion">
                                                     Action
                                                 </th>
 
@@ -74,16 +74,16 @@
                                             </tr>
                                             </thead>
                                             <tbody class="listing">
-                                            @if(count($orders) > 0)
+
                                                 @foreach ($orders as $order)
                                                     <tr>
                                                         <td>
-                                                            {{'mdc0'.$order->id}}
+                                                            {{$order->id}}
                                                         </td>
 
                                                         <td>
-                                                            <img style="width:50px;height:50px"
-                                                                 src="{{ asset('uploads/orders/'.$order->image) }}">
+                                                            <img style="height:30px"
+                                                                class="rounded" src="{{ asset('uploads/orders/'.$order->image) }}">
                                                         </td>
                                                         <td>
                                                             {{ $order->quantity }}
@@ -97,8 +97,7 @@
                                                         <td>
                                                             @if($order->status == 0)
                                                                 <span class="badge badge-dot mr-4">
-                                                <i class="bg-warning"></i>
-                                                <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
+                                                <span class="status badge text-white bg-warning p-1 rounded shadow-lg">Pending</span>
                                               </span>
                                                             @elseif($order->confirmedOrder->status == 0)
                                                                 <span class="badge badge-dot mr-4">
@@ -108,21 +107,21 @@
                                                              class="status text-white bg-info p-1 rounded shadow-lg text-capitalize">approved Review Now</span></a>
                                               </span>
                                                             @elseif( $order->confirmedOrder->pay_by == null AND $order->confirmedOrder->due == null)
-                                                                <span class="badge badge-dot mr-4">
+
                                                 <i class="bg-success"></i>
                                                  <a href="" data-bs-toggle="modal"
                                                     data-bs-target="#preview-order-{{$order->id}}"><span
-                                                             class="status text-white bg-success p-1 rounded shadow-lg">You Confirmed but Unpaid</span></a>
+                                                             class="status text-white bg-success p-1 rounded shadow-lg">Confirmed but Unpaid</span></a>
                                               </span>
                                                             @elseif($order->confirmedOrder->amount == $order->confirmedOrder->due)
-                                                                <span class="badge badge-dot mr-4">
+
                                                 <i class="bg-info"></i>
                                                  <a href="" data-bs-toggle="modal"
                                                     data-bs-target="#preview-order-{{$order->id}}"><span
                                                              class="status text-white bg-info p-1 rounded shadow-lg">Paid Waiting for Delivery</span></a>
                                               </span>
                                                             @else
-                                                                <span class="badge badge-dot mr-4">
+
                                                 <i class="bg-success"></i>
                                                  <a href="" data-bs-toggle="modal"
                                                     data-bs-target="#preview-order-{{$order->id}}"><span
@@ -138,7 +137,7 @@
                                                         <td>
                                                             @if($order->status == 0)
                                                                 <a data-bs-toggle="modal"
-                                                                   data-bs-target="#update-pres-{{$order->id}}"
+                                                                   data-bs-target="#edit-pres-{{$order->id}}"
                                                                    class="bg-success btn-sm text-white "><i
                                                                             class="fas fa-edit"></i></a>
                                                                 <a class="bg-info btn-sm text-white"
@@ -154,19 +153,19 @@
                                                                    data-bs-toggle="modal"
                                                                    data-bs-target="#details-pres-{{$order->id}}"><i
                                                                             class="fas fa-eye"></i></a>
-                                                                <a class=" bg-danger btn-sm text-white "
-                                                                   data-bs-toggle="modal"
-                                                                   data-bs-target="#delete-pres-{{$order->id}}"><i
-                                                                            class="fas fa-trash"> </i></a>
+                                                                {{--<a class=" bg-danger btn-sm text-white "--}}
+                                                                   {{--data-bs-toggle="modal"--}}
+                                                                   {{--data-bs-target="#delete-pres-{{$order->id}}"><i--}}
+                                                                            {{--class="fas fa-trash"> </i></a>--}}
                                                             @elseif( $order->confirmedOrder->pay_by == null AND $order->confirmedOrder->due == null)
                                                                 <a class="bg-info btn-sm text-white"
                                                                    data-bs-toggle="modal"
                                                                    data-bs-target="#details-pres-{{$order->id}}"><i
                                                                             class="fas fa-eye"></i></a>
-                                                                <a class=" bg-danger btn-sm text-white "
-                                                                   data-bs-toggle="modal"
-                                                                   data-bs-target="#delete-pres-{{$order->id}}"><i
-                                                                            class="fas fa-trash"> </i></a>
+                                                                {{--<a class=" bg-danger btn-sm text-white "--}}
+                                                                   {{--data-bs-toggle="modal"--}}
+                                                                   {{--data-bs-target="#delete-pres-{{$order->id}}"><i--}}
+                                                                            {{--class="fas fa-trash"> </i></a>--}}
                                                             @elseif($order->confirmedOrder->amount == $order->confirmedOrder->due)
                                                                 <a class="bg-info btn-sm text-white"
                                                                    data-bs-toggle="modal"
@@ -174,56 +173,63 @@
                                                                             class="fas fa-eye"></i></a>
                                                         @endif
 
+                                                        </td>
+                                                        <td>
+                                                            @if($order->status == 1)
+                                                                @include('admin.pages.modals.orders.previewOrder')
+                                                            @endif
+                                                        </td>
+                                                    <td> @include('admin.pages.modals.orders.order_edit')</td>
+                                                    <td> @include('admin.pages.modals.orders.details')</td>
+                                                    <td> @include('admin.pages.modals.orders.delete')</td>
+
+
+
+
+
                                                     </tr>
 
 
 
 
-
                                                 @endforeach
-                                            @endif
-                                            @if($orders->count() == 0)
-                                                <div class="text-center mt-3">
-                                                    <em>No users found</em>
-                                                </div>
-                                            @endif
+
+
                                             </tbody>
                                         </table>
-                                        <!--all modals start-->
-                                    @foreach ($orders as $order)
-
-                                        @if($order->status == 1)
-                                            @include('admin.pages.modals.orders.previewOrder')
-                                        @endif
-
-
-                                        @include('admin.pages.modals.orders.details')
-                                        @include('admin.pages.modals.orders.order_edit')
-                                        @include('admin.pages.modals.orders.delete')
-                                    @endforeach
-                                    <!--all modals end-->
 
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="container">
-                        <div class="col-md-12 mb-4">
-                            <ul class="pagination offset-lg-5 mt-2">
-                                <li><a class="page-link btn medibg p-2 m-2 text-white"
-                                       href="{{ $orders->previousPageUrl() }}">Previous</a></li>
-                                <li><a class="page-link p-2 m-2 medibg text-white" href="{{ $orders->nextPageUrl() }}">Next</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                </div>
+
+
+            </div>
+        </div>
+            @else
+            <div class="row justify-content-end mb-3">
+                <div class="col-md-3 ">
+
+
+                    <button type="button" class="btn medibg custom-btn text-white" data-bs-toggle="modal"
+                            data-bs-target="#order">Buy Prescription
+                    </button>
 
                 </div>
             </div>
-        </div>
+            @include('admin.pages.modals.orders.order')
+            <div class="text-center mb-4">
+                <img src="{{asset('/img/result.gif')}}" class="img-fluid" alt="">
+                <i>No records were found</i>
+            </div>
+        @endif
+
 
     </div>
+
+
 @endsection
 
 @section('footer_script')
@@ -243,7 +249,9 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
     </script>
+
     <script>
         const storage = [
             {data: '1', status: '0'},
@@ -343,42 +351,9 @@
             }
 
 
-            $('#filter').click(function () {
-                var from_date = $('#from_date').val();
-                var to_date = $('#to_date').val();
-                if (from_date != '' && to_date != '') {
-                    fetch_data(from_date, to_date);
-                } else {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: 'warning',
-                        title: 'choose from and to date'
-                    })
-
-                }
-
-            });
-
-            $('#refresh').click(function () {
-                $('#from_date').val('');
-                $('#to_date').val('');
-                location.reload();
-            });
-        });
 
 
-    </script>
+
 
 @endsection
 
