@@ -190,11 +190,14 @@
                                                     </tr>
 
 
+
+
                                                 @endforeach
 
 
                                             </tbody>
                                         </table>
+
                                     </div>
                                 </div>
                             </div>
@@ -248,6 +251,105 @@
         }
 
     </script>
+
+    <script>
+        const storage = [
+            {data: '1', status: '0'},
+            {data: '2', status: '0'},
+            {data: '3', status: '0'},
+            {data: '4', status: '0'},
+            {data: '5', status: '0'},
+            {data: '6', status: '0'},
+            {data: '7', status: '1'},
+        ];
+
+
+        $(document).ready(function () {
+// var storage = '<?php echo $confirmorders; ?>';
+// let counter = 0;
+// for (let i = 0; i < storage.length; i++) {
+//   if (storage[i].status === '0') counter++;
+// }
+
+// console.log(counter); // 6
+// alert(abc.length);
+// console.log(abc);
+// alert(abc);
+// console.log(abc);
+
+            $.datepicker.setDefaults({
+                dateFormat: 'yy-mm-dd'
+            });
+
+            $(function () {
+                $('#from_date').datepicker();
+                $('#to_date').datepicker();
+
+            });
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+
+            function fetch_data(from_date = '', to_date = '') {
+                $.ajax({
+                    type: 'POST',
+                    url: '/filter/prescription',
+                    data: {from_date: from_date, to_date: to_date},
+                    dataType: "json",
+                    success: function (data) {
+
+// var output = '';
+
+                        var output = '';
+
+                        for (var count = 0; count < data.length; count++) {
+
+                            output += '<tr>';
+
+                            output += '<td>mdc0' + data[count].id + '</td>';
+                            output += "<td><img src={{ URL::to('/') }}/uploads/orders/" + data[count].image + " width='70px'/></td>";
+                            output += '<td>' + data[count].quantity + '</td>';
+                            output += '<td>' + data[count].created_at + '</td>';
+                            output += '<td>' + data[count].note + '</td>';
+
+                            output += '<td>';
+                            /*order status*/
+
+                            if (data[count].status == 0) {
+                                output += '<span class="badge badge-dot mr-4"><i class="bg-warning"></i><span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span></span>';
+                            } else if (data[count].status == 0) {
+                                output += '<span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-info p-1 rounded shadow-lg text-capitalize">approved Review Now</span></a></span>';
+                            } else if (data[count].pay_by == null && data[count].due == null) {
+                                output += '<span class="badge badge-dot mr-4"><i class="bg-success"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-success p-1 rounded shadow-lg">You Confirmed but Unpaid</span></a></span>';
+                            } else if (data[count].amount == data[count].due) {
+                                output += '<span class="badge badge-dot mr-4"><i class="bg-info"></i><a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-info p-1 rounded shadow-lg">Paid Waiting for Delivery</span></a></span>';
+                            } else {
+                                output += '<span class="badge badge-dot mr-4"><i class="bg-success"></i> <a href=""  data-bs-toggle="modal" data-bs-target="#preview-order-1"><span class="status text-white bg-success p-1 rounded shadow-lg">Accepted Review Now</span></a></span>';
+
+                            }
+
+
+                            output += '</td>';
+                            /*order end*/
+
+
+                            output += '</tr>';
+                        }
+                        $('.listing').html(output);
+
+
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            }
+
 
 
 

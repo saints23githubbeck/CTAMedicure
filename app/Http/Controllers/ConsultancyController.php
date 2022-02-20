@@ -80,6 +80,7 @@ class ConsultancyController extends Controller
                     }
 
 
+
                 } else {
                     return back()->with('cannot', 'This day already booked');
                 }
