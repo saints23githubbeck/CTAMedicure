@@ -19,7 +19,7 @@
 
                     <div class="form-group">
                     <label for="user_id" class="col-form-label">Doctors</label>
-                    <select class="form-control {{$errors->has('user_id') ? ' is-invalid' : ''}}" name="user_id" value="{{old('user_id')}}" id="doctor_id" required>
+                    <select class="form-control {{$errors->has('user_id') ? ' is-invalid' : ''}}" name="user_id" value="{{old('user_id')}}" id="user_id" required>
                     <option value="">--select doctor --</option>
                     @foreach (App\Models\Constant_settings::all() as $doctor)
                    

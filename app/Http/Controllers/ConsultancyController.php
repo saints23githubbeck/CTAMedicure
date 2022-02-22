@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appointment;
+
 use App\Models\Consultancy;
 use App\Models\ConsultancyConfirm;
 use App\Models\Medication;
@@ -17,12 +17,15 @@ use Illuminate\Support\Facades\DB;
 
 class ConsultancyController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
             public function gettime(Request $request)
             {
 
 
-                $constant_id = Constant_settings::where('user_id', $request->doctor_id)->first()->id;
+                $constant_id = Constant_settings::where('user_id', $request->user_id)->first()->id;
                 $days = Day::where('constant_setting_id', $constant_id)->get(['AvailableDate']);
 
 
@@ -37,7 +40,7 @@ class ConsultancyController extends Controller
             public function getDay(Request $request)
             {
 
-                $constant_id = Constant_settings::where('user_id', $request->doctor_id)->first()->id;
+                $constant_id = Constant_settings::where('user_id', $request->user_id)->first()->id;
 //                dd($constant_id);
                 $start_time = Day::where('constant_setting_id', $constant_id)->where('AvailableDate', $request->day_name)->first()->availableTime;
                 $end_time = Day::where('constant_setting_id', $constant_id)->where('AvailableDate', $request->day_name)->first()->closedTime;
@@ -53,7 +56,7 @@ class ConsultancyController extends Controller
                 $total_mins = $end_mins - $start_mins;
 
                 $doctor_total_consult_will_be = $total_mins / $duration;
-                $total_appoinment = Consultancy::where('doctor_id', $request->doctor_id)->where('AvailableDate', $request->day_name)->count();
+                $total_appoinment = Consultancy::where('user_id', $request->user_id)->where('AvailableDate', $request->day_name)->count();
 
 
                 $your_time = $start_mins + ($duration * $total_appoinment);

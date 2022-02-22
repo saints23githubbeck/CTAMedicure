@@ -11,6 +11,11 @@ use App\Models\Day;
 
 class ConstantController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
 

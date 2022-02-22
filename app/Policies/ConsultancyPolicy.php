@@ -22,17 +22,17 @@ class ConsultancyPolicy
         //
     }
 
-public function update(User $user){
+    public function update(User $user)
+    {
 
 
+        return $user->relation_to_role->name == 'Administrator' || $user->relation_to_role->name == 'Doctor' ? Response::allow() : Response::deny('you are not own and this page is authorized !');
 
-return  $user->relation_to_role->name == 'Administrator'   || $user->relation_to_role->name == 'Doctor'  ? Response::allow() : Response::deny('you are not own and this page is authorized !');
-
-}
+    }
 
 
-    public function view(User $user){
-
+    public function view(User $user)
+    {
 
 
         return $user->relation_to_role->name == 'Administrator' || $user->relation_to_role->name == 'patients' ? Response::allow() : Response::deny('you are not own and this page is authorized !');
