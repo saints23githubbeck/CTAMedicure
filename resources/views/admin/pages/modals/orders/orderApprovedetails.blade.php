@@ -16,6 +16,15 @@
                 <h4 class="text-center">Description : <span class="mr--5">{{$approved->note}}</span></h4>
                 <h4 class="text-center">Confirm By : <span class="mr--5">{{$approved->user->contactNumber}}</span></h4>
                 <h4 class="text-center">Payments Plan : <span class="mr--5">{{$approved->pay_by}}</span></h4>
+
+                @if($approved->delivery)
+                    <p class="text-center">Delivery : <span class="mr--5">
+                        {{$approved->delivery->user->contactNumber}}
+                    </span>
+                    </p>
+                    <p class="text-center">Patient : <span class="mr--5">{{$approved->order->user->contactNumber}}</span></p>
+
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

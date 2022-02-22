@@ -25,7 +25,7 @@
                         {{$order->confirmedOrder->delivery->user->contactNumber}}
                     </span>
                 </p>
-                <p class="text-center">userName : <span class="mr--5">{{$order->confirmedOrder->delivery->user->userName}}</span></p>
+                {{--<p class="text-center">userName : <span class="mr--5">{{$order->confirmedOrder->delivery->user->userName}}</span></p>--}}
 
             @endif
 

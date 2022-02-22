@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appointment;
+
 use App\Models\Consultancy;
 use App\Models\ConsultancyConfirm;
 use App\Models\Medication;
@@ -30,6 +30,8 @@ foreach($days as $day){
 }    
 echo $send_html;
 
+
+
 }
 
 public function getDay(Request $request){
@@ -40,10 +42,12 @@ $end_time = Day::where('constant_id',$constant_id)->where('AvailableDate',$reque
 $duration = Day::where('constant_id',$constant_id)->where('AvailableDate',$request->day_name)->first()->duration;
 
 
+
 $start_time_break = explode(':',$start_time);
 $start_mins = ($start_time_break[0]*60) + $start_time_break[1];
 $end_time_break = explode(':',$end_time);
 $end_mins = ($end_time_break[0]*60) + $end_time_break[1];
+
 
 $total_mins = $end_mins - $start_mins;
 
@@ -52,12 +56,9 @@ $doctor_total_consult_will_be = $total_mins / $duration;
 $total_appoinment = Consultancy::where('doctor_id',$request->doctor_id)->where('AvailableDate',$request->day_name)->count();
 
 
-$your_time = $start_mins + ($duration * $total_appoinment);
- 
-     
 
-    
 
+   
 
 //   $previous_patient_need_time = $total_appoinment * $duration;
 //   $i_have_to_go = $start_time + $previous_patient_need_time;
