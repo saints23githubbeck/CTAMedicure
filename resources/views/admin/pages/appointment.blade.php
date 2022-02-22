@@ -2,6 +2,86 @@
 
 @section('content')
     <!--Container Main start-->
+
+<div class="container ">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body ">
+                    <h2 class="fw-bolder text-center">Appointments</h2>
+                    <div class="row my-3 ">
+                        <div class="form-group col">
+
+                            From
+                            <input type="text" name="from_date" class="form-control"  id="from_date" placeholder=" Filter From" readonly/>
+                        </div>
+                        <div class="form-group col">
+                            To
+                            <input type="text" name="to_date" class="form-control"  id="to_date" placeholder="Filter To" readonly/>
+                        </div>
+                        <div class="form-group col">
+
+
+                            <button type="button" id="filter" class="btn medibg text-white mt-4">Filter</button>
+                            <button type="button" id="refresh" class="btn medibg text-white mt-4">Refresh</button>
+                          
+                            {{--<span class="btn btn-danger text-white mt-4">Cancel</span>--}}
+
+                            {{--<button type="button" class="btn medibg text-black" name="filter" id="filter">Filter</button>--}}
+                            {{--<button type="button" class="btn btn-danger" name="refresh" id="refresh">Refresh</button>--}}
+
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="row justify-content-end mb-3">
+                        <div class="col-md-3 ">
+                            <button type="button" class="btn medibg custom-btn text-white" data-bs-toggle="modal" data-bs-target="#appointment">New Appointments</button>
+                        </div>
+                    </div>
+                    @if(session('cannot'))
+                    <div class="row">
+<div class="alert alert-danger">
+    {{ session('cannot') }}
+</div>
+                    </div>
+                    @endif
+                    @if(session('exists'))
+                    <div class="row">
+<div class="alert alert-danger">
+    {{ session('exists') }}
+</div>
+                    </div>
+                    @endif
+
+                    <div class="table-responsive">
+                        <table class="table my-5">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Doctor</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Reason</th>
+                                <th scope="col">Status </th>
+                                <th scope="col" class="text-center">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody class="listing">
+                                @foreach ($appointments as  $appointment)
+
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{ $appointment->consultancyConfirm->user->profile->firstName.' '.$appointment->consultancyConfirm->user->profile->lastName}}</td>
+                                    <td>{{ $appointment->availableDate }}</td>
+                                    <td>{{ $appointment->availableTime }}</td>
+                                    <td>{{ Str::limit($appointment->reason, '18')  }}</td>
+                                    <td>
+                                        @if($appointment->status == 0)
+                                            <span class=" badge badge-dot mr-4">
+
     <div class="container ">
         @if($appointments->count() >0)
             <div class="row">
@@ -78,6 +158,7 @@
                                             <td>
                                                 @if($appointment->status == 0)
                                                     <span class=" badge badge-dot mr-4">
+
                                                 <span class="status text-white bg-warning p-1 rounded shadow-lg">Pending</span>
                                               </span>
 
