@@ -27,6 +27,9 @@ public function delete_time($id){
     return back();
 }
 public function add_time(Request $request){
+
+
+
 $request->validate([
     'day'=>'required',
     'duration'=>'required',
@@ -34,19 +37,43 @@ $request->validate([
     'closedTime'=>'required',
 ]);
 
+
+
+
 if(Day::where('constant_id',$request->constant_id)->where('AvailableDate',$request->day)->exists()){
 
     return back()->with('exists',$request->day.'available time already given');
 
 }else{
-    Day::insert([
-        'constant_id'=>$request->constant_id,
-        'duration'=>$request->duration,
-        'availableTime'=>$request->availableTime,
-        'closedTime'=>$request->closedTime,
-        'AvailableDate'=>$request->day,
-    ]);
-    return back();
+    
+    $start_time = $request->availableTime;
+    $end_time = $request->closedTime;
+    $duration = $request->duration;
+    
+    $start_time_break = explode(':',$start_time);
+    $start_mins = ($start_time_break[0]*60) + $start_time_break[1];
+    $end_time_break = explode(':',$end_time);
+    $end_mins = ($end_time_break[0]*60) + $end_time_break[1];
+    
+    $total_mins = $end_mins - $start_mins;
+    
+    $doctor_total_consult_will_be = $total_mins / $duration;
+    if($doctor_total_consult_will_be < 1 || is_float($doctor_total_consult_will_be)){
+        return back()->with('exists','Your time is invalid duration is not mathched with given time?');
+      
+    }else{
+        Day::insert([
+            'constant_id'=>$request->constant_id,
+            'duration'=>$request->duration,
+            'availableTime'=>$request->availableTime,
+            'closedTime'=>$request->closedTime,
+            'AvailableDate'=>$request->day,
+        ]);
+        return back();
+    }
+    
+
+
 }
 
 }

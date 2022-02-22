@@ -47,6 +47,13 @@
 </div>
                     </div>
                     @endif
+                    @if(session('exists'))
+                    <div class="row">
+<div class="alert alert-danger">
+    {{ session('exists') }}
+</div>
+                    </div>
+                    @endif
 
                     <div class="table-responsive">
                         <table class="table my-5">

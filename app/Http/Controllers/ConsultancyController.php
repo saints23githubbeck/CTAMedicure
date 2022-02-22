@@ -48,6 +48,7 @@ $end_mins = ($end_time_break[0]*60) + $end_time_break[1];
 $total_mins = $end_mins - $start_mins;
 
 $doctor_total_consult_will_be = $total_mins / $duration;
+
 $total_appoinment = Consultancy::where('doctor_id',$request->doctor_id)->where('AvailableDate',$request->day_name)->count();
 
 
@@ -85,7 +86,7 @@ if($mins < 10){
 
 
 }else{
-return back()->with('cannot','This day already booked');
+echo 'Doctor fully booked';
 }
 //   echo $time;
 }
@@ -153,6 +154,8 @@ function filter(Request $request){
     }
     function store(Request $request){
 
+
+
         try {
             $this->validate(request(), [
                 'reason'=>'required',
@@ -166,19 +169,26 @@ function filter(Request $request){
             return redirect()->back()->withErrors($e->errors())->with('error', $e->getMessage());
         }
 
-        $consultancy = new Consultancy();
-        $consultancy->reason = $request->reason;
-        $consultancy->availableDate = $request->availableDate;
-        $consultancy->availableTime = $request->availableTime;
-        $consultancy->user_id = auth()->id();
-        $consultancy->doctor_id = $request->user_id;
-        $consultancy->save();
-//        dd($consultancy->id);
-        $consultancy->consultancyConfirm()->create([
-            'user_id' => $request->user_id
-        ]);
+        if($request->availableTime){
+          return back()->with('exists','This Doctor fully booked on given day ! please try other days well wishes for you');
+        }else{
+            $consultancy = new Consultancy();
+            $consultancy->reason = $request->reason;
+            $consultancy->availableDate = $request->availableDate;
+            $consultancy->availableTime = $request->availableTime;
+            $consultancy->user_id = auth()->id();
+            $consultancy->doctor_id = $request->user_id;
+            $consultancy->save();
+    //        dd($consultancy->id);
+            $consultancy->consultancyConfirm()->create([
+                'user_id' => $request->user_id
+            ]);
+    
+            return back()->with(' Successfully Request');
+        }
 
-        return back()->with(' Successfully Request');
+
+
     }
 
     function destroy(Consultancy $consultancy){
