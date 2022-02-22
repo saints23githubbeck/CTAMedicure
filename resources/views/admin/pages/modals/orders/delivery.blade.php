@@ -18,18 +18,18 @@
                                                     </div>
 
 
-                                                    <div class="tools float-sm-end float-none">
+                                                    {{--<div class="tools float-sm-end float-none">--}}
 
-                                                        <button id="minimize" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-group-task" aria-expanded="false" aria-controls="collapse-group-task">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
-                                                        <button onclick="loading()"  id="load"> <i class="fas fa-redo-alt"></i>  </button>
+                                                        {{--<button id="minimize" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-group-task" aria-expanded="false" aria-controls="collapse-group-task">--}}
+                                                            {{--<i class="fas fa-minus"></i>--}}
+                                                        {{--</button>--}}
+                                                        {{--<button onclick="loading()"  id="load"> <i class="fas fa-redo-alt"></i>  </button>--}}
 
-                                                        <button onclick="openFullscreen();" id="show"><i class="far fa-expand-arrows"></i></button>
+                                                        {{--<button onclick="openFullscreen();" id="show"><i class="far fa-expand-arrows"></i></button>--}}
 
-                                                        <button onclick="closeFullscreen();" id="hide"><i class="fas fa-compress-arrows-alt"></i></button>
+                                                        {{--<button onclick="closeFullscreen();" id="hide"><i class="fas fa-compress-arrows-alt"></i></button>--}}
 
-                                                    </div>
+                                                    {{--</div>--}}
 
                                                 </div>
                                             </div>
@@ -69,7 +69,6 @@
                                                                             <th scope="col">Phone Number</th>
                                                                             <th scope="col">Location</th>
                                                                             <th scope="col">Assign</th>
-                                                                            <th scope="col">Action</th>
 
                                                                         </tr>
                                                                         </thead>
@@ -84,20 +83,26 @@
                                                                                 @if($deliver->address->location == $approved->user->address->location)
                                                                                     <td>
                                                                                         {{--<a  class="bg-success btn-sm text-white" data-bs-target="modal" data-bs-toggle="#assign-delivery">assign</a>--}}
-                                                                                        <a href=""  data-bs-toggle="modal" data-bs-target="#assign-delivery-{{$deliver->id}}-{{$approved->id}}"><span class="status text-white bg-info p-1 rounded shadow-lg">assign</span></a>
+                                                                                        <a href=""  data-bs-toggle="modal" data-bs-target="#assign-delivery-{{$deliver->id}}-{{$approved->id}}">
+                                                                                            <span class="status badge text-white bg-info p-1 rounded shadow-lg"></span>
+                                                                                        </a>
 
                                                                                         @include('admin.pages.modals.deliveries.assign')
                                                                                     </td>
                                                                                 @else
                                                                                     <td>
                                                                                         {{--<a  class="bg-success btn-sm text-white" data-bs-target="modal" data-bs-toggle="#assign-delivery">assign</a>--}}
-                                                                                        <a href=""  data-bs-toggle="modal" data-bs-target=""><span class="status text-white bg-info p-1 rounded shadow-lg">Access Limited</span></a>
+                                                                                        <a href=""  data-bs-toggle="modal" data-bs-target="">
+                                                                                            <span class="status text-white bg-info p-1 rounded shadow-lg">
+                                                                                                Access Limited
+                                                                                            </span>
+                                                                                        </a>
 
                                                                                         {{--@include('admin.pages.modals.deliveries.assign')--}}
                                                                                     </td>
                                                                                 @endif
                                                                                 {{--<td><span class="text-success fw-bold">completed</span></td>--}}
-                                                                                <td><a href="#" class="btn btn_custom">view</a></td>
+                                                                                {{--<td><a href="#" class="btn btn_custom">view</a></td>--}}
 
                                                                             </tr>
 

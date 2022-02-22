@@ -16,7 +16,6 @@ class CreateConsultanciesTable extends Migration
         Schema::create('consultancies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->integer('doctor_id');
             $table->string('reason');
             $table->string('availableDate');
             $table->string('availableTime');

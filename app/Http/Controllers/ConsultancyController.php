@@ -91,6 +91,8 @@ echo 'Doctor fully booked';
 }
 //   echo $time;
 }
+
+
 function filter(Request $request){
 
         $fromdate = $request->from_date;

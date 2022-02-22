@@ -32,15 +32,12 @@
                                 <tr>
                                     <th class="float-left">Status:</th>
 
-                                    @if($order->status == 0)
+                                    @if($order->confirmedOrder->pay_by == null AND $order->confirmedOrder->due == null)
 
-                                        <th class="float-end">Pending</th>
-                                    @elseif($order->confirmedOrder->status ==1 )
+                                        <th class="float-end">Order Not Confirmed for Delivery</th>
+                                    @elseif($order->confirmedOrder->amount == $order->confirmedOrder->due)
 
-                                        <th class="float-end">Waiting for Delivery</th>
-                                    @else
-
-                                        <th class="float-end">Accepted Review Now</th>
+                                        <th class="float-end">Order Confirmed Waiting for Delivery</th>
 
                                     @endif
 

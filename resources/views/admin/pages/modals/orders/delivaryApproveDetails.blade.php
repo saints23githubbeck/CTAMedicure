@@ -16,6 +16,15 @@
                 <h4 class="text-center">Pick From : <span class="mr--5">{{$approved->confirmedOrder->order->user->address->location}}</span></h4>
                 <h4 class="text-center">Pick To : <span class="mr--5">{{$approved->confirmedOrder->user->address->location}}</span></h4>
                 {{--<h4 class="text-center">Confirm By : <span class="mr--5">{{$approved->relation_to_user->contactNumber}}</span></h4>--}}
+
+                @if($approved)
+                    <p class="text-center">Delivery  : <span class="mr--5">
+                        {{$order->confirmedOrder->delivery->user->contactNumber}}
+                    </span>
+                    </p>
+                    <p class="text-center">userName : <span class="mr--5">{{$order->confirmedOrder->delivery->user->userName}}</span></p>
+
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

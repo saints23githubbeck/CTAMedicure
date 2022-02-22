@@ -109,7 +109,11 @@
                                                         <a href="#"  data-bs-toggle="modal" data-bs-target="#previewMedication-{{$appointment->id}}" class="btn btn-success status text-white bg-info p-1 rounded shadow-lg">Preview</a>
                                                     </td>
                                                 </tr>
+
+                                                @if($appointment->medication)
+
                                                     @include('admin.pages.medications.previewMedication')
+                                                    @endif
                                                 @endforeach
                                                 </tbody>
                                             </table>

@@ -14,6 +14,9 @@ class Consultancy extends Model
      *
      * @var string[]
      */
+    protected $casts = [
+        'duration' => 'integer',
+    ];
     protected $guarded = [];
     
     public function user()

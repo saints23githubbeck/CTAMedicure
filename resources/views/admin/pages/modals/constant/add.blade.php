@@ -34,6 +34,14 @@
           <p class="text-danger">{{ $message }}</p>
                @enderror
             </div>
+
+                    <div class="form-group">
+                        <label for="">Meeting Duration (ex. 30 minute or 60)</label><br>
+                        <input type="text" name="duration" class="form-control">
+                        @error('duration')
+                        <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
             <div class="form-group">
                 <label for="">Price</label><br>
                <input type="text" name="price" class="form-control">

@@ -15,8 +15,9 @@ class CreateDaysTable extends Migration
     {
         Schema::create('days', function (Blueprint $table) {
             $table->id();
-            $table->integer('constant_id')->nullable();
+            $table->foreignId('constant_setting_id')->constrained();
             $table->string('availableTime')->nullable();
+            $table->integer('duration');
             $table->string('closedTime')->nullable();
             $table->string('AvailableDate')->nullable();
             $table->timestamps();

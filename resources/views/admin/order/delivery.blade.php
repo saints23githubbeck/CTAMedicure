@@ -29,7 +29,7 @@
                             @include('admin.pages.modals.orders.payPlan')
 
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-md-7">
                                 <div class="card">
                                     <div class="card-body">
                                         <table class="table table-borderless">
@@ -45,15 +45,12 @@
                                             <tr>
                                                 <th class="float-left">Status:</th>
 
-                                                @if($order->status == 0)
+                                                @if($order->confirmedOrder->pay_by == null AND $order->confirmedOrder->due == null)
 
-                                                    <th class="float-end">Pending</th>
-                                                @elseif($order->confirmedOrder->status ==1 )
+                                                    <th class="">Not Confirmed </th>
+                                                @elseif($order->confirmedOrder->amount == $order->confirmedOrder->due)
 
-                                                    <th class="float-end">Waiting for Delivery</th>
-                                                @else
-
-                                                    <th class="float-end">Accepted Review Now</th>
+                                                    <th class="float-end">Confirmed</th>
 
                                                 @endif
 
@@ -96,24 +93,27 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-weight: bold;">Delivery Address</h6>
-                                        <p class="card-text" style="font-weight: bold;">
-                                            Pick From : {{$order->confirmedOrder->user->address->location}} <br>
-                                            To : {{$order->user->address->location}}
-                                         </p>
+                            <div class="col-md-5">
 
-                                    </div>
-                                </div>
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-weight: bold;">Special Note</h6>
-                                        <p class="card-text" style="font-weight: bold;">{{$order->confirmedOrder->note}}</p>
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <h6 class="card-title" style="font-weight: bold;">Delivery Address</h6>
+                                                <p class="card-text" style="font-weight: bold;">
+                                                    Pick From : {{$order->confirmedOrder->user->address->location}} <br>
+                                                    To : {{$order->user->address->location}}
+                                                </p>
 
-                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <h6 class="card-title" style="font-weight: bold;">Special Note</h6>
+                                                <p class="card-text" style="font-weight: bold;">{{$order->confirmedOrder->note}}</p>
+
+                                            </div>
+
                                 </div>
+
                             </div>
                         </div>
                         <p class="text-center" style="color: blueviolet;">Choose payment method below</p>

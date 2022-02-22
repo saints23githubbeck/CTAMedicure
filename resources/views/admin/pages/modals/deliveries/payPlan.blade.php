@@ -1,4 +1,4 @@
-<div class="modal fade " id="payPlan" tabindex="-1" role="dialog"
+<div class="modal fade " id="searchY" tabindex="-1" role="dialog"
      aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered success-modal-content " role="document">
         <div class="modal-content bg-white">
@@ -8,9 +8,14 @@
                         <h2 class="text-capitalize text-xl-center ml-xl-5 font-weight-bolder ">Choose Payment plan</h2>
                 </div>
                 <span class="mt-4">
-                <a  href="{{route('pay.mobile',$order->id)}}" > <img src="{{asset('sujon/mtn.png')}}" alt="mtn" class="cart-img-show w-25"></a>
-                <a href="{{route('pay',$order->id)}}"  ><img src="{{asset('sujon/visa.png')}}" alt="visa" class="cart-img-show w-25"></a>
-                </span>
+                 <div class="col-md-3 mb-2 mr-sm-2 ">
+                                    <select name="year" style="border-radius: 120px 0 0 120px" id="" class="form-control">
+                                        <option value=""><--Select Year--></option>
+                                        @foreach($years as $year)
+                                            <option value="{{$year->year}}" class="btn btn-primary">{{$year->year }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>                </span>
 
             </div>
             <div class="modal-footer">
