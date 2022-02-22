@@ -66,6 +66,7 @@ $your_time = $start_mins + ($duration * $total_appoinment);
 
 
 
+
 if($doctor_total_consult_will_be > $total_appoinment){
    //Decimal to time 
 $t_h = $your_time / 60;
