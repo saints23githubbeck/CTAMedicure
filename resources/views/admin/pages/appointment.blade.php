@@ -47,7 +47,7 @@
 </div>
                     </div>
                     @endif
-                    @if(session('exists'))
+   @if(session('exists'))
                     <div class="row">
 <div class="alert alert-danger">
     {{ session('exists') }}

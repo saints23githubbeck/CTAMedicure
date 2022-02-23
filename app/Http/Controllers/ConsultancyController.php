@@ -172,7 +172,7 @@ function filter(Request $request){
             return redirect()->back()->withErrors($e->errors())->with('error', $e->getMessage());
         }
 
-        if($request->availableTime){
+        if($request->availableTime == 'Doctor fully booked'){
           return back()->with('exists','This Doctor fully booked on given day ! please try other days well wishes for you');
         }else{
             $consultancy = new Consultancy();
