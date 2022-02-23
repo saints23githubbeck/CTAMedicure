@@ -9,9 +9,21 @@ use App\Models\Role;
 use App\Models\Day;
 class ConstantController extends Controller
 {
+
 public function index(){
     
- $doctors_id = Role::where('name','Doctor')->first()->id;
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index()
+    {
+
+        $doctors_id = Role::where('name', 'Doctor')->first()->id;
+
 
  $doctors = User::where('role_id',$doctors_id)->get();
 
